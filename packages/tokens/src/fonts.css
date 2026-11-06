@@ -1,7 +1,24 @@
-/* Geist Pixel (SIL OFL 1.1) — files are copied from the `geist` npm package
-   into ../fonts by scripts/copy-fonts.mjs. If you load Geist Pixel through
-   next/font (geist/font/pixel) you can skip this file: tokens.css reads the
-   --font-geist-pixel-* variables that next/font sets. */
+/* Geist, Geist Mono and Geist Pixel (SIL OFL 1.1) — files are copied from the
+   `geist` npm package into ../fonts by scripts/copy-fonts.mjs. If you load them
+   through next/font (geist/font/sans, geist/font/mono, geist/font/pixel) you
+   can skip this file: tokens.css reads the --font-geist-sans,
+   --font-geist-mono and --font-geist-pixel-* variables that next/font sets. */
+
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Geist Pixel Square";

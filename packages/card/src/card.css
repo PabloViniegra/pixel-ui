@@ -31,8 +31,8 @@
   font-family: var(--pxl-font-pixel);
   font-size: var(--pxl-text-lg);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
 }
 
 .pxl-card__description {
@@ -60,10 +60,18 @@
   cursor: pointer;
 }
 
-.pxl-card[data-interactive]:is(:hover, :focus-within) {
+.pxl-card[data-interactive]:not([data-highlight]):is(:hover, :focus-within) {
   --_border: var(--pxl-gray-500);
+}
+
+.pxl-card[data-interactive]:is(:hover, :focus-within) {
   --_elev: var(--pxl-shadow-md);
   --_lift: -2px;
+}
+
+.pxl-card[data-interactive]:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
 }
 
 .pxl-card[data-interactive]:active {

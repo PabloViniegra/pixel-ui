@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/tokens",
   "version": "0.1.0",
-  "description": "PixelUI design tokens, Geist Pixel fonts and motion keyframes",
+  "description": "PixelUI design tokens, Geist, Geist Mono and Geist Pixel fonts and motion keyframes",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

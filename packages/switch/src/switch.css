@@ -13,6 +13,7 @@
   border: 0;
   border-radius: var(--pxl-radius-full);
   background: var(--pxl-gray-600);
+  transition: background-color var(--pxl-dur-fast) linear;
   overflow: hidden;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -40,8 +41,8 @@
   width: var(--_thumb);
   height: var(--_thumb);
   border-radius: var(--pxl-radius-full);
-  background: var(--pxl-bg);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  background: var(--pxl-thumb);
+  box-shadow: var(--pxl-shadow-thumb);
   transform-origin: left center;
   transition: transform var(--pxl-dur-slow) var(--pxl-ease-spring);
 }
@@ -53,6 +54,10 @@
 .pxl-switch[data-state="on"] .pxl-switch__thumb {
   transform: translateX(var(--_travel));
   transform-origin: right center;
+}
+
+.pxl-switch:hover:not(:disabled) {
+  background: var(--pxl-gray-700);
 }
 
 /* Squash while pressed: the thumb stretches toward its destination. */

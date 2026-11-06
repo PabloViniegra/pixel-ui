@@ -64,10 +64,23 @@
 
 /* Indeterminate: a pixel comet running along the track. */
 .pxl-progress[data-state="indeterminate"] .pxl-progress__cell {
-  background: var(--_tone);
-  opacity: 0.12;
-  animation: pxl-cell var(--_loop) var(--pxl-ease-out) infinite;
+  animation: pxl-progress-comet var(--_loop) var(--pxl-ease-out) infinite;
   animation-delay: calc(var(--_i) * var(--_loop) / var(--_segments) - var(--_loop));
+}
+
+/* Fades from the tone back into the resting track colour so idle cells match
+   the determinate bar instead of a tinted ghost track. */
+@keyframes pxl-progress-comet {
+  0% {
+    background: var(--_tone);
+  }
+  12% {
+    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-200));
+  }
+  30%,
+  100% {
+    background: var(--pxl-gray-200);
+  }
 }
 
 .pxl-progress__value {

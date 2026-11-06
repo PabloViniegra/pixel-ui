@@ -7,23 +7,23 @@ shapes and springy motion, with **Geist Pixel** type and a few 8-bit details as 
 - **Storybook 10** catalogue with theme switcher, a11y checks and a live version table.
 - **TypeScript 7** (native Go compiler) end to end.
 
-| Package                   | What it is                                                    |
-| ------------------------- | ------------------------------------------------------------- |
-| `@pixel-ui/tokens`        | CSS variables, Geist Pixel `@font-face`, keyframes, utilities |
-| `@pixel-ui/core`          | `cx`, `useControllableState`, `usePrefersReducedMotion`       |
-| `@pixel-ui/button`        | Button with soft lift, smooth shine, loading dots             |
-| `@pixel-ui/badge`         | Status badge with tones and a blinking terminal dot           |
-| `@pixel-ui/switch`        | `role="switch"` toggle with fading track and spring thumb     |
-| `@pixel-ui/progress`      | Segmented bar with staggered fill and an indeterminate comet  |
-| `@pixel-ui/loader`        | 3×3 pixel loader: `snake`, `pulse`, `scan`                    |
-| `@pixel-ui/card`          | Rounded card with soft lift and accent highlight border       |
-| `@pixel-ui/scramble-text` | Text that decodes itself from random glyphs                   |
-| `@pixel-ui/react`         | Umbrella package re-exporting everything                      |
+| Package                   | What it is                                                                          |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| `@pixel-ui/tokens`        | CSS variables, Geist, Geist Mono and Geist Pixel `@font-face`, keyframes, utilities |
+| `@pixel-ui/core`          | `cx`, `useControllableState`, `usePrefersReducedMotion`                             |
+| `@pixel-ui/button`        | Button with soft lift, smooth shine, loading dots                                   |
+| `@pixel-ui/badge`         | Status badge with tones and a blinking terminal dot                                 |
+| `@pixel-ui/switch`        | `role="switch"` toggle with fading track and spring thumb                           |
+| `@pixel-ui/progress`      | Segmented bar with staggered fill and an indeterminate comet                        |
+| `@pixel-ui/loader`        | 3×3 pixel loader: `snake`, `pulse`, `scan`                                          |
+| `@pixel-ui/card`          | Rounded card with soft lift and accent highlight border                             |
+| `@pixel-ui/scramble-text` | Text that decodes itself from random glyphs                                         |
+| `@pixel-ui/react`         | Umbrella package re-exporting everything                                            |
 
 ## Getting started
 
 ```bash
-pnpm install        # also copies the Geist Pixel fonts into packages/tokens/fonts
+pnpm install        # also copies the Geist, Geist Mono and Geist Pixel fonts into packages/tokens/fonts
 pnpm storybook      # http://localhost:6006
 ```
 
@@ -51,9 +51,9 @@ import { Button } from '@pixel-ui/button';
 Theme with `data-theme="light" | "dark"` on any element (defaults to the OS setting) and
 override any `--pxl-*` token on `:root` or a container.
 
-**Next.js:** if you load fonts with `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`,
+**Next.js:** if you load fonts with `geist/font/sans`, `geist/font/mono` and `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`,
 `motion.css` and `utilities.css` instead of `styles.css`; the tokens read the
-`--font-geist-pixel-*` variables set by `next/font`.
+`--font-geist-sans`, `--font-geist-mono` and `--font-geist-pixel-*` variables set by `next/font`.
 
 ## Repository layout
 
@@ -106,5 +106,5 @@ If you later add a tool that needs the API, install TypeScript 6 under an alias 
 
 ## Fonts & licence
 
-Geist Pixel is © Vercel, licensed under the SIL Open Font License 1.1; the licence file is
+Geist, Geist Mono and Geist Pixel are © Vercel, licensed under the SIL Open Font License 1.1; the licence file is
 copied next to the fonts. PixelUI code is MIT.

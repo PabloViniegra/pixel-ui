@@ -1,12 +1,13 @@
 .pxl-button {
   --_bg: var(--pxl-fg);
   --_fg: var(--pxl-bg);
-  --_ring: 0 0 0 0 transparent;
-  --_elev: none;
+  --_ring: 0 0 #0000;
+  --_elev: 0 0 #0000;
   --_h: 40px;
   --_px: var(--pxl-space-4);
   --_text: var(--pxl-text-sm);
   --_lift: 0px;
+  --_tint: 0%;
 
   position: relative;
   isolation: isolate;
@@ -41,7 +42,7 @@
   z-index: -1;
   overflow: hidden;
   border-radius: inherit;
-  background: var(--_bg);
+  background: color-mix(in srgb, var(--_bg), var(--_fg) var(--_tint));
   box-shadow: var(--_ring), var(--_elev);
   transition:
     background-color var(--pxl-dur-fast) linear,
@@ -72,7 +73,6 @@
 .pxl-button__icon :where(svg) {
   width: 1.15em;
   height: 1.15em;
-  shape-rendering: crispEdges;
 }
 
 /* ── Interaction ─────────────────────────────────────────── */
@@ -81,13 +81,17 @@
   --_elev: var(--pxl-shadow-md);
 }
 
+.pxl-button:is([data-variant="primary"], [data-variant="danger"]):hover:not(:disabled) {
+  --_tint: 12%;
+}
+
 .pxl-button:hover:not(:disabled) .pxl-button__surface::after {
   animation: pxl-sweep 640ms var(--pxl-ease-out) 1;
 }
 
 .pxl-button:active:not(:disabled) {
   --_lift: 0px;
-  --_elev: none;
+  --_elev: 0 0 #0000;
   transform: scale(0.98);
   transition-duration: var(--pxl-dur-instant);
 }
@@ -109,7 +113,7 @@
 
 /* ── Variants ────────────────────────────────────────────── */
 .pxl-button[data-variant="secondary"] {
-  --_bg: var(--pxl-gray-100);
+  --_bg: var(--pxl-bg);
   --_fg: var(--pxl-fg);
   --_ring: inset 0 0 0 1px var(--pxl-border);
 }
@@ -126,7 +130,7 @@
 .pxl-button[data-variant="ghost"]:hover:not(:disabled) {
   --_bg: var(--pxl-gray-100);
   --_lift: 0px;
-  --_elev: none;
+  --_elev: 0 0 #0000;
 }
 
 .pxl-button[data-variant="danger"] {
@@ -150,12 +154,12 @@
 /* ── Loading dots ────────────────────────────────────────── */
 .pxl-button__dots {
   display: inline-flex;
-  gap: 3px;
+  gap: var(--pxl-space-1);
 }
 
 .pxl-button__dots i {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: var(--pxl-radius-full);
   background: currentColor;
   animation: pxl-breathe 900ms var(--pxl-ease-in-out) infinite;

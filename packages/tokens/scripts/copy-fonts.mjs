@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-// Copies the Geist Pixel .woff2 files (and the OFL licence) from the `geist`
-// npm package into packages/tokens/fonts with stable names:
-//   GeistPixel-Square.woff2, -Grid, -Circle, -Triangle, -Line
+// Copies the Geist Pixel .woff2 files, the variable Geist and Geist Mono fonts
+// and the OFL licence from the `geist` npm package into packages/tokens/fonts
+// with stable names:
+//   GeistPixel-Square.woff2, -Grid, -Circle, -Triangle, -Line,
+//   Geist-Variable.woff2, GeistMono-Variable.woff2
 // The search is path-agnostic so it survives layout changes inside `geist`.
-import { copyFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -16,7 +18,10 @@ const variants = ['Square', 'Grid', 'Circle', 'Triangle', 'Line'];
 let geistRoot;
 try {
   const require = createRequire(join(tokensDir, 'package.json'));
-  geistRoot = dirname(require.resolve('geist/package.json'));
+  // `geist` does not export its package.json, so resolve a public entry and
+  // walk up to the package root.
+  geistRoot = dirname(require.resolve('geist/font'));
+  while (!existsSync(join(geistRoot, 'package.json'))) geistRoot = dirname(geistRoot);
 } catch {
   console.warn('[pixel-ui] `geist` is not installed yet — skipping font copy.');
   process.exit(0);
@@ -48,6 +53,12 @@ for (const variant of variants) {
     copyFileSync(match, join(outDir, `GeistPixel-${variant}.woff2`));
     copied++;
   }
+}
+
+for (const name of ['Geist-Variable.woff2', 'GeistMono-Variable.woff2']) {
+  const match = files.find((f) => basename(f).toLowerCase() === name.toLowerCase());
+  if (match) copyFileSync(match, join(outDir, name));
+  else console.warn(`[pixel-ui] ${name} not found in \`geist\`.`);
 }
 
 const licence = files.find((f) => /licen[cs]e/i.test(f) && /\.(txt|md)$|LICENSE$/i.test(f));

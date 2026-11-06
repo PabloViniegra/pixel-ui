@@ -51,6 +51,13 @@
   --pxl-border-strong: var(--pxl-gray-900);
 }
 
+:root {
+  /* Control knobs stay white and keep their contact shadow in both themes;
+     a black thumb reads as a hole. */
+  --pxl-thumb: #ffffff;
+  --pxl-shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.2), 0 1px 4px rgb(0 0 0 / 0.1);
+}
+
 [data-theme="dark"] {
   color-scheme: dark;
 
@@ -81,9 +88,10 @@
   --pxl-danger-fg: #000000;
   --pxl-danger-subtle: #330a10;
 
-  /* Shadows vanish on black; depth comes from borders instead. */
-  --pxl-shadow-sm: none;
-  --pxl-shadow-md: none;
+  /* Shadows vanish on black; depth comes from borders instead. A transparent
+     shadow (not `none`) keeps the token valid inside comma-separated lists. */
+  --pxl-shadow-sm: 0 0 #0000;
+  --pxl-shadow-md: 0 0 #0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -113,8 +121,8 @@
     --pxl-danger: #ff4d5e;
     --pxl-danger-fg: #000000;
     --pxl-danger-subtle: #330a10;
-    --pxl-shadow-sm: none;
-    --pxl-shadow-md: none;
+    --pxl-shadow-sm: 0 0 #0000;
+    --pxl-shadow-md: 0 0 #0000;
   }
 }
 
