@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/progress",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Segmented progress bar with a determinate value or an indeterminate loop",
   "license": "MIT",
   "repository": {

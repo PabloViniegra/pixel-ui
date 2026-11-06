@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/input",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Text input with prefix and suffix slots",
   "license": "MIT",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/pixel-image",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Image that loads as a coarse pixel mosaic and sharpens to full resolution",
   "license": "MIT",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/card",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Card container with header, title, description, content and footer slots",
   "license": "MIT",
   "repository": {

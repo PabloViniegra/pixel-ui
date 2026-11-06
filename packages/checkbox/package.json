@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/checkbox",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Checkbox with indeterminate state and pixel check mark",
   "license": "MIT",
   "repository": {

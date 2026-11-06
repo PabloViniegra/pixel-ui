@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/tabs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Tabs with roving focus and a sliding indicator",
   "license": "MIT",
   "repository": {
