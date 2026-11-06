@@ -97,3 +97,19 @@
   color: var(--pxl-accent-text);
   background: var(--pxl-accent-subtle);
 }
+
+.pxl-select__chevron > path {
+  transform-box: view-box;
+  transform-origin: center;
+  transition: transform var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-select:has(.pxl-select__control:open) .pxl-select__chevron > path {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pxl-select__chevron > path {
+    transition: none;
+  }
+}
