@@ -11,17 +11,15 @@
 .pxl-docs-table th,
 .pxl-docs-table td {
   padding: 12px;
-  border-bottom: 1px dashed var(--pxl-border);
+  border-bottom: 1px solid var(--pxl-border);
   text-align: left;
   vertical-align: top;
 }
 
 .pxl-docs-table th {
-  font-family: var(--pxl-font-pixel);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 11px;
+  font-family: var(--pxl-font-sans);
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .pxl-docs-table ul {
@@ -43,8 +41,8 @@
 
 .pxl-docs-swatch__chip {
   height: 56px;
+  border-radius: var(--pxl-radius-md);
   box-shadow: inset 0 0 0 1px var(--pxl-border);
-  clip-path: var(--pxl-clip-notch);
 }
 
 .pxl-docs-fonts {

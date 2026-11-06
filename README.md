@@ -1,25 +1,24 @@
 # PixelUI
 
-Minimal, retro-pixel React components with a Vercel feel: greyscale surfaces, one accent,
-**Geist Pixel** type, notched corners, hard pixel shadows and animations that are springy and
-a little bit 8-bit.
+Minimal React components with a Vercel feel: greyscale surfaces, one accent, soft rounded
+shapes and springy motion, with **Geist Pixel** type and a few 8-bit details as the signature.
 
 - **One npm package per component**, each with its own semver version and changelog (Changesets).
 - **Storybook 10** catalogue with theme switcher, a11y checks and a live version table.
 - **TypeScript 7** (native Go compiler) end to end.
 
-| Package                   | What it is                                                       |
-| ------------------------- | ---------------------------------------------------------------- |
-| `@pixel-ui/tokens`        | CSS variables, Geist Pixel `@font-face`, keyframes, utilities    |
-| `@pixel-ui/core`          | `cx`, `useControllableState`, `usePrefersReducedMotion`          |
-| `@pixel-ui/button`        | Hard-shadow button with spring lift, stepped shine, loading dots |
-| `@pixel-ui/badge`         | Status badge with tones and a blinking terminal dot              |
-| `@pixel-ui/switch`        | `role="switch"` toggle with pixel wipe and squashy spring thumb  |
-| `@pixel-ui/progress`      | Segmented bar with staggered fill and an indeterminate comet     |
-| `@pixel-ui/loader`        | 3×3 pixel loader: `snake`, `pulse`, `scan`                       |
-| `@pixel-ui/card`          | Notched card with lift, glitch title and marching-pixel border   |
-| `@pixel-ui/scramble-text` | Text that decodes itself from random glyphs                      |
-| `@pixel-ui/react`         | Umbrella package re-exporting everything                         |
+| Package                   | What it is                                                    |
+| ------------------------- | ------------------------------------------------------------- |
+| `@pixel-ui/tokens`        | CSS variables, Geist Pixel `@font-face`, keyframes, utilities |
+| `@pixel-ui/core`          | `cx`, `useControllableState`, `usePrefersReducedMotion`       |
+| `@pixel-ui/button`        | Button with soft lift, smooth shine, loading dots             |
+| `@pixel-ui/badge`         | Status badge with tones and a blinking terminal dot           |
+| `@pixel-ui/switch`        | `role="switch"` toggle with fading track and spring thumb     |
+| `@pixel-ui/progress`      | Segmented bar with staggered fill and an indeterminate comet  |
+| `@pixel-ui/loader`        | 3×3 pixel loader: `snake`, `pulse`, `scan`                    |
+| `@pixel-ui/card`          | Rounded card with soft lift and accent highlight border       |
+| `@pixel-ui/scramble-text` | Text that decodes itself from random glyphs                   |
+| `@pixel-ui/react`         | Umbrella package re-exporting everything                      |
 
 ## Getting started
 

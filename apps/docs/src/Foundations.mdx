@@ -17,7 +17,9 @@ Switch the theme from the toolbar to see light and dark values.
 
 ## Typography
 
-Five Geist Pixel variants (SIL OFL 1.1). `--pxl-font-pixel` defaults to **Square**.
+Geist (`--pxl-font-sans`) carries labels and body text, Geist Mono (`--pxl-font-mono`) carries numbers.
+Geist Pixel is reserved for display and titles: five variants (SIL OFL 1.1), `--pxl-font-pixel`
+defaults to **Square**.
 
 <PixelFonts />
 
@@ -31,7 +33,9 @@ Five Geist Pixel variants (SIL OFL 1.1). `--pxl-font-pixel` defaults to **Square
 }
 ```
 
-## Pixel grid
+## Spacing, shapes and elevation
 
-`--pxl-unit` is **4px**. Spacing tokens (`--pxl-space-1…8`) are multiples of it and
-`--pxl-clip-notch` cuts one unit from each corner — set `--pxl-notch` on an element to change it.
+`--pxl-unit` is **4px**. Spacing tokens (`--pxl-space-1…8`) are multiples of it.
+
+Corners use `--pxl-radius-xs … lg` and `--pxl-radius-full`. Elevation is soft and only appears as
+feedback: `--pxl-shadow-sm` and `--pxl-shadow-md` (both `none` in dark mode, where borders carry depth).

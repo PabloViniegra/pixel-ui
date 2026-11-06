@@ -2,13 +2,13 @@ import { cx } from '@pixel-ui/core';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface CardProps extends ComponentPropsWithRef<'div'> {
-  /** Lifts with a hard pixel shadow and glitches the title on hover/focus. */
+  /** Lifts with a soft shadow on hover/focus. */
   interactive?: boolean;
-  /** Draws an animated "marching pixels" border. */
+  /** Draws the border in the accent colour. */
   highlight?: boolean;
 }
 
-/** Container with notched pixel corners and a 1px pixel border. */
+/** Container with rounded corners and a 1px border. */
 export function Card({ interactive = false, highlight = false, className, ...rest }: CardProps) {
   return (
     <div

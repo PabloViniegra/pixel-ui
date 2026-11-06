@@ -1,6 +1,6 @@
 # @pixel-ui/button
 
-Pixel button with hard offset shadow, spring lift and stepped shine.
+Button with soft rounded corners, gentle lift and a smooth shine.
 
 ```bash
 pnpm add @pixel-ui/button @pixel-ui/tokens

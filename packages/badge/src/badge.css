@@ -2,25 +2,25 @@
   --_tone: var(--pxl-gray-700);
   --_tone-subtle: var(--pxl-gray-100);
   --_tone-fg: var(--pxl-bg);
-  --pxl-notch: 2px;
+  --_text: var(--_tone);
 
   display: inline-flex;
   align-items: center;
   gap: 6px;
   height: 22px;
   padding: 0 var(--pxl-space-2);
-  font-family: var(--pxl-font-pixel);
+  border-radius: var(--pxl-radius-full);
+  font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   line-height: 1;
   white-space: nowrap;
-  clip-path: var(--pxl-clip-notch);
 }
 
 .pxl-badge[data-appearance="subtle"] {
   background: var(--_tone-subtle);
-  color: var(--_tone);
+  color: var(--_text);
 }
 
 .pxl-badge[data-appearance="solid"] {
@@ -29,18 +29,19 @@
 }
 
 .pxl-badge[data-animate] {
-  animation: pxl-pop-in 360ms steps(4, end) both;
+  animation: pxl-pop-in var(--pxl-dur-base) var(--pxl-ease-out) both;
 }
 
 .pxl-badge__dot {
   width: 6px;
   height: 6px;
   flex: none;
+  border-radius: var(--pxl-radius-full);
   background: currentColor;
 }
 
 .pxl-badge__dot[data-pulse] {
-  animation: pxl-blink 1s steps(1, end) infinite;
+  animation: pxl-breathe 1.6s var(--pxl-ease-in-out) infinite;
 }
 
 /* Tones */

@@ -1,39 +1,23 @@
 .pxl-card {
   --_border: var(--pxl-border);
-  --_bg: var(--pxl-bg);
-  --_offset: 0px;
+  --_elev: none;
+  --_lift: 0px;
 
-  position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: var(--pxl-space-4);
   padding: var(--pxl-space-6);
+  border: 1px solid var(--_border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  box-shadow: var(--_elev);
   color: var(--pxl-fg);
   font-family: var(--pxl-font-sans);
-  filter: drop-shadow(var(--_offset) var(--_offset) 0 var(--pxl-shadow));
+  transform: translateY(var(--_lift));
   transition:
-    transform var(--pxl-dur-base) var(--pxl-ease-spring),
-    filter var(--pxl-dur-base) var(--pxl-ease-spring);
-}
-
-/* Border layer + surface layer, both notched. */
-.pxl-card::before,
-.pxl-card::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  clip-path: var(--pxl-clip-notch);
-}
-
-.pxl-card::before {
-  inset: 0;
-  background: var(--_border);
-}
-
-.pxl-card::after {
-  inset: 1px;
-  background: var(--_bg);
+    transform var(--pxl-dur-base) var(--pxl-ease-out),
+    box-shadow var(--pxl-dur-base) var(--pxl-ease-out),
+    border-color var(--pxl-dur-fast) linear;
 }
 
 .pxl-card__header {
@@ -68,7 +52,7 @@
   align-items: center;
   gap: var(--pxl-space-3);
   padding-top: var(--pxl-space-4);
-  border-top: 1px dashed var(--pxl-border);
+  border-top: 1px solid var(--pxl-border);
 }
 
 /* ── Interactive ─────────────────────────────────────────── */
@@ -77,37 +61,18 @@
 }
 
 .pxl-card[data-interactive]:is(:hover, :focus-within) {
-  --_border: var(--pxl-border-strong);
-  --_offset: var(--pxl-space-2);
-  transform: translate(calc(var(--pxl-space-2) * -1), calc(var(--pxl-space-2) * -1));
-}
-
-.pxl-card[data-interactive]:is(:hover, :focus-within) .pxl-card__title {
-  animation: pxl-glitch 360ms steps(5, end) 1;
+  --_border: var(--pxl-gray-500);
+  --_elev: var(--pxl-shadow-md);
+  --_lift: -2px;
 }
 
 .pxl-card[data-interactive]:active {
-  --_offset: 0px;
-  transform: none;
+  --_elev: none;
+  --_lift: 0px;
   transition-duration: var(--pxl-dur-instant);
 }
 
-/* ── Highlight: marching-pixels border ───────────────────── */
-.pxl-card[data-highlight]::before {
-  background:
-    repeating-conic-gradient(var(--pxl-accent) 0 25%, transparent 0 50%) 0 0 / 8px 8px,
-    var(--pxl-border);
-  animation: pxl-card-march 800ms steps(4, end) infinite;
-}
-
-.pxl-card[data-highlight]::after {
-  inset: 2px;
-}
-
-@keyframes pxl-card-march {
-  to {
-    background-position:
-      8px 0,
-      0 0;
-  }
+/* ── Highlight: static accent border ─────────────────────── */
+.pxl-card[data-highlight] {
+  --_border: var(--pxl-accent);
 }

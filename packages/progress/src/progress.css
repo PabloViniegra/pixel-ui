@@ -19,6 +19,7 @@
 }
 
 .pxl-progress__cell {
+  border-radius: var(--pxl-radius-xs);
   background: var(--pxl-gray-200);
   transition:
     background-color var(--pxl-dur-fast) linear,
@@ -29,7 +30,7 @@
 
 .pxl-progress__cell[data-lit] {
   background: var(--_tone);
-  animation: pxl-progress-pop var(--pxl-dur-base) steps(3, end) both;
+  animation: pxl-progress-pop var(--pxl-dur-base) var(--pxl-ease-out) both;
   animation-delay: calc(var(--_i) * 18ms);
 }
 
@@ -47,7 +48,7 @@
 
 /* Completed: a single bright flash across the bar. */
 .pxl-progress[data-state="complete"] .pxl-progress__cell {
-  animation: pxl-progress-flash 420ms steps(2, end) both;
+  animation: pxl-progress-flash 420ms var(--pxl-ease-in-out) both;
   animation-delay: calc(var(--_i) * 12ms);
 }
 
@@ -65,13 +66,13 @@
 .pxl-progress[data-state="indeterminate"] .pxl-progress__cell {
   background: var(--_tone);
   opacity: 0.12;
-  animation: pxl-cell var(--_loop) steps(8, end) infinite;
+  animation: pxl-cell var(--_loop) var(--pxl-ease-out) infinite;
   animation-delay: calc(var(--_i) * var(--_loop) / var(--_segments) - var(--_loop));
 }
 
 .pxl-progress__value {
   min-width: 4ch;
-  font-family: var(--pxl-font-pixel);
+  font-family: var(--pxl-font-mono);
   font-size: var(--pxl-text-sm);
   font-variant-numeric: tabular-nums;
   color: var(--pxl-fg);

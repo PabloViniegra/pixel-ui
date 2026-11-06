@@ -1,6 +1,6 @@
 # @pixel-ui/card
 
-Notched pixel card with lift, glitch title and marching border.
+Rounded card with a soft hover lift and an accent highlight border.
 
 ```bash
 pnpm add @pixel-ui/card @pixel-ui/tokens

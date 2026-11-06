@@ -1,6 +1,6 @@
 /* Shared keyframes. Components reference these by name. */
 
-/* Pixel "materialise": grows in chunky frames instead of a smooth scale. */
+/* Materialise: a short, smooth scale-in with a small overshoot. */
 @keyframes pxl-pop-in {
   0% {
     opacity: 0;
@@ -19,18 +19,6 @@
   }
 }
 
-/* Hard on/off blink, like a terminal cursor. */
-@keyframes pxl-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0.15;
-  }
-}
-
 /* Diagonal shine band sweeping across a surface. */
 @keyframes pxl-sweep {
   from {
@@ -38,6 +26,17 @@
   }
   to {
     transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+/* Gentle opacity breathe for status dots and loading dots. */
+@keyframes pxl-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
   }
 }
 
@@ -54,42 +53,6 @@
   100% {
     opacity: 0.12;
     transform: scale(0.82);
-  }
-}
-
-/* RGB-split glitch, used on hover for headings. */
-@keyframes pxl-glitch {
-  0% {
-    text-shadow: none;
-    transform: translate(0);
-  }
-  20% {
-    text-shadow:
-      -2px 0 var(--pxl-accent),
-      2px 0 var(--pxl-danger);
-    transform: translate(-1px, 0);
-  }
-  40% {
-    text-shadow:
-      2px 0 var(--pxl-accent),
-      -2px 0 var(--pxl-danger);
-    transform: translate(1px, -1px);
-  }
-  60% {
-    text-shadow:
-      -1px 0 var(--pxl-accent),
-      1px 0 var(--pxl-danger);
-    transform: translate(0, 1px);
-  }
-  80% {
-    text-shadow:
-      1px 0 var(--pxl-accent),
-      -1px 0 var(--pxl-danger);
-    transform: translate(1px, 0);
-  }
-  100% {
-    text-shadow: none;
-    transform: translate(0);
   }
 }
 

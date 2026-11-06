@@ -1,11 +1,12 @@
 .pxl-button {
   --_bg: var(--pxl-fg);
   --_fg: var(--pxl-bg);
-  --_shadow: var(--pxl-accent);
+  --_ring: 0 0 0 0 transparent;
+  --_elev: none;
   --_h: 40px;
   --_px: var(--pxl-space-4);
   --_text: var(--pxl-text-sm);
-  --_offset: 0px;
+  --_lift: 0px;
 
   position: relative;
   isolation: isolate;
@@ -16,23 +17,21 @@
   height: var(--_h);
   padding: 0 var(--_px);
   border: 0;
+  border-radius: var(--pxl-radius-md);
   background: none;
   color: var(--_fg);
-  font-family: var(--pxl-font-pixel);
+  font-family: var(--pxl-font-sans);
   font-size: var(--_text);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-
-  /* drop-shadow follows the notched alpha of the surface → pixel shadow */
-  filter: drop-shadow(var(--_offset) var(--_offset) 0 var(--_shadow));
+  transform: translateY(var(--_lift));
   transition:
-    transform var(--pxl-dur-base) var(--pxl-ease-spring),
-    filter var(--pxl-dur-base) var(--pxl-ease-spring),
+    transform var(--pxl-dur-base) var(--pxl-ease-out),
     color var(--pxl-dur-fast) linear;
 }
 
@@ -41,12 +40,15 @@
   inset: 0;
   z-index: -1;
   overflow: hidden;
+  border-radius: inherit;
   background: var(--_bg);
-  clip-path: var(--pxl-clip-notch);
-  transition: background-color var(--pxl-dur-fast) linear;
+  box-shadow: var(--_ring), var(--_elev);
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    box-shadow var(--pxl-dur-base) var(--pxl-ease-out);
 }
 
-/* Stepped shine band */
+/* Shine band */
 .pxl-button__surface::after {
   content: "";
   position: absolute;
@@ -75,23 +77,24 @@
 
 /* ── Interaction ─────────────────────────────────────────── */
 .pxl-button:hover:not(:disabled) {
-  --_offset: var(--pxl-unit);
-  transform: translate(calc(var(--pxl-unit) * -1), calc(var(--pxl-unit) * -1));
+  --_lift: -1px;
+  --_elev: var(--pxl-shadow-md);
 }
 
 .pxl-button:hover:not(:disabled) .pxl-button__surface::after {
-  animation: pxl-sweep 640ms steps(10, end) 1;
+  animation: pxl-sweep 640ms var(--pxl-ease-out) 1;
 }
 
 .pxl-button:active:not(:disabled) {
-  --_offset: 0px;
-  transform: translate(0, 0) scale(0.98);
+  --_lift: 0px;
+  --_elev: none;
+  transform: scale(0.98);
   transition-duration: var(--pxl-dur-instant);
 }
 
 .pxl-button:focus-visible {
   outline: 2px solid var(--pxl-accent);
-  outline-offset: 4px;
+  outline-offset: 2px;
 }
 
 .pxl-button:disabled {
@@ -108,29 +111,27 @@
 .pxl-button[data-variant="secondary"] {
   --_bg: var(--pxl-gray-100);
   --_fg: var(--pxl-fg);
-  --_shadow: var(--pxl-shadow);
+  --_ring: inset 0 0 0 1px var(--pxl-border);
 }
 
-.pxl-button[data-variant="secondary"] .pxl-button__surface {
-  box-shadow: inset 0 0 0 1px var(--pxl-border);
+.pxl-button[data-variant="secondary"]:hover:not(:disabled) {
+  --_ring: inset 0 0 0 1px var(--pxl-gray-500);
 }
 
 .pxl-button[data-variant="ghost"] {
   --_bg: transparent;
   --_fg: var(--pxl-fg);
-  --_shadow: transparent;
 }
 
 .pxl-button[data-variant="ghost"]:hover:not(:disabled) {
   --_bg: var(--pxl-gray-100);
-  --_offset: 0px;
-  transform: none;
+  --_lift: 0px;
+  --_elev: none;
 }
 
 .pxl-button[data-variant="danger"] {
   --_bg: var(--pxl-danger);
   --_fg: var(--pxl-danger-fg);
-  --_shadow: var(--pxl-fg);
 }
 
 /* ── Sizes ───────────────────────────────────────────────── */
@@ -155,8 +156,9 @@
 .pxl-button__dots i {
   width: 5px;
   height: 5px;
+  border-radius: var(--pxl-radius-full);
   background: currentColor;
-  animation: pxl-blink 900ms steps(1, end) infinite;
+  animation: pxl-breathe 900ms var(--pxl-ease-in-out) infinite;
 }
 
 .pxl-button__dots i:nth-child(2) {

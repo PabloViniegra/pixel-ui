@@ -1,162 +1,161 @@
 ---
-
 version: alpha
 name: PixelUI
 description: Minimal React component library with greyscale surfaces, one blue accent and pixel details used as a signature, not as the whole surface.
 colors:
-primary: "#0070f3"
-bg: "#ffffff"
-bg-subtle: "#fafafa"
-fg: "#0a0a0a"
-fg-muted: "#666666"
-gray-100: "#f2f2f2"
-gray-200: "#ebebeb"
-gray-300: "#e0e0e0"
-gray-400: "#c9c9c9"
-gray-500: "#a8a8a8"
-gray-600: "#8f8f8f"
-gray-700: "#666666"
-gray-800: "#4d4d4d"
-gray-900: "#171717"
-accent: "#0070f3"
-accent-fg: "#ffffff"
-accent-subtle: "#e9f2ff"
-accent-text: "#0060d1"
-success: "#0a8a3a"
-success-subtle: "#e6f6ec"
-warning: "#b45309"
-warning-subtle: "#fff4e0"
-danger: "#e5001f"
-danger-fg: "#ffffff"
-danger-subtle: "#ffebee"
-border: "#e0e0e0"
-border-strong: "#171717"
+  primary: "#0070f3"
+  bg: "#ffffff"
+  bg-subtle: "#fafafa"
+  fg: "#0a0a0a"
+  fg-muted: "#666666"
+  gray-100: "#f2f2f2"
+  gray-200: "#ebebeb"
+  gray-300: "#e0e0e0"
+  gray-400: "#c9c9c9"
+  gray-500: "#a8a8a8"
+  gray-600: "#8f8f8f"
+  gray-700: "#666666"
+  gray-800: "#4d4d4d"
+  gray-900: "#171717"
+  accent: "#0070f3"
+  accent-fg: "#ffffff"
+  accent-subtle: "#e9f2ff"
+  accent-text: "#0060d1"
+  success: "#08863a"
+  success-subtle: "#e6f6ec"
+  warning: "#b45309"
+  warning-subtle: "#fff4e0"
+  danger: "#e5001f"
+  danger-fg: "#ffffff"
+  danger-subtle: "#ffebee"
+  border: "#e0e0e0"
+  border-strong: "#171717"
 typography:
-display:
-fontFamily: Geist Pixel Square
-fontSize: 32px
-fontWeight: 400
-lineHeight: 1.1
-letterSpacing: 0em
-title:
-fontFamily: Geist Pixel Square
-fontSize: 18px
-fontWeight: 400
-lineHeight: 1.25
-letterSpacing: 0.01em
-body-md:
-fontFamily: Geist
-fontSize: 15px
-fontWeight: 400
-lineHeight: 1.6
-body-sm:
-fontFamily: Geist
-fontSize: 13px
-fontWeight: 400
-lineHeight: 1.5
-label-md:
-fontFamily: Geist
-fontSize: 13px
-fontWeight: 500
-lineHeight: 1
-letterSpacing: 0em
-label-sm:
-fontFamily: Geist
-fontSize: 11px
-fontWeight: 500
-lineHeight: 1
-letterSpacing: 0.01em
-numeric:
-fontFamily: Geist Mono
-fontSize: 13px
-fontWeight: 400
-lineHeight: 1
+  display:
+    fontFamily: Geist Pixel Square
+    fontSize: 32px
+    fontWeight: 400
+    lineHeight: 1.1
+    letterSpacing: 0em
+  title:
+    fontFamily: Geist Pixel Square
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.25
+    letterSpacing: 0.01em
+  body-md:
+    fontFamily: Geist
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.6
+  body-sm:
+    fontFamily: Geist
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+  label-md:
+    fontFamily: Geist
+    fontSize: 13px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: 0em
+  label-sm:
+    fontFamily: Geist
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: 0.01em
+  numeric:
+    fontFamily: Geist Mono
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1
 rounded:
-xs: 2px
-sm: 4px
-md: 6px
-lg: 10px
-full: 9999px
+  xs: 2px
+  sm: 4px
+  md: 6px
+  lg: 12px
+  full: 9999px
 spacing:
-unit: 4px
-space-1: 4px
-space-2: 8px
-space-3: 12px
-space-4: 16px
-space-6: 24px
-space-8: 32px
+  unit: 4px
+  space-1: 4px
+  space-2: 8px
+  space-3: 12px
+  space-4: 16px
+  space-6: 24px
+  space-8: 32px
 components:
-button-primary:
-backgroundColor: "{colors.fg}"
-textColor: "{colors.bg}"
-typography: "{typography.label-md}"
-rounded: "{rounded.md}"
-height: 40px
-padding: 16px
-button-secondary:
-backgroundColor: "{colors.bg}"
-textColor: "{colors.fg}"
-typography: "{typography.label-md}"
-rounded: "{rounded.md}"
-height: 40px
-padding: 16px
-button-ghost:
-textColor: "{colors.fg}"
-rounded: "{rounded.md}"
-button-ghost-hover:
-backgroundColor: "{colors.gray-100}"
-button-danger:
-backgroundColor: "{colors.danger}"
-textColor: "{colors.danger-fg}"
-rounded: "{rounded.md}"
-button-sm:
-typography: "{typography.label-sm}"
-height: 32px
-padding: 12px
-button-lg:
-height: 48px
-padding: 24px
-badge:
-typography: "{typography.label-sm}"
-rounded: "{rounded.full}"
-height: 22px
-padding: 8px
-badge-accent-subtle:
-backgroundColor: "{colors.accent-subtle}"
-textColor: "{colors.accent-text}"
-switch-track:
-backgroundColor: "{colors.gray-300}"
-rounded: "{rounded.full}"
-width: 44px
-height: 24px
-switch-track-on:
-backgroundColor: "{colors.accent}"
-switch-thumb:
-backgroundColor: "{colors.bg}"
-rounded: "{rounded.full}"
-size: 16px
-progress-cell:
-backgroundColor: "{colors.gray-200}"
-rounded: "{rounded.xs}"
-height: 12px
-progress-cell-lit:
-backgroundColor: "{colors.accent}"
-progress-value:
-typography: "{typography.numeric}"
-textColor: "{colors.fg}"
-loader-cell:
-rounded: "{rounded.xs}"
-size: 6px
-card:
-backgroundColor: "{colors.bg}"
-textColor: "{colors.fg}"
-rounded: "{rounded.lg}"
-padding: 24px
-card-title:
-typography: "{typography.title}"
-card-description:
-typography: "{typography.body-sm}"
-textColor: "{colors.fg-muted}"
+  button-primary:
+    backgroundColor: "{colors.fg}"
+    textColor: "{colors.bg}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.md}"
+    height: 40px
+    padding: 16px
+  button-secondary:
+    backgroundColor: "{colors.bg}"
+    textColor: "{colors.fg}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.md}"
+    height: 40px
+    padding: 16px
+  button-ghost:
+    textColor: "{colors.fg}"
+    rounded: "{rounded.md}"
+  button-ghost-hover:
+    backgroundColor: "{colors.gray-100}"
+  button-danger:
+    backgroundColor: "{colors.danger}"
+    textColor: "{colors.danger-fg}"
+    rounded: "{rounded.md}"
+  button-sm:
+    typography: "{typography.label-sm}"
+    height: 32px
+    padding: 12px
+  button-lg:
+    height: 48px
+    padding: 24px
+  badge:
+    typography: "{typography.label-sm}"
+    rounded: "{rounded.full}"
+    height: 22px
+    padding: 8px
+  badge-accent-subtle:
+    backgroundColor: "{colors.accent-subtle}"
+    textColor: "{colors.accent-text}"
+  switch-track:
+    backgroundColor: "{colors.gray-600}"
+    rounded: "{rounded.full}"
+    width: 44px
+    height: 24px
+  switch-track-on:
+    backgroundColor: "{colors.accent}"
+  switch-thumb:
+    backgroundColor: "{colors.bg}"
+    rounded: "{rounded.full}"
+    size: 16px
+  progress-cell:
+    backgroundColor: "{colors.gray-200}"
+    rounded: "{rounded.xs}"
+    height: 12px
+  progress-cell-lit:
+    backgroundColor: "{colors.accent}"
+  progress-value:
+    typography: "{typography.numeric}"
+    textColor: "{colors.fg}"
+  loader-cell:
+    rounded: "{rounded.xs}"
+    size: 6px
+  card:
+    backgroundColor: "{colors.bg}"
+    textColor: "{colors.fg}"
+    rounded: "{rounded.lg}"
+    padding: 24px
+  card-title:
+    typography: "{typography.title}"
+  card-description:
+    typography: "{typography.body-sm}"
+    textColor: "{colors.fg-muted}"
 ---
 
 # PixelUI
@@ -198,7 +197,7 @@ Themes are selected with `data-theme="light" | "dark"` on any element and defaul
 | `accent-fg`      | `#ffffff` | `#000000` |
 | `accent-subtle`  | `#e9f2ff` | `#0a1a33` |
 | `accent-text`    | `#0060d1` | `#3291ff` |
-| `success`        | `#0a8a3a` | `#3ccf6e` |
+| `success`        | `#08863a` | `#3ccf6e` |
 | `success-subtle` | `#e6f6ec` | `#0b2615` |
 | `warning`        | `#b45309` | `#f5a623` |
 | `warning-subtle` | `#fff4e0` | `#2b1d05` |
@@ -228,10 +227,10 @@ All spacing snaps to the 4px `unit`; use the `space-*` steps and avoid in-betwee
 
 Depth is soft and shallow. Resting surfaces are flat and defined by a 1px `border`; elevation appears only as feedback.
 
-- **Resting:** no shadow, or a hairline shadow (`0 1px 2px` at ~6% black) for floating controls.
-- **Hover lift:** translate up by at most 2px and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur shadows.
+- **Resting:** no shadow; surfaces are defined by a 1px `border`.
+- **Hover lift:** translate up by 1px (2px on cards) and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur shadows.
 - **Pressed:** remove the lift and scale to `0.98`.
-- **Dark mode:** replace shadows with a stronger border (`gray-500`) and a `bg-subtle` surface.
+- **Dark mode:** shadows are removed; hover strengthens the border to `gray-500`.
 
 ## Shapes
 
@@ -249,10 +248,10 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 
 - **Button:** primary is the inverted ink block; secondary is `bg` with a 1px `border`; ghost has no fill until hover. Hover lifts per Elevation; the shine sweep, if kept, is a single smooth gradient pass, not a stepped one. Loading dots are round and fade smoothly.
 - **Badge:** pill shape, sentence-case sans label. The status dot is round and its pulse is a smooth opacity breathe, not a hard blink.
-- **Switch:** pill track with a round thumb; the "on" fill crossfades to `accent` and the thumb travels with the spring ease. No stepped wipe.
+- **Switch:** pill track (`gray-600` when off, so the control meets 3:1 against the page) with a round thumb; the "on" fill crossfades to `accent` and the thumb travels with the spring ease. No stepped wipe.
 - **Progress:** keeps its segmented track as a pixel signature, with `xs`-rounded cells; cells light up with a smooth stagger and the indeterminate comet uses eased opacity, not frames.
 - **Loader:** the 3×3 grid is the one place where stepped timing stays, because the frame-by-frame snake is the component's identity.
-- **Card:** `lg` radius, 1px `border`, flat at rest; interactive cards lift per Elevation and switch to `border-strong`. The highlight state is a static `accent` border or soft accent glow, not marching pixels; the title glitch is removed.
+- **Card:** `lg` radius, 1px `border`, flat at rest; interactive cards lift per Elevation and strengthen the border to `gray-500`. The highlight state is a static `accent` border or soft accent glow, not marching pixels; the title glitch is removed.
 - **ScrambleText:** unchanged; it is a deliberate pixel moment set in Geist Pixel.
 - **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius.
 

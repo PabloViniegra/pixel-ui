@@ -29,7 +29,8 @@
   --pxl-accent: #0070f3;
   --pxl-accent-fg: #ffffff;
   --pxl-accent-subtle: #e9f2ff;
-  --pxl-success: #0a8a3a;
+  --pxl-accent-text: #0060d1;
+  --pxl-success: #08863a;
   --pxl-success-subtle: #e6f6ec;
   --pxl-warning: #b45309;
   --pxl-warning-subtle: #fff4e0;
@@ -37,8 +38,9 @@
   --pxl-danger-fg: #ffffff;
   --pxl-danger-subtle: #ffebee;
 
-  /* Hard pixel shadow colour */
-  --pxl-shadow: var(--pxl-gray-900);
+  /* Soft elevation, used only as hover/float feedback. */
+  --pxl-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+  --pxl-shadow-md: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.08);
 }
 
 /* Aliases are declared on every theme scope so they resolve against that
@@ -70,6 +72,7 @@
   --pxl-accent: #3291ff;
   --pxl-accent-fg: #000000;
   --pxl-accent-subtle: #0a1a33;
+  --pxl-accent-text: #3291ff;
   --pxl-success: #3ccf6e;
   --pxl-success-subtle: #0b2615;
   --pxl-warning: #f5a623;
@@ -78,7 +81,9 @@
   --pxl-danger-fg: #000000;
   --pxl-danger-subtle: #330a10;
 
-  --pxl-shadow: var(--pxl-gray-500);
+  /* Shadows vanish on black; depth comes from borders instead. */
+  --pxl-shadow-sm: none;
+  --pxl-shadow-md: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,6 +105,7 @@
     --pxl-accent: #3291ff;
     --pxl-accent-fg: #000000;
     --pxl-accent-subtle: #0a1a33;
+    --pxl-accent-text: #3291ff;
     --pxl-success: #3ccf6e;
     --pxl-success-subtle: #0b2615;
     --pxl-warning: #f5a623;
@@ -107,7 +113,8 @@
     --pxl-danger: #ff4d5e;
     --pxl-danger-fg: #000000;
     --pxl-danger-subtle: #330a10;
-    --pxl-shadow: var(--pxl-gray-500);
+    --pxl-shadow-sm: none;
+    --pxl-shadow-md: none;
   }
 }
 
@@ -121,27 +128,12 @@
   --pxl-space-6: calc(var(--pxl-unit) * 6);
   --pxl-space-8: calc(var(--pxl-unit) * 8);
 
-  /* Notched "pixel" corners: one grid unit cut from each corner. */
-  --pxl-notch: var(--pxl-unit);
-}
-
-/* Re-evaluated on every PixelUI element so a local --pxl-notch override
-   (e.g. a smaller notch on badges) is picked up by the polygon. */
-:where([class*="pxl-"]) {
-  --pxl-clip-notch: polygon(
-    0 var(--pxl-notch),
-    var(--pxl-notch) var(--pxl-notch),
-    var(--pxl-notch) 0,
-    calc(100% - var(--pxl-notch)) 0,
-    calc(100% - var(--pxl-notch)) var(--pxl-notch),
-    100% var(--pxl-notch),
-    100% calc(100% - var(--pxl-notch)),
-    calc(100% - var(--pxl-notch)) calc(100% - var(--pxl-notch)),
-    calc(100% - var(--pxl-notch)) 100%,
-    var(--pxl-notch) 100%,
-    var(--pxl-notch) calc(100% - var(--pxl-notch)),
-    0 calc(100% - var(--pxl-notch))
-  );
+  /* ── Shapes ─────────────────────────────────────────────── */
+  --pxl-radius-xs: 2px;
+  --pxl-radius-sm: 4px;
+  --pxl-radius-md: 6px;
+  --pxl-radius-lg: 12px;
+  --pxl-radius-full: 9999px;
 }
 
 :root {

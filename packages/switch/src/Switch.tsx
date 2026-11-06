@@ -18,7 +18,7 @@ export interface SwitchProps
 }
 
 /**
- * Accessible `role="switch"` toggle. The track fills with a stepped pixel wipe
+ * Accessible `role="switch"` toggle. The track fades to the accent colour
  * while the thumb travels on a spring with a squash at the start.
  */
 export function Switch({

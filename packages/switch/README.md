@@ -1,6 +1,6 @@
 # @pixel-ui/switch
 
-Accessible pixel toggle switch with stepped wipe and spring thumb.
+Accessible toggle switch with a fading track and spring thumb.
 
 ```bash
 pnpm add @pixel-ui/switch @pixel-ui/tokens

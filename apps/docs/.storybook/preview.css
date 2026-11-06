@@ -18,12 +18,12 @@ body {
   right: 12px;
   z-index: 10;
   display: inline-flex;
-  font-family: var(--pxl-font-pixel);
+  border-radius: var(--pxl-radius-sm);
+  overflow: hidden;
+  font-family: var(--pxl-font-sans);
   font-size: 11px;
-  letter-spacing: 0.06em;
+  font-weight: 500;
   text-decoration: none;
-  clip-path: var(--pxl-clip-notch);
-  --pxl-notch: 2px;
 }
 
 .sb-pxl-version > span {

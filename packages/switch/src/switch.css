@@ -4,7 +4,6 @@
   --_pad: 4px;
   --_thumb: calc(var(--_h) - var(--_pad) * 2);
   --_travel: calc(var(--_w) - var(--_thumb) - var(--_pad) * 2);
-  --pxl-notch: 2px;
 
   position: relative;
   flex: none;
@@ -12,8 +11,9 @@
   height: var(--_h);
   padding: 0;
   border: 0;
-  background: var(--pxl-gray-300);
-  clip-path: var(--pxl-clip-notch);
+  border-radius: var(--pxl-radius-full);
+  background: var(--pxl-gray-600);
+  overflow: hidden;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -24,13 +24,13 @@
   --_pad: 3px;
 }
 
-/* Track fill: a stepped pixel wipe from left to right. */
+/* Track fill: crossfades in when the switch turns on. */
 .pxl-switch__fill {
   position: absolute;
   inset: 0;
   background: var(--pxl-accent);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path var(--pxl-dur-base) steps(6, end);
+  opacity: 0;
+  transition: opacity var(--pxl-dur-base) var(--pxl-ease-out);
 }
 
 .pxl-switch__thumb {
@@ -39,20 +39,20 @@
   left: var(--_pad);
   width: var(--_thumb);
   height: var(--_thumb);
+  border-radius: var(--pxl-radius-full);
   background: var(--pxl-bg);
-  box-shadow: inset -2px -2px 0 var(--pxl-gray-400);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
   transform-origin: left center;
   transition: transform var(--pxl-dur-slow) var(--pxl-ease-spring);
 }
 
 .pxl-switch[data-state="on"] .pxl-switch__fill {
-  clip-path: inset(0 0 0 0);
+  opacity: 1;
 }
 
 .pxl-switch[data-state="on"] .pxl-switch__thumb {
   transform: translateX(var(--_travel));
   transform-origin: right center;
-  box-shadow: inset -2px -2px 0 color-mix(in srgb, var(--pxl-accent) 45%, var(--pxl-bg));
 }
 
 /* Squash while pressed: the thumb stretches toward its destination. */
@@ -66,13 +66,8 @@
 }
 
 .pxl-switch:focus-visible {
-  outline: none;
-  box-shadow: none;
-}
-
-.pxl-switch:focus-visible .pxl-switch__thumb {
-  outline: 2px solid var(--pxl-fg);
-  outline-offset: -2px;
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
 }
 
 .pxl-switch:disabled {
@@ -85,10 +80,9 @@
   display: inline-flex;
   align-items: center;
   gap: var(--pxl-space-3);
-  font-family: var(--pxl-font-pixel);
+  font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-sm);
   color: var(--pxl-fg);
-  letter-spacing: 0.04em;
 }
 
 .pxl-switch-field__label {

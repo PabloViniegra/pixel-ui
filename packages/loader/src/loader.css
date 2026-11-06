@@ -25,6 +25,7 @@
 }
 
 .pxl-loader__cell {
+  border-radius: var(--pxl-radius-xs);
   background: currentColor;
   opacity: 0.12;
   animation: pxl-cell var(--_loop) steps(6, end) infinite;

@@ -17,9 +17,8 @@ Then add a changeset (`minor`) so its first release is `0.1.0`.
 - [ ] State and variants are exposed as `data-*` attributes; CSS styles those, not extra classes.
 - [ ] Class names are `pxl-<component>` / `pxl-<component>__<part>` (BEM-ish).
 - [ ] Only `--pxl-*` tokens in CSS; component-private variables are prefixed `--_`.
-- [ ] Notched corners via `clip-path: var(--pxl-clip-notch)`; hard shadows via
-  `filter: drop-shadow(...)` on the parent so they follow the notch.
-- [ ] Movement uses `--pxl-ease-spring`; retro flourishes use `steps()`.
+- [ ] Rounded corners via `--pxl-radius-*`; elevation via `--pxl-shadow-sm|md`, only as hover/float feedback.
+- [ ] Movement uses `--pxl-ease-spring` or `--pxl-ease-out`; `steps()` is reserved for the loader and text scramble.
 - [ ] Works with `prefers-reduced-motion` (handled globally by `@pixel-ui/tokens/motion.css`;
   JS animations use `usePrefersReducedMotion`).
 - [ ] Correct role, accessible name and keyboard support; no a11y violations in Storybook.

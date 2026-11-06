@@ -6,9 +6,9 @@ export interface BadgeProps extends ComponentPropsWithRef<'span'> {
   tone?: PixelTone;
   /** `solid` fills with the tone colour, `subtle` uses a tinted background. @default 'subtle' */
   appearance?: 'solid' | 'subtle';
-  /** Leading status dot. `'pulse'` makes it blink like a terminal cursor. */
+  /** Leading status dot. `'pulse'` makes it breathe. */
   dot?: boolean | 'pulse';
-  /** Plays a chunky pop-in when mounted. @default true */
+  /** Plays a short pop-in when mounted. @default true */
   animateIn?: boolean;
 }
 

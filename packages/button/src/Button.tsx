@@ -8,7 +8,7 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   variant?: ButtonVariant;
   /** @default 'md' */
   size?: PixelSize;
-  /** Shows a pixel loader, sets `aria-busy` and blocks interaction. */
+  /** Shows loading dots, sets `aria-busy` and blocks interaction. */
   loading?: boolean;
   /** Icon or node rendered before the label. */
   iconStart?: ReactNode;
@@ -17,8 +17,8 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
 }
 
 /**
- * Pixel button: notched corners, a hard offset shadow that lifts on hover and
- * collapses on press, and a stepped shine sweep.
+ * Button with softly rounded corners, a gentle lift and shadow on hover that
+ * collapses on press, and a smooth shine sweep.
  */
 export function Button({
   variant = 'primary',
