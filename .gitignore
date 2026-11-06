@@ -1,0 +1,19 @@
+node_modules
+dist
+storybook-static
+*.tsbuildinfo
+coverage
+.DS_Store
+
+# Geist Pixel font files are copied from the `geist` npm package on install
+packages/tokens/fonts/*
+!packages/tokens/fonts/.gitkeep
+
+# Local environment and tooling
+.env
+.env.*
+!.env.example
+.impeccable/config.local.json
+
+# AI
+.impeccable/

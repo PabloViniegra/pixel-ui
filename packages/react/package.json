@@ -1,0 +1,46 @@
+{
+  "name": "@pixel-ui/react",
+  "version": "0.1.0",
+  "description": "All PixelUI components in one package",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": {
+      "source": "./src/styles.css",
+      "default": "./dist/styles.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pixel-ui/core": "workspace:^",
+    "@pixel-ui/tokens": "workspace:^",
+    "@pixel-ui/button": "workspace:^",
+    "@pixel-ui/badge": "workspace:^",
+    "@pixel-ui/switch": "workspace:^",
+    "@pixel-ui/progress": "workspace:^",
+    "@pixel-ui/loader": "workspace:^",
+    "@pixel-ui/card": "workspace:^",
+    "@pixel-ui/scramble-text": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

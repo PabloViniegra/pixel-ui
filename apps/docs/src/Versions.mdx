@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { VersionTable } from './VersionTable';
+import './docs.css';
+
+<Meta title="Versions" />
+
+# Versions
+
+Each component is an independent npm package with its own semver version and `CHANGELOG.md`,
+managed with [Changesets](https://github.com/changesets/changesets). This table is generated at
+build time from the `package.json` and `CHANGELOG.md` of every package, so it always matches
+what is published.
+
+<VersionTable />
+
+## Releasing a change
+
+```bash
+pnpm changeset          # choose the packages you touched and the bump type
+git commit -am "feat(button): pixel ripple"
+# CI opens a "Version Packages" PR; merging it publishes only those packages
+```

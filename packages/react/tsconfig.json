@@ -1,0 +1,37 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../tokens"
+    },
+    {
+      "path": "../button"
+    },
+    {
+      "path": "../badge"
+    },
+    {
+      "path": "../switch"
+    },
+    {
+      "path": "../progress"
+    },
+    {
+      "path": "../loader"
+    },
+    {
+      "path": "../card"
+    },
+    {
+      "path": "../scramble-text"
+    }
+  ]
+}

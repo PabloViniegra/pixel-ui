@@ -1,0 +1,43 @@
+{
+  "name": "pixel-ui-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "node packages/tokens/scripts/copy-fonts.mjs",
+    "build": "pnpm --filter \"./packages/*\" build",
+    "typecheck": "tsc -p tsconfig.dev.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "storybook": "pnpm --filter @pixel-ui/docs storybook",
+    "build-storybook": "pnpm --filter @pixel-ui/docs build-storybook",
+    "new:component": "node scripts/new-component.mjs",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.0",
+    "@changesets/cli": "^2.29.0",
+    "@storybook/react-vite": "^10.0.0",
+    "storybook": "^10.0.0",
+    "@testing-library/jest-dom": "^6.9.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^27.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.1.0",
+    "vitest": "^4.0.0"
+  }
+}

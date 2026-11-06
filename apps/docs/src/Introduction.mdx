@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Button } from '@pixel-ui/button';
+import { ScrambleText } from '@pixel-ui/scramble-text';
+import '@pixel-ui/button/style.css';
+import '@pixel-ui/scramble-text/style.css';
+import './docs.css';
+
+<Meta title="Introduction" />
+
+<div style={{ fontSize: 40, margin: '24px 0 8px' }}>
+  <ScrambleText text="PIXELUI" duration={1200} />
+</div>
+
+Minimal, retro-pixel React components with a Vercel feel: greyscale surfaces, one accent,
+**Geist Pixel** type and animations that are fast, springy and a little bit 8-bit.
+
+## Principles
+
+- **Pixel grid.** Everything snaps to a 4px unit; corners are notched, shadows are hard.
+- **Motion with intent.** Springs for movement, `steps()` for retro flourishes. Respects
+  `prefers-reduced-motion` automatically.
+- **One package per component.** Every component is versioned, changelogged and published
+  on its own — install only what you use.
+- **Accessible by default.** Real roles, labels and keyboard support; checked with the a11y addon.
+
+## Install
+
+```bash
+# just what you need…
+pnpm add @pixel-ui/tokens @pixel-ui/button
+
+# …or everything
+pnpm add @pixel-ui/react
+```
+
+```tsx
+import '@pixel-ui/tokens/styles.css';   // tokens, Geist Pixel @font-face, keyframes
+import '@pixel-ui/button/style.css';
+import { Button } from '@pixel-ui/button';
+
+export function Deploy() {
+  return <Button>Deploy</Button>;
+}
+```
+
+### Next.js
+
+If you already load Geist Pixel with `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`
+and `@pixel-ui/tokens/motion.css` instead of `styles.css` — the tokens read the
+`--font-geist-pixel-*` variables that `next/font` sets.
+
+<div style={{ marginTop: 32 }}>
+  <Button size="lg">Get started</Button>
+</div>

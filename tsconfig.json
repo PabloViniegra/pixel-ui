@@ -1,0 +1,35 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/tokens"
+    },
+    {
+      "path": "packages/button"
+    },
+    {
+      "path": "packages/badge"
+    },
+    {
+      "path": "packages/switch"
+    },
+    {
+      "path": "packages/progress"
+    },
+    {
+      "path": "packages/loader"
+    },
+    {
+      "path": "packages/card"
+    },
+    {
+      "path": "packages/scramble-text"
+    },
+    {
+      "path": "packages/react"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+.pxl-button {
+  --_bg: var(--pxl-fg);
+  --_fg: var(--pxl-bg);
+  --_shadow: var(--pxl-accent);
+  --_h: 40px;
+  --_px: var(--pxl-space-4);
+  --_text: var(--pxl-text-sm);
+  --_offset: 0px;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pxl-space-2);
+  height: var(--_h);
+  padding: 0 var(--_px);
+  border: 0;
+  background: none;
+  color: var(--_fg);
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--_text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* drop-shadow follows the notched alpha of the surface → pixel shadow */
+  filter: drop-shadow(var(--_offset) var(--_offset) 0 var(--_shadow));
+  transition:
+    transform var(--pxl-dur-base) var(--pxl-ease-spring),
+    filter var(--pxl-dur-base) var(--pxl-ease-spring),
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-button__surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--_bg);
+  clip-path: var(--pxl-clip-notch);
+  transition: background-color var(--pxl-dur-fast) linear;
+}
+
+/* Stepped shine band */
+.pxl-button__surface::after {
+  content: "";
+  position: absolute;
+  inset: -2px auto -2px 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--_fg) 28%, transparent),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-20deg);
+}
+
+.pxl-button__label,
+.pxl-button__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.pxl-button__icon :where(svg) {
+  width: 1.15em;
+  height: 1.15em;
+  shape-rendering: crispEdges;
+}
+
+/* ── Interaction ─────────────────────────────────────────── */
+.pxl-button:hover:not(:disabled) {
+  --_offset: var(--pxl-unit);
+  transform: translate(calc(var(--pxl-unit) * -1), calc(var(--pxl-unit) * -1));
+}
+
+.pxl-button:hover:not(:disabled) .pxl-button__surface::after {
+  animation: pxl-sweep 640ms steps(10, end) 1;
+}
+
+.pxl-button:active:not(:disabled) {
+  --_offset: 0px;
+  transform: translate(0, 0) scale(0.98);
+  transition-duration: var(--pxl-dur-instant);
+}
+
+.pxl-button:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 4px;
+}
+
+.pxl-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.pxl-button[data-loading] {
+  cursor: progress;
+  opacity: 1;
+}
+
+/* ── Variants ────────────────────────────────────────────── */
+.pxl-button[data-variant="secondary"] {
+  --_bg: var(--pxl-gray-100);
+  --_fg: var(--pxl-fg);
+  --_shadow: var(--pxl-shadow);
+}
+
+.pxl-button[data-variant="secondary"] .pxl-button__surface {
+  box-shadow: inset 0 0 0 1px var(--pxl-border);
+}
+
+.pxl-button[data-variant="ghost"] {
+  --_bg: transparent;
+  --_fg: var(--pxl-fg);
+  --_shadow: transparent;
+}
+
+.pxl-button[data-variant="ghost"]:hover:not(:disabled) {
+  --_bg: var(--pxl-gray-100);
+  --_offset: 0px;
+  transform: none;
+}
+
+.pxl-button[data-variant="danger"] {
+  --_bg: var(--pxl-danger);
+  --_fg: var(--pxl-danger-fg);
+  --_shadow: var(--pxl-fg);
+}
+
+/* ── Sizes ───────────────────────────────────────────────── */
+.pxl-button[data-size="sm"] {
+  --_h: 32px;
+  --_px: var(--pxl-space-3);
+  --_text: var(--pxl-text-xs);
+}
+
+.pxl-button[data-size="lg"] {
+  --_h: 48px;
+  --_px: var(--pxl-space-6);
+  --_text: var(--pxl-text-md);
+}
+
+/* ── Loading dots ────────────────────────────────────────── */
+.pxl-button__dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.pxl-button__dots i {
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  animation: pxl-blink 900ms steps(1, end) infinite;
+}
+
+.pxl-button__dots i:nth-child(2) {
+  animation-delay: 150ms;
+}
+.pxl-button__dots i:nth-child(3) {
+  animation-delay: 300ms;
+}

@@ -1,0 +1,59 @@
+.pxl-loader {
+  --_cell: 6px;
+  --_gap: 2px;
+  --_loop: 960ms;
+
+  display: inline-flex;
+  color: var(--pxl-fg);
+  vertical-align: middle;
+}
+
+.pxl-loader[data-size="sm"] {
+  --_cell: 4px;
+  --_gap: 1px;
+}
+.pxl-loader[data-size="lg"] {
+  --_cell: 10px;
+  --_gap: 3px;
+}
+
+.pxl-loader__grid {
+  display: grid;
+  grid-template-columns: repeat(3, var(--_cell));
+  grid-auto-rows: var(--_cell);
+  gap: var(--_gap);
+}
+
+.pxl-loader__cell {
+  background: currentColor;
+  opacity: 0.12;
+  animation: pxl-cell var(--_loop) steps(6, end) infinite;
+  animation-delay: calc(var(--_step) * var(--_loop) / var(--_steps) - var(--_loop));
+}
+
+/* Snake leaves the centre pixel as a steady "eye". */
+.pxl-loader__cell[data-idle] {
+  animation: none;
+  opacity: 1;
+}
+
+.pxl-loader[data-pattern="pulse"] {
+  --_loop: 800ms;
+}
+
+.pxl-loader[data-pattern="pulse"] .pxl-loader__cell {
+  animation-name: pxl-loader-pulse;
+  animation-timing-function: steps(3, end);
+}
+
+@keyframes pxl-loader-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+}

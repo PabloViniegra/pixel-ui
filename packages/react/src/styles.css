@@ -1,0 +1,9 @@
+/* Tokens + every component stylesheet. Requires a CSS-aware bundler (Vite, Next.js, …). */
+@import "@pixel-ui/tokens/styles.css";
+@import "@pixel-ui/button/style.css";
+@import "@pixel-ui/badge/style.css";
+@import "@pixel-ui/switch/style.css";
+@import "@pixel-ui/progress/style.css";
+@import "@pixel-ui/loader/style.css";
+@import "@pixel-ui/card/style.css";
+@import "@pixel-ui/scramble-text/style.css";

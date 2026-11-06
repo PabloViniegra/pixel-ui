@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorGrid, MotionTokens, PixelFonts } from './Foundations';
+import './docs.css';
+
+<Meta title="Foundations/Tokens" />
+
+# Foundations
+
+All tokens live in `@pixel-ui/tokens` as CSS custom properties prefixed with `--pxl-`.
+Override any of them on `:root` or on a container to theme a section.
+
+## Colour
+
+Switch the theme from the toolbar to see light and dark values.
+
+<ColorGrid />
+
+## Typography
+
+Five Geist Pixel variants (SIL OFL 1.1). `--pxl-font-pixel` defaults to **Square**.
+
+<PixelFonts />
+
+## Motion
+
+<MotionTokens />
+
+```css
+.my-thing {
+  transition: transform var(--pxl-dur-base) var(--pxl-ease-spring);
+}
+```
+
+## Pixel grid
+
+`--pxl-unit` is **4px**. Spacing tokens (`--pxl-space-1…8`) are multiples of it and
+`--pxl-clip-notch` cuts one unit from each corner — set `--pxl-notch` on an element to change it.

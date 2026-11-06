@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "customConditions": ["source"],
+    "types": ["node", "vite/client", "@testing-library/jest-dom/vitest"]
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "apps/docs/.storybook/**/*",
+    "apps/docs/src/**/*",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
+}

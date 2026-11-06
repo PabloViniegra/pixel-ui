@@ -1,0 +1,92 @@
+.pxl-progress {
+  --_tone: var(--pxl-accent);
+  --_gap: 2px;
+  --_h: 12px;
+  --_loop: 1400ms;
+
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  width: 100%;
+}
+
+.pxl-progress__track {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--_segments), 1fr);
+  gap: var(--_gap);
+  height: var(--_h);
+}
+
+.pxl-progress__cell {
+  background: var(--pxl-gray-200);
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    transform var(--pxl-dur-base) var(--pxl-ease-spring);
+  /* stagger: each block lights a frame after the previous one */
+  transition-delay: calc(var(--_i) * 18ms);
+}
+
+.pxl-progress__cell[data-lit] {
+  background: var(--_tone);
+  animation: pxl-progress-pop var(--pxl-dur-base) steps(3, end) both;
+  animation-delay: calc(var(--_i) * 18ms);
+}
+
+@keyframes pxl-progress-pop {
+  0% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1.35);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Completed: a single bright flash across the bar. */
+.pxl-progress[data-state="complete"] .pxl-progress__cell {
+  animation: pxl-progress-flash 420ms steps(2, end) both;
+  animation-delay: calc(var(--_i) * 12ms);
+}
+
+@keyframes pxl-progress-flash {
+  0%,
+  100% {
+    background: var(--_tone);
+  }
+  50% {
+    background: var(--pxl-fg);
+  }
+}
+
+/* Indeterminate: a pixel comet running along the track. */
+.pxl-progress[data-state="indeterminate"] .pxl-progress__cell {
+  background: var(--_tone);
+  opacity: 0.12;
+  animation: pxl-cell var(--_loop) steps(8, end) infinite;
+  animation-delay: calc(var(--_i) * var(--_loop) / var(--_segments) - var(--_loop));
+}
+
+.pxl-progress__value {
+  min-width: 4ch;
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--pxl-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--pxl-fg);
+  text-align: right;
+}
+
+.pxl-progress[data-tone="neutral"] {
+  --_tone: var(--pxl-fg);
+}
+.pxl-progress[data-tone="success"] {
+  --_tone: var(--pxl-success);
+}
+.pxl-progress[data-tone="warning"] {
+  --_tone: var(--pxl-warning);
+}
+.pxl-progress[data-tone="danger"] {
+  --_tone: var(--pxl-danger);
+}

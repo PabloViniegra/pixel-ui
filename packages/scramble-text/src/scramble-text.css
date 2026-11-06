@@ -1,0 +1,20 @@
+.pxl-scramble {
+  position: relative;
+  display: inline-grid;
+  font-family: var(--pxl-font-pixel);
+  white-space: pre;
+}
+
+/* Sizer and output share one grid cell so the box never changes width. */
+.pxl-scramble__sizer,
+.pxl-scramble__output {
+  grid-area: 1 / 1;
+}
+
+.pxl-scramble__sizer {
+  visibility: hidden;
+}
+
+.pxl-scramble[data-running] .pxl-scramble__output {
+  color: color-mix(in srgb, currentColor 70%, var(--pxl-accent));
+}

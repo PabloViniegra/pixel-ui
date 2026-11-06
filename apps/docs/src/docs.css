@@ -1,0 +1,104 @@
+.pxl-docs-muted {
+  color: var(--pxl-fg-muted);
+  font-size: 13px;
+}
+
+.pxl-docs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pxl-docs-table th,
+.pxl-docs-table td {
+  padding: 12px;
+  border-bottom: 1px dashed var(--pxl-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.pxl-docs-table th {
+  font-family: var(--pxl-font-pixel);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+
+.pxl-docs-table ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.pxl-docs-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.pxl-docs-swatch {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.pxl-docs-swatch__chip {
+  height: 56px;
+  box-shadow: inset 0 0 0 1px var(--pxl-border);
+  clip-path: var(--pxl-clip-notch);
+}
+
+.pxl-docs-fonts {
+  display: grid;
+  gap: 12px;
+}
+
+.pxl-docs-font {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: baseline;
+}
+
+.pxl-docs-font__name {
+  font-family: var(--pxl-font-mono);
+  font-size: 12px;
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-docs-font__sample {
+  font-size: 32px;
+}
+
+.pxl-docs-motion {
+  display: grid;
+  gap: 16px;
+}
+
+.pxl-docs-motion__row {
+  display: grid;
+  grid-template-columns: 240px 180px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.pxl-docs-motion__lane {
+  position: relative;
+  height: 12px;
+  background: var(--pxl-gray-100);
+}
+
+.pxl-docs-motion__dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--pxl-accent);
+  animation: pxl-docs-travel 1.6s infinite alternate;
+}
+
+@keyframes pxl-docs-travel {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 12px);
+  }
+}

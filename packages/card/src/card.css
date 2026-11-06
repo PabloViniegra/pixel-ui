@@ -1,0 +1,113 @@
+.pxl-card {
+  --_border: var(--pxl-border);
+  --_bg: var(--pxl-bg);
+  --_offset: 0px;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pxl-space-4);
+  padding: var(--pxl-space-6);
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+  filter: drop-shadow(var(--_offset) var(--_offset) 0 var(--pxl-shadow));
+  transition:
+    transform var(--pxl-dur-base) var(--pxl-ease-spring),
+    filter var(--pxl-dur-base) var(--pxl-ease-spring);
+}
+
+/* Border layer + surface layer, both notched. */
+.pxl-card::before,
+.pxl-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  clip-path: var(--pxl-clip-notch);
+}
+
+.pxl-card::before {
+  inset: 0;
+  background: var(--_border);
+}
+
+.pxl-card::after {
+  inset: 1px;
+  background: var(--_bg);
+}
+
+.pxl-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pxl-space-2);
+}
+
+.pxl-card__title {
+  margin: 0;
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--pxl-text-lg);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.pxl-card__description {
+  margin: 0;
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+}
+
+.pxl-card__content {
+  font-size: var(--pxl-text-sm);
+  line-height: 1.6;
+}
+
+.pxl-card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  padding-top: var(--pxl-space-4);
+  border-top: 1px dashed var(--pxl-border);
+}
+
+/* ── Interactive ─────────────────────────────────────────── */
+.pxl-card[data-interactive] {
+  cursor: pointer;
+}
+
+.pxl-card[data-interactive]:is(:hover, :focus-within) {
+  --_border: var(--pxl-border-strong);
+  --_offset: var(--pxl-space-2);
+  transform: translate(calc(var(--pxl-space-2) * -1), calc(var(--pxl-space-2) * -1));
+}
+
+.pxl-card[data-interactive]:is(:hover, :focus-within) .pxl-card__title {
+  animation: pxl-glitch 360ms steps(5, end) 1;
+}
+
+.pxl-card[data-interactive]:active {
+  --_offset: 0px;
+  transform: none;
+  transition-duration: var(--pxl-dur-instant);
+}
+
+/* ── Highlight: marching-pixels border ───────────────────── */
+.pxl-card[data-highlight]::before {
+  background:
+    repeating-conic-gradient(var(--pxl-accent) 0 25%, transparent 0 50%) 0 0 / 8px 8px,
+    var(--pxl-border);
+  animation: pxl-card-march 800ms steps(4, end) infinite;
+}
+
+.pxl-card[data-highlight]::after {
+  inset: 2px;
+}
+
+@keyframes pxl-card-march {
+  to {
+    background-position:
+      8px 0,
+      0 0;
+  }
+}

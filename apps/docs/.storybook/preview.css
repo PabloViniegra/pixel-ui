@@ -1,0 +1,41 @@
+body {
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  transition: background-color var(--pxl-dur-base) linear;
+}
+
+/* Faint pixel grid behind every story */
+.sb-show-main {
+  background-image:
+    linear-gradient(var(--pxl-gray-100) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pxl-gray-100) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.sb-pxl-version {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: inline-flex;
+  font-family: var(--pxl-font-pixel);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  clip-path: var(--pxl-clip-notch);
+  --pxl-notch: 2px;
+}
+
+.sb-pxl-version > span {
+  padding: 5px 8px;
+}
+
+.sb-pxl-version__name {
+  background: var(--pxl-gray-200);
+  color: var(--pxl-fg-muted);
+}
+
+.sb-pxl-version__tag {
+  background: var(--pxl-fg);
+  color: var(--pxl-bg);
+}

@@ -1,0 +1,102 @@
+.pxl-switch {
+  --_w: 44px;
+  --_h: 24px;
+  --_pad: 4px;
+  --_thumb: calc(var(--_h) - var(--_pad) * 2);
+  --_travel: calc(var(--_w) - var(--_thumb) - var(--_pad) * 2);
+  --pxl-notch: 2px;
+
+  position: relative;
+  flex: none;
+  width: var(--_w);
+  height: var(--_h);
+  padding: 0;
+  border: 0;
+  background: var(--pxl-gray-300);
+  clip-path: var(--pxl-clip-notch);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pxl-switch[data-size="sm"] {
+  --_w: 34px;
+  --_h: 18px;
+  --_pad: 3px;
+}
+
+/* Track fill: a stepped pixel wipe from left to right. */
+.pxl-switch__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--pxl-accent);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--pxl-dur-base) steps(6, end);
+}
+
+.pxl-switch__thumb {
+  position: absolute;
+  top: var(--_pad);
+  left: var(--_pad);
+  width: var(--_thumb);
+  height: var(--_thumb);
+  background: var(--pxl-bg);
+  box-shadow: inset -2px -2px 0 var(--pxl-gray-400);
+  transform-origin: left center;
+  transition: transform var(--pxl-dur-slow) var(--pxl-ease-spring);
+}
+
+.pxl-switch[data-state="on"] .pxl-switch__fill {
+  clip-path: inset(0 0 0 0);
+}
+
+.pxl-switch[data-state="on"] .pxl-switch__thumb {
+  transform: translateX(var(--_travel));
+  transform-origin: right center;
+  box-shadow: inset -2px -2px 0 color-mix(in srgb, var(--pxl-accent) 45%, var(--pxl-bg));
+}
+
+/* Squash while pressed: the thumb stretches toward its destination. */
+.pxl-switch:active:not(:disabled) .pxl-switch__thumb {
+  transform: scaleX(1.35);
+  transition-duration: var(--pxl-dur-fast);
+}
+
+.pxl-switch[data-state="on"]:active:not(:disabled) .pxl-switch__thumb {
+  transform: translateX(var(--_travel)) scaleX(1.35);
+}
+
+.pxl-switch:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.pxl-switch:focus-visible .pxl-switch__thumb {
+  outline: 2px solid var(--pxl-fg);
+  outline-offset: -2px;
+}
+
+.pxl-switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* Label wrapper */
+.pxl-switch-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--pxl-text-sm);
+  color: var(--pxl-fg);
+  letter-spacing: 0.04em;
+}
+
+.pxl-switch-field__label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.pxl-switch-field[data-disabled] .pxl-switch-field__label {
+  cursor: not-allowed;
+  opacity: 0.45;
+}

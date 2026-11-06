@@ -1,0 +1,52 @@
+{
+  "name": "@pixel-ui/tokens",
+  "version": "0.1.0",
+  "description": "PixelUI design tokens, Geist Pixel fonts and motion keyframes",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": {
+      "source": "./src/index.css",
+      "default": "./dist/index.css"
+    },
+    "./tokens.css": {
+      "source": "./src/tokens.css",
+      "default": "./dist/tokens.css"
+    },
+    "./fonts.css": {
+      "source": "./src/fonts.css",
+      "default": "./dist/fonts.css"
+    },
+    "./motion.css": {
+      "source": "./src/motion.css",
+      "default": "./dist/motion.css"
+    },
+    "./utilities.css": {
+      "source": "./src/utilities.css",
+      "default": "./dist/utilities.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "fonts"
+  ],
+  "scripts": {
+    "build": "node scripts/copy-fonts.mjs && tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "geist": "^1.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

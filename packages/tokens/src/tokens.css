@@ -1,0 +1,206 @@
+/* ──────────────────────────────────────────────────────────────
+   PixelUI · design tokens
+   Minimal Vercel-style greyscale + a single accent, on a 4px pixel grid.
+   Every token is prefixed with --pxl- and can be overridden per scope.
+   ────────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --pxl-bg: #ffffff;
+  --pxl-bg-subtle: #fafafa;
+  --pxl-fg: #0a0a0a;
+  --pxl-fg-muted: #666666;
+
+  /* Greys (Geist-like scale) */
+  --pxl-gray-100: #f2f2f2;
+  --pxl-gray-200: #ebebeb;
+  --pxl-gray-300: #e0e0e0;
+  --pxl-gray-400: #c9c9c9;
+  --pxl-gray-500: #a8a8a8;
+  --pxl-gray-600: #8f8f8f;
+  --pxl-gray-700: #666666;
+  --pxl-gray-800: #4d4d4d;
+  --pxl-gray-900: #171717;
+
+  /* Semantic */
+  --pxl-accent: #0070f3;
+  --pxl-accent-fg: #ffffff;
+  --pxl-accent-subtle: #e9f2ff;
+  --pxl-success: #0a8a3a;
+  --pxl-success-subtle: #e6f6ec;
+  --pxl-warning: #b45309;
+  --pxl-warning-subtle: #fff4e0;
+  --pxl-danger: #e5001f;
+  --pxl-danger-fg: #ffffff;
+  --pxl-danger-subtle: #ffebee;
+
+  /* Hard pixel shadow colour */
+  --pxl-shadow: var(--pxl-gray-900);
+}
+
+/* Aliases are declared on every theme scope so they resolve against that
+   scope's greys (custom properties are computed where they are declared). */
+:root,
+[data-theme] {
+  --pxl-border: var(--pxl-gray-300);
+  --pxl-border-strong: var(--pxl-gray-900);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --pxl-bg: #000000;
+  --pxl-bg-subtle: #0a0a0a;
+  --pxl-fg: #ededed;
+  --pxl-fg-muted: #a1a1a1;
+
+  --pxl-gray-100: #1a1a1a;
+  --pxl-gray-200: #1f1f1f;
+  --pxl-gray-300: #292929;
+  --pxl-gray-400: #2e2e2e;
+  --pxl-gray-500: #454545;
+  --pxl-gray-600: #878787;
+  --pxl-gray-700: #8f8f8f;
+  --pxl-gray-800: #a1a1a1;
+  --pxl-gray-900: #ededed;
+
+  --pxl-accent: #3291ff;
+  --pxl-accent-fg: #000000;
+  --pxl-accent-subtle: #0a1a33;
+  --pxl-success: #3ccf6e;
+  --pxl-success-subtle: #0b2615;
+  --pxl-warning: #f5a623;
+  --pxl-warning-subtle: #2b1d05;
+  --pxl-danger: #ff4d5e;
+  --pxl-danger-fg: #000000;
+  --pxl-danger-subtle: #330a10;
+
+  --pxl-shadow: var(--pxl-gray-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --pxl-bg: #000000;
+    --pxl-bg-subtle: #0a0a0a;
+    --pxl-fg: #ededed;
+    --pxl-fg-muted: #a1a1a1;
+    --pxl-gray-100: #1a1a1a;
+    --pxl-gray-200: #1f1f1f;
+    --pxl-gray-300: #292929;
+    --pxl-gray-400: #2e2e2e;
+    --pxl-gray-500: #454545;
+    --pxl-gray-600: #878787;
+    --pxl-gray-700: #8f8f8f;
+    --pxl-gray-800: #a1a1a1;
+    --pxl-gray-900: #ededed;
+    --pxl-accent: #3291ff;
+    --pxl-accent-fg: #000000;
+    --pxl-accent-subtle: #0a1a33;
+    --pxl-success: #3ccf6e;
+    --pxl-success-subtle: #0b2615;
+    --pxl-warning: #f5a623;
+    --pxl-warning-subtle: #2b1d05;
+    --pxl-danger: #ff4d5e;
+    --pxl-danger-fg: #000000;
+    --pxl-danger-subtle: #330a10;
+    --pxl-shadow: var(--pxl-gray-500);
+  }
+}
+
+:root {
+  /* ── Pixel grid ─────────────────────────────────────────── */
+  --pxl-unit: 4px;
+  --pxl-space-1: calc(var(--pxl-unit) * 1);
+  --pxl-space-2: calc(var(--pxl-unit) * 2);
+  --pxl-space-3: calc(var(--pxl-unit) * 3);
+  --pxl-space-4: calc(var(--pxl-unit) * 4);
+  --pxl-space-6: calc(var(--pxl-unit) * 6);
+  --pxl-space-8: calc(var(--pxl-unit) * 8);
+
+  /* Notched "pixel" corners: one grid unit cut from each corner. */
+  --pxl-notch: var(--pxl-unit);
+}
+
+/* Re-evaluated on every PixelUI element so a local --pxl-notch override
+   (e.g. a smaller notch on badges) is picked up by the polygon. */
+:where([class*="pxl-"]) {
+  --pxl-clip-notch: polygon(
+    0 var(--pxl-notch),
+    var(--pxl-notch) var(--pxl-notch),
+    var(--pxl-notch) 0,
+    calc(100% - var(--pxl-notch)) 0,
+    calc(100% - var(--pxl-notch)) var(--pxl-notch),
+    100% var(--pxl-notch),
+    100% calc(100% - var(--pxl-notch)),
+    calc(100% - var(--pxl-notch)) calc(100% - var(--pxl-notch)),
+    calc(100% - var(--pxl-notch)) 100%,
+    var(--pxl-notch) 100%,
+    var(--pxl-notch) calc(100% - var(--pxl-notch)),
+    0 calc(100% - var(--pxl-notch))
+  );
+}
+
+:root {
+  /* ── Typography ─────────────────────────────────────────── */
+  /* Picks up next/font CSS variables first (geist/font/pixel), then the
+     @font-face families declared in fonts.css. */
+  --pxl-font-pixel: var(--font-geist-pixel-square, "Geist Pixel Square"), ui-monospace, monospace;
+  --pxl-font-pixel-grid: var(--font-geist-pixel-grid, "Geist Pixel Grid"), var(--pxl-font-pixel);
+  --pxl-font-pixel-circle:
+    var(--font-geist-pixel-circle, "Geist Pixel Circle"), var(--pxl-font-pixel);
+  --pxl-font-pixel-triangle:
+    var(--font-geist-pixel-triangle, "Geist Pixel Triangle"), var(--pxl-font-pixel);
+  --pxl-font-pixel-line: var(--font-geist-pixel-line, "Geist Pixel Line"), var(--pxl-font-pixel);
+  --pxl-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, monospace;
+  --pxl-font-sans: var(--font-geist-sans, "Geist"), system-ui, sans-serif;
+
+  --pxl-text-xs: 11px;
+  --pxl-text-sm: 13px;
+  --pxl-text-md: 15px;
+  --pxl-text-lg: 18px;
+  --pxl-text-xl: 24px;
+  --pxl-text-2xl: 32px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --pxl-dur-instant: 80ms;
+  --pxl-dur-fast: 140ms;
+  --pxl-dur-base: 240ms;
+  --pxl-dur-slow: 480ms;
+
+  --pxl-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --pxl-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Spring with a small overshoot (generated linear() curve). */
+  --pxl-ease-spring: linear(
+    0,
+    0.009,
+    0.035 2.1%,
+    0.141,
+    0.281 6.7%,
+    0.723 12.9%,
+    0.938 16.7%,
+    1.017,
+    1.077,
+    1.121,
+    1.149 24.3%,
+    1.159,
+    1.163,
+    1.161,
+    1.154 29.9%,
+    1.129 32.8%,
+    1.051 39.6%,
+    1.017 43.1%,
+    0.991,
+    0.977 51%,
+    0.974 53.8%,
+    0.975 57.1%,
+    0.997 69.8%,
+    1.003 76.9%,
+    1
+  );
+  /* Retro "frame-by-frame" timing. */
+  --pxl-ease-steps: steps(6, end);
+}
