@@ -1,0 +1,43 @@
+{
+  "name": "@pixel-ui/dialog",
+  "version": "0.0.0",
+  "description": "Modal dialog on the native dialog element",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/dialog.css",
+      "default": "./dist/dialog.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pixel-ui/core": "workspace:^",
+    "@pixel-ui/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pixel-ui/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@pixel-ui/button": "workspace:^"
+  }
+}

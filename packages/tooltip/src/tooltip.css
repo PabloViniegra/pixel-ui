@@ -1,0 +1,34 @@
+.pxl-tooltip {
+  position: fixed;
+  inset: auto;
+  max-width: 280px;
+  margin: 0;
+  padding: var(--pxl-space-1) var(--pxl-space-2);
+  overflow: visible;
+  border: 0;
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-gray-900);
+  color: var(--pxl-bg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-xs);
+  line-height: 1.5;
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-tooltip[data-side="top"] {
+  --_from-y: 4px;
+}
+
+.pxl-tooltip[data-side="bottom"] {
+  --_from-y: -4px;
+}
+
+.pxl-tooltip[data-side="left"] {
+  --_from-x: 4px;
+  --_from-y: 0;
+}
+
+.pxl-tooltip[data-side="right"] {
+  --_from-x: -4px;
+  --_from-y: 0;
+}

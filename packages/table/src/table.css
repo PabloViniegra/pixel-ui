@@ -1,0 +1,99 @@
+.pxl-table {
+  --_cell-y: var(--pxl-space-3);
+  --_cell-x: var(--pxl-space-4);
+
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+}
+
+.pxl-table[data-density="compact"] {
+  --_cell-y: var(--pxl-space-2);
+  --_cell-x: var(--pxl-space-3);
+}
+
+.pxl-table__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--pxl-fg);
+}
+
+.pxl-table__caption {
+  padding: var(--pxl-space-3) var(--_cell-x);
+  caption-side: bottom;
+  border-top: 1px solid var(--pxl-border);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+  text-align: start;
+}
+
+.pxl-table__th {
+  padding: var(--pxl-space-2) var(--_cell-x);
+  border-bottom: 1px solid var(--pxl-border);
+  background: var(--pxl-bg-subtle);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+  font-weight: 500;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.pxl-table[data-sticky] .pxl-table__head .pxl-table__th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.pxl-table__td {
+  padding: var(--_cell-y) var(--_cell-x);
+  border-bottom: 1px solid var(--pxl-border);
+  vertical-align: middle;
+}
+
+.pxl-table__foot .pxl-table__td {
+  border-top: 1px solid var(--pxl-border);
+  border-bottom: 0;
+  background: var(--pxl-bg-subtle);
+  font-weight: 500;
+}
+
+.pxl-table__body .pxl-table__row:last-child .pxl-table__td {
+  border-bottom: 0;
+}
+
+.pxl-table__body .pxl-table__row {
+  transition: background-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-table__body .pxl-table__row:hover {
+  background: var(--pxl-bg-subtle);
+}
+
+.pxl-table__row[data-selected] {
+  background: var(--pxl-accent-subtle);
+}
+
+.pxl-table__row[data-selected]:hover {
+  background: var(--pxl-accent-subtle);
+}
+
+.pxl-table__th[data-align="end"],
+.pxl-table__td[data-align="end"] {
+  text-align: end;
+}
+
+.pxl-table__th[data-align="center"],
+.pxl-table__td[data-align="center"] {
+  text-align: center;
+}
+
+.pxl-table__td[data-mono] {
+  font-family: var(--pxl-font-mono);
+  font-size: var(--pxl-text-xs);
+  font-variant-numeric: tabular-nums;
+}

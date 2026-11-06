@@ -1,3 +1,5 @@
+'use client';
+
 import { cx, type PixelSize, useControllableState } from '@pixel-ui/core';
 import { type ComponentPropsWithRef, type MouseEvent, type ReactNode, useId } from 'react';
 

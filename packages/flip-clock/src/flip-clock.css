@@ -1,0 +1,121 @@
+.pxl-flip {
+  --_size: 40px;
+  --_card: var(--pxl-gray-100);
+  --_ink: var(--pxl-fg);
+  --_dur: 600ms; /* keep in sync with FLIP_MS */
+
+  display: inline-flex;
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--_size);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--_ink);
+}
+
+.pxl-flip[data-size="sm"] {
+  --_size: 24px;
+}
+
+.pxl-flip[data-size="lg"] {
+  --_size: 64px;
+}
+
+.pxl-flip__cards {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.08em;
+}
+
+.pxl-flip__sep {
+  padding: 0 0.04em;
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-flip__card {
+  --_h: 1.4em;
+
+  position: relative;
+  display: inline-block;
+  width: 0.9em;
+  height: var(--_h);
+  perspective: 3em;
+}
+
+/* Hinge: a gap in the card's own surface colour, so it reads in both themes. */
+.pxl-flip__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1px);
+  z-index: 3;
+  height: 2px;
+  background: var(--pxl-bg);
+}
+
+.pxl-flip__half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  background: var(--_card);
+  backface-visibility: hidden;
+}
+
+.pxl-flip__half[data-half="top"] {
+  top: 0;
+  border-radius: var(--pxl-radius-sm) var(--pxl-radius-sm) 0 0;
+  transform-origin: 50% 100%;
+}
+
+.pxl-flip__half[data-half="bottom"] {
+  bottom: 0;
+  border-radius: 0 0 var(--pxl-radius-sm) var(--pxl-radius-sm);
+  transform-origin: 50% 0;
+}
+
+.pxl-flip__glyph {
+  display: block;
+  height: var(--_h);
+  line-height: var(--_h);
+  text-align: center;
+}
+
+.pxl-flip__half[data-half="bottom"] .pxl-flip__glyph {
+  margin-top: calc(var(--_h) / -2);
+}
+
+.pxl-flip__flaps {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.pxl-flip__flap[data-half="top"] {
+  animation: pxl-flip-down calc(var(--_dur) / 2) var(--pxl-ease-in-out) both;
+}
+
+.pxl-flip__flap[data-half="bottom"] {
+  animation: pxl-flip-up calc(var(--_dur) / 2) var(--pxl-ease-out) calc(var(--_dur) / 2) both;
+}
+
+@keyframes pxl-flip-down {
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(-90deg);
+    filter: brightness(0.85);
+  }
+}
+
+@keyframes pxl-flip-up {
+  from {
+    transform: rotateX(90deg);
+    filter: brightness(0.85);
+  }
+  to {
+    transform: rotateX(0);
+  }
+}

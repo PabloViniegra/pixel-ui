@@ -29,6 +29,87 @@
       "path": "packages/scramble-text"
     },
     {
+      "path": "packages/pixel-icons"
+    },
+    {
+      "path": "packages/field"
+    },
+    {
+      "path": "packages/input"
+    },
+    {
+      "path": "packages/textarea"
+    },
+    {
+      "path": "packages/checkbox"
+    },
+    {
+      "path": "packages/radio"
+    },
+    {
+      "path": "packages/select"
+    },
+    {
+      "path": "packages/slider"
+    },
+    {
+      "path": "packages/dialog"
+    },
+    {
+      "path": "packages/tooltip"
+    },
+    {
+      "path": "packages/popover"
+    },
+    {
+      "path": "packages/menu"
+    },
+    {
+      "path": "packages/toast"
+    },
+    {
+      "path": "packages/tabs"
+    },
+    {
+      "path": "packages/breadcrumb"
+    },
+    {
+      "path": "packages/accordion"
+    },
+    {
+      "path": "packages/table"
+    },
+    {
+      "path": "packages/kbd"
+    },
+    {
+      "path": "packages/skeleton"
+    },
+    {
+      "path": "packages/separator"
+    },
+    {
+      "path": "packages/pixel-avatar"
+    },
+    {
+      "path": "packages/pixel-image"
+    },
+    {
+      "path": "packages/pixel-transition"
+    },
+    {
+      "path": "packages/terminal"
+    },
+    {
+      "path": "packages/command-menu"
+    },
+    {
+      "path": "packages/mini-chart"
+    },
+    {
+      "path": "packages/flip-clock"
+    },
+    {
       "path": "packages/react"
     }
   ]

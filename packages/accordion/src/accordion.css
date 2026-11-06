@@ -1,0 +1,80 @@
+.pxl-accordion {
+  interpolate-size: allow-keywords;
+  border-top: 1px solid var(--pxl-border);
+  font-family: var(--pxl-font-sans);
+}
+
+.pxl-accordion__item {
+  border-bottom: 1px solid var(--pxl-border);
+}
+
+.pxl-accordion__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  min-height: 48px;
+  padding: var(--pxl-space-3) var(--pxl-space-1);
+  color: var(--pxl-fg);
+  font-size: var(--pxl-text-sm);
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pxl-accordion__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.pxl-accordion__trigger:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+  border-radius: var(--pxl-radius-sm);
+}
+
+.pxl-accordion__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.pxl-accordion__meta {
+  color: var(--pxl-fg-muted);
+  font-family: var(--pxl-font-mono);
+  font-size: var(--pxl-text-xs);
+  font-weight: 400;
+}
+
+.pxl-accordion__chevron {
+  color: var(--pxl-fg-muted);
+  transition:
+    transform var(--pxl-dur-base) var(--pxl-ease-out),
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-accordion__trigger:hover .pxl-accordion__chevron {
+  color: var(--pxl-fg);
+}
+
+.pxl-accordion__item[open] .pxl-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+/* Browsers without ::details-content just snap open, which is fine. */
+.pxl-accordion__item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size var(--pxl-dur-base) var(--pxl-ease-out),
+    content-visibility var(--pxl-dur-base) allow-discrete;
+}
+
+.pxl-accordion__item[open]::details-content {
+  block-size: auto;
+}
+
+.pxl-accordion__content {
+  padding: 0 var(--pxl-space-1) var(--pxl-space-4);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.6;
+}

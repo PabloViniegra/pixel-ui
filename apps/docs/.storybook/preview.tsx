@@ -65,7 +65,16 @@ const preview: Preview = {
     docs: { theme: pixelTheme },
     options: {
       storySort: {
-        order: ['Introduction', 'Versions', 'Foundations', 'Components'],
+        order: [
+          'Introduction',
+          'Versions',
+          'Foundations',
+          'Components',
+          'Forms',
+          'Overlays',
+          'Navigation',
+          'Signature',
+        ],
       },
     },
   },

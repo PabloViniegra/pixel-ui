@@ -1,6 +1,7 @@
 body {
   background: var(--pxl-bg);
   color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
   transition: background-color var(--pxl-dur-base) linear;
 }
 

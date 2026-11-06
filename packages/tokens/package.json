@@ -33,6 +33,10 @@
       "source": "./src/utilities.css",
       "default": "./dist/utilities.css"
     },
+    "./tailwind.css": {
+      "source": "./src/tailwind.css",
+      "default": "./dist/tailwind.css"
+    },
     "./package.json": "./package.json"
   },
   "files": [

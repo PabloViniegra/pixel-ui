@@ -1,0 +1,83 @@
+.pxl-select {
+  --_h: 40px;
+  --_px: var(--pxl-space-3);
+  --_text: var(--pxl-text-sm);
+  --_border: var(--pxl-border);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--_text);
+}
+
+.pxl-select[data-size="sm"] {
+  --_h: 32px;
+  --_px: var(--pxl-space-2);
+  --_text: var(--pxl-text-xs);
+}
+
+.pxl-select[data-size="lg"] {
+  --_h: 48px;
+  --_px: var(--pxl-space-4);
+  --_text: var(--pxl-text-md);
+}
+
+.pxl-select__control {
+  width: 100%;
+  height: var(--_h);
+  padding: 0 calc(var(--_px) + 16px + var(--pxl-space-2)) 0 var(--_px);
+  border: 1px solid var(--_border);
+  border-radius: var(--pxl-radius-md);
+  background: var(--pxl-bg);
+  color: inherit;
+  font: inherit;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-select__control:hover:not(:disabled) {
+  --_border: var(--pxl-gray-500);
+}
+
+.pxl-select__control:focus-visible {
+  --_border: var(--pxl-gray-500);
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}
+
+/* Placeholder option selected: read as a hint, not a value. */
+.pxl-select__control:has(option[value=""]:checked) {
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-select__control option {
+  color: var(--pxl-fg);
+  background: var(--pxl-bg);
+}
+
+.pxl-select[data-invalid] .pxl-select__control {
+  --_border: var(--pxl-danger);
+  outline-color: var(--pxl-danger);
+}
+
+.pxl-select__control:disabled {
+  background: var(--pxl-bg-subtle);
+  color: var(--pxl-fg-muted);
+  cursor: not-allowed;
+}
+
+.pxl-select__chevron {
+  position: absolute;
+  right: var(--_px);
+  color: var(--pxl-fg-muted);
+  pointer-events: none;
+  transition: transform var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-select:has(.pxl-select__control:open) .pxl-select__chevron {
+  transform: rotate(180deg);
+}

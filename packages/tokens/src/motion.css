@@ -56,6 +56,15 @@
   }
 }
 
+/* Floating surfaces (popovers, menus, tooltips) rise a few px from the side
+   they open on. `--_from-x/y` are set per side by the component. */
+@keyframes pxl-float-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--_from-x, 0), var(--_from-y, 4px)) scale(0.97);
+  }
+}
+
 /* Users who ask for less motion get instant state changes. */
 @media (prefers-reduced-motion: reduce) {
   [class*="pxl-"],

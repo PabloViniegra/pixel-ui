@@ -12,7 +12,7 @@ React developers at large who install components from public npm. They are build
 
 ## Product Purpose
 
-PixelUI is an open-source React component library (button, badge, switch, progress, loader, card, scramble-text) plus design tokens. Success means a developer can drop a component into a production interface and it looks calm and finished next to the rest of their product, while still being recognisably PixelUI.
+PixelUI is an open-source React component library — forms, overlays, navigation and structure primitives, plus signature pixel components (identicon avatar, mosaic image, pixel dissolve transition, terminal log, pixel icons, command menu, cell charts, flip clock) — with design tokens and a Tailwind CSS v4 preset. Success means a developer can drop a component into a production interface and it looks calm and finished next to the rest of their product, while still being recognisably PixelUI.
 
 ## Positioning
 
@@ -26,6 +26,7 @@ Sober, Vercel-style product UI where the pixel/8-bit character is a subtle signa
 
 ## Capabilities and Constraints
 
+- Must work in the Next.js App Router: interactive components ship with the `"use client"` directive; pure ones stay server-compatible.
 - Must work in Next.js, including fonts loaded via `next/font` (`geist/font/pixel`); tokens read the `--font-geist-*` variables.
 - Theming via `data-theme="light" | "dark"` on any element, defaulting to the OS setting.
 - Toolchain is TypeScript 7 (no programmatic TS API): `tsc -b`, Vitest, Biome, react-docgen.

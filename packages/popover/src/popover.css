@@ -1,0 +1,45 @@
+.pxl-popover {
+  position: fixed;
+  inset: auto;
+  min-width: 200px;
+  max-width: min(360px, calc(100vw - var(--pxl-space-4)));
+  margin: 0;
+  padding: var(--pxl-space-4);
+  overflow: visible;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  box-shadow: var(--pxl-shadow-lg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-popover:focus {
+  outline: none;
+}
+
+.pxl-popover:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}
+
+.pxl-popover[data-side="top"] {
+  --_from-y: 4px;
+}
+
+.pxl-popover[data-side="bottom"] {
+  --_from-y: -4px;
+}
+
+.pxl-popover[data-side="left"] {
+  --_from-x: 4px;
+  --_from-y: 0;
+}
+
+.pxl-popover[data-side="right"] {
+  --_from-x: -4px;
+  --_from-y: 0;
+}

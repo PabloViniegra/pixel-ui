@@ -7,18 +7,45 @@ shapes and springy motion, with **Geist Pixel** type and a few 8-bit details as 
 - **Storybook 10** catalogue with theme switcher, a11y checks and a live version table.
 - **TypeScript 7** (native Go compiler) end to end.
 
-| Package                   | What it is                                                                          |
-| ------------------------- | ----------------------------------------------------------------------------------- |
-| `@pixel-ui/tokens`        | CSS variables, Geist, Geist Mono and Geist Pixel `@font-face`, keyframes, utilities |
-| `@pixel-ui/core`          | `cx`, `useControllableState`, `usePrefersReducedMotion`                             |
-| `@pixel-ui/button`        | Button with soft lift, smooth shine, loading dots                                   |
-| `@pixel-ui/badge`         | Status badge with tones and a blinking terminal dot                                 |
-| `@pixel-ui/switch`        | `role="switch"` toggle with fading track and spring thumb                           |
-| `@pixel-ui/progress`      | Segmented bar with staggered fill and an indeterminate comet                        |
-| `@pixel-ui/loader`        | 3×3 pixel loader: `snake`, `pulse`, `scan`                                          |
-| `@pixel-ui/card`          | Rounded card with soft lift and accent highlight border                             |
-| `@pixel-ui/scramble-text` | Text that decodes itself from random glyphs                                         |
-| `@pixel-ui/react`         | Umbrella package re-exporting everything                                            |
+| Package                      | What it is                                                                         |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| `@pixel-ui/tokens`           | CSS variables, fonts, keyframes, utilities and a Tailwind CSS v4 preset            |
+| `@pixel-ui/core`             | Shared hooks and helpers (`cx`, `useControllableState`, positioning, roving focus) |
+| `@pixel-ui/accordion`        | Accordion on native details elements                                               |
+| `@pixel-ui/badge`            | Status badge with tones and a blinking terminal dot                                |
+| `@pixel-ui/breadcrumb`       | Breadcrumb trail for nested pages                                                  |
+| `@pixel-ui/button`           | Button with soft lift, smooth shine, loading dots                                  |
+| `@pixel-ui/card`             | Rounded card with soft lift and accent highlight border                            |
+| `@pixel-ui/checkbox`         | Checkbox with indeterminate state and pixel check mark                             |
+| `@pixel-ui/command-menu`     | ⌘K command palette whose results decode in with ScrambleText                       |
+| `@pixel-ui/dialog`           | Modal dialog on the native dialog element                                          |
+| `@pixel-ui/field`            | Form field wrapper with label, description and error                               |
+| `@pixel-ui/flip-clock`       | Flip-clock counter and clock with split-flap digits in the pixel font              |
+| `@pixel-ui/input`            | Text input with prefix and suffix slots                                            |
+| `@pixel-ui/kbd`              | Keyboard key and shortcut display                                                  |
+| `@pixel-ui/loader`           | 3×3 pixel loader: `snake`, `pulse`, `scan`                                         |
+| `@pixel-ui/menu`             | Menu and dropdown with keyboard navigation                                         |
+| `@pixel-ui/mini-chart`       | Sparklines and bar charts drawn in pixel cells                                     |
+| `@pixel-ui/pixel-avatar`     | Symmetric pixel identicon generated from a name or email                           |
+| `@pixel-ui/pixel-icons`      | 16x16 pixel SVG icon set with crisp edges                                          |
+| `@pixel-ui/pixel-image`      | Image that loads as a coarse pixel mosaic and sharpens to full resolution          |
+| `@pixel-ui/pixel-transition` | Pixel-grid dissolve for the View Transitions API                                   |
+| `@pixel-ui/popover`          | Non-modal panel anchored to a trigger                                              |
+| `@pixel-ui/progress`         | Segmented bar with staggered fill and an indeterminate comet                       |
+| `@pixel-ui/radio`            | Radio group with a pixel dot indicator                                             |
+| `@pixel-ui/scramble-text`    | Text that decodes itself from random glyphs                                        |
+| `@pixel-ui/select`           | Styled native select                                                               |
+| `@pixel-ui/separator`        | Horizontal and vertical separators                                                 |
+| `@pixel-ui/skeleton`         | Loading placeholders                                                               |
+| `@pixel-ui/slider`           | Range slider drawn as a track of pixel cells                                       |
+| `@pixel-ui/switch`           | `role="switch"` toggle with fading track and spring thumb                          |
+| `@pixel-ui/table`            | Data table primitives                                                              |
+| `@pixel-ui/tabs`             | Tabs with roving focus and a sliding indicator                                     |
+| `@pixel-ui/terminal`         | Streaming log viewer with autoscroll, level colours and a block cursor             |
+| `@pixel-ui/textarea`         | Multi-line text input with auto-resize                                             |
+| `@pixel-ui/toast`            | Toast notifications with a pixel countdown                                         |
+| `@pixel-ui/tooltip`          | Hover and focus hint anchored to its trigger                                       |
+| `@pixel-ui/react`            | Umbrella package re-exporting everything                                           |
 
 ## Getting started
 
@@ -54,6 +81,18 @@ override any `--pxl-*` token on `:root` or a container.
 **Next.js:** if you load fonts with `geist/font/sans`, `geist/font/mono` and `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`,
 `motion.css` and `utilities.css` instead of `styles.css`; the tokens read the
 `--font-geist-sans`, `--font-geist-mono` and `--font-geist-pixel-*` variables set by `next/font`.
+
+**Next.js App Router:** interactive components ship with `"use client"`, so they can be imported
+straight from Server Components.
+
+**Tailwind CSS v4:** add the preset after the tokens to get `font-pixel`, `shadow-pixel`,
+`clip-notch`, `pixelated` and `*-pxl-*` utilities that follow the active theme:
+
+```css
+@import "tailwindcss";
+@import "@pixel-ui/tokens/styles.css";
+@import "@pixel-ui/tokens/tailwind.css";
+```
 
 ## Repository layout
 

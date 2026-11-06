@@ -1,0 +1,44 @@
+.pxl-field {
+  display: grid;
+  gap: var(--pxl-space-2);
+  min-width: 0;
+  font-family: var(--pxl-font-sans);
+  color: var(--pxl-fg);
+}
+
+.pxl-field__label {
+  display: inline-flex;
+  gap: 2px;
+  width: fit-content;
+  font-size: var(--pxl-text-sm);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.pxl-field__required {
+  color: var(--pxl-danger);
+}
+
+.pxl-field__message {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.pxl-field__message[data-tone="danger"] {
+  color: var(--pxl-danger);
+}
+
+/* Optically centre the 16px icon on the first 13px/1.5 line. */
+.pxl-field__icon {
+  margin-top: 2px;
+}
+
+.pxl-field[data-disabled] .pxl-field__label {
+  color: var(--pxl-fg-muted);
+}

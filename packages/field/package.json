@@ -1,0 +1,40 @@
+{
+  "name": "@pixel-ui/field",
+  "version": "0.0.0",
+  "description": "Form field wrapper with label, description and error",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/field.css",
+      "default": "./dist/field.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pixel-ui/core": "workspace:^",
+    "@pixel-ui/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pixel-ui/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

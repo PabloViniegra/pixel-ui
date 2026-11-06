@@ -1,0 +1,107 @@
+.pxl-chart {
+  --_gap: 2px;
+  --_tone: var(--pxl-accent);
+  --_ink: var(--pxl-gray-500);
+  --_track: var(--pxl-gray-100);
+
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--_cols), var(--_cell));
+  gap: var(--_gap);
+  vertical-align: middle;
+}
+
+.pxl-chart[data-tone="neutral"] {
+  --_tone: var(--pxl-fg);
+}
+.pxl-chart[data-tone="success"] {
+  --_tone: var(--pxl-success);
+}
+.pxl-chart[data-tone="warning"] {
+  --_tone: var(--pxl-warning);
+}
+.pxl-chart[data-tone="danger"] {
+  --_tone: var(--pxl-danger);
+}
+
+/* Row 0 is the baseline, so cells stack upwards. */
+.pxl-chart__col {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--_gap);
+}
+
+.pxl-chart__cell {
+  width: var(--_cell);
+  height: var(--_cell);
+  border-radius: 1px;
+  transition: background-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-chart[data-kind="bar"] .pxl-chart__cell {
+  background: var(--_track);
+}
+
+.pxl-chart__cell[data-lit="line"] {
+  background: var(--_ink);
+}
+
+.pxl-chart[data-kind="bar"] .pxl-chart__cell[data-lit] {
+  background: var(--_ink);
+}
+
+.pxl-chart__cell[data-lit="area"] {
+  background: color-mix(in oklch, var(--_ink) 35%, transparent);
+}
+
+.pxl-chart__col[data-highlight] .pxl-chart__cell[data-lit="bar"],
+.pxl-chart__col[data-highlight] .pxl-chart__cell[data-lit="line"] {
+  background: var(--_tone);
+}
+
+.pxl-chart__col[data-highlight] .pxl-chart__cell[data-lit="area"] {
+  background: color-mix(in oklch, var(--_tone) 35%, transparent);
+}
+
+.pxl-chart__col:hover .pxl-chart__cell[data-lit] {
+  background: var(--pxl-fg);
+}
+
+/* Hit target: the whole column plus half the gap on each side. */
+.pxl-chart__col::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--_gap) * -2) calc(var(--_gap) / -2);
+}
+
+.pxl-chart__tip {
+  position: absolute;
+  bottom: calc(100% + var(--pxl-space-2));
+  left: 0;
+  z-index: 1;
+  display: none;
+  gap: var(--pxl-space-2);
+  padding: var(--pxl-space-1) var(--pxl-space-2);
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-gray-900);
+  color: var(--pxl-bg);
+  font: 500 var(--pxl-text-xs) / 1.4 var(--pxl-font-sans);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.pxl-chart__col[data-edge="end"] .pxl-chart__tip {
+  left: auto;
+  right: 0;
+}
+
+.pxl-chart__col:hover .pxl-chart__tip {
+  display: inline-flex;
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-chart__tip-label {
+  color: color-mix(in oklch, var(--pxl-bg) 70%, transparent);
+}

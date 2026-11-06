@@ -41,6 +41,10 @@
   /* Soft elevation, used only as hover/float feedback. */
   --pxl-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
   --pxl-shadow-md: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.08);
+  --pxl-shadow-lg: 0 2px 4px rgb(0 0 0 / 0.04), 0 12px 32px rgb(0 0 0 / 0.12);
+
+  /* Veil behind modal surfaces. */
+  --pxl-overlay: rgb(0 0 0 / 0.32);
 }
 
 /* Aliases are declared on every theme scope so they resolve against that
@@ -49,6 +53,9 @@
 [data-theme] {
   --pxl-border: var(--pxl-gray-300);
   --pxl-border-strong: var(--pxl-gray-900);
+  /* Decorative only (illustrations, empty states, marketing blocks): never on
+     interactive controls, see DESIGN.md. */
+  --pxl-shadow-pixel: 4px 4px 0 0 var(--pxl-border-strong);
 }
 
 :root {
@@ -92,6 +99,8 @@
      shadow (not `none`) keeps the token valid inside comma-separated lists. */
   --pxl-shadow-sm: 0 0 #0000;
   --pxl-shadow-md: 0 0 #0000;
+  --pxl-shadow-lg: 0 0 #0000;
+  --pxl-overlay: rgb(0 0 0 / 0.64);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -123,6 +132,8 @@
     --pxl-danger-subtle: #330a10;
     --pxl-shadow-sm: 0 0 #0000;
     --pxl-shadow-md: 0 0 #0000;
+    --pxl-shadow-lg: 0 0 #0000;
+    --pxl-overlay: rgb(0 0 0 / 0.64);
   }
 }
 
@@ -142,6 +153,24 @@
   --pxl-radius-md: 6px;
   --pxl-radius-lg: 12px;
   --pxl-radius-full: 9999px;
+
+  /* Stepped corner cut, one pixel unit deep. Decorative only, like
+     --pxl-shadow-pixel. */
+  --pxl-notch: var(--pxl-unit);
+  --pxl-clip-notch: polygon(
+    0 var(--pxl-notch),
+    var(--pxl-notch) var(--pxl-notch),
+    var(--pxl-notch) 0,
+    calc(100% - var(--pxl-notch)) 0,
+    calc(100% - var(--pxl-notch)) var(--pxl-notch),
+    100% var(--pxl-notch),
+    100% calc(100% - var(--pxl-notch)),
+    calc(100% - var(--pxl-notch)) calc(100% - var(--pxl-notch)),
+    calc(100% - var(--pxl-notch)) 100%,
+    var(--pxl-notch) 100%,
+    var(--pxl-notch) calc(100% - var(--pxl-notch)),
+    0 calc(100% - var(--pxl-notch))
+  );
 }
 
 :root {

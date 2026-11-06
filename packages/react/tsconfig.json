@@ -32,6 +32,87 @@
     },
     {
       "path": "../scramble-text"
+    },
+    {
+      "path": "../pixel-icons"
+    },
+    {
+      "path": "../field"
+    },
+    {
+      "path": "../input"
+    },
+    {
+      "path": "../textarea"
+    },
+    {
+      "path": "../checkbox"
+    },
+    {
+      "path": "../radio"
+    },
+    {
+      "path": "../select"
+    },
+    {
+      "path": "../slider"
+    },
+    {
+      "path": "../dialog"
+    },
+    {
+      "path": "../tooltip"
+    },
+    {
+      "path": "../popover"
+    },
+    {
+      "path": "../menu"
+    },
+    {
+      "path": "../toast"
+    },
+    {
+      "path": "../tabs"
+    },
+    {
+      "path": "../breadcrumb"
+    },
+    {
+      "path": "../accordion"
+    },
+    {
+      "path": "../table"
+    },
+    {
+      "path": "../kbd"
+    },
+    {
+      "path": "../skeleton"
+    },
+    {
+      "path": "../separator"
+    },
+    {
+      "path": "../pixel-avatar"
+    },
+    {
+      "path": "../pixel-image"
+    },
+    {
+      "path": "../pixel-transition"
+    },
+    {
+      "path": "../terminal"
+    },
+    {
+      "path": "../command-menu"
+    },
+    {
+      "path": "../mini-chart"
+    },
+    {
+      "path": "../flip-clock"
     }
   ]
 }

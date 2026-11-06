@@ -1,4 +1,13 @@
+export { clamp, litCells } from './cells.js';
+export { cloneTrigger } from './clone-trigger.js';
 export { cx } from './cx.js';
+export { useMergedRefs } from './merge-refs.js';
+export type { Align, Side } from './position.js';
+export { nextIndex, type Orientation } from './roving.js';
 export type { PixelSize, PixelTone } from './types.js';
 export { useControllableState } from './use-controllable-state.js';
+export { useDismiss } from './use-dismiss.js';
+export { useFloating } from './use-floating.js';
+export { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect.js';
+export { useModalDialog } from './use-modal-dialog.js';
 export { usePrefersReducedMotion } from './use-prefers-reduced-motion.js';

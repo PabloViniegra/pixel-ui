@@ -1,4 +1,4 @@
-import { cx, type PixelTone } from '@pixel-ui/core';
+import { clamp, cx, litCells, type PixelTone } from '@pixel-ui/core';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface ProgressProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
@@ -15,8 +15,6 @@ export interface ProgressProps extends Omit<ComponentPropsWithRef<'div'>, 'child
   /** Shows the percentage next to the bar. @default false */
   showValue?: boolean;
 }
-
-const clamp = (n: number, min: number, max: number) => Math.min(Math.max(n, min), max);
 
 /**
  * Segmented progress bar. Blocks light up one after another with a staggered
@@ -35,7 +33,7 @@ export function Progress({
 }: ProgressProps) {
   const indeterminate = value === undefined;
   const ratio = indeterminate ? 0 : clamp(value / max, 0, 1);
-  const lit = Math.round(ratio * segments);
+  const lit = indeterminate ? 0 : litCells(value, max, segments);
   const percent = Math.round(ratio * 100);
 
   return (

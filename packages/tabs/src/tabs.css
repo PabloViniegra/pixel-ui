@@ -1,0 +1,132 @@
+.pxl-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pxl-space-4);
+  font-family: var(--pxl-font-sans);
+}
+
+.pxl-tabs[data-orientation="vertical"] {
+  flex-direction: row;
+}
+
+.pxl-tabs__list {
+  position: relative;
+  display: flex;
+  gap: var(--pxl-space-1);
+  overflow-x: auto;
+  /* Inset line instead of a border so the scroll box does not clip the indicator. */
+  box-shadow: inset 0 -1px var(--pxl-border);
+  scrollbar-width: none;
+}
+
+.pxl-tabs[data-orientation="vertical"] .pxl-tabs__list {
+  flex-direction: column;
+  flex: none;
+  overflow: visible;
+  box-shadow: inset -1px 0 var(--pxl-border);
+}
+
+.pxl-tabs__tab {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pxl-space-2);
+  flex: none;
+  height: 40px;
+  padding: 0 var(--pxl-space-3);
+  border: 0;
+  background: transparent;
+  color: var(--pxl-fg-muted);
+  font: inherit;
+  font-size: var(--pxl-text-sm);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--pxl-dur-fast) linear;
+}
+
+.pxl-tabs[data-orientation="vertical"] .pxl-tabs__tab {
+  justify-content: flex-start;
+  height: 36px;
+}
+
+/* Hover shows as a soft pill behind the label, inset from the underline. */
+.pxl-tabs__tab::before {
+  content: "";
+  position: absolute;
+  inset: 6px 0;
+  z-index: -1;
+  border-radius: var(--pxl-radius-md);
+  background: var(--pxl-gray-100);
+  opacity: 0;
+  transition: opacity var(--pxl-dur-fast) linear;
+}
+
+.pxl-tabs[data-orientation="vertical"] .pxl-tabs__tab::before {
+  inset: 2px var(--pxl-space-2) 2px 0;
+}
+
+.pxl-tabs__tab:hover:not(:disabled) {
+  color: var(--pxl-fg);
+}
+
+.pxl-tabs__tab:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.pxl-tabs__tab[aria-selected="true"] {
+  color: var(--pxl-fg);
+}
+
+.pxl-tabs__tab:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: -2px;
+  border-radius: var(--pxl-radius-md);
+}
+
+.pxl-tabs__tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pxl-tabs__icon {
+  display: inline-flex;
+}
+
+.pxl-tabs__indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: var(--_w);
+  height: 2px;
+  background: var(--pxl-fg);
+  transform: translateX(var(--_x));
+  transition:
+    transform var(--pxl-dur-base) var(--pxl-ease-spring),
+    width var(--pxl-dur-base) var(--pxl-ease-spring);
+}
+
+.pxl-tabs[data-orientation="vertical"] .pxl-tabs__indicator {
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: 2px;
+  height: var(--_h);
+  transform: translateY(var(--_y));
+  transition:
+    transform var(--pxl-dur-base) var(--pxl-ease-spring),
+    height var(--pxl-dur-base) var(--pxl-ease-spring);
+}
+
+.pxl-tabs__panel {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--pxl-text-sm);
+}
+
+.pxl-tabs__panel:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+  border-radius: var(--pxl-radius-sm);
+}

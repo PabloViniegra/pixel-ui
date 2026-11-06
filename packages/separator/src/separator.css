@@ -1,0 +1,62 @@
+.pxl-separator {
+  --_line: var(--pxl-border);
+  --_size: 1px;
+
+  flex: none;
+  background: var(--_line);
+}
+
+.pxl-separator[data-orientation="horizontal"] {
+  width: 100%;
+  height: var(--_size);
+}
+
+.pxl-separator[data-orientation="vertical"] {
+  align-self: stretch;
+  width: var(--_size);
+  min-height: 1em;
+}
+
+/* Square cells: 2px on, 2px off along the line. */
+.pxl-separator[data-variant="pixel"] {
+  --_size: 2px;
+
+  background: repeating-linear-gradient(
+    var(--_dir, 90deg),
+    var(--pxl-gray-400) 0 2px,
+    transparent 2px 4px
+  );
+}
+
+.pxl-separator[data-variant="pixel"][data-orientation="vertical"] {
+  --_dir: 180deg;
+}
+
+.pxl-separator[data-labelled] {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  height: auto;
+  background: none;
+}
+
+.pxl-separator[data-labelled]::before,
+.pxl-separator[data-labelled]::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--_line);
+}
+
+.pxl-separator[data-labelled][data-variant="pixel"]::before,
+.pxl-separator[data-labelled][data-variant="pixel"]::after {
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--pxl-gray-400) 0 2px, transparent 2px 4px);
+}
+
+.pxl-separator__label {
+  color: var(--pxl-fg-muted);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-xs);
+  white-space: nowrap;
+}

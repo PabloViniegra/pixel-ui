@@ -1,0 +1,42 @@
+{
+  "name": "@pixel-ui/popover",
+  "version": "0.0.0",
+  "description": "Non-modal panel anchored to a trigger",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/popover.css",
+      "default": "./dist/popover.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pixel-ui/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pixel-ui/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@pixel-ui/button": "workspace:^"
+  }
+}

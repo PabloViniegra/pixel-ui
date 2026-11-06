@@ -115,6 +115,21 @@ importers:
         specifier: ^7.1.0
         version: 7.3.7(@types/node@22.20.5)
 
+  packages/accordion:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/badge:
     dependencies:
       '@pixel-ui/core':
@@ -126,6 +141,22 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.3.1
+
+  packages/breadcrumb:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
 
   packages/button:
     dependencies:
@@ -151,8 +182,129 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/checkbox:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/command-menu:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/kbd':
+        specifier: workspace:^
+        version: link:../kbd
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/scramble-text':
+        specifier: workspace:^
+        version: link:../scramble-text
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
   packages/core:
     dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/dialog:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
+  packages/field:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/flip-clock:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
+  packages/input:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+
+  packages/kbd:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.3.1
@@ -169,7 +321,124 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/menu:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+
+  packages/mini-chart:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/pixel-avatar:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/pixel-icons:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/pixel-image:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/pixel-transition:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.3.1(react@19.3.1)
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
+  packages/popover:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
   packages/progress:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/radio:
     dependencies:
       '@pixel-ui/core':
         specifier: workspace:^
@@ -183,33 +452,114 @@ importers:
 
   packages/react:
     dependencies:
+      '@pixel-ui/accordion':
+        specifier: workspace:^
+        version: link:../accordion
       '@pixel-ui/badge':
         specifier: workspace:^
         version: link:../badge
+      '@pixel-ui/breadcrumb':
+        specifier: workspace:^
+        version: link:../breadcrumb
       '@pixel-ui/button':
         specifier: workspace:^
         version: link:../button
       '@pixel-ui/card':
         specifier: workspace:^
         version: link:../card
+      '@pixel-ui/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
+      '@pixel-ui/command-menu':
+        specifier: workspace:^
+        version: link:../command-menu
       '@pixel-ui/core':
         specifier: workspace:^
         version: link:../core
+      '@pixel-ui/dialog':
+        specifier: workspace:^
+        version: link:../dialog
+      '@pixel-ui/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pixel-ui/flip-clock':
+        specifier: workspace:^
+        version: link:../flip-clock
+      '@pixel-ui/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pixel-ui/kbd':
+        specifier: workspace:^
+        version: link:../kbd
       '@pixel-ui/loader':
         specifier: workspace:^
         version: link:../loader
+      '@pixel-ui/menu':
+        specifier: workspace:^
+        version: link:../menu
+      '@pixel-ui/mini-chart':
+        specifier: workspace:^
+        version: link:../mini-chart
+      '@pixel-ui/pixel-avatar':
+        specifier: workspace:^
+        version: link:../pixel-avatar
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/pixel-image':
+        specifier: workspace:^
+        version: link:../pixel-image
+      '@pixel-ui/pixel-transition':
+        specifier: workspace:^
+        version: link:../pixel-transition
+      '@pixel-ui/popover':
+        specifier: workspace:^
+        version: link:../popover
       '@pixel-ui/progress':
         specifier: workspace:^
         version: link:../progress
+      '@pixel-ui/radio':
+        specifier: workspace:^
+        version: link:../radio
       '@pixel-ui/scramble-text':
         specifier: workspace:^
         version: link:../scramble-text
+      '@pixel-ui/select':
+        specifier: workspace:^
+        version: link:../select
+      '@pixel-ui/separator':
+        specifier: workspace:^
+        version: link:../separator
+      '@pixel-ui/skeleton':
+        specifier: workspace:^
+        version: link:../skeleton
+      '@pixel-ui/slider':
+        specifier: workspace:^
+        version: link:../slider
       '@pixel-ui/switch':
         specifier: workspace:^
         version: link:../switch
+      '@pixel-ui/table':
+        specifier: workspace:^
+        version: link:../table
+      '@pixel-ui/tabs':
+        specifier: workspace:^
+        version: link:../tabs
+      '@pixel-ui/terminal':
+        specifier: workspace:^
+        version: link:../terminal
+      '@pixel-ui/textarea':
+        specifier: workspace:^
+        version: link:../textarea
+      '@pixel-ui/toast':
+        specifier: workspace:^
+        version: link:../toast
       '@pixel-ui/tokens':
         specifier: workspace:^
         version: link:../tokens
+      '@pixel-ui/tooltip':
+        specifier: workspace:^
+        version: link:../tooltip
       react:
         specifier: ^19.0.0
         version: 19.3.1
@@ -219,6 +569,63 @@ importers:
       '@pixel-ui/core':
         specifier: workspace:^
         version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/select:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/separator:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/skeleton:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/slider:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/field':
+        specifier: workspace:^
+        version: link:../field
       '@pixel-ui/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -238,11 +645,104 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/table:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/tabs:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/terminal:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/badge':
+        specifier: workspace:^
+        version: link:../badge
+
+  packages/textarea:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/toast:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
+
   packages/tokens:
     devDependencies:
       geist:
         specifier: ^1.5.0
         version: 1.9.2(next@16.4.5(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
+
+  packages/tooltip:
+    dependencies:
+      '@pixel-ui/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pixel-ui/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pixel-ui/button':
+        specifier: workspace:^
+        version: link:../button
 
 packages:
 

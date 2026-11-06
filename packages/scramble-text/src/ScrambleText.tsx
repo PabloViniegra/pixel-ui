@@ -1,14 +1,12 @@
-import { cx, usePrefersReducedMotion } from '@pixel-ui/core';
-import {
-  type ComponentPropsWithRef,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+'use client';
 
-const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+import {
+  cx,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+  usePrefersReducedMotion,
+} from '@pixel-ui/core';
+import { type ComponentPropsWithRef, useCallback, useEffect, useRef, useState } from 'react';
 
 export type ScrambleTrigger = 'mount' | 'hover' | 'inView' | 'manual';
 
@@ -52,6 +50,7 @@ export function ScrambleText({
   const [running, setRunning] = useState(false);
   const frame = useRef(0);
   const localRef = useRef<HTMLSpanElement | null>(null);
+  const mergedRef = useMergedRefs(localRef, ref);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
@@ -126,18 +125,9 @@ export function ScrambleText({
     return () => observer.disconnect();
   }, [trigger, run]);
 
-  const setRefs = useCallback(
-    (node: HTMLSpanElement | null) => {
-      localRef.current = node;
-      if (typeof ref === 'function') ref(node);
-      else if (ref) ref.current = node;
-    },
-    [ref],
-  );
-
   return (
     <span
-      ref={setRefs}
+      ref={mergedRef}
       className={cx('pxl-scramble', className)}
       data-running={running || undefined}
       onMouseEnter={(event) => {

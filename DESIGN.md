@@ -231,10 +231,12 @@ Depth is soft and shallow. Resting surfaces are flat and defined by a 1px `borde
 - **Hover lift:** translate up by 1px (2px on cards) and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur shadows.
 - **Pressed:** remove the lift and scale to `0.98`.
 - **Dark mode:** shadows are removed; hover strengthens the border to `gray-500`.
+- **Floating surfaces:** popovers, menus, toasts, dialogs and the command menu use `shadow-lg`; modal ones sit over the `overlay` veil. Tooltips stay flat with a border.
+- **`shadow-pixel`:** a hard 4px offset shadow kept for decorative blocks only (illustrations, empty states, marketing). Never on interactive controls.
 
 ## Shapes
 
-Shapes are softly rounded rectangles. Corners use `rounded` tokens via `border-radius`; `clip-path` notches are retired because they also clip shadows and focus rings.
+Shapes are softly rounded rectangles. Corners use `rounded` tokens via `border-radius`. The `clip-notch` stepped corner (`--pxl-clip-notch`) is decorative only, like `shadow-pixel`: it also clips shadows and focus rings, so it never goes on interactive controls.
 
 - `xs` — pixel cells (progress segments, loader cells, badge dot): the corner is barely softened so cells still read as pixels.
 - `sm` — small inline elements and focus-ring insets.
@@ -253,13 +255,21 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 - **Loader:** the 3×3 grid is the one place where stepped timing stays, because the frame-by-frame snake is the component's identity.
 - **Card:** `lg` radius, 1px `border`, flat at rest; interactive cards lift per Elevation and strengthen the border to `gray-500`. The highlight state is a static `accent` border or soft accent glow, not marching pixels; the title glitch is removed.
 - **ScrambleText:** unchanged; it is a deliberate pixel moment set in Geist Pixel.
+- **Form controls (Input, Textarea, Select, Checkbox, Radio, Slider):** `md` radius, 1px `border`, 32/40/48px heights; `Field` wires label, description and error with `aria-describedby`. The slider track is a row of `xs` cells, the progress signature reused.
+- **Overlays (Dialog, Popover, Tooltip, Menu, Toast):** `lg` radius (tooltip `sm`), `bg` surface with a 1px `border`, floating ones entering with `pxl-float-in` from the side they open on. Dialog sits on the native `<dialog>`; toast shows its timeout as a pixel countdown.
+- **Navigation and structure (Tabs, Breadcrumb, Accordion, Table, Separator, Skeleton, Kbd):** quiet greys; tabs slide a 2px `fg` indicator with the spring ease; skeletons use a slow eased sweep.
+- **Signature components:** PixelAvatar (symmetric identicon from a hash), PixelImage (mosaic that sharpens), PixelTransition (stepped dither dissolve for the View Transitions API), Terminal (level gutter, block cursor), PixelIcons (16×16, `crispEdges`), CommandMenu (results decode with ScrambleText), mini charts (bars and sparklines in cells) and FlipClock (split-flap digits in Geist Pixel). Each is one deliberate pixel moment.
 - **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius.
 
 ## Do's and Don'ts
 
-- Do use smooth easing (ease-out for entrances, the spring ease for movement) for state changes; reserve `steps()` for the loader and `ScrambleText`.
+- Do use smooth easing (ease-out for entrances, the spring ease for movement) for state changes; reserve `steps()` for the loader, `ScrambleText`, the terminal cursor and the PixelTransition dissolve, where frame-by-frame motion is the identity.
 - Do keep at most one pixel-signature element per component.
 - Do respect `prefers-reduced-motion` by making transitions instant and stopping loops.
-- Don't use hard offset shadows, notched `clip-path` corners or uppercase pixel labels on interactive controls.
+- Don't use hard offset shadows (`shadow-pixel`), notched corners (`clip-notch`) or uppercase pixel labels on interactive controls.
 - Don't use Geist Pixel for body text, labels or anything below the `title` size.
 - Don't introduce a second accent colour; status colours communicate state only.
+
+## Tailwind CSS v4
+
+`@pixel-ui/tokens/tailwind.css` maps the tokens to theme variables with `@theme inline`, so utilities follow the live theme: `font-pixel` (and `font-pixel-grid|circle|triangle|line`), `font-pxl-sans|mono`, `text-pxl-*`, `bg-pxl-*`/`text-pxl-*` colours, `rounded-pxl-*`, `shadow-pixel`, `shadow-pxl-sm|md|lg`, `ease-pxl-*`, plus the `clip-notch` and `pixelated` utilities. The same decorative-only rule applies to `shadow-pixel` and `clip-notch`.

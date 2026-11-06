@@ -1,0 +1,37 @@
+.pxl-kbd {
+  --_h: 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: var(--_h);
+  height: var(--_h);
+  padding: 0 var(--pxl-space-1);
+  border: 1px solid var(--pxl-border);
+  border-bottom-width: 2px;
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-bg-subtle);
+  color: var(--pxl-fg-muted);
+  font-family: var(--pxl-font-mono);
+  font-size: var(--pxl-text-xs);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.pxl-kbd[data-size="sm"],
+.pxl-kbd-group[data-size="sm"] .pxl-kbd {
+  --_h: 16px;
+
+  padding: 0 3px;
+  font-size: 10px;
+}
+
+.pxl-kbd-group {
+  display: inline-flex;
+  gap: 2px;
+  font: inherit;
+  vertical-align: middle;
+}

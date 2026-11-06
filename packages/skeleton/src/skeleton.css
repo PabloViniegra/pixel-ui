@@ -1,0 +1,44 @@
+.pxl-skeleton {
+  position: relative;
+  display: block;
+  height: 1em;
+  overflow: hidden;
+  border-radius: var(--pxl-radius-md);
+  background: var(--pxl-gray-100);
+}
+
+.pxl-skeleton[data-radius="sm"] {
+  border-radius: var(--pxl-radius-sm);
+}
+
+.pxl-skeleton[data-radius="full"] {
+  border-radius: var(--pxl-radius-full);
+}
+
+.pxl-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--pxl-gray-200), transparent);
+  animation: pxl-sweep 1600ms var(--pxl-ease-in-out) infinite;
+}
+
+.pxl-skeleton-text {
+  display: grid;
+  gap: 0.6em;
+}
+
+.pxl-skeleton-text > .pxl-skeleton {
+  height: 0.75em;
+}
+
+.pxl-skeleton-text > .pxl-skeleton:last-child:not(:only-child) {
+  width: 60%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pxl-skeleton::after {
+    display: none;
+  }
+}

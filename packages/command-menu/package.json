@@ -1,0 +1,45 @@
+{
+  "name": "@pixel-ui/command-menu",
+  "version": "0.0.0",
+  "description": "\u2318K command palette whose results decode in with ScrambleText",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/command-menu.css",
+      "default": "./dist/command-menu.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pixel-ui/core": "workspace:^",
+    "@pixel-ui/kbd": "workspace:^",
+    "@pixel-ui/pixel-icons": "workspace:^",
+    "@pixel-ui/scramble-text": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pixel-ui/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@pixel-ui/button": "workspace:^"
+  }
+}

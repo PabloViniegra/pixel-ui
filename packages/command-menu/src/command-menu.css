@@ -1,0 +1,150 @@
+.pxl-command {
+  width: min(560px, calc(100vw - var(--pxl-space-8)));
+  max-width: none;
+  max-height: none;
+  margin: 12vh auto auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  box-shadow: var(--pxl-shadow-lg);
+  font-family: var(--pxl-font-sans);
+}
+
+.pxl-command[open] {
+  animation: pxl-float-in var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-command::backdrop {
+  background: var(--pxl-overlay);
+  animation: pxl-command-fade var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+@keyframes pxl-command-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.pxl-command__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(480px, 76dvh);
+}
+
+.pxl-command__search {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  padding: 0 var(--pxl-space-4);
+  border-bottom: 1px solid var(--pxl-border);
+}
+
+.pxl-command__search-icon {
+  flex: none;
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-command__input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--pxl-text-md);
+  outline: none;
+}
+
+.pxl-command__input::placeholder {
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-command__list {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--pxl-space-2);
+  scroll-padding-block: var(--pxl-space-2);
+}
+
+.pxl-command__group + .pxl-command__group {
+  margin-top: var(--pxl-space-2);
+}
+
+.pxl-command__heading {
+  padding: var(--pxl-space-2) var(--pxl-space-3) var(--pxl-space-1);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+  font-weight: 500;
+}
+
+.pxl-command__item {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-3);
+  min-height: 40px;
+  padding: 0 var(--pxl-space-3);
+  border-radius: var(--pxl-radius-md);
+  font-size: var(--pxl-text-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--pxl-dur-instant) linear;
+}
+
+.pxl-command__item[data-active] {
+  background: var(--pxl-gray-100);
+}
+
+.pxl-command__item[aria-disabled="true"] {
+  color: var(--pxl-fg-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pxl-command__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--pxl-fg-muted);
+}
+
+.pxl-command__item[data-active] .pxl-command__icon {
+  color: var(--pxl-fg);
+}
+
+/* Results keep the UI face so a long list reads as text, not display type. */
+.pxl-command__label.pxl-scramble {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pxl-command__empty {
+  margin: 0;
+  padding: var(--pxl-space-8) var(--pxl-space-4);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-sm);
+  text-align: center;
+}
+
+.pxl-command__footer {
+  display: flex;
+  gap: var(--pxl-space-4);
+  padding: var(--pxl-space-2) var(--pxl-space-4);
+  border-top: 1px solid var(--pxl-border);
+  background: var(--pxl-bg-subtle);
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+}
+
+.pxl-command__footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pxl-space-2);
+}

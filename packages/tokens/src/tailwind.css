@@ -1,0 +1,76 @@
+/*
+ * Tailwind CSS v4 preset. Import after tailwindcss and the PixelUI tokens:
+ *
+ *   @import "tailwindcss";
+ *   @import "@pixel-ui/tokens/styles.css";
+ *   @import "@pixel-ui/tokens/tailwind.css";
+ *
+ * `inline` makes every utility point at the live --pxl-* variable, so the
+ * light/dark switch keeps working instead of freezing the light values.
+ */
+@theme inline {
+  --font-pixel: var(--pxl-font-pixel);
+  --font-pixel-grid: var(--pxl-font-pixel-grid);
+  --font-pixel-circle: var(--pxl-font-pixel-circle);
+  --font-pixel-triangle: var(--pxl-font-pixel-triangle);
+  --font-pixel-line: var(--pxl-font-pixel-line);
+  --font-pxl-sans: var(--pxl-font-sans);
+  --font-pxl-mono: var(--pxl-font-mono);
+
+  --text-pxl-xs: var(--pxl-text-xs);
+  --text-pxl-sm: var(--pxl-text-sm);
+  --text-pxl-md: var(--pxl-text-md);
+  --text-pxl-lg: var(--pxl-text-lg);
+  --text-pxl-xl: var(--pxl-text-xl);
+  --text-pxl-2xl: var(--pxl-text-2xl);
+
+  --color-pxl-bg: var(--pxl-bg);
+  --color-pxl-bg-subtle: var(--pxl-bg-subtle);
+  --color-pxl-fg: var(--pxl-fg);
+  --color-pxl-fg-muted: var(--pxl-fg-muted);
+  --color-pxl-border: var(--pxl-border);
+  --color-pxl-border-strong: var(--pxl-border-strong);
+  --color-pxl-gray-100: var(--pxl-gray-100);
+  --color-pxl-gray-200: var(--pxl-gray-200);
+  --color-pxl-gray-300: var(--pxl-gray-300);
+  --color-pxl-gray-400: var(--pxl-gray-400);
+  --color-pxl-gray-500: var(--pxl-gray-500);
+  --color-pxl-gray-600: var(--pxl-gray-600);
+  --color-pxl-gray-700: var(--pxl-gray-700);
+  --color-pxl-gray-800: var(--pxl-gray-800);
+  --color-pxl-gray-900: var(--pxl-gray-900);
+  --color-pxl-accent: var(--pxl-accent);
+  --color-pxl-accent-fg: var(--pxl-accent-fg);
+  --color-pxl-accent-subtle: var(--pxl-accent-subtle);
+  --color-pxl-accent-text: var(--pxl-accent-text);
+  --color-pxl-success: var(--pxl-success);
+  --color-pxl-success-subtle: var(--pxl-success-subtle);
+  --color-pxl-warning: var(--pxl-warning);
+  --color-pxl-warning-subtle: var(--pxl-warning-subtle);
+  --color-pxl-danger: var(--pxl-danger);
+  --color-pxl-danger-fg: var(--pxl-danger-fg);
+  --color-pxl-danger-subtle: var(--pxl-danger-subtle);
+
+  --radius-pxl-xs: var(--pxl-radius-xs);
+  --radius-pxl-sm: var(--pxl-radius-sm);
+  --radius-pxl-md: var(--pxl-radius-md);
+  --radius-pxl-lg: var(--pxl-radius-lg);
+
+  --shadow-pixel: var(--pxl-shadow-pixel);
+  --shadow-pxl-sm: var(--pxl-shadow-sm);
+  --shadow-pxl-md: var(--pxl-shadow-md);
+  --shadow-pxl-lg: var(--pxl-shadow-lg);
+
+  --ease-pxl-out: var(--pxl-ease-out);
+  --ease-pxl-in-out: var(--pxl-ease-in-out);
+  --ease-pxl-spring: var(--pxl-ease-spring);
+  --ease-pxl-steps: var(--pxl-ease-steps);
+}
+
+@utility clip-notch {
+  clip-path: var(--pxl-clip-notch);
+}
+
+@utility pixelated {
+  image-rendering: pixelated;
+}

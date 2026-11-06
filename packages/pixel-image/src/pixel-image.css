@@ -1,0 +1,55 @@
+.pxl-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-gray-100);
+}
+
+.pxl-image__img,
+.pxl-image__mosaic {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pxl-image__img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--pxl-dur-slow) var(--pxl-ease-out);
+}
+
+.pxl-image__mosaic {
+  position: absolute;
+  inset: 0;
+  image-rendering: pixelated;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--pxl-dur-base) linear;
+}
+
+.pxl-image[data-state="resolving"] .pxl-image__mosaic {
+  opacity: 1;
+  transition: none;
+}
+
+.pxl-image[data-state="loaded"] .pxl-image__img {
+  opacity: 1;
+}
+
+/* Waiting for bytes: one cell breathing in the corner says "still loading". */
+.pxl-image[data-state="loading"]::after {
+  content: "";
+  position: absolute;
+  left: var(--pxl-space-3);
+  bottom: var(--pxl-space-3);
+  width: 6px;
+  height: 6px;
+  border-radius: var(--pxl-radius-xs);
+  background: var(--pxl-gray-500);
+  animation: pxl-breathe 1200ms var(--pxl-ease-in-out) infinite;
+}
+
+.pxl-image[data-state="error"] .pxl-image__img {
+  visibility: hidden;
+}
