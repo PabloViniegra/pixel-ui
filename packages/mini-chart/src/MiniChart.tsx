@@ -1,4 +1,4 @@
-import { cx, litCells, type PixelTone } from '@pixel-ui/core';
+import { cx, litCells, type PixelTone } from '@pablo-v/core';
 import type { ComponentPropsWithRef, CSSProperties, ReactNode } from 'react';
 
 export type ChartDatum = number | { label: string; value: number };

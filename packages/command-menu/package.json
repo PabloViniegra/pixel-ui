@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/command-menu",
+  "name": "@pablo-v/command-menu",
   "version": "1.0.0",
   "description": "⌘K command palette whose results decode in with ScrambleText",
   "license": "MIT",
@@ -32,19 +32,19 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^",
-    "@pixel-ui/kbd": "workspace:^",
-    "@pixel-ui/pixel-icons": "workspace:^",
-    "@pixel-ui/scramble-text": "workspace:^"
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/kbd": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^",
+    "@pablo-v/scramble-text": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@pixel-ui/button": "workspace:^"
+    "@pablo-v/button": "workspace:^"
   }
 }

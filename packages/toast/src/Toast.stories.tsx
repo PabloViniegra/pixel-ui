@@ -1,10 +1,10 @@
-import { Button } from '@pixel-ui/button';
+import { Button } from '@pablo-v/button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { toast } from './store.js';
 import { Toaster } from './Toaster.js';
-import '@pixel-ui/button/style.css';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/button/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './toast.css';
 
 const meta = {

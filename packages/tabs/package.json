@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/tabs",
+  "name": "@pablo-v/tabs",
   "version": "1.0.0",
   "description": "Tabs with roving focus and a sliding indicator",
   "license": "MIT",
@@ -32,10 +32,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

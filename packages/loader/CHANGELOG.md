@@ -1,4 +1,4 @@
-# @pixel-ui/loader
+# @pablo-v/loader
 
 ## 1.0.0
 
@@ -10,8 +10,8 @@
 
 - Updated dependencies [546adf4]
 - Updated dependencies [18d5fc6]
-  - @pixel-ui/core@0.2.0
-  - @pixel-ui/tokens@0.2.0
+  - @pablo-v/core@0.2.0
+  - @pablo-v/tokens@0.2.0
 
 ## 0.1.0
 

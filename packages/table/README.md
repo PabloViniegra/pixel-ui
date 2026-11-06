@@ -1,13 +1,13 @@
-# @pixel-ui/table
+# @pablo-v/table
 
 Data table primitives
 
 ```bash
-pnpm add @pixel-ui/table @pixel-ui/tokens
+pnpm add @pablo-v/table @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/table/style.css';
-import { Table } from '@pixel-ui/table';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/table/style.css';
+import { Table } from '@pablo-v/table';
 ```

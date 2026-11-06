@@ -1,13 +1,13 @@
-# @pixel-ui/skeleton
+# @pablo-v/skeleton
 
 Loading placeholders
 
 ```bash
-pnpm add @pixel-ui/skeleton @pixel-ui/tokens
+pnpm add @pablo-v/skeleton @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/skeleton/style.css';
-import { Skeleton } from '@pixel-ui/skeleton';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/skeleton/style.css';
+import { Skeleton } from '@pablo-v/skeleton';
 ```

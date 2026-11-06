@@ -1,13 +1,13 @@
-# @pixel-ui/radio
+# @pablo-v/radio
 
 Radio group with a pixel dot indicator
 
 ```bash
-pnpm add @pixel-ui/radio @pixel-ui/tokens
+pnpm add @pablo-v/radio @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/radio/style.css';
-import { Radio } from '@pixel-ui/radio';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/radio/style.css';
+import { Radio } from '@pablo-v/radio';
 ```

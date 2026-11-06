@@ -1,13 +1,13 @@
-# @pixel-ui/scramble-text
+# @pablo-v/scramble-text
 
 Text that decodes itself from random pixel glyphs.
 
 ```bash
-pnpm add @pixel-ui/scramble-text @pixel-ui/tokens
+pnpm add @pablo-v/scramble-text @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/scramble-text/style.css';
-import { ScrambleText } from '@pixel-ui/scramble-text';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/scramble-text/style.css';
+import { ScrambleText } from '@pablo-v/scramble-text';
 ```

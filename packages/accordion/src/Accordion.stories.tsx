@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { Accordion, AccordionItem } from './Accordion.js';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './accordion.css';
 
 const meta = {

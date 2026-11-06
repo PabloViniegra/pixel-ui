@@ -1,4 +1,4 @@
-import { clamp, cx, litCells, type PixelTone } from '@pixel-ui/core';
+import { clamp, cx, litCells, type PixelTone } from '@pablo-v/core';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface ProgressProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {

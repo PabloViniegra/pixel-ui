@@ -1,13 +1,13 @@
-# @pixel-ui/card
+# @pablo-v/card
 
 Card container with header, title, description, content and footer slots.
 
 ```bash
-pnpm add @pixel-ui/card @pixel-ui/tokens
+pnpm add @pablo-v/card @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/card/style.css';
-import { Card } from '@pixel-ui/card';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/card/style.css';
+import { Card } from '@pablo-v/card';
 ```

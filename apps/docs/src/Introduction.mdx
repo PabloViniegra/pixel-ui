@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { Button } from '@pixel-ui/button';
-import { ScrambleText } from '@pixel-ui/scramble-text';
-import '@pixel-ui/button/style.css';
-import '@pixel-ui/scramble-text/style.css';
+import { Button } from '@pablo-v/button';
+import { ScrambleText } from '@pablo-v/scramble-text';
+import '@pablo-v/button/style.css';
+import '@pablo-v/scramble-text/style.css';
 import './docs.css';
 
 <Meta title="Introduction" />
@@ -28,16 +28,16 @@ motion that is fast and springy. **Geist Pixel** type and a few 8-bit details ar
 
 ```bash
 # just what you need…
-pnpm add @pixel-ui/tokens @pixel-ui/button
+pnpm add @pablo-v/tokens @pablo-v/button
 
 # …or everything
-pnpm add @pixel-ui/react
+pnpm add @pablo-v/react
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';   // tokens, Geist Pixel @font-face, keyframes
-import '@pixel-ui/button/style.css';
-import { Button } from '@pixel-ui/button';
+import '@pablo-v/tokens/styles.css';   // tokens, Geist Pixel @font-face, keyframes
+import '@pablo-v/button/style.css';
+import { Button } from '@pablo-v/button';
 
 export function Deploy() {
   return <Button>Deploy</Button>;
@@ -46,8 +46,8 @@ export function Deploy() {
 
 ### Next.js
 
-If you already load Geist Pixel with `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`
-and `@pixel-ui/tokens/motion.css` instead of `styles.css` — the tokens read the
+If you already load Geist Pixel with `geist/font/pixel`, import `@pablo-v/tokens/tokens.css`
+and `@pablo-v/tokens/motion.css` instead of `styles.css` — the tokens read the
 `--font-geist-pixel-*` variables that `next/font` sets.
 
 <div style={{ marginTop: 32 }}>

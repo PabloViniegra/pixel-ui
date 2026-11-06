@@ -1,6 +1,6 @@
 'use client';
 
-import { cx, type Orientation, useControllableState } from '@pixel-ui/core';
+import { cx, type Orientation, useControllableState } from '@pablo-v/core';
 import { type ComponentPropsWithRef, createContext, type ReactNode, use, useId } from 'react';
 
 interface RadioGroupContextValue {

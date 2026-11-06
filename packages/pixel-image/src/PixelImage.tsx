@@ -1,6 +1,6 @@
 'use client';
 
-import { cx, useMergedRefs, usePrefersReducedMotion } from '@pixel-ui/core';
+import { cx, useMergedRefs, usePrefersReducedMotion } from '@pablo-v/core';
 import {
   type ComponentPropsWithRef,
   type CSSProperties,

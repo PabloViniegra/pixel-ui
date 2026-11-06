@@ -1,13 +1,13 @@
-# @pixel-ui/progress
+# @pablo-v/progress
 
 Segmented progress bar with a determinate value or an indeterminate loop.
 
 ```bash
-pnpm add @pixel-ui/progress @pixel-ui/tokens
+pnpm add @pablo-v/progress @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/progress/style.css';
-import { Progress } from '@pixel-ui/progress';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/progress/style.css';
+import { Progress } from '@pablo-v/progress';
 ```

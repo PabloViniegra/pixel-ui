@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/docs",
+  "name": "@pablo-v/docs",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,15 +7,15 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@pixel-ui/badge": "workspace:*",
-    "@pixel-ui/button": "workspace:*",
-    "@pixel-ui/card": "workspace:*",
-    "@pixel-ui/core": "workspace:*",
-    "@pixel-ui/loader": "workspace:*",
-    "@pixel-ui/progress": "workspace:*",
-    "@pixel-ui/scramble-text": "workspace:*",
-    "@pixel-ui/switch": "workspace:*",
-    "@pixel-ui/tokens": "workspace:*",
+    "@pablo-v/badge": "workspace:*",
+    "@pablo-v/button": "workspace:*",
+    "@pablo-v/card": "workspace:*",
+    "@pablo-v/core": "workspace:*",
+    "@pablo-v/loader": "workspace:*",
+    "@pablo-v/progress": "workspace:*",
+    "@pablo-v/scramble-text": "workspace:*",
+    "@pablo-v/switch": "workspace:*",
+    "@pablo-v/tokens": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

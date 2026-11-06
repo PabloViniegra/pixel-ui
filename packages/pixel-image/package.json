@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/pixel-image",
+  "name": "@pablo-v/pixel-image",
   "version": "1.0.0",
   "description": "Image that loads as a coarse pixel mosaic and sharpens to full resolution",
   "license": "MIT",
@@ -32,10 +32,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

@@ -1,13 +1,13 @@
-# @pixel-ui/popover
+# @pablo-v/popover
 
 Non-modal panel anchored to a trigger
 
 ```bash
-pnpm add @pixel-ui/popover @pixel-ui/tokens
+pnpm add @pablo-v/popover @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/popover/style.css';
-import { Popover } from '@pixel-ui/popover';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/popover/style.css';
+import { Popover } from '@pablo-v/popover';
 ```

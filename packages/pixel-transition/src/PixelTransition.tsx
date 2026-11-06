@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from '@pixel-ui/core';
+import { cx } from '@pablo-v/core';
 import { type ComponentPropsWithRef, type CSSProperties, useId } from 'react';
 import { flushSync } from 'react-dom';
 

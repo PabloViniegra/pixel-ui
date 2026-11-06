@@ -20,8 +20,8 @@ Sober, Vercel-style product UI where the pixel/8-bit character is a subtle signa
 
 ## Operating Context
 
-- Consumed as one npm package per component (`@pixel-ui/<name>`), each independently versioned with Changesets, or all at once via `@pixel-ui/react`.
-- Styling is plain CSS with overridable `--pxl-*` custom properties, imported per component (`@pixel-ui/<name>/style.css`).
+- Consumed as one npm package per component (`@pablo-v/<name>`), each independently versioned with Changesets, or all at once via `@pablo-v/react`.
+- Styling is plain CSS with overridable `--pxl-*` custom properties, imported per component (`@pablo-v/<name>/style.css`).
 - Developers evaluate and browse components in the Storybook catalogue (`apps/docs`), which shows each package's version and changelog.
 
 ## Capabilities and Constraints
@@ -33,7 +33,7 @@ Sober, Vercel-style product UI where the pixel/8-bit character is a subtle signa
 
 ## Brand Commitments
 
-- Name: PixelUI; npm scope `@pixel-ui`.
+- Name: PixelUI; npm scope `@pablo-v`.
 - Geist Pixel (SIL OFL 1.1, © Vercel) is the signature typeface; PixelUI code is MIT.
 
 ## Evidence on Hand

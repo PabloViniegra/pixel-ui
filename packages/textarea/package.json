@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/textarea",
+  "name": "@pablo-v/textarea",
   "version": "1.0.0",
   "description": "Multi-line text input with auto-resize",
   "license": "MIT",
@@ -32,11 +32,11 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^",
-    "@pixel-ui/field": "workspace:^"
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/field": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

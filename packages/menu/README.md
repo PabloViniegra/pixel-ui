@@ -1,13 +1,13 @@
-# @pixel-ui/menu
+# @pablo-v/menu
 
 Menu and dropdown with keyboard navigation
 
 ```bash
-pnpm add @pixel-ui/menu @pixel-ui/tokens
+pnpm add @pablo-v/menu @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/menu/style.css';
-import { Menu } from '@pixel-ui/menu';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/menu/style.css';
+import { Menu } from '@pablo-v/menu';
 ```

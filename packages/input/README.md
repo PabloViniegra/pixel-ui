@@ -1,13 +1,13 @@
-# @pixel-ui/input
+# @pablo-v/input
 
 Text input with prefix and suffix slots
 
 ```bash
-pnpm add @pixel-ui/input @pixel-ui/tokens
+pnpm add @pablo-v/input @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/input/style.css';
-import { Input } from '@pixel-ui/input';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/input/style.css';
+import { Input } from '@pablo-v/input';
 ```

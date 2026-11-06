@@ -1,7 +1,7 @@
 'use client';
 
-import { cx, type PixelSize } from '@pixel-ui/core';
-import { useFieldControl } from '@pixel-ui/field';
+import { cx, type PixelSize } from '@pablo-v/core';
+import { useFieldControl } from '@pablo-v/field';
 import type { ComponentPropsWithRef, CSSProperties, ReactNode } from 'react';
 
 export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'prefix'> {

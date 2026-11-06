@@ -1,10 +1,10 @@
-import { Badge } from '@pixel-ui/badge';
+import { Badge } from '@pablo-v/badge';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import pkg from '../package.json' with { type: 'json' };
 import { type LogLine, Terminal } from './Terminal.js';
-import '@pixel-ui/badge/style.css';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/badge/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './terminal.css';
 
 const script: Omit<LogLine, 'id' | 'time'>[] = [

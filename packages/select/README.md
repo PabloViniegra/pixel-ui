@@ -1,13 +1,13 @@
-# @pixel-ui/select
+# @pablo-v/select
 
 Styled native select
 
 ```bash
-pnpm add @pixel-ui/select @pixel-ui/tokens
+pnpm add @pablo-v/select @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/select/style.css';
-import { Select } from '@pixel-ui/select';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/select/style.css';
+import { Select } from '@pablo-v/select';
 ```

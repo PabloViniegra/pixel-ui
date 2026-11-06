@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentPropsWithRef } from 'react';
 import pkg from '../package.json' with { type: 'json' };
 import { Field, useFieldControl } from './Field.js';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './field.css';
 
 function Control(props: ComponentPropsWithRef<'input'>) {

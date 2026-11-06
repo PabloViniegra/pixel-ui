@@ -1,13 +1,13 @@
-# @pixel-ui/separator
+# @pablo-v/separator
 
 Horizontal and vertical separators
 
 ```bash
-pnpm add @pixel-ui/separator @pixel-ui/tokens
+pnpm add @pablo-v/separator @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/separator/style.css';
-import { Separator } from '@pixel-ui/separator';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/separator/style.css';
+import { Separator } from '@pablo-v/separator';
 ```

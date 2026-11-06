@@ -6,8 +6,8 @@ import {
   useControllableState,
   useMergedRefs,
   useModalDialog,
-} from '@pixel-ui/core';
-import { CloseIcon } from '@pixel-ui/pixel-icons';
+} from '@pablo-v/core';
+import { CloseIcon } from '@pablo-v/pixel-icons';
 import {
   type ComponentPropsWithRef,
   createContext,

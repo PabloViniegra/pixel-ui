@@ -1,9 +1,9 @@
-import { Field } from '@pixel-ui/field';
+import { Field } from '@pablo-v/field';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { Select } from './Select.js';
-import '@pixel-ui/field/style.css';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/field/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './select.css';
 
 const meta = {

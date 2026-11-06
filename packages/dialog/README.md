@@ -1,13 +1,13 @@
-# @pixel-ui/dialog
+# @pablo-v/dialog
 
 Modal dialog on the native dialog element
 
 ```bash
-pnpm add @pixel-ui/dialog @pixel-ui/tokens
+pnpm add @pablo-v/dialog @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/dialog/style.css';
-import { Dialog } from '@pixel-ui/dialog';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/dialog/style.css';
+import { Dialog } from '@pablo-v/dialog';
 ```

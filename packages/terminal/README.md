@@ -1,13 +1,13 @@
-# @pixel-ui/terminal
+# @pablo-v/terminal
 
 Streaming log viewer with autoscroll, level colours and a block cursor
 
 ```bash
-pnpm add @pixel-ui/terminal @pixel-ui/tokens
+pnpm add @pablo-v/terminal @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/terminal/style.css';
-import { Terminal } from '@pixel-ui/terminal';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/terminal/style.css';
+import { Terminal } from '@pablo-v/terminal';
 ```

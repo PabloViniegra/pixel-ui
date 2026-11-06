@@ -1,7 +1,7 @@
 'use client';
 
-import { cx } from '@pixel-ui/core';
-import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from '@pixel-ui/pixel-icons';
+import { cx } from '@pablo-v/core';
+import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from '@pablo-v/pixel-icons';
 import {
   type ComponentPropsWithRef,
   type CSSProperties,

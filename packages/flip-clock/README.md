@@ -1,13 +1,13 @@
-# @pixel-ui/flip-clock
+# @pablo-v/flip-clock
 
 Flip-clock counter and clock with split-flap digits in the pixel font
 
 ```bash
-pnpm add @pixel-ui/flip-clock @pixel-ui/tokens
+pnpm add @pablo-v/flip-clock @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/flip-clock/style.css';
-import { FlipClock } from '@pixel-ui/flip-clock';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/flip-clock/style.css';
+import { FlipClock } from '@pablo-v/flip-clock';
 ```

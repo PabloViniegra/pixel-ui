@@ -1,13 +1,13 @@
-# @pixel-ui/breadcrumb
+# @pablo-v/breadcrumb
 
 Breadcrumb trail for nested pages
 
 ```bash
-pnpm add @pixel-ui/breadcrumb @pixel-ui/tokens
+pnpm add @pablo-v/breadcrumb @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/breadcrumb/style.css';
-import { Breadcrumb } from '@pixel-ui/breadcrumb';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/breadcrumb/style.css';
+import { Breadcrumb } from '@pablo-v/breadcrumb';
 ```

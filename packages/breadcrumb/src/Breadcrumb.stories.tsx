@@ -1,8 +1,8 @@
-import { FolderIcon, HomeIcon } from '@pixel-ui/pixel-icons';
+import { FolderIcon, HomeIcon } from '@pablo-v/pixel-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { Breadcrumb, BreadcrumbItem } from './Breadcrumb.js';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './breadcrumb.css';
 
 const meta = {

@@ -1,7 +1,7 @@
 'use client';
 
-import { cx, useIsomorphicLayoutEffect, useMergedRefs } from '@pixel-ui/core';
-import { createPixelIcon } from '@pixel-ui/pixel-icons';
+import { cx, useIsomorphicLayoutEffect, useMergedRefs } from '@pablo-v/core';
+import { createPixelIcon } from '@pablo-v/pixel-icons';
 import { type ComponentPropsWithRef, type ReactNode, useId, useRef } from 'react';
 
 const Mark = createPixelIcon('CheckboxMark', [

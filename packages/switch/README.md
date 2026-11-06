@@ -1,13 +1,13 @@
-# @pixel-ui/switch
+# @pablo-v/switch
 
 Toggle switch with role="switch", controlled or uncontrolled, and an optional label.
 
 ```bash
-pnpm add @pixel-ui/switch @pixel-ui/tokens
+pnpm add @pablo-v/switch @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/switch/style.css';
-import { Switch } from '@pixel-ui/switch';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/switch/style.css';
+import { Switch } from '@pablo-v/switch';
 ```

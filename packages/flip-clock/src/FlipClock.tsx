@@ -1,6 +1,6 @@
 'use client';
 
-import { cx, usePrefersReducedMotion } from '@pixel-ui/core';
+import { cx, usePrefersReducedMotion } from '@pablo-v/core';
 import { type ComponentPropsWithRef, useEffect, useState } from 'react';
 
 const FLIP_MS = 600;

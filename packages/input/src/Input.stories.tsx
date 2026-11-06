@@ -1,10 +1,10 @@
-import { Field } from '@pixel-ui/field';
-import { SearchIcon } from '@pixel-ui/pixel-icons';
+import { Field } from '@pablo-v/field';
+import { SearchIcon } from '@pablo-v/pixel-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { Input } from './Input.js';
-import '@pixel-ui/field/style.css';
-import '@pixel-ui/pixel-icons/style.css';
+import '@pablo-v/field/style.css';
+import '@pablo-v/pixel-icons/style.css';
 import './input.css';
 
 const meta = {

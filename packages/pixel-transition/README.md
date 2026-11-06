@@ -1,13 +1,13 @@
-# @pixel-ui/pixel-transition
+# @pablo-v/pixel-transition
 
 Pixel-grid dissolve for the View Transitions API
 
 ```bash
-pnpm add @pixel-ui/pixel-transition @pixel-ui/tokens
+pnpm add @pablo-v/pixel-transition @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/pixel-transition/style.css';
-import { PixelTransition } from '@pixel-ui/pixel-transition';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/pixel-transition/style.css';
+import { PixelTransition } from '@pablo-v/pixel-transition';
 ```

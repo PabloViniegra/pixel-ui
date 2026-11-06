@@ -1,5 +1,5 @@
-import { Badge } from '@pixel-ui/badge';
-import '@pixel-ui/badge/style.css';
+import { Badge } from '@pablo-v/badge';
+import '@pablo-v/badge/style.css';
 
 interface PackageJson {
   name: string;

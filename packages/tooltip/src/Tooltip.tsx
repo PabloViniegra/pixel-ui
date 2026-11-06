@@ -1,6 +1,6 @@
 'use client';
 
-import { type Align, cloneTrigger, cx, type Side, useDismiss, useFloating } from '@pixel-ui/core';
+import { type Align, cloneTrigger, cx, type Side, useDismiss, useFloating } from '@pablo-v/core';
 import {
   type ComponentPropsWithRef,
   type ReactElement,

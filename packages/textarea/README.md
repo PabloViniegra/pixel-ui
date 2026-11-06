@@ -1,13 +1,13 @@
-# @pixel-ui/textarea
+# @pablo-v/textarea
 
 Multi-line text input with auto-resize
 
 ```bash
-pnpm add @pixel-ui/textarea @pixel-ui/tokens
+pnpm add @pablo-v/textarea @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/textarea/style.css';
-import { Textarea } from '@pixel-ui/textarea';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/textarea/style.css';
+import { Textarea } from '@pablo-v/textarea';
 ```

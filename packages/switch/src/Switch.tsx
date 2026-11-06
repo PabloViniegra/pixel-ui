@@ -1,6 +1,6 @@
 'use client';
 
-import { cx, type PixelSize, useControllableState } from '@pixel-ui/core';
+import { cx, type PixelSize, useControllableState } from '@pablo-v/core';
 import { type ComponentPropsWithRef, type MouseEvent, type ReactNode, useId } from 'react';
 
 export interface SwitchProps

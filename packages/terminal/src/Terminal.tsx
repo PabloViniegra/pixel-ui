@@ -1,7 +1,7 @@
 'use client';
 
-import { cx, useIsomorphicLayoutEffect, usePrefersReducedMotion } from '@pixel-ui/core';
-import { ArrowDownIcon } from '@pixel-ui/pixel-icons';
+import { cx, useIsomorphicLayoutEffect, usePrefersReducedMotion } from '@pablo-v/core';
+import { ArrowDownIcon } from '@pablo-v/pixel-icons';
 import {
   type ComponentPropsWithRef,
   type CSSProperties,

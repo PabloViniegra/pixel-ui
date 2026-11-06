@@ -12,7 +12,7 @@ const meta = {
   render: (args) => (
     <Card {...args} style={{ width: 340 }}>
       <CardHeader>
-        <CardTitle>@pixel-ui/card</CardTitle>
+        <CardTitle>@pablo-v/card</CardTitle>
         <CardDescription>Bordered container with header, content and footer parts.</CardDescription>
       </CardHeader>
       <CardContent>Set interactive when the whole card is a link or a button.</CardContent>
@@ -20,7 +20,7 @@ const meta = {
         <span
           style={{ fontFamily: 'var(--pxl-font-mono)', fontSize: 12, color: 'var(--pxl-fg-muted)' }}
         >
-          pnpm add @pixel-ui/card
+          pnpm add @pablo-v/card
         </span>
       </CardFooter>
     </Card>

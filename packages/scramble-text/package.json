@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/scramble-text",
+  "name": "@pablo-v/scramble-text",
   "version": "1.0.0",
   "description": "Text that decodes itself from random pixel glyphs",
   "license": "MIT",
@@ -32,10 +32,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

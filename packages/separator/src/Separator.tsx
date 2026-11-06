@@ -1,4 +1,4 @@
-import { cx } from '@pixel-ui/core';
+import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 export interface SeparatorProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {

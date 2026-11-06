@@ -1,8 +1,8 @@
 'use client';
 
-import { cx, type PixelSize } from '@pixel-ui/core';
-import { useFieldControl } from '@pixel-ui/field';
-import { ChevronDownIcon } from '@pixel-ui/pixel-icons';
+import { cx, type PixelSize } from '@pablo-v/core';
+import { useFieldControl } from '@pablo-v/field';
+import { ChevronDownIcon } from '@pablo-v/pixel-icons';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface SelectProps extends Omit<ComponentPropsWithRef<'select'>, 'size' | 'multiple'> {

@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/tooltip",
+  "name": "@pablo-v/tooltip",
   "version": "1.0.0",
   "description": "Hover and focus hint anchored to its trigger",
   "license": "MIT",
@@ -32,16 +32,16 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@pixel-ui/button": "workspace:^"
+    "@pablo-v/button": "workspace:^"
   }
 }

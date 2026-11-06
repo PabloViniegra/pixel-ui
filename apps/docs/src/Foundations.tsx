@@ -1,4 +1,4 @@
-import { pixelFonts, pixelFontVar } from '@pixel-ui/tokens';
+import { pixelFonts, pixelFontVar } from '@pablo-v/tokens';
 
 const colors = [
   'bg',

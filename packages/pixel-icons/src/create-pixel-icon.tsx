@@ -1,4 +1,4 @@
-import { cx } from '@pixel-ui/core';
+import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef, JSX } from 'react';
 
 export interface PixelIconProps extends Omit<ComponentPropsWithRef<'svg'>, 'children'> {

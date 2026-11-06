@@ -6,7 +6,7 @@ import {
   type Orientation,
   useControllableState,
   useIsomorphicLayoutEffect,
-} from '@pixel-ui/core';
+} from '@pablo-v/core';
 import {
   type ComponentPropsWithRef,
   type CSSProperties,

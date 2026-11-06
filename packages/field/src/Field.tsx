@@ -1,7 +1,7 @@
 'use client';
 
-import { cx } from '@pixel-ui/core';
-import { WarningIcon } from '@pixel-ui/pixel-icons';
+import { cx } from '@pablo-v/core';
+import { WarningIcon } from '@pablo-v/pixel-icons';
 import { type ComponentPropsWithRef, createContext, type ReactNode, use, useId } from 'react';
 
 interface FieldContextValue {

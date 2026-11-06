@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/pixel-avatar",
+  "name": "@pablo-v/pixel-avatar",
   "version": "1.0.0",
   "description": "Symmetric pixel identicon generated from a name or email",
   "license": "MIT",
@@ -32,11 +32,11 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^",
-    "@pixel-ui/pixel-icons": "workspace:^"
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

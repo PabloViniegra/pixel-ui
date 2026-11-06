@@ -1,4 +1,4 @@
-import { cx, type PixelTone } from '@pixel-ui/core';
+import { cx, type PixelTone } from '@pablo-v/core';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface BadgeProps extends ComponentPropsWithRef<'span'> {

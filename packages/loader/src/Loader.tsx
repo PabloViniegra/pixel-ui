@@ -1,4 +1,4 @@
-import { cx, type PixelSize } from '@pixel-ui/core';
+import { cx, type PixelSize } from '@pablo-v/core';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export type LoaderPattern = 'snake' | 'pulse' | 'scan';

@@ -1,13 +1,13 @@
-# @pixel-ui/checkbox
+# @pablo-v/checkbox
 
 Checkbox with indeterminate state and pixel check mark
 
 ```bash
-pnpm add @pixel-ui/checkbox @pixel-ui/tokens
+pnpm add @pablo-v/checkbox @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/checkbox/style.css';
-import { Checkbox } from '@pixel-ui/checkbox';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/checkbox/style.css';
+import { Checkbox } from '@pablo-v/checkbox';
 ```

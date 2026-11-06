@@ -1,13 +1,13 @@
-# @pixel-ui/toast
+# @pablo-v/toast
 
 Toast notifications with a pixel countdown
 
 ```bash
-pnpm add @pixel-ui/toast @pixel-ui/tokens
+pnpm add @pablo-v/toast @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/toast/style.css';
-import { Toast } from '@pixel-ui/toast';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/toast/style.css';
+import { Toast } from '@pablo-v/toast';
 ```

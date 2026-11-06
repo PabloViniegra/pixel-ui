@@ -1,7 +1,7 @@
 'use client';
 
-import { cx } from '@pixel-ui/core';
-import { useFieldControl } from '@pixel-ui/field';
+import { cx } from '@pablo-v/core';
+import { useFieldControl } from '@pablo-v/field';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface TextareaProps extends ComponentPropsWithRef<'textarea'> {

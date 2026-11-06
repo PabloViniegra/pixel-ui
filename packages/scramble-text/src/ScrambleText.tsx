@@ -5,7 +5,7 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
   usePrefersReducedMotion,
-} from '@pixel-ui/core';
+} from '@pablo-v/core';
 import { type ComponentPropsWithRef, useCallback, useEffect, useRef, useState } from 'react';
 
 export type ScrambleTrigger = 'mount' | 'hover' | 'inView' | 'manual';

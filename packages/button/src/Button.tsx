@@ -1,4 +1,4 @@
-import { cx, type PixelSize } from '@pixel-ui/core';
+import { cx, type PixelSize } from '@pablo-v/core';
 import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';

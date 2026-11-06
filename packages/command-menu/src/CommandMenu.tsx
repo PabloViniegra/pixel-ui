@@ -7,10 +7,10 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
   useModalDialog,
-} from '@pixel-ui/core';
-import { Kbd } from '@pixel-ui/kbd';
-import { SearchIcon } from '@pixel-ui/pixel-icons';
-import { ScrambleText } from '@pixel-ui/scramble-text';
+} from '@pablo-v/core';
+import { Kbd } from '@pablo-v/kbd';
+import { SearchIcon } from '@pablo-v/pixel-icons';
+import { ScrambleText } from '@pablo-v/scramble-text';
 import {
   type ComponentPropsWithRef,
   type ReactElement,

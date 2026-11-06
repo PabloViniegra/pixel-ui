@@ -1,7 +1,7 @@
 'use client';
 
-import { cx, litCells, useControllableState } from '@pixel-ui/core';
-import { useFieldControl } from '@pixel-ui/field';
+import { cx, litCells, useControllableState } from '@pablo-v/core';
+import { useFieldControl } from '@pablo-v/field';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface SliderProps

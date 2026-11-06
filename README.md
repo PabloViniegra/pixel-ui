@@ -7,45 +7,45 @@ shapes and springy motion, with **Geist Pixel** type and a few 8-bit details as 
 - **Storybook 10** catalogue with theme switcher, a11y checks and a live version table.
 - **TypeScript 7** (native Go compiler) end to end.
 
-| Package                      | What it is                                                                         |
-| ---------------------------- | ---------------------------------------------------------------------------------- |
-| `@pixel-ui/tokens`           | CSS variables, fonts, keyframes, utilities and a Tailwind CSS v4 preset            |
-| `@pixel-ui/core`             | Shared hooks and helpers (`cx`, `useControllableState`, positioning, roving focus) |
-| `@pixel-ui/accordion`        | Accordion on native details elements                                               |
-| `@pixel-ui/badge`            | Status badge with tones and a blinking terminal dot                                |
-| `@pixel-ui/breadcrumb`       | Breadcrumb trail for nested pages                                                  |
-| `@pixel-ui/button`           | Button with soft lift, smooth shine, loading dots                                  |
-| `@pixel-ui/card`             | Rounded card with soft lift and accent highlight border                            |
-| `@pixel-ui/checkbox`         | Checkbox with indeterminate state and pixel check mark                             |
-| `@pixel-ui/command-menu`     | ⌘K command palette whose results decode in with ScrambleText                       |
-| `@pixel-ui/dialog`           | Modal dialog on the native dialog element                                          |
-| `@pixel-ui/field`            | Form field wrapper with label, description and error                               |
-| `@pixel-ui/flip-clock`       | Flip-clock counter and clock with split-flap digits in the pixel font              |
-| `@pixel-ui/input`            | Text input with prefix and suffix slots                                            |
-| `@pixel-ui/kbd`              | Keyboard key and shortcut display                                                  |
-| `@pixel-ui/loader`           | 3×3 pixel loader: `snake`, `pulse`, `scan`                                         |
-| `@pixel-ui/menu`             | Menu and dropdown with keyboard navigation                                         |
-| `@pixel-ui/mini-chart`       | Sparklines and bar charts drawn in pixel cells                                     |
-| `@pixel-ui/pixel-avatar`     | Symmetric pixel identicon generated from a name or email                           |
-| `@pixel-ui/pixel-icons`      | 16x16 pixel SVG icon set with crisp edges                                          |
-| `@pixel-ui/pixel-image`      | Image that loads as a coarse pixel mosaic and sharpens to full resolution          |
-| `@pixel-ui/pixel-transition` | Pixel-grid dissolve for the View Transitions API                                   |
-| `@pixel-ui/popover`          | Non-modal panel anchored to a trigger                                              |
-| `@pixel-ui/progress`         | Segmented bar with staggered fill and an indeterminate comet                       |
-| `@pixel-ui/radio`            | Radio group with a pixel dot indicator                                             |
-| `@pixel-ui/scramble-text`    | Text that decodes itself from random glyphs                                        |
-| `@pixel-ui/select`           | Styled native select                                                               |
-| `@pixel-ui/separator`        | Horizontal and vertical separators                                                 |
-| `@pixel-ui/skeleton`         | Loading placeholders                                                               |
-| `@pixel-ui/slider`           | Range slider drawn as a track of pixel cells                                       |
-| `@pixel-ui/switch`           | `role="switch"` toggle with fading track and spring thumb                          |
-| `@pixel-ui/table`            | Data table primitives                                                              |
-| `@pixel-ui/tabs`             | Tabs with roving focus and a sliding indicator                                     |
-| `@pixel-ui/terminal`         | Streaming log viewer with autoscroll, level colours and a block cursor             |
-| `@pixel-ui/textarea`         | Multi-line text input with auto-resize                                             |
-| `@pixel-ui/toast`            | Toast notifications with a pixel countdown                                         |
-| `@pixel-ui/tooltip`          | Hover and focus hint anchored to its trigger                                       |
-| `@pixel-ui/react`            | Umbrella package re-exporting everything                                           |
+| Package                     | What it is                                                                         |
+| --------------------------- | ---------------------------------------------------------------------------------- |
+| `@pablo-v/tokens`           | CSS variables, fonts, keyframes, utilities and a Tailwind CSS v4 preset            |
+| `@pablo-v/core`             | Shared hooks and helpers (`cx`, `useControllableState`, positioning, roving focus) |
+| `@pablo-v/accordion`        | Accordion on native details elements                                               |
+| `@pablo-v/badge`            | Status badge with tones and a blinking terminal dot                                |
+| `@pablo-v/breadcrumb`       | Breadcrumb trail for nested pages                                                  |
+| `@pablo-v/button`           | Button with soft lift, smooth shine, loading dots                                  |
+| `@pablo-v/card`             | Rounded card with soft lift and accent highlight border                            |
+| `@pablo-v/checkbox`         | Checkbox with indeterminate state and pixel check mark                             |
+| `@pablo-v/command-menu`     | ⌘K command palette whose results decode in with ScrambleText                       |
+| `@pablo-v/dialog`           | Modal dialog on the native dialog element                                          |
+| `@pablo-v/field`            | Form field wrapper with label, description and error                               |
+| `@pablo-v/flip-clock`       | Flip-clock counter and clock with split-flap digits in the pixel font              |
+| `@pablo-v/input`            | Text input with prefix and suffix slots                                            |
+| `@pablo-v/kbd`              | Keyboard key and shortcut display                                                  |
+| `@pablo-v/loader`           | 3×3 pixel loader: `snake`, `pulse`, `scan`                                         |
+| `@pablo-v/menu`             | Menu and dropdown with keyboard navigation                                         |
+| `@pablo-v/mini-chart`       | Sparklines and bar charts drawn in pixel cells                                     |
+| `@pablo-v/pixel-avatar`     | Symmetric pixel identicon generated from a name or email                           |
+| `@pablo-v/pixel-icons`      | 16x16 pixel SVG icon set with crisp edges                                          |
+| `@pablo-v/pixel-image`      | Image that loads as a coarse pixel mosaic and sharpens to full resolution          |
+| `@pablo-v/pixel-transition` | Pixel-grid dissolve for the View Transitions API                                   |
+| `@pablo-v/popover`          | Non-modal panel anchored to a trigger                                              |
+| `@pablo-v/progress`         | Segmented bar with staggered fill and an indeterminate comet                       |
+| `@pablo-v/radio`            | Radio group with a pixel dot indicator                                             |
+| `@pablo-v/scramble-text`    | Text that decodes itself from random glyphs                                        |
+| `@pablo-v/select`           | Styled native select                                                               |
+| `@pablo-v/separator`        | Horizontal and vertical separators                                                 |
+| `@pablo-v/skeleton`         | Loading placeholders                                                               |
+| `@pablo-v/slider`           | Range slider drawn as a track of pixel cells                                       |
+| `@pablo-v/switch`           | `role="switch"` toggle with fading track and spring thumb                          |
+| `@pablo-v/table`            | Data table primitives                                                              |
+| `@pablo-v/tabs`             | Tabs with roving focus and a sliding indicator                                     |
+| `@pablo-v/terminal`         | Streaming log viewer with autoscroll, level colours and a block cursor             |
+| `@pablo-v/textarea`         | Multi-line text input with auto-resize                                             |
+| `@pablo-v/toast`            | Toast notifications with a pixel countdown                                         |
+| `@pablo-v/tooltip`          | Hover and focus hint anchored to its trigger                                       |
+| `@pablo-v/react`            | Umbrella package re-exporting everything                                           |
 
 ## Getting started
 
@@ -66,9 +66,9 @@ pnpm storybook      # http://localhost:6006
 ## Using it
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/button/style.css';
-import { Button } from '@pixel-ui/button';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/button/style.css';
+import { Button } from '@pablo-v/button';
 
 <Button variant="primary" loading={isDeploying}>
   Deploy
@@ -78,7 +78,7 @@ import { Button } from '@pixel-ui/button';
 Theme with `data-theme="light" | "dark"` on any element (defaults to the OS setting) and
 override any `--pxl-*` token on `:root` or a container.
 
-**Next.js:** if you load fonts with `geist/font/sans`, `geist/font/mono` and `geist/font/pixel`, import `@pixel-ui/tokens/tokens.css`,
+**Next.js:** if you load fonts with `geist/font/sans`, `geist/font/mono` and `geist/font/pixel`, import `@pablo-v/tokens/tokens.css`,
 `motion.css` and `utilities.css` instead of `styles.css`; the tokens read the
 `--font-geist-sans`, `--font-geist-mono` and `--font-geist-pixel-*` variables set by `next/font`.
 
@@ -90,8 +90,8 @@ straight from Server Components.
 
 ```css
 @import "tailwindcss";
-@import "@pixel-ui/tokens/styles.css";
-@import "@pixel-ui/tokens/tailwind.css";
+@import "@pablo-v/tokens/styles.css";
+@import "@pablo-v/tokens/tailwind.css";
 ```
 
 ## Repository layout
@@ -104,7 +104,7 @@ pixel-ui/
 │  ├─ <component>/     one folder = one npm package
 │  │  ├─ src/
 │  │  │  ├─ Button.tsx
-│  │  │  ├─ button.css           → exported as "@pixel-ui/button/style.css"
+│  │  │  ├─ button.css           → exported as "@pablo-v/button/style.css"
 │  │  │  ├─ Button.stories.tsx   → picked up by Storybook
 │  │  │  └─ Button.test.tsx
 │  │  ├─ CHANGELOG.md            → written by Changesets
@@ -123,7 +123,7 @@ Versioning is **independent** per package (see [`.changeset/README.md`](.changes
 2. Open a PR. CI fails if a package changed without a changeset.
 3. On `main`, the release workflow opens a **Version Packages** PR. Merging it bumps only the
    affected packages, writes their `CHANGELOG.md`, publishes them to npm with provenance and
-   tags each one (`@pixel-ui/button@0.2.0`). Storybook is redeployed to GitHub Pages.
+   tags each one (`@pablo-v/button@0.2.0`). Storybook is redeployed to GitHub Pages.
 
 Each story shows its package name and version in the corner, and **Versions** in Storybook lists
 every package with its latest changelog entry.

@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/terminal",
+  "name": "@pablo-v/terminal",
   "version": "1.0.0",
   "description": "Streaming log viewer with autoscroll, level colours and a block cursor",
   "license": "MIT",
@@ -32,17 +32,17 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^",
-    "@pixel-ui/pixel-icons": "workspace:^"
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@pixel-ui/badge": "workspace:^"
+    "@pablo-v/badge": "workspace:^"
   }
 }

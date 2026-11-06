@@ -1,13 +1,13 @@
-# @pixel-ui/tooltip
+# @pablo-v/tooltip
 
 Hover and focus hint anchored to its trigger
 
 ```bash
-pnpm add @pixel-ui/tooltip @pixel-ui/tokens
+pnpm add @pablo-v/tooltip @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/tooltip/style.css';
-import { Tooltip } from '@pixel-ui/tooltip';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/tooltip/style.css';
+import { Tooltip } from '@pablo-v/tooltip';
 ```

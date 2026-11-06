@@ -272,4 +272,4 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 
 ## Tailwind CSS v4
 
-`@pixel-ui/tokens/tailwind.css` maps the tokens to theme variables with `@theme inline`, so utilities follow the live theme: `font-pixel` (and `font-pixel-grid|circle|triangle|line`), `font-pxl-sans|mono`, `text-pxl-*`, `bg-pxl-*`/`text-pxl-*` colours, `rounded-pxl-*`, `shadow-pixel`, `shadow-pxl-sm|md|lg`, `ease-pxl-*`, plus the `clip-notch` and `pixelated` utilities. The same decorative-only rule applies to `shadow-pixel` and `clip-notch`.
+`@pablo-v/tokens/tailwind.css` maps the tokens to theme variables with `@theme inline`, so utilities follow the live theme: `font-pixel` (and `font-pixel-grid|circle|triangle|line`), `font-pxl-sans|mono`, `text-pxl-*`, `bg-pxl-*`/`text-pxl-*` colours, `rounded-pxl-*`, `shadow-pixel`, `shadow-pxl-sm|md|lg`, `ease-pxl-*`, plus the `clip-notch` and `pixelated` utilities. The same decorative-only rule applies to `shadow-pixel` and `clip-notch`.

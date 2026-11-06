@@ -1,8 +1,8 @@
-import { Button } from '@pixel-ui/button';
+import { Button } from '@pablo-v/button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import { Popover } from './Popover.js';
-import '@pixel-ui/button/style.css';
+import '@pablo-v/button/style.css';
 import './popover.css';
 
 const meta = {

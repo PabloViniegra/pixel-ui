@@ -9,7 +9,7 @@ import {
   useDismiss,
   useFloating,
   useIsomorphicLayoutEffect,
-} from '@pixel-ui/core';
+} from '@pablo-v/core';
 import { type ComponentPropsWithRef, type ReactElement, useId, useRef } from 'react';
 
 export interface PopoverProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {

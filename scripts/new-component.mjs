@@ -5,7 +5,7 @@
 //   pnpm new:component date-picker --description "Pixel calendar date picker"
 //
 // Creates packages/<name> (package.json, tsconfig, src/, story, test, README,
-// CHANGELOG), registers it in the root tsconfig and in the @pixel-ui/react
+// CHANGELOG), registers it in the root tsconfig and in the @pablo-v/react
 // umbrella package. Existing files are never overwritten.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -23,7 +23,7 @@ if (!name || !/^[a-z][a-z0-9-]*$/.test(name)) {
 }
 
 const pascal = name.replace(/(^|-)([a-z0-9])/g, (_, __, c) => c.toUpperCase());
-const pkgName = `@pixel-ui/${name}`;
+const pkgName = `@pablo-v/${name}`;
 const dir = join(root, 'packages', name);
 const umbrella = join(root, 'packages', 'react');
 
@@ -82,8 +82,8 @@ write(
       build: 'tsc -b && node ../../scripts/copy-assets.mjs',
       clean: 'rm -rf dist *.tsbuildinfo',
     },
-    dependencies: { '@pixel-ui/core': 'workspace:^' },
-    peerDependencies: { '@pixel-ui/tokens': 'workspace:^', react: '^19.0.0' },
+    dependencies: { '@pablo-v/core': 'workspace:^' },
+    peerDependencies: { '@pablo-v/tokens': 'workspace:^', react: '^19.0.0' },
     publishConfig: { access: 'public' },
   }),
 );
@@ -108,11 +108,11 @@ write(
 ${description ?? `PixelUI ${pascal} component.`}
 
 \`\`\`bash
-pnpm add ${pkgName} @pixel-ui/tokens
+pnpm add ${pkgName} @pablo-v/tokens
 \`\`\`
 
 \`\`\`tsx
-import '@pixel-ui/tokens/styles.css';
+import '@pablo-v/tokens/styles.css';
 import '${pkgName}/style.css';
 import { ${pascal} } from '${pkgName}';
 \`\`\`
@@ -127,7 +127,7 @@ write(
 
 write(
   join(dir, 'src', `${pascal}.tsx`),
-  `import { cx } from '@pixel-ui/core';
+  `import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface ${pascal}Props extends ComponentPropsWithRef<'div'> {}

@@ -1,7 +1,7 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
 import { useEffect } from 'react';
 import { pixelTheme } from './theme.js';
-import '@pixel-ui/tokens/styles.css';
+import '@pablo-v/tokens/styles.css';
 import './preview.css';
 
 interface PixelUIParams {

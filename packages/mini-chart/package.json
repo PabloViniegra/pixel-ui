@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/mini-chart",
+  "name": "@pablo-v/mini-chart",
   "version": "1.0.0",
   "description": "Sparklines and bar charts drawn in pixel cells",
   "license": "MIT",
@@ -32,10 +32,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0"
   },
   "publishConfig": {

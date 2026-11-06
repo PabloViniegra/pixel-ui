@@ -2,8 +2,8 @@
  * Tailwind CSS v4 preset. Import after tailwindcss and the PixelUI tokens:
  *
  *   @import "tailwindcss";
- *   @import "@pixel-ui/tokens/styles.css";
- *   @import "@pixel-ui/tokens/tailwind.css";
+ *   @import "@pablo-v/tokens/styles.css";
+ *   @import "@pablo-v/tokens/tailwind.css";
  *
  * `inline` makes every utility point at the live --pxl-* variable, so the
  * light/dark switch keeps working instead of freezing the light values.

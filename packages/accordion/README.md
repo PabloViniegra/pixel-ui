@@ -1,13 +1,13 @@
-# @pixel-ui/accordion
+# @pablo-v/accordion
 
 Accordion on native details elements
 
 ```bash
-pnpm add @pixel-ui/accordion @pixel-ui/tokens
+pnpm add @pablo-v/accordion @pablo-v/tokens
 ```
 
 ```tsx
-import '@pixel-ui/tokens/styles.css';
-import '@pixel-ui/accordion/style.css';
-import { Accordion } from '@pixel-ui/accordion';
+import '@pablo-v/tokens/styles.css';
+import '@pablo-v/accordion/style.css';
+import { Accordion } from '@pablo-v/accordion';
 ```

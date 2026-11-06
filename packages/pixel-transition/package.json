@@ -1,5 +1,5 @@
 {
-  "name": "@pixel-ui/pixel-transition",
+  "name": "@pablo-v/pixel-transition",
   "version": "1.0.0",
   "description": "Pixel-grid dissolve for the View Transitions API",
   "license": "MIT",
@@ -32,10 +32,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pixel-ui/core": "workspace:^"
+    "@pablo-v/core": "workspace:^"
   },
   "peerDependencies": {
-    "@pixel-ui/tokens": "workspace:^",
+    "@pablo-v/tokens": "workspace:^",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -43,6 +43,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@pixel-ui/button": "workspace:^"
+    "@pablo-v/button": "workspace:^"
   }
 }

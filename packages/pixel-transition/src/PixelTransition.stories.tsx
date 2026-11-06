@@ -1,9 +1,9 @@
-import { Button } from '@pixel-ui/button';
+import { Button } from '@pablo-v/button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import pkg from '../package.json' with { type: 'json' };
 import { PixelTransition, startPixelTransition } from './PixelTransition.js';
-import '@pixel-ui/button/style.css';
+import '@pablo-v/button/style.css';
 import './pixel-transition.css';
 
 const views = [

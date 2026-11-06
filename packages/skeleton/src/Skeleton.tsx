@@ -1,4 +1,4 @@
-import { cx } from '@pixel-ui/core';
+import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface SkeletonProps extends ComponentPropsWithRef<'span'> {

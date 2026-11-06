@@ -1,5 +1,5 @@
-import { cx } from '@pixel-ui/core';
-import { pixelPath } from '@pixel-ui/pixel-icons';
+import { cx } from '@pablo-v/core';
+import { pixelPath } from '@pablo-v/pixel-icons';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 /** FNV-1a with a murmur3 finaliser, so similar names still diverge. */

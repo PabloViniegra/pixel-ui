@@ -11,7 +11,7 @@ import {
   useFloating,
   useIsomorphicLayoutEffect,
   useMergedRefs,
-} from '@pixel-ui/core';
+} from '@pablo-v/core';
 import {
   type ComponentPropsWithRef,
   createContext,
