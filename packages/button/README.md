@@ -1,6 +1,6 @@
 # @pixel-ui/button
 
-Button with soft rounded corners, gentle lift and a smooth shine.
+Button with primary, secondary, ghost and danger variants, three sizes and a loading state.
 
 ```bash
 pnpm add @pixel-ui/button @pixel-ui/tokens

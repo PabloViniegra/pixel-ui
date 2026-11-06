@@ -19,10 +19,7 @@ export interface SwitchProps
   size?: Exclude<PixelSize, 'lg'>;
 }
 
-/**
- * Accessible `role="switch"` toggle. The track fades to the accent colour
- * while the thumb travels on a spring with a squash at the start.
- */
+/** `<button role="switch">` toggle, controlled or uncontrolled, with an optional label. */
 export function Switch({
   checked,
   defaultChecked = false,

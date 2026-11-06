@@ -1,6 +1,6 @@
 # @pixel-ui/card
 
-Rounded card with a soft hover lift and an accent highlight border.
+Card container with header, title, description, content and footer slots.
 
 ```bash
 pnpm add @pixel-ui/card @pixel-ui/tokens

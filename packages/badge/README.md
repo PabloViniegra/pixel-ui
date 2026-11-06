@@ -1,6 +1,6 @@
 # @pixel-ui/badge
 
-Pixel status badge with tones and a blinking terminal dot.
+Status badge with neutral, accent and status tones and an optional status dot.
 
 ```bash
 pnpm add @pixel-ui/badge @pixel-ui/tokens

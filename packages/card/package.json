@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/card",
   "version": "0.1.0",
-  "description": "Notched pixel card with lift, glitch title and marching border",
+  "description": "Card container with header, title, description, content and footer slots",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

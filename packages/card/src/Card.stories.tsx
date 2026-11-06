@@ -12,15 +12,15 @@ const meta = {
   render: (args) => (
     <Card {...args} style={{ width: 340 }}>
       <CardHeader>
-        <CardTitle>pixel-ui.vercel.app</CardTitle>
-        <CardDescription>Production deployment from main · 2m ago</CardDescription>
+        <CardTitle>@pixel-ui/card</CardTitle>
+        <CardDescription>Bordered container with header, content and footer parts.</CardDescription>
       </CardHeader>
-      <CardContent>Edge network, 18 regions. Build finished in 41s with zero warnings.</CardContent>
+      <CardContent>Set interactive when the whole card is a link or a button.</CardContent>
       <CardFooter>
         <span
           style={{ fontFamily: 'var(--pxl-font-mono)', fontSize: 12, color: 'var(--pxl-fg-muted)' }}
         >
-          a3f9c21 · feat: pixel cards
+          pnpm add @pixel-ui/card
         </span>
       </CardFooter>
     </Card>

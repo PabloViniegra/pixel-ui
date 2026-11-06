@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/badge",
   "version": "0.1.0",
-  "description": "Pixel status badge with tones and a blinking terminal dot",
+  "description": "Status badge with neutral, accent and status tones and an optional status dot",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

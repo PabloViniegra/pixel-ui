@@ -2,13 +2,13 @@ import { cx } from '@pixel-ui/core';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface CardProps extends ComponentPropsWithRef<'div'> {
-  /** Lifts with a soft shadow on hover/focus. */
+  /** Raises the card on hover and focus, for cards that act as links or buttons. */
   interactive?: boolean;
   /** Draws the border in the accent colour. */
   highlight?: boolean;
 }
 
-/** Container with rounded corners and a 1px border. */
+/** Bordered container. Compose with the header, title, description, content and footer parts. */
 export function Card({ interactive = false, highlight = false, className, ...rest }: CardProps) {
   return (
     <div

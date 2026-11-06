@@ -6,9 +6,9 @@ export interface BadgeProps extends ComponentPropsWithRef<'span'> {
   tone?: PixelTone;
   /** `solid` fills with the tone colour, `subtle` uses a tinted background. @default 'subtle' */
   appearance?: 'solid' | 'subtle';
-  /** Leading status dot. `'pulse'` makes it breathe. */
+  /** Leading status dot. `'pulse'` makes it breathe a few times on mount, then hold steady. */
   dot?: boolean | 'pulse';
-  /** Plays a short pop-in when mounted. @default true */
+  /** Plays a short pop-in when mounted. @default false */
   animateIn?: boolean;
 }
 
@@ -16,7 +16,7 @@ export function Badge({
   tone = 'neutral',
   appearance = 'subtle',
   dot = false,
-  animateIn = true,
+  animateIn = false,
   className,
   children,
   ...rest

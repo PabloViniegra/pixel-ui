@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/button",
   "version": "0.1.0",
-  "description": "Pixel button with hard offset shadow, spring lift and stepped shine",
+  "description": "Button with primary, secondary, ghost and danger variants, three sizes and a loading state",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

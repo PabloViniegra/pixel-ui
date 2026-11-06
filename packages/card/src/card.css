@@ -55,7 +55,6 @@
   border-top: 1px solid var(--pxl-border);
 }
 
-/* ── Interactive ─────────────────────────────────────────── */
 .pxl-card[data-interactive] {
   cursor: pointer;
 }
@@ -80,7 +79,6 @@
   transition-duration: var(--pxl-dur-instant);
 }
 
-/* ── Highlight: static accent border ─────────────────────── */
 .pxl-card[data-highlight] {
   --_border: var(--pxl-accent);
 }

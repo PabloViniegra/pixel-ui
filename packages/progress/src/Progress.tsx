@@ -16,10 +16,7 @@ export interface ProgressProps extends Omit<ComponentPropsWithRef<'div'>, 'child
   showValue?: boolean;
 }
 
-/**
- * Segmented progress bar. Blocks light up one after another with a staggered
- * pop; without `value` a pixel comet runs along the track.
- */
+/** Segmented progress bar. Without `value` it loops as an indeterminate bar. */
 export function Progress({
   value,
   max = 100,

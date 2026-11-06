@@ -8,22 +8,21 @@ import '@pixel-ui/pixel-icons/style.css';
 import './terminal.css';
 
 const script: Omit<LogLine, 'id' | 'time'>[] = [
-  { level: 'debug', text: 'Running build in Washington, D.C. (iad1)' },
-  { text: 'Cloning github.com/pixel-ui/app (branch: main, commit: 4f2a91c)' },
-  { text: 'Cloning completed: 412ms' },
-  { text: 'Restored build cache from previous deployment' },
-  { text: 'Running "pnpm install"' },
-  { level: 'warn', text: 'WARN  deprecated inflight@1.0.6: This module is not supported' },
-  { text: 'Packages: +1203' },
-  { text: 'Running "pnpm build"' },
-  { text: '▲ Next.js 16.0.1' },
-  { text: '   Creating an optimized production build ...' },
-  { level: 'success', text: ' ✓ Compiled successfully in 8.4s' },
-  { text: '   Collecting page data ...' },
-  { text: ' ✓ Generating static pages (24/24)' },
-  { text: 'Build Completed in /vercel/output [21s]' },
-  { text: 'Deploying outputs...' },
-  { level: 'success', text: 'Deployment completed' },
+  { level: 'debug', text: '$ pnpm install --frozen-lockfile' },
+  { text: 'Lockfile is up to date, resolution step is skipped' },
+  { level: 'warn', text: 'WARN  Unsupported engine: wanted node >=22 (current: v20.18.0)' },
+  { text: 'Done in 3.8s' },
+  { level: 'debug', text: '$ pnpm build' },
+  { text: 'Scope: 37 of 39 workspace projects' },
+  { text: 'packages/core build$ tsc -b && node ../../scripts/copy-assets.mjs' },
+  { text: 'packages/core build: Done' },
+  { text: 'packages/button build$ tsc -b && node ../../scripts/copy-assets.mjs' },
+  { text: 'packages/button build: Done' },
+  { text: 'packages/card build$ tsc -b && node ../../scripts/copy-assets.mjs' },
+  { text: 'packages/card build: Done' },
+  { level: 'debug', text: '$ pnpm test' },
+  { text: ' Test Files  36 passed (36)' },
+  { level: 'success', text: '      Tests  84 passed (84)' },
 ];
 
 function stamp(i: number) {
@@ -73,18 +72,18 @@ export const Streaming: Story = {
 export const WithError: Story = {
   args: {
     lines: [
-      ...allLines.slice(0, 8),
+      ...allLines.slice(0, 9),
       {
         id: 'e1',
         level: 'error',
         time: '14:03:24.551',
-        text: "Type error: Property 'size' does not exist on type 'Props'.",
+        text: "src/Button.tsx(42,7): error TS2339: Property 'size' does not exist on type 'Props'.",
       },
       {
         id: 'e2',
         level: 'error',
         time: '14:03:24.552',
-        text: 'Error: Command "pnpm build" exited with 1',
+        text: 'packages/button build: Failed',
       },
     ],
     status: <Badge tone="danger">Error</Badge>,

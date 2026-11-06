@@ -17,3 +17,4 @@ packages/tokens/fonts/*
 
 # AI
 .impeccable/
+.image-sources/

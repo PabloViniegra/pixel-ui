@@ -1,9 +1,3 @@
-/* ──────────────────────────────────────────────────────────────
-   PixelUI · design tokens
-   Minimal Vercel-style greyscale + a single accent, on a 4px pixel grid.
-   Every token is prefixed with --pxl- and can be overridden per scope.
-   ────────────────────────────────────────────────────────────── */
-
 :root,
 [data-theme="light"] {
   color-scheme: light;
@@ -138,7 +132,6 @@
 }
 
 :root {
-  /* ── Pixel grid ─────────────────────────────────────────── */
   --pxl-unit: 4px;
   --pxl-space-1: calc(var(--pxl-unit) * 1);
   --pxl-space-2: calc(var(--pxl-unit) * 2);
@@ -147,7 +140,6 @@
   --pxl-space-6: calc(var(--pxl-unit) * 6);
   --pxl-space-8: calc(var(--pxl-unit) * 8);
 
-  /* ── Shapes ─────────────────────────────────────────────── */
   --pxl-radius-xs: 2px;
   --pxl-radius-sm: 4px;
   --pxl-radius-md: 6px;
@@ -174,7 +166,6 @@
 }
 
 :root {
-  /* ── Typography ─────────────────────────────────────────── */
   /* Picks up next/font CSS variables first (geist/font/pixel), then the
      @font-face families declared in fonts.css. */
   --pxl-font-pixel: var(--font-geist-pixel-square, "Geist Pixel Square"), ui-monospace, monospace;
@@ -194,7 +185,6 @@
   --pxl-text-xl: 24px;
   --pxl-text-2xl: 32px;
 
-  /* ── Motion ─────────────────────────────────────────────── */
   --pxl-dur-instant: 80ms;
   --pxl-dur-fast: 140ms;
   --pxl-dur-base: 240ms;

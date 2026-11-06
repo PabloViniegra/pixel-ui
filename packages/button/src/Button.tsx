@@ -16,10 +16,7 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   iconEnd?: ReactNode;
 }
 
-/**
- * Button with softly rounded corners, a gentle lift and shadow on hover that
- * collapses on press, and a smooth shine sweep.
- */
+/** Native `<button>` with variants, sizes, optional icons and a loading state. */
 export function Button({
   variant = 'primary',
   size = 'md',

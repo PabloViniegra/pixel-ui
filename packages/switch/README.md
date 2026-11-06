@@ -1,6 +1,6 @@
 # @pixel-ui/switch
 
-Accessible toggle switch with a fading track and spring thumb.
+Toggle switch with role="switch", controlled or uncontrolled, and an optional label.
 
 ```bash
 pnpm add @pixel-ui/switch @pixel-ui/tokens

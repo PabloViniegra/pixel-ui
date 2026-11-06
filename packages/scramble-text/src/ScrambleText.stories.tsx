@@ -9,7 +9,7 @@ const meta = {
   component: ScrambleText,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
-  args: { text: 'SHIP FASTER WITH PIXELUI', duration: 1100 },
+  args: { text: 'Deployment ready', duration: 1100 },
   argTypes: {
     trigger: { control: 'inline-radio', options: ['mount', 'hover', 'inView', 'manual'] },
     duration: { control: { type: 'range', min: 200, max: 3000, step: 50 } },
@@ -28,11 +28,11 @@ type Story = StoryObj<typeof meta>;
 
 export const OnMount: Story = {};
 
-export const OnHover: Story = { args: { trigger: 'hover', text: 'HOVER ME' } };
+export const OnHover: Story = { args: { trigger: 'hover', text: 'Hover to decode' } };
 
 export const Rotating: Story = {
   render: (args) => {
-    const words = ['DEPLOY', 'PREVIEW', 'SHIP', 'ITERATE'];
+    const words = ['Queued', 'Building', 'Ready'];
     const [i, setI] = useState(0);
     return (
       <button
@@ -46,4 +46,4 @@ export const Rotating: Story = {
   },
 };
 
-export const CustomGlyphs: Story = { args: { characters: '01', text: 'BINARY RAIN' } };
+export const CustomGlyphs: Story = { args: { characters: '01', text: 'Checksum verified' } };

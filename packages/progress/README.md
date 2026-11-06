@@ -1,6 +1,6 @@
 # @pixel-ui/progress
 
-Segmented pixel progress bar with staggered fill and indeterminate comet.
+Segmented progress bar with a determinate value or an indeterminate loop.
 
 ```bash
 pnpm add @pixel-ui/progress @pixel-ui/tokens

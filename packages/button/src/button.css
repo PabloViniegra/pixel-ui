@@ -49,7 +49,6 @@
     box-shadow var(--pxl-dur-base) var(--pxl-ease-out);
 }
 
-/* Shine band */
 .pxl-button__surface::after {
   content: "";
   position: absolute;
@@ -75,7 +74,6 @@
   height: 1.15em;
 }
 
-/* ── Interaction ─────────────────────────────────────────── */
 .pxl-button:hover:not(:disabled) {
   --_lift: -1px;
   --_elev: var(--pxl-shadow-md);
@@ -111,7 +109,6 @@
   opacity: 1;
 }
 
-/* ── Variants ────────────────────────────────────────────── */
 .pxl-button[data-variant="secondary"] {
   --_bg: var(--pxl-bg);
   --_fg: var(--pxl-fg);
@@ -138,7 +135,6 @@
   --_fg: var(--pxl-danger-fg);
 }
 
-/* ── Sizes ───────────────────────────────────────────────── */
 .pxl-button[data-size="sm"] {
   --_h: 32px;
   --_px: var(--pxl-space-3);
@@ -151,7 +147,6 @@
   --_text: var(--pxl-text-md);
 }
 
-/* ── Loading dots ────────────────────────────────────────── */
 .pxl-button__dots {
   display: inline-flex;
   gap: var(--pxl-space-1);

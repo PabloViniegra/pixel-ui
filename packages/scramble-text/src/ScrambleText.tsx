@@ -96,19 +96,16 @@ export function ScrambleText({
     frame.current = requestAnimationFrame(tick);
   }, [text, duration, characters, reduced]);
 
-  // mount / text change
   useIsomorphicLayoutEffect(() => {
     if (trigger === 'mount') run();
     else setOutput(text);
     return () => cancelAnimationFrame(frame.current);
   }, [text, trigger, run]);
 
-  // manual
   useEffect(() => {
     if (trigger === 'manual' && play) run();
   }, [trigger, play, run]);
 
-  // in view (once)
   useEffect(() => {
     if (trigger !== 'inView' || !localRef.current || typeof IntersectionObserver === 'undefined')
       return;

@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/progress",
   "version": "0.1.0",
-  "description": "Segmented pixel progress bar with staggered fill and indeterminate comet",
+  "description": "Segmented progress bar with a determinate value or an indeterminate loop",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

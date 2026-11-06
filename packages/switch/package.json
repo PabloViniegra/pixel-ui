@@ -1,7 +1,7 @@
 {
   "name": "@pixel-ui/switch",
   "version": "0.1.0",
-  "description": "Accessible pixel toggle switch with stepped wipe and spring thumb",
+  "description": "Toggle switch with role=\"switch\", controlled or uncontrolled, and an optional label",
   "license": "MIT",
   "type": "module",
   "sideEffects": [

@@ -249,7 +249,7 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 ## Components
 
 - **Button:** primary is the inverted ink block; secondary is `bg` with a 1px `border`; ghost has no fill until hover. Hover lifts per Elevation; the shine sweep, if kept, is a single smooth gradient pass, not a stepped one. Loading dots are round and fade smoothly.
-- **Badge:** pill shape, sentence-case sans label. The status dot is round and its pulse is a smooth opacity breathe, not a hard blink.
+- **Badge:** pill shape, sentence-case sans label. The status dot is round and its pulse is a smooth opacity breathe that runs three times on mount and then holds steady, not a hard blink.
 - **Switch:** pill track (`gray-600` when off, so the control meets 3:1 against the page) with a round white thumb in both themes (`--pxl-thumb`, with its contact shadow `--pxl-shadow-thumb`); the "on" fill crossfades to `accent` and the thumb travels with the spring ease. No stepped wipe.
 - **Progress:** keeps its segmented track as a pixel signature, with `xs`-rounded cells; cells light up with a smooth stagger and the indeterminate comet uses eased opacity, not frames.
 - **Loader:** the 3×3 grid is the one place where stepped timing stays, because the frame-by-frame snake is the component's identity.
