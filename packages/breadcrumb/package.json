@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/breadcrumb",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Breadcrumb trail for nested pages",
   "license": "MIT",
   "repository": {

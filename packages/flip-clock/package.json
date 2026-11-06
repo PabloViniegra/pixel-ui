@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/flip-clock",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Flip-clock counter and clock with split-flap digits in the pixel font",
   "license": "MIT",
   "repository": {

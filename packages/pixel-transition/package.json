@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/pixel-transition",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Pixel-grid dissolve for the View Transitions API",
   "license": "MIT",
   "repository": {

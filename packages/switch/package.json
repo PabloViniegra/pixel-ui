@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/switch",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Toggle switch with role=\"switch\", controlled or uncontrolled, and an optional label",
   "license": "MIT",
   "repository": {

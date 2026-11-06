@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/radio",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Radio group with a pixel dot indicator",
   "license": "MIT",
   "repository": {

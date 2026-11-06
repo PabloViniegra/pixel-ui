@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/slider",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Range slider drawn as a track of pixel cells",
   "license": "MIT",
   "repository": {

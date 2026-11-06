@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/popover",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Non-modal panel anchored to a trigger",
   "license": "MIT",
   "repository": {

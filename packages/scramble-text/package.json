@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/scramble-text",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Text that decodes itself from random pixel glyphs",
   "license": "MIT",
   "repository": {

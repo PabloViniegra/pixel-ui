@@ -1,6 +1,6 @@
 {
   "name": "@pixel-ui/mini-chart",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Sparklines and bar charts drawn in pixel cells",
   "license": "MIT",
   "repository": {
