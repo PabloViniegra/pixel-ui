@@ -14,7 +14,7 @@ const meta = {
   args: { placeholder: 'Choose a region' },
   argTypes: { size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] } },
   render: (args) => (
-    <div style={{ width: 280 }}>
+    <div style={{ width: 'min(280px, calc(100vw - 32px))' }}>
       <Field label="Function region" description="Closest to your database is fastest.">
         <Select {...args}>
           <option value="fra1">Frankfurt (fra1)</option>

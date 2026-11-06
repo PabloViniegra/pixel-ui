@@ -16,7 +16,7 @@ const meta = {
   argTypes: { size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] } },
   decorators: [
     (Story) => (
-      <div style={{ width: 320 }}>
+      <div style={{ width: 'min(320px, calc(100vw - 32px))' }}>
         <Story />
       </div>
     ),

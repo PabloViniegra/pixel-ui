@@ -8,11 +8,32 @@
 
 .pxl-field__label {
   display: inline-flex;
-  gap: 2px;
+  align-items: baseline;
+  gap: var(--pxl-space-1);
   width: fit-content;
   font-size: var(--pxl-text-sm);
   font-weight: 500;
   line-height: 1.25;
+}
+
+.pxl-field__label::before {
+  content: "";
+  align-self: center;
+  flex: none;
+  width: var(--pxl-space-1);
+  height: var(--pxl-space-1);
+  margin-inline-end: var(--pxl-space-1);
+  border-radius: 1px;
+  background: var(--pxl-gray-600);
+  transition: background-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-field:focus-within:where(:not([data-disabled], [data-invalid])) .pxl-field__label::before {
+  background: var(--pxl-accent);
+}
+
+.pxl-field[data-invalid] .pxl-field__label::before {
+  background: var(--pxl-danger);
 }
 
 .pxl-field__required {
@@ -22,7 +43,7 @@
 .pxl-field__message {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: var(--pxl-space-2);
   margin: 0;
   color: var(--pxl-fg-muted);
   font-size: var(--pxl-text-sm);
@@ -41,4 +62,8 @@
 
 .pxl-field[data-disabled] .pxl-field__label {
   color: var(--pxl-fg-muted);
+}
+
+.pxl-field[data-disabled] .pxl-field__label::before {
+  background: var(--pxl-gray-400);
 }

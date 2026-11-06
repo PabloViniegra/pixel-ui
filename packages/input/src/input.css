@@ -2,9 +2,10 @@
   --_h: 40px;
   --_px: var(--pxl-space-3);
   --_text: var(--pxl-text-sm);
-  --_border: var(--pxl-border);
+  --_border: var(--pxl-gray-600);
 
   display: flex;
+  box-sizing: border-box;
   align-items: center;
   gap: var(--pxl-space-2);
   height: var(--_h);
@@ -12,13 +13,14 @@
   padding: 0 var(--_px);
   border: 1px solid var(--_border);
   border-radius: var(--pxl-radius-md);
-  background: var(--pxl-bg);
+  background: var(--pxl-bg-subtle);
   color: var(--pxl-fg);
   font-family: var(--pxl-font-sans);
   font-size: var(--_text);
   cursor: text;
   transition:
     border-color var(--pxl-dur-fast) linear,
+    background-color var(--pxl-dur-fast) linear,
     outline-color var(--pxl-dur-fast) linear;
 }
 
@@ -34,12 +36,14 @@
   --_text: var(--pxl-text-md);
 }
 
-.pxl-input:hover:not([data-disabled]) {
-  --_border: var(--pxl-gray-500);
+.pxl-input:where(:hover:not([data-disabled], [data-invalid])) {
+  --_border: var(--pxl-gray-800);
+  background: var(--pxl-bg);
 }
 
 .pxl-input:focus-within {
-  --_border: var(--pxl-gray-500);
+  --_border: var(--pxl-accent);
+  background: var(--pxl-bg);
   outline: 2px solid var(--pxl-accent);
   outline-offset: 2px;
 }
@@ -53,6 +57,7 @@
 }
 
 .pxl-input[data-disabled] {
+  --_border: var(--pxl-border);
   background: var(--pxl-bg-subtle);
   color: var(--pxl-fg-muted);
   cursor: not-allowed;
@@ -92,4 +97,27 @@
   align-items: center;
   color: var(--pxl-fg-muted);
   white-space: nowrap;
+  gap: var(--pxl-space-1);
+  align-self: stretch;
+  padding-inline: var(--pxl-space-2);
+  background: var(--pxl-gray-100);
+  transition: color var(--pxl-dur-fast) linear;
+}
+
+.pxl-input__affix:first-child {
+  margin-inline-start: calc(-1 * var(--_px));
+  border-inline-end: 1px solid var(--pxl-border);
+  border-start-start-radius: calc(var(--pxl-radius-md) - 1px);
+  border-end-start-radius: calc(var(--pxl-radius-md) - 1px);
+}
+
+.pxl-input__affix:last-child {
+  margin-inline-end: calc(-1 * var(--_px));
+  border-inline-start: 1px solid var(--pxl-border);
+  border-start-end-radius: calc(var(--pxl-radius-md) - 1px);
+  border-end-end-radius: calc(var(--pxl-radius-md) - 1px);
+}
+
+.pxl-input:focus-within:not([data-disabled]) .pxl-input__affix {
+  color: var(--pxl-accent-text);
 }

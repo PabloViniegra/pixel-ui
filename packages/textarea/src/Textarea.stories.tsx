@@ -13,7 +13,7 @@ const meta = {
   args: { placeholder: 'Describe what changed in this deployment…' },
   decorators: [
     (Story) => (
-      <div style={{ width: 360 }}>
+      <div style={{ width: 'min(360px, calc(100vw - 32px))' }}>
         <Field label="Release notes" description="Markdown is supported.">
           <Story />
         </Field>

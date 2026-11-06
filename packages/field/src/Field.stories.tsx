@@ -6,16 +6,21 @@ import '@pablo-v/pixel-icons/style.css';
 import './field.css';
 
 function Control(props: ComponentPropsWithRef<'input'>) {
+  const controlProps = useFieldControl(props);
+  const invalid = controlProps['aria-invalid'] && controlProps['aria-invalid'] !== 'false';
   return (
     <input
-      {...useFieldControl(props)}
+      {...controlProps}
       style={{
+        boxSizing: 'border-box',
+        minWidth: 0,
         height: 40,
         padding: '0 12px',
-        border: '1px solid var(--pxl-border)',
+        border: `1px solid var(${invalid ? '--pxl-danger' : '--pxl-gray-600'})`,
         borderRadius: 'var(--pxl-radius-md)',
-        background: 'var(--pxl-bg)',
+        background: 'var(--pxl-bg-subtle)',
         color: 'var(--pxl-fg)',
+        outlineColor: `var(${invalid ? '--pxl-danger' : '--pxl-accent'})`,
         font: 'inherit',
       }}
     />
@@ -33,7 +38,7 @@ const meta = {
     children: <Control placeholder="my-app" />,
   },
   render: (args) => (
-    <div style={{ width: 320 }}>
+    <div style={{ width: 'min(320px, calc(100vw - 32px))' }}>
       <Field {...args} />
     </div>
   ),

@@ -2,7 +2,7 @@
   --_h: 40px;
   --_px: var(--pxl-space-3);
   --_text: var(--pxl-text-sm);
-  --_border: var(--pxl-border);
+  --_border: var(--pxl-gray-600);
 
   position: relative;
   display: flex;
@@ -26,25 +26,32 @@
 }
 
 .pxl-select__control {
+  box-sizing: border-box;
   width: 100%;
   height: var(--_h);
-  padding: 0 calc(var(--_px) + 16px + var(--pxl-space-2)) 0 var(--_px);
+  padding-block: 0;
+  padding-inline-start: var(--_px);
+  padding-inline-end: calc(var(--_h) + var(--pxl-space-2));
   border: 1px solid var(--_border);
   border-radius: var(--pxl-radius-md);
-  background: var(--pxl-bg);
+  background: var(--pxl-bg-subtle);
   color: inherit;
   font: inherit;
   appearance: none;
   cursor: pointer;
-  transition: border-color var(--pxl-dur-fast) linear;
+  transition:
+    border-color var(--pxl-dur-fast) linear,
+    background-color var(--pxl-dur-fast) linear;
 }
 
 .pxl-select__control:hover:not(:disabled) {
-  --_border: var(--pxl-gray-500);
+  --_border: var(--pxl-gray-800);
+  background: var(--pxl-bg);
 }
 
 .pxl-select__control:focus-visible {
-  --_border: var(--pxl-gray-500);
+  --_border: var(--pxl-accent);
+  background: var(--pxl-bg);
   outline: 2px solid var(--pxl-accent);
   outline-offset: 2px;
 }
@@ -65,6 +72,7 @@
 }
 
 .pxl-select__control:disabled {
+  --_border: var(--pxl-border);
   background: var(--pxl-bg-subtle);
   color: var(--pxl-fg-muted);
   cursor: not-allowed;
@@ -72,12 +80,20 @@
 
 .pxl-select__chevron {
   position: absolute;
-  right: var(--_px);
+  inset-inline-end: var(--pxl-space-1);
+  box-sizing: content-box;
+  padding: calc((var(--_h) - 26px) / 2);
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-gray-100);
   color: var(--pxl-fg-muted);
   pointer-events: none;
-  transition: transform var(--pxl-dur-base) var(--pxl-ease-out);
+  transition:
+    color var(--pxl-dur-fast) linear,
+    background-color var(--pxl-dur-fast) linear;
 }
 
-.pxl-select:has(.pxl-select__control:open) .pxl-select__chevron {
-  transform: rotate(180deg);
+.pxl-select:has(.pxl-select__control:is(:focus-visible, :open)) .pxl-select__chevron {
+  color: var(--pxl-accent-text);
+  background: var(--pxl-accent-subtle);
 }

@@ -35,7 +35,7 @@ export const SelectAll: Story = {
           indeterminate={picked.length > 0 && !all}
           onChange={() => setPicked(all ? [] : regions)}
         />
-        <div style={{ display: 'grid', gap: 8, paddingLeft: 24 }}>
+        <div style={{ display: 'grid', gap: 8, paddingLeft: 'calc(20px + var(--pxl-space-2))' }}>
           {regions.map((r) => (
             <Checkbox
               key={r}
