@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Horizontal and vertical separators",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/separator"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

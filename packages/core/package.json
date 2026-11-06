@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Internal utilities shared by PixelUI components",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/core"
+  },
   "type": "module",
   "sideEffects": false,
   "exports": {

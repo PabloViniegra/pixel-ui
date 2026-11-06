@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Modal dialog on the native dialog element",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/dialog"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

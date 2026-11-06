@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Segmented progress bar with a determinate value or an indeterminate loop",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/progress"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Radio group with a pixel dot indicator",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/radio"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

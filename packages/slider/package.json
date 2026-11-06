@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Range slider drawn as a track of pixel cells",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/slider"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

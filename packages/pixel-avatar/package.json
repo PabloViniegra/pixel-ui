@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Symmetric pixel identicon generated from a name or email",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/pixel-avatar"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

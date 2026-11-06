@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Multi-line text input with auto-resize",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/textarea"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

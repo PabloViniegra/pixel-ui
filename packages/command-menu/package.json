@@ -1,8 +1,13 @@
 {
   "name": "@pixel-ui/command-menu",
   "version": "0.0.0",
-  "description": "\u2318K command palette whose results decode in with ScrambleText",
+  "description": "⌘K command palette whose results decode in with ScrambleText",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/command-menu"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

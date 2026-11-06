@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Toggle switch with role=\"switch\", controlled or uncontrolled, and an optional label",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/switch"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Hover and focus hint anchored to its trigger",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/tooltip"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

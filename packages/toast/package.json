@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Toast notifications with a pixel countdown",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/toast"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

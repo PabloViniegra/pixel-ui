@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Status badge with neutral, accent and status tones and an optional status dot",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/badge"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

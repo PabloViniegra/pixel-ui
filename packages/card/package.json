@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Card container with header, title, description, content and footer slots",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/card"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

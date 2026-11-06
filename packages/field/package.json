@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Form field wrapper with label, description and error",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/field"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

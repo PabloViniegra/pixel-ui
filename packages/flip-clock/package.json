@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Flip-clock counter and clock with split-flap digits in the pixel font",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/flip-clock"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

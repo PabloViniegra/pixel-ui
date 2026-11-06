@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "3x3 pixel grid loader with snake, pulse and scan patterns",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/loader"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

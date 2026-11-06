@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "16x16 pixel SVG icon set with crisp edges",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/pixel-icons"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

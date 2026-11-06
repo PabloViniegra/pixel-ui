@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Streaming log viewer with autoscroll, level colours and a block cursor",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/terminal"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"
