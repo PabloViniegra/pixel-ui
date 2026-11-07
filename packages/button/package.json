@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Button with primary, secondary, ghost and danger variants, three sizes and a loading state",
   "license": "MIT",
   "repository": {
