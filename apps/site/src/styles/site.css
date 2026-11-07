@@ -170,8 +170,8 @@ a.pxl-button {
 .icon-link {
   display: inline-grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);
@@ -226,8 +226,8 @@ a.pxl-button {
     overflow-x: auto;
     margin-inline: calc(var(--pxl-space-3) * -1);
     padding-block: var(--pxl-space-1);
-    scrollbar-width: none;
-    mask-image: linear-gradient(to right, #000 calc(100% - var(--pxl-space-8)), transparent);
+    scrollbar-width: thin;
+    scrollbar-color: var(--pxl-gray-500) transparent;
   }
 
   .nav a {
@@ -482,7 +482,7 @@ main > .section {
 
 .code__copy {
   flex: none;
-  height: 24px;
+  min-height: 44px;
   padding: 0 var(--pxl-space-2);
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-sm);
@@ -798,6 +798,7 @@ main > .section {
 }
 
 .entry__copy {
+  min-height: 44px;
   padding: 0;
   border: 0;
   background: none;
