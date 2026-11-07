@@ -1,17 +1,13 @@
 interface PackageJson {
   name: string;
-  version: string;
   description?: string;
   private?: boolean;
 }
 
 export interface CatalogEntry {
-  name: string;
   title: string;
-  version: string;
   description: string;
   storybook: string;
-  npm: string;
 }
 
 export interface CatalogGroup {
@@ -62,17 +58,6 @@ const packages = Object.entries(manifests)
   .map(([path, pkg]) => ({ dir: path.split('/').at(-2) ?? '', ...pkg }))
   .filter((pkg) => !pkg.private);
 
-export const packageCount = packages.length;
-
-export const foundationPackages = packages
-  .filter((pkg) => ['tokens', 'core', 'react'].includes(pkg.dir))
-  .map((pkg) => ({
-    name: pkg.name,
-    version: pkg.version,
-    description: pkg.description ?? '',
-    npm: `https://www.npmjs.com/package/${pkg.name}`,
-  }));
-
 const entries = packages.flatMap((pkg) => {
   const title = storyTitle(pkg.dir);
   if (!title) return [];
@@ -81,12 +66,9 @@ const entries = packages.flatMap((pkg) => {
     {
       category,
       entry: {
-        name: pkg.name,
         title: label,
-        version: pkg.version,
         description: pkg.description ?? '',
         storybook: storybookDocs(toStoryId(title)),
-        npm: `https://www.npmjs.com/package/${pkg.name}`,
       } satisfies CatalogEntry,
     },
   ];

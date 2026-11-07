@@ -18,7 +18,7 @@ export default defineConfig({
         "form-action 'none'",
       ],
       scriptDirective: { resources: ["'self'"] },
-      // Token swatches and spacing demos are rendered with inline style attributes.
+      // Package components (Progress, Loader, charts, PixelAvatar) render inline style attributes.
       styleDirective: { resources: ["'self'", { resource: "'unsafe-inline'", kind: 'attribute' }] },
     },
   },

@@ -9,21 +9,15 @@ import { HeroScramble } from '../components/HeroScramble';
 import { InstallTabs } from '../components/InstallTabs';
 import LinkButton from '../components/LinkButton.astro';
 import { Showcase } from '../components/Showcase';
-import {
-  catalog,
-  componentCount,
-  foundationPackages,
-  packageCount,
-  repoUrl,
-  storybookDocs,
-  storybookUrl,
-} from '../data/catalog';
+import { catalog, componentCount, repoUrl, storybookDocs, storybookUrl } from '../data/catalog';
 
 const title = 'PixelUI — React components with a pixel signature';
 const description = `${componentCount} accessible React components, each published as its own npm package, with design tokens, Geist Pixel type and a Tailwind CSS v4 preset.`;
 
-const usage = `import '@pablo-v/tokens/styles.css';
-import '@pablo-v/button/style.css';
+const imports = `import '@pablo-v/tokens/styles.css';
+import '@pablo-v/button/style.css';`;
+
+const usage = `${imports}
 import { Button } from '@pablo-v/button';
 
 export function Deploy({ busy }: { busy: boolean }) {
@@ -78,22 +72,6 @@ const overrides = `:root {
   --pxl-font-pixel: var(--pxl-font-pixel-grid);
 }`;
 
-const colors = [
-  ['bg', 'Page'],
-  ['bg-subtle', 'Quiet surface'],
-  ['gray-100', 'Hover fill'],
-  ['border', 'Resting edge'],
-  ['fg-muted', 'Secondary text'],
-  ['fg', 'Ink'],
-  ['accent', 'The one accent'],
-  ['accent-subtle', 'Accent tint'],
-  ['success', 'Success'],
-  ['warning', 'Warning'],
-  ['danger', 'Danger'],
-];
-const radii = ['xs', 'sm', 'md', 'lg', 'full'];
-const spaces = [1, 2, 3, 4, 6, 8];
-
 const pageUrl = new URL(import.meta.env.BASE_URL, Astro.site).href;
 const ogImage = new URL('og.png', pageUrl).href;
 const ogImageAlt =
@@ -108,25 +86,6 @@ const jsonLd = JSON.stringify({
   programmingLanguage: ['TypeScript', 'React'],
   license: 'https://opensource.org/licenses/MIT',
 });
-
-const principles = [
-  [
-    'Product UI first',
-    'Every component sits comfortably in a serious interface before it shows any 8-bit character.',
-  ],
-  [
-    'Pixels as a signature',
-    'Pixel type, segmented progress, the 3×3 loader and decoding text appear only where they carry meaning.',
-  ],
-  [
-    'Install only what you use',
-    'Each component is its own npm package with its own semver version and changelog.',
-  ],
-  [
-    'Accessible by default',
-    'Real roles and labels, keyboard operation, visible focus and reduced-motion support, built to WCAG 2.2 AA.',
-  ],
-];
 ---
 
 <!doctype html>
@@ -172,10 +131,9 @@ const principles = [
       <div class="container header__inner">
         <a class="brand" href={import.meta.env.BASE_URL} aria-label="PixelUI home">PixelUI</a>
         <nav class="nav" aria-label="Sections">
-          <a href="#components">Components</a>
           <a href="#install">Install</a>
           <a href="#usage">Usage</a>
-          <a href="#foundations">Foundations</a>
+          <a href="#components">Components</a>
         </nav>
         <div class="header__actions">
           <a class="header__link" href={storybookUrl}>Storybook</a>
@@ -192,14 +150,14 @@ const principles = [
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero__copy">
           <Badge tone="accent" appearance="subtle" animateIn={false}>
-            {packageCount} packages on npm · MIT
+            {componentCount} components · MIT
           </Badge>
           <h1 id="hero-title" class="hero__title">
             <HeroScramble client:idle />
           </h1>
           <p class="hero__lead">
-            Minimal React components with greyscale surfaces, one blue accent and springy motion.
-            Geist Pixel type and a few <span class="nowrap">8-bit</span> details are the signature, never the whole surface.
+            Accessible React components you install one package at a time. They sit quietly in a serious product
+            and keep one signature: Geist Pixel type and a few <span class="nowrap">8-bit</span> details.
           </p>
           <div class="hero__actions">
             <LinkButton href="#install" size="lg">Get started</LinkButton>
@@ -208,10 +166,10 @@ const principles = [
         </div>
         <aside class="hero__panel" aria-label="At a glance">
           <dl class="facts">
-            <div><dt>Components</dt><dd>{componentCount}</dd></div>
-            <div><dt>Peer</dt><dd>React 19</dd></div>
-            <div><dt>Accessibility</dt><dd>WCAG 2.2 AA</dd></div>
-            <div><dt>Tailwind preset</dt><dd>v4</dd></div>
+            <div><dt>Requires</dt><dd>React 19</dd></div>
+            <div><dt>Accessibility</dt><dd class="nowrap">WCAG 2.2 AA</dd></div>
+            <div><dt>Next.js</dt><dd>App Router ready</dd></div>
+            <div><dt>Tailwind CSS</dt><dd>v4 preset</dd></div>
           </dl>
           <Code lang="bash" label="Everything at once" code="pnpm add @pablo-v/react" />
         </aside>
@@ -221,78 +179,10 @@ const principles = [
         <div class="section__head">
           <h2 id="showcase-title" class="section__title">Running on this page</h2>
           <p class="section__lead">
-            The published packages, live. Try them with the mouse and the keyboard.
+            The published packages, live and wired together. Press Redeploy, or drive it with the keyboard.
           </p>
         </div>
         <Showcase client:visible />
-      </section>
-
-      <section class="section container" id="components" aria-labelledby="components-title">
-        <div class="section__head">
-          <h2 id="components-title" class="section__title">Components</h2>
-          <p class="section__lead">
-            {componentCount} components, each an independent package. Every entry links to its Storybook docs with live
-            controls, prop tables and accessibility checks.
-          </p>
-        </div>
-        <nav class="chips" aria-label="Component categories">
-          {catalog.map((group) => <a href={`#cat-${group.category.toLowerCase()}`}>{group.label} <span class="chips__count">{group.entries.length}</span></a>)}
-          <a href="#cat-foundation">Foundation packages <span class="chips__count">{foundationPackages.length}</span></a>
-        </nav>
-        {
-          catalog.map((group) => (
-            <section class="group" id={`cat-${group.category.toLowerCase()}`} aria-labelledby={`cat-${group.category.toLowerCase()}-title`}>
-              <div class="group__head">
-                <h3 class="group__title" id={`cat-${group.category.toLowerCase()}-title`}>{group.label}</h3>
-                <p class="muted">{group.blurb}</p>
-              </div>
-              <ul class="entries" role="list">
-                {group.entries.map((entry) => (
-                  <li class="entry">
-                    <div class="entry__id">
-                      <h4 class="entry__title">
-                        <a href={entry.storybook}>{entry.title}<span class="sr-only"> docs</span></a>
-                      </h4>
-                      <code class="entry__pkg" translate="no">{entry.name}<span class="entry__version"> v{entry.version}</span></code>
-                    </div>
-                    <p class="entry__desc">{entry.description}</p>
-                    <div class="entry__links">
-                      <a href={entry.npm}>npm<span class="sr-only"> package {entry.name}</span></a>
-                      <button type="button" class="entry__copy" data-copy={`pnpm add ${entry.name}`} data-copy-label={`Install command for ${entry.name}`}>
-                        Copy install<span class="sr-only"> command for {entry.name}</span>
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
-        }
-        <section class="group" id="cat-foundation" aria-labelledby="cat-foundation-title">
-          <div class="group__head">
-            <h3 class="group__title" id="cat-foundation-title">Foundation packages</h3>
-            <p class="muted">The pieces the components share.</p>
-          </div>
-          <ul class="entries" role="list">
-            {
-              foundationPackages.map((pkg) => (
-                <li class="entry">
-                  <div class="entry__id">
-                    <h4 class="entry__title" translate="no">{pkg.name.replace('@pablo-v/', '')}</h4>
-                    <code class="entry__pkg" translate="no">{pkg.name}<span class="entry__version"> v{pkg.version}</span></code>
-                  </div>
-                  <p class="entry__desc">{pkg.description}</p>
-                  <div class="entry__links">
-                    <a href={pkg.npm}>npm<span class="sr-only"> package {pkg.name}</span></a>
-                    <button type="button" class="entry__copy" data-copy={`pnpm add ${pkg.name}`} data-copy-label={`Install command for ${pkg.name}`}>
-                      Copy install<span class="sr-only"> command for {pkg.name}</span>
-                    </button>
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
       </section>
 
       <section class="section container" id="install" aria-labelledby="install-title">
@@ -316,7 +206,7 @@ const principles = [
               Load the tokens once at the root of your app, then each component's stylesheet. A CSS-aware
               bundler (Vite, Next.js, Astro…) is required.
             </p>
-            <Code lang="tsx" label="Single components" code={usage.split('\n').slice(0, 2).join('\n')} />
+            <Code lang="tsx" label="Single components" code={imports} />
             <Code lang="tsx" label="Umbrella package" code={umbrella} />
           </li>
           <li class="step">
@@ -363,86 +253,39 @@ const principles = [
             <h3 class="guide__title">Tokens</h3>
             <p class="muted">
               Override any token on <code>:root</code> or a container. Components read colours, radii and fonts only from
-              tokens, never from literals.
+              tokens, never from literals. <a href={storybookDocs('foundations-tokens')}>All tokens in Storybook</a>.
             </p>
             <Code lang="css" name="Token overrides" code={overrides} />
           </article>
         </div>
       </section>
 
-      <section class="section container" id="foundations" aria-labelledby="foundations-title">
+      <section class="section container" id="components" aria-labelledby="components-title">
         <div class="section__head">
-          <h2 id="foundations-title" class="section__title">Foundations</h2>
+          <h2 id="components-title" class="section__title">Components</h2>
           <p class="section__lead">
-            Neutral greys build every surface; colour is reserved for meaning. Swatches below read the live tokens, so they
-            follow the theme toggle.
-            <a href={storybookDocs('foundations-tokens')}>All tokens in Storybook</a>.
+            {componentCount} components, each an independent package. Every name opens its Storybook docs with live
+            controls, prop tables and accessibility checks.
           </p>
         </div>
-
-        <h3 class="sub">Colour</h3>
-        <ul class="swatches" role="list">
-          {
-            colors.map(([token, role]) => (
-              <li class="swatch">
-                <span class="swatch__chip" style={`background: var(--pxl-${token})`} />
-                <code>--pxl-{token}</code>
-                <span class="muted">{role}</span>
-              </li>
-            ))
-          }
-        </ul>
-
-        <div class="foundation-grid">
-          <div>
-            <h3 class="sub">Type</h3>
-            <dl class="type">
-              <div><dt class="type__pixel">Geist Pixel</dt><dd class="muted">Display and titles only, never below 18px.</dd></div>
-              <div><dt class="type__sans">Geist</dt><dd class="muted">Body, labels and every interactive text.</dd></div>
-              <div><dt class="type__mono">Geist Mono 0123456789</dt><dd class="muted">Numeric readouts with tabular figures.</dd></div>
-            </dl>
-          </div>
-          <div>
-            <h3 class="sub">Radius</h3>
-            <ul class="radii" role="list">
-              {
-                radii.map((r) => (
-                  <li>
-                    <span class="radii__box" style={`border-radius: var(--pxl-radius-${r})`} />
-                    <code>{r}</code>
+        {
+          catalog.map((group) => (
+            <section class="group" aria-labelledby={`cat-${group.category.toLowerCase()}-title`}>
+              <div class="group__head">
+                <h3 class="group__title" id={`cat-${group.category.toLowerCase()}-title`}>{group.label}</h3>
+                <p class="muted">{group.blurb}</p>
+              </div>
+              <ul class="entries" role="list">
+                {group.entries.map((entry) => (
+                  <li class="entry">
+                    <a class="entry__title" href={entry.storybook}>{entry.title}<span class="sr-only"> docs</span></a>
+                    <p class="entry__desc">{entry.description}</p>
                   </li>
-                ))
-              }
-            </ul>
-            <h3 class="sub">Spacing · 4px unit</h3>
-            <ul class="spaces" role="list">
-              {
-                spaces.map((s) => (
-                  <li>
-                    <span class="spaces__bar" style={`width: var(--pxl-space-${s})`} />
-                    <code>space-{s}</code>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section container" aria-labelledby="principles-title">
-        <div class="section__head">
-          <h2 id="principles-title" class="section__title">Principles</h2>
-        </div>
-        <ul class="principles" role="list">
-          {
-            principles.map(([name, text]) => (
-              <li>
-                <h3 class="principle__title">{name}</h3>
-                <p class="muted">{text}</p>
-              </li>
-            ))
-          }
-        </ul>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
       </section>
 
       <section class="section container" aria-labelledby="versioning-title">
@@ -496,6 +339,28 @@ const principles = [
         } catch {}
         sync();
       });
+
+      const navLinks = new Map(
+        [...document.querySelectorAll<HTMLAnchorElement>('.nav a[href^="#"]')].map((link) => [link.hash.slice(1), link]),
+      );
+      const spy = new IntersectionObserver(
+        (records) => {
+          for (const record of records) {
+            const link = navLinks.get(record.target.id);
+            if (record.isIntersecting) {
+              for (const other of navLinks.values()) other.removeAttribute('aria-current');
+              link?.setAttribute('aria-current', 'true');
+            } else {
+              link?.removeAttribute('aria-current');
+            }
+          }
+        },
+        { rootMargin: '-40% 0px -55% 0px' },
+      );
+      for (const id of navLinks.keys()) {
+        const section = document.getElementById(id);
+        if (section) spy.observe(section);
+      }
 
       const status = document.getElementById('copy-status');
       const timers = new WeakMap<HTMLButtonElement, number>();
