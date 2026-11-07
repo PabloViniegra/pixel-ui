@@ -19,7 +19,7 @@
     "new:component": "node scripts/new-component.mjs",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && node scripts/publish-sequential.mjs && changeset tag"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.0",
