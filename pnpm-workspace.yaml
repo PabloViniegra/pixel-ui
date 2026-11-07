@@ -1,3 +1,13 @@
 packages:
   - "packages/*"
   - "apps/*"
+
+# @astrojs/check loads @emnapi/core 1.x, which needs @emnapi/runtime 1.x but does
+# not declare it, so pnpm hands it the 2.0 beta and the check crashes on load.
+packageExtensions:
+  "@emnapi/core@1":
+    dependencies:
+      "@emnapi/runtime": "^1.11.0"
+  "@astrojs/astro2tsx":
+    dependencies:
+      "@emnapi/runtime": "^1.11.0"

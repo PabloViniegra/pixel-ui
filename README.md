@@ -52,6 +52,7 @@ shapes and springy motion, with **Geist Pixel** type and a few 8-bit details as 
 ```bash
 pnpm install        # also copies the Geist, Geist Mono and Geist Pixel fonts into packages/tokens/fonts
 pnpm storybook      # http://localhost:6006
+pnpm site           # landing page, http://localhost:4321/pixel-ui/
 ```
 
 | Script                      |                                                          |
@@ -60,6 +61,7 @@ pnpm storybook      # http://localhost:6006
 | `pnpm typecheck`            | Type-check sources, stories and tests                    |
 | `pnpm test`                 | Vitest + Testing Library (jsdom)                         |
 | `pnpm lint` / `pnpm format` | Biome                                                    |
+| `pnpm build-site`           | Build the Astro landing page into `apps/site/dist`       |
 | `pnpm new:component <name>` | Scaffold a new, independently versioned component        |
 | `pnpm changeset`            | Record a version bump for the packages you changed       |
 
@@ -111,6 +113,7 @@ pixel-ui/
 │  │  └─ package.json            → own version
 │  └─ react/           umbrella package
 ├─ apps/docs/          Storybook (catalogue, foundations, version table)
+├─ apps/site/          Astro landing page (catalogue, install, docs links)
 ├─ scripts/            new-component generator, CSS copy
 └─ .changeset/         pending version bumps
 ```
@@ -123,7 +126,8 @@ Versioning is **independent** per package (see [`.changeset/README.md`](.changes
 2. Open a PR. CI fails if a package changed without a changeset.
 3. On `main`, the release workflow opens a **Version Packages** PR. Merging it bumps only the
    affected packages, writes their `CHANGELOG.md`, publishes them to npm with provenance and
-   tags each one (`@pablo-v/button@0.2.0`). Storybook is redeployed to GitHub Pages.
+   tags each one (`@pablo-v/button@0.2.0`). The landing page (root) and Storybook
+   (`/storybook/`) are redeployed together to GitHub Pages.
 
 Each story shows its package name and version in the corner, and **Versions** in Storybook lists
 every package with its latest changelog entry.

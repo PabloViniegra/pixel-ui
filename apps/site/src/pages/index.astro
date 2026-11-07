@@ -1,0 +1,523 @@
+---
+import { Badge, MoonIcon, SunIcon } from '@pablo-v/react';
+import '@pablo-v/react/styles.css';
+import '../styles/site.css';
+import sansFont from '../../../../packages/tokens/fonts/Geist-Variable.latin.woff2?url';
+import pixelFont from '../../../../packages/tokens/fonts/GeistPixel-Square.latin.woff2?url';
+import Code from '../components/Code.astro';
+import { HeroScramble } from '../components/HeroScramble';
+import { InstallTabs } from '../components/InstallTabs';
+import LinkButton from '../components/LinkButton.astro';
+import { Showcase } from '../components/Showcase';
+import {
+  catalog,
+  componentCount,
+  foundationPackages,
+  packageCount,
+  repoUrl,
+  storybookDocs,
+  storybookUrl,
+} from '../data/catalog';
+
+const title = 'PixelUI — React components with a pixel signature';
+const description = `${componentCount} accessible React components, each published as its own npm package, with design tokens, Geist Pixel type and a Tailwind CSS v4 preset.`;
+
+const usage = `import '@pablo-v/tokens/styles.css';
+import '@pablo-v/button/style.css';
+import { Button } from '@pablo-v/button';
+
+export function Deploy({ busy }: { busy: boolean }) {
+  return (
+    <Button variant="primary" loading={busy}>
+      Deploy
+    </Button>
+  );
+}`;
+
+const umbrella = `import '@pablo-v/react/styles.css';
+import { Button, Badge, Switch } from '@pablo-v/react';`;
+
+const nextFonts = `// app/layout.tsx — fonts come from next/font
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { GeistPixelSquare } from 'geist/font/pixel';
+import '@pablo-v/tokens/tokens.css';
+import '@pablo-v/tokens/motion.css';
+import '@pablo-v/tokens/utilities.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html
+      lang="en"
+      className={\`\${GeistSans.variable} \${GeistMono.variable} \${GeistPixelSquare.variable}\`}
+    >
+      <body>{children}</body>
+    </html>
+  );
+}`;
+
+const tailwind = `@import "tailwindcss";
+@import "@pablo-v/tokens/styles.css";
+@import "@pablo-v/tokens/tailwind.css";`;
+
+const tailwindUsage = `<div class="rounded-pxl-lg bg-pxl-bg-subtle shadow-pixel">
+  <h2 class="font-pixel text-pxl-xl">Ship it</h2>
+</div>`;
+
+const theming = `<!-- follow the OS (default), or force a theme on any element -->
+<html data-theme="dark">
+  <section data-theme="light">…</section>
+</html>`;
+
+const overrides = `:root {
+  --pxl-accent: #0f766e;
+  --pxl-radius-md: 8px;
+}
+
+.marketing {
+  --pxl-font-pixel: var(--pxl-font-pixel-grid);
+}`;
+
+const colors = [
+  ['bg', 'Page'],
+  ['bg-subtle', 'Quiet surface'],
+  ['gray-100', 'Hover fill'],
+  ['border', 'Resting edge'],
+  ['fg-muted', 'Secondary text'],
+  ['fg', 'Ink'],
+  ['accent', 'The one accent'],
+  ['accent-subtle', 'Accent tint'],
+  ['success', 'Success'],
+  ['warning', 'Warning'],
+  ['danger', 'Danger'],
+];
+const radii = ['xs', 'sm', 'md', 'lg', 'full'];
+const spaces = [1, 2, 3, 4, 6, 8];
+
+const pageUrl = new URL(import.meta.env.BASE_URL, Astro.site).href;
+const ogImage = new URL('og.png', pageUrl).href;
+const ogImageAlt =
+  'PixelUI wordmark in Geist Pixel type with the tagline React components with a pixel signature';
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'PixelUI',
+  description,
+  url: pageUrl,
+  codeRepository: repoUrl,
+  programmingLanguage: ['TypeScript', 'React'],
+  license: 'https://opensource.org/licenses/MIT',
+});
+
+const principles = [
+  [
+    'Product UI first',
+    'Every component sits comfortably in a serious interface before it shows any 8-bit character.',
+  ],
+  [
+    'Pixels as a signature',
+    'Pixel type, segmented progress, the 3×3 loader and decoding text appear only where they carry meaning.',
+  ],
+  [
+    'Install only what you use',
+    'Each component is its own npm package with its own semver version and changelog.',
+  ],
+  [
+    'Accessible by default',
+    'Real roles and labels, keyboard operation, visible focus and reduced-motion support, built to WCAG 2.2 AA.',
+  ],
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="PixelUI" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href={pixelFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('pxl-theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.dataset.theme = theme;
+          for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
+            meta.setAttribute('content', theme === 'dark' ? '#000000' : '#ffffff');
+          }
+        }
+      } catch {}
+    </script>
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href={import.meta.env.BASE_URL} aria-label="PixelUI home">PixelUI</a>
+        <nav class="nav" aria-label="Sections">
+          <a href="#components">Components</a>
+          <a href="#install">Install</a>
+          <a href="#usage">Usage</a>
+          <a href="#foundations">Foundations</a>
+        </nav>
+        <div class="header__actions">
+          <a class="header__link" href={storybookUrl}>Storybook</a>
+          <a class="header__link" href={repoUrl}>GitHub</a>
+          <button type="button" class="icon-link" id="theme-toggle" aria-label="Toggle dark theme" aria-pressed="false">
+            <span class="theme-icon theme-icon--sun"><SunIcon size={16} /></span>
+            <span class="theme-icon theme-icon--moon"><MoonIcon size={16} /></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <Badge tone="accent" appearance="subtle" animateIn={false}>
+            {packageCount} packages on npm · MIT
+          </Badge>
+          <h1 id="hero-title" class="hero__title">
+            <HeroScramble client:idle />
+          </h1>
+          <p class="hero__lead">
+            Minimal React components with greyscale surfaces, one blue accent and springy motion.
+            Geist Pixel type and a few <span class="nowrap">8-bit</span> details are the signature, never the whole surface.
+          </p>
+          <div class="hero__actions">
+            <LinkButton href="#install" size="lg">Get started</LinkButton>
+            <LinkButton href={storybookUrl} variant="secondary" size="lg">Open Storybook</LinkButton>
+          </div>
+        </div>
+        <aside class="hero__panel" aria-label="At a glance">
+          <dl class="facts">
+            <div><dt>Components</dt><dd>{componentCount}</dd></div>
+            <div><dt>Peer</dt><dd>React 19</dd></div>
+            <div><dt>Accessibility</dt><dd>WCAG 2.2 AA</dd></div>
+            <div><dt>Tailwind preset</dt><dd>v4</dd></div>
+          </dl>
+          <Code label="Everything at once" code="pnpm add @pablo-v/react" />
+        </aside>
+      </section>
+
+      <section class="section container" aria-labelledby="showcase-title">
+        <div class="section__head">
+          <h2 id="showcase-title" class="section__title">Running on this page</h2>
+          <p class="section__lead">
+            The published packages, live. Try them with the mouse and the keyboard.
+          </p>
+        </div>
+        <Showcase client:visible />
+      </section>
+
+      <section class="section container" id="components" aria-labelledby="components-title">
+        <div class="section__head">
+          <h2 id="components-title" class="section__title">Components</h2>
+          <p class="section__lead">
+            {componentCount} components, each an independent package. Every entry links to its Storybook docs with live
+            controls, prop tables and accessibility checks.
+          </p>
+        </div>
+        <nav class="chips" aria-label="Component categories">
+          {catalog.map((group) => <a href={`#cat-${group.category.toLowerCase()}`}>{group.label} <span class="chips__count">{group.entries.length}</span></a>)}
+          <a href="#cat-foundation">Foundation packages <span class="chips__count">{foundationPackages.length}</span></a>
+        </nav>
+        {
+          catalog.map((group) => (
+            <section class="group" id={`cat-${group.category.toLowerCase()}`} aria-labelledby={`cat-${group.category.toLowerCase()}-title`}>
+              <div class="group__head">
+                <h3 class="group__title" id={`cat-${group.category.toLowerCase()}-title`}>{group.label}</h3>
+                <p class="muted">{group.blurb}</p>
+              </div>
+              <ul class="entries" role="list">
+                {group.entries.map((entry) => (
+                  <li class="entry">
+                    <div class="entry__id">
+                      <h4 class="entry__title">
+                        <a href={entry.storybook}>{entry.title}<span class="sr-only"> docs</span></a>
+                      </h4>
+                      <code class="entry__pkg" translate="no">{entry.name}<span class="entry__version"> v{entry.version}</span></code>
+                    </div>
+                    <p class="entry__desc">{entry.description}</p>
+                    <div class="entry__links">
+                      <a href={entry.npm}>npm<span class="sr-only"> package {entry.name}</span></a>
+                      <button type="button" class="entry__copy" data-copy={`pnpm add ${entry.name}`} data-copy-label={`Install command for ${entry.name}`}>
+                        Copy install<span class="sr-only"> command for {entry.name}</span>
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+        <section class="group" id="cat-foundation" aria-labelledby="cat-foundation-title">
+          <div class="group__head">
+            <h3 class="group__title" id="cat-foundation-title">Foundation packages</h3>
+            <p class="muted">The pieces the components share.</p>
+          </div>
+          <ul class="entries" role="list">
+            {
+              foundationPackages.map((pkg) => (
+                <li class="entry">
+                  <div class="entry__id">
+                    <h4 class="entry__title" translate="no">{pkg.name.replace('@pablo-v/', '')}</h4>
+                    <code class="entry__pkg" translate="no">{pkg.name}<span class="entry__version"> v{pkg.version}</span></code>
+                  </div>
+                  <p class="entry__desc">{pkg.description}</p>
+                  <div class="entry__links">
+                    <a href={pkg.npm}>npm<span class="sr-only"> package {pkg.name}</span></a>
+                    <button type="button" class="entry__copy" data-copy={`pnpm add ${pkg.name}`} data-copy-label={`Install command for ${pkg.name}`}>
+                      Copy install<span class="sr-only"> command for {pkg.name}</span>
+                    </button>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </section>
+
+      <section class="section container" id="install" aria-labelledby="install-title">
+        <div class="section__head">
+          <h2 id="install-title" class="section__title">Install</h2>
+          <p class="section__lead">
+            Requires React 19. Pick single components to keep bundles small, or the umbrella package to get them all.
+          </p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <h3 class="step__title">Add the packages</h3>
+            <p class="muted">
+              <code>@pablo-v/tokens</code> is the shared peer: CSS variables, Geist fonts and keyframes.
+            </p>
+            <InstallTabs client:visible />
+          </li>
+          <li class="step">
+            <h3 class="step__title">Import the styles</h3>
+            <p class="muted">
+              Load the tokens once at the root of your app, then each component's stylesheet. A CSS-aware
+              bundler (Vite, Next.js, Astro…) is required.
+            </p>
+            <Code label="Single components" code={usage.split('\n').slice(0, 2).join('\n')} />
+            <Code label="Umbrella package" code={umbrella} />
+          </li>
+          <li class="step">
+            <h3 class="step__title">Use the components</h3>
+            <p class="muted">Every component ships its types; interactive ones are marked <code>"use client"</code>.</p>
+            <Code label="Deploy.tsx" code={usage} />
+          </li>
+        </ol>
+      </section>
+
+      <section class="section container" id="usage" aria-labelledby="usage-title">
+        <div class="section__head">
+          <h2 id="usage-title" class="section__title">Frameworks and theming</h2>
+          <p class="section__lead">Plain CSS with overridable <code>--pxl-*</code> custom properties, so it fits any stack.</p>
+        </div>
+        <div class="guides">
+          <article class="guide">
+            <h3 class="guide__title">Next.js</h3>
+            <p class="muted">
+              Interactive components ship with <code>"use client"</code>, so you can import them straight from Server
+              Components. If you load fonts with <code>next/font</code>, import the token files individually instead of
+              <code>styles.css</code>: the tokens read the <code>--font-geist-*</code> variables.
+            </p>
+            <Code name="Next.js layout" code={nextFonts} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Tailwind CSS v4</h3>
+            <p class="muted">
+              Add the preset after the tokens to get <code>font-pixel</code>, <code>*-pxl-*</code> colours, radii, shadows
+              and easings, plus <code>clip-notch</code> and <code>pixelated</code>. Utilities follow the live theme.
+            </p>
+            <Code name="Tailwind CSS setup" code={tailwind} />
+            <Code name="Tailwind class example" code={tailwindUsage} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Light and dark</h3>
+            <p class="muted">
+              Themes follow the OS setting by default. Set <code>data-theme="light"</code> or <code>"dark"</code> on any
+              element to force one for that subtree.
+            </p>
+            <Code name="Theme attribute example" code={theming} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Tokens</h3>
+            <p class="muted">
+              Override any token on <code>:root</code> or a container. Components read colours, radii and fonts only from
+              tokens, never from literals.
+            </p>
+            <Code name="Token overrides" code={overrides} />
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="foundations" aria-labelledby="foundations-title">
+        <div class="section__head">
+          <h2 id="foundations-title" class="section__title">Foundations</h2>
+          <p class="section__lead">
+            Neutral greys build every surface; colour is reserved for meaning. Swatches below read the live tokens, so they
+            follow the theme toggle.
+            <a href={storybookDocs('foundations-tokens')}>All tokens in Storybook</a>.
+          </p>
+        </div>
+
+        <h3 class="sub">Colour</h3>
+        <ul class="swatches" role="list">
+          {
+            colors.map(([token, role]) => (
+              <li class="swatch">
+                <span class="swatch__chip" style={`background: var(--pxl-${token})`} />
+                <code>--pxl-{token}</code>
+                <span class="muted">{role}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="foundation-grid">
+          <div>
+            <h3 class="sub">Type</h3>
+            <dl class="type">
+              <div><dt class="type__pixel">Geist Pixel</dt><dd class="muted">Display and titles only, never below 18px.</dd></div>
+              <div><dt class="type__sans">Geist</dt><dd class="muted">Body, labels and every interactive text.</dd></div>
+              <div><dt class="type__mono">Geist Mono 0123456789</dt><dd class="muted">Numeric readouts with tabular figures.</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h3 class="sub">Radius</h3>
+            <ul class="radii" role="list">
+              {
+                radii.map((r) => (
+                  <li>
+                    <span class="radii__box" style={`border-radius: var(--pxl-radius-${r})`} />
+                    <code>{r}</code>
+                  </li>
+                ))
+              }
+            </ul>
+            <h3 class="sub">Spacing · 4px unit</h3>
+            <ul class="spaces" role="list">
+              {
+                spaces.map((s) => (
+                  <li>
+                    <span class="spaces__bar" style={`width: var(--pxl-space-${s})`} />
+                    <code>space-{s}</code>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="principles-title">
+        <div class="section__head">
+          <h2 id="principles-title" class="section__title">Principles</h2>
+        </div>
+        <ul class="principles" role="list">
+          {
+            principles.map(([name, text]) => (
+              <li>
+                <h3 class="principle__title">{name}</h3>
+                <p class="muted">{text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="section container" aria-labelledby="versioning-title">
+        <div class="versioning">
+          <div>
+            <h2 id="versioning-title" class="section__title">Versioned one by one</h2>
+            <p class="section__lead">
+              Each package follows semver on its own and keeps a <code>CHANGELOG.md</code> written by Changesets. Releases
+              publish to npm with provenance and tag each package, for example <code>@pablo-v/button@1.0.0</code>.
+            </p>
+          </div>
+          <div class="versioning__actions">
+            <LinkButton href={storybookDocs('versions')} variant="secondary">Version table</LinkButton>
+            <LinkButton href={`${repoUrl}/blob/main/CONTRIBUTING.md`} variant="ghost">Contributing</LinkButton>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="muted">
+          PixelUI code is MIT. Geist, Geist Mono and Geist Pixel are © Vercel, licensed under the SIL Open Font License 1.1.
+        </p>
+        <nav class="footer__links" aria-label="Resources">
+          <a href={storybookUrl}>Storybook</a>
+          <a href={repoUrl}>GitHub</a>
+          <a href="https://www.npmjs.com/org/pablo-v">npm</a>
+        </nav>
+      </div>
+    </footer>
+
+    <div class="sr-only" role="status" aria-live="polite" id="copy-status"></div>
+
+    <script>
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : prefersDark.matches);
+      const sync = () => toggle?.setAttribute('aria-pressed', String(isDark()));
+      sync();
+      prefersDark.addEventListener('change', sync);
+      toggle?.addEventListener('click', () => {
+        const next = isDark() ? 'light' : 'dark';
+        root.dataset.theme = next;
+        for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
+          meta.setAttribute('content', next === 'dark' ? '#000000' : '#ffffff');
+        }
+        try {
+          localStorage.setItem('pxl-theme', next);
+        } catch {}
+        sync();
+      });
+
+      const status = document.getElementById('copy-status');
+      const timers = new WeakMap<HTMLButtonElement, number>();
+      document.addEventListener('click', async (event) => {
+        const button = (event.target as Element).closest<HTMLButtonElement>('[data-copy]');
+        if (!button?.dataset.copy) return;
+        const what = button.dataset.copyLabel ?? 'Code';
+        // Clearing first makes screen readers re-announce an identical message.
+        if (status) status.textContent = '';
+        try {
+          await navigator.clipboard.writeText(button.dataset.copy);
+          button.dataset.copied = '';
+          if (status) status.textContent = `${what} copied to clipboard`;
+          clearTimeout(timers.get(button));
+          timers.set(
+            button,
+            window.setTimeout(() => delete button.dataset.copied, 1600),
+          );
+        } catch {
+          if (status) status.textContent = `Could not copy ${what}`;
+        }
+      });
+    </script>
+  </body>
+</html>

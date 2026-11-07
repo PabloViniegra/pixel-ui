@@ -16,7 +16,7 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalledOnce();
   });
 
-  it('is busy and disabled while loading', async () => {
+  it('stays focusable but blocks clicks while loading', async () => {
     const onClick = vi.fn();
     render(
       <Button loading onClick={onClick}>
@@ -25,9 +25,25 @@ describe('Button', () => {
     );
     const button = screen.getByRole('button');
     expect(button).toHaveAttribute('aria-busy', 'true');
-    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    expect(button).toHaveAccessibleName('Deploy');
+    button.focus();
+    expect(button).toHaveFocus();
     await userEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('does not submit its form while loading', async () => {
+    const onSubmit = vi.fn((event: SubmitEvent) => event.preventDefault());
+    render(
+      <form onSubmit={(event) => onSubmit(event.nativeEvent as SubmitEvent)}>
+        <Button type="submit" loading>
+          Save
+        </Button>
+      </form>,
+    );
+    await userEvent.click(screen.getByRole('button'));
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
   it('exposes variant and size as data attributes', () => {

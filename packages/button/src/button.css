@@ -74,20 +74,23 @@
   height: 1.15em;
 }
 
-.pxl-button:hover:not(:disabled) {
+.pxl-button:hover:not(:disabled, [data-loading]) {
   --_lift: -1px;
   --_elev: var(--pxl-shadow-md);
 }
 
-.pxl-button:is([data-variant="primary"], [data-variant="danger"]):hover:not(:disabled) {
+.pxl-button:is([data-variant="primary"], [data-variant="danger"]):hover:not(
+  :disabled,
+  [data-loading]
+) {
   --_tint: 12%;
 }
 
-.pxl-button:hover:not(:disabled) .pxl-button__surface::after {
+.pxl-button:hover:not(:disabled, [data-loading]) .pxl-button__surface::after {
   animation: pxl-sweep 640ms var(--pxl-ease-out) 1;
 }
 
-.pxl-button:active:not(:disabled) {
+.pxl-button:active:not(:disabled, [data-loading]) {
   --_lift: 0px;
   --_elev: 0 0 #0000;
   transform: scale(0.98);
@@ -106,7 +109,10 @@
 
 .pxl-button[data-loading] {
   cursor: progress;
-  opacity: 1;
+}
+
+.pxl-button[data-loading] > :is(.pxl-button__label, .pxl-button__icon) {
+  opacity: 0;
 }
 
 .pxl-button[data-variant="secondary"] {
@@ -115,7 +121,7 @@
   --_ring: inset 0 0 0 1px var(--pxl-border);
 }
 
-.pxl-button[data-variant="secondary"]:hover:not(:disabled) {
+.pxl-button[data-variant="secondary"]:hover:not(:disabled, [data-loading]) {
   --_ring: inset 0 0 0 1px var(--pxl-gray-500);
 }
 
@@ -124,7 +130,7 @@
   --_fg: var(--pxl-fg);
 }
 
-.pxl-button[data-variant="ghost"]:hover:not(:disabled) {
+.pxl-button[data-variant="ghost"]:hover:not(:disabled, [data-loading]) {
   --_bg: var(--pxl-gray-100);
   --_lift: 0px;
   --_elev: 0 0 #0000;
@@ -148,7 +154,11 @@
 }
 
 .pxl-button__dots {
-  display: inline-flex;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: var(--pxl-space-1);
 }
 

@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+// Reuses the Button styles on an anchor: navigation must stay a real link.
+interface Props extends HTMLAttributes<'a'> {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { variant = 'primary', size = 'md', class: className, ...rest } = Astro.props;
+---
+
+<a class:list={['pxl-button', className]} data-variant={variant} data-size={size} {...rest}>
+  <span class="pxl-button__surface" aria-hidden="true"></span>
+  <span class="pxl-button__label"><slot /></span>
+</a>

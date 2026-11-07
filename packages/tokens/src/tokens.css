@@ -176,7 +176,7 @@
     var(--font-geist-pixel-triangle, "Geist Pixel Triangle"), var(--pxl-font-pixel);
   --pxl-font-pixel-line: var(--font-geist-pixel-line, "Geist Pixel Line"), var(--pxl-font-pixel);
   --pxl-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, monospace;
-  --pxl-font-sans: var(--font-geist-sans, "Geist"), system-ui, sans-serif;
+  --pxl-font-sans: var(--font-geist-sans, "Geist"), "Geist Fallback", system-ui, sans-serif;
 
   --pxl-text-xs: 11px;
   --pxl-text-sm: 13px;

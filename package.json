@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@10.28.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "prepare": "node packages/tokens/scripts/copy-fonts.mjs",
@@ -16,6 +16,8 @@
     "format": "biome check --write .",
     "storybook": "pnpm --filter @pablo-v/docs storybook",
     "build-storybook": "pnpm --filter @pablo-v/docs build-storybook",
+    "site": "pnpm --filter @pablo-v/site dev",
+    "build-site": "pnpm --filter @pablo-v/site build",
     "new:component": "node scripts/new-component.mjs",
     "changeset": "changeset",
     "version-packages": "changeset version",

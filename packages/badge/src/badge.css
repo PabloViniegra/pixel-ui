@@ -2,7 +2,7 @@
   --_tone: var(--pxl-gray-700);
   --_tone-subtle: var(--pxl-gray-100);
   --_tone-fg: var(--pxl-bg);
-  --_text: var(--_tone);
+  --_text: color-mix(in srgb, var(--_tone) 85%, var(--pxl-fg));
 
   display: inline-flex;
   align-items: center;
@@ -57,6 +57,7 @@
   --_tone: var(--pxl-accent);
   --_tone-subtle: var(--pxl-accent-subtle);
   --_tone-fg: var(--pxl-accent-fg);
+  --_text: var(--pxl-accent-text);
 }
 .pxl-badge[data-tone="success"] {
   --_tone: var(--pxl-success);

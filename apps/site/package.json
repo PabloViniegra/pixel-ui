@@ -1,0 +1,23 @@
+{
+  "name": "@pablo-v/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/react": "^7.1.4",
+    "@pablo-v/react": "workspace:*",
+    "@pablo-v/tokens": "workspace:*",
+    "astro": "^7.4.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,5 +1,5 @@
 import { cx, type PixelSize } from '@pablo-v/core';
-import type { ComponentPropsWithRef, ReactNode } from 'react';
+import type { ComponentPropsWithRef, MouseEvent, ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
@@ -8,12 +8,16 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   variant?: ButtonVariant;
   /** @default 'md' */
   size?: PixelSize;
-  /** Shows loading dots, sets `aria-busy` and blocks interaction. */
+  /** Shows loading dots, sets `aria-busy` and `aria-disabled` and blocks clicks while keeping focus. */
   loading?: boolean;
   /** Icon or node rendered before the label. */
   iconStart?: ReactNode;
   /** Icon or node rendered after the label. */
   iconEnd?: ReactNode;
+}
+
+function preventClick(event: MouseEvent<HTMLButtonElement>) {
+  event.preventDefault();
 }
 
 /** Native `<button>` with variants, sizes, optional icons and a loading state. */
@@ -24,6 +28,7 @@ export function Button({
   iconStart,
   iconEnd,
   disabled,
+  onClick,
   type = 'button',
   className,
   children,
@@ -37,21 +42,22 @@ export function Button({
       data-size={size}
       data-loading={loading || undefined}
       aria-busy={loading || undefined}
-      disabled={disabled || loading}
+      aria-disabled={loading || undefined}
+      disabled={disabled}
+      onClick={loading ? preventClick : onClick}
       {...rest}
     >
       <span className="pxl-button__surface" aria-hidden="true" />
-      {loading ? (
+      {iconStart && <span className="pxl-button__icon">{iconStart}</span>}
+      <span className="pxl-button__label">{children}</span>
+      {iconEnd && <span className="pxl-button__icon">{iconEnd}</span>}
+      {loading && (
         <span className="pxl-button__dots" aria-hidden="true">
           <i />
           <i />
           <i />
         </span>
-      ) : (
-        iconStart && <span className="pxl-button__icon">{iconStart}</span>
       )}
-      <span className="pxl-button__label">{children}</span>
-      {iconEnd && !loading && <span className="pxl-button__icon">{iconEnd}</span>}
     </button>
   );
 }

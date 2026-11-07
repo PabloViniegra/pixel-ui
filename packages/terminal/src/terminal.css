@@ -80,7 +80,7 @@
 }
 
 .pxl-terminal__line[data-level="success"] .pxl-terminal__text {
-  color: var(--pxl-success);
+  color: color-mix(in srgb, var(--pxl-success) 85%, var(--pxl-fg));
 }
 
 .pxl-terminal__line[data-level="warn"] {
@@ -91,7 +91,7 @@
 .pxl-terminal__line[data-level="error"] {
   --_marker: var(--pxl-danger);
   background: var(--pxl-danger-subtle);
-  color: var(--pxl-danger);
+  color: color-mix(in srgb, var(--pxl-danger) 85%, var(--pxl-fg));
 }
 
 .pxl-terminal__time {
@@ -107,7 +107,7 @@
   height: 1.2em;
   margin-top: 0.25em;
   background: var(--pxl-fg);
-  animation: pxl-terminal-blink 1s steps(1, end) infinite;
+  animation: pxl-terminal-blink 1s steps(1, end) 5;
 }
 
 @keyframes pxl-terminal-blink {

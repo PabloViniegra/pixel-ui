@@ -1,6 +1,7 @@
 node_modules
 dist
 storybook-static
+.astro
 *.tsbuildinfo
 coverage
 .DS_Store
