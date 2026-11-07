@@ -4,6 +4,7 @@ import { defaultClientConditions } from 'vite';
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../../../packages/*/src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
+  staticDirs: ['../public'],
   framework: { name: '@storybook/react-vite', options: {} },
   typescript: {
     // TypeScript 7 ships without a programmatic API, so use the Babel-based
