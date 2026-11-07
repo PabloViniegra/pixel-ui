@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://pabloviniegra.github.io/pixel-ui/">
-  <img src="https://gitskins.com/api/section/wordmark?username=PabloViniegra&amp;label=PIXEL" alt="PIXEL drawn as a rotating 3D ASCII wordmark in a terminal window" width="100%" />
+  <img src="https://www.gitskins.com/api/section/wordmark?username=PabloViniegra&amp;label=PIXEL" alt="PIXEL drawn as a rotating 3D ASCII wordmark in a terminal window" width="100%" />
 </a>
 
 ### React components with a pixel signature
@@ -199,8 +199,8 @@ If you later add a tool that needs the API, install TypeScript 6 under an alias 
 ## ▪ Project
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://gitskins.com/api/section/projects?username=PabloViniegra&amp;theme=github-dark&amp;repos=PabloViniegra/pixel-ui" />
-  <img src="https://gitskins.com/api/section/projects?username=PabloViniegra&amp;theme=minimal&amp;repos=PabloViniegra/pixel-ui" alt="pixel-ui project card with stars, languages and last update" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://www.gitskins.com/api/section/projects?username=PabloViniegra&amp;theme=github-dark&amp;repos=PabloViniegra/pixel-ui" />
+  <img src="https://www.gitskins.com/api/section/projects?username=PabloViniegra&amp;theme=minimal&amp;repos=PabloViniegra/pixel-ui" alt="pixel-ui project card with stars, languages and last update" width="100%" />
 </picture>
 
 ## ▪ Fonts & licence
