@@ -37,7 +37,7 @@ export function Deploy({ busy }: { busy: boolean }) {
 const umbrella = `import '@pablo-v/react/styles.css';
 import { Button, Badge, Switch } from '@pablo-v/react';`;
 
-const nextFonts = `// app/layout.tsx — fonts come from next/font
+const nextFonts = `// fonts come from next/font
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { GeistPixelSquare } from 'geist/font/pixel';
@@ -213,7 +213,7 @@ const principles = [
             <div><dt>Accessibility</dt><dd>WCAG 2.2 AA</dd></div>
             <div><dt>Tailwind preset</dt><dd>v4</dd></div>
           </dl>
-          <Code label="Everything at once" code="pnpm add @pablo-v/react" />
+          <Code lang="bash" label="Everything at once" code="pnpm add @pablo-v/react" />
         </aside>
       </section>
 
@@ -316,13 +316,13 @@ const principles = [
               Load the tokens once at the root of your app, then each component's stylesheet. A CSS-aware
               bundler (Vite, Next.js, Astro…) is required.
             </p>
-            <Code label="Single components" code={usage.split('\n').slice(0, 2).join('\n')} />
-            <Code label="Umbrella package" code={umbrella} />
+            <Code lang="tsx" label="Single components" code={usage.split('\n').slice(0, 2).join('\n')} />
+            <Code lang="tsx" label="Umbrella package" code={umbrella} />
           </li>
           <li class="step">
             <h3 class="step__title">Use the components</h3>
             <p class="muted">Every component ships its types; interactive ones are marked <code>"use client"</code>.</p>
-            <Code label="Deploy.tsx" code={usage} />
+            <Code lang="tsx" label="Deploy.tsx" code={usage} />
           </li>
         </ol>
       </section>
@@ -340,7 +340,7 @@ const principles = [
               Components. If you load fonts with <code>next/font</code>, import the token files individually instead of
               <code>styles.css</code>: the tokens read the <code>--font-geist-*</code> variables.
             </p>
-            <Code name="Next.js layout" code={nextFonts} />
+            <Code lang="tsx" label="app/layout.tsx" name="Next.js layout" code={nextFonts} />
           </article>
           <article class="guide">
             <h3 class="guide__title">Tailwind CSS v4</h3>
@@ -348,8 +348,8 @@ const principles = [
               Add the preset after the tokens to get <code>font-pixel</code>, <code>*-pxl-*</code> colours, radii, shadows
               and easings, plus <code>clip-notch</code> and <code>pixelated</code>. Utilities follow the live theme.
             </p>
-            <Code name="Tailwind CSS setup" code={tailwind} />
-            <Code name="Tailwind class example" code={tailwindUsage} />
+            <Code lang="css" name="Tailwind CSS setup" code={tailwind} />
+            <Code lang="html" name="Tailwind class example" code={tailwindUsage} />
           </article>
           <article class="guide">
             <h3 class="guide__title">Light and dark</h3>
@@ -357,7 +357,7 @@ const principles = [
               Themes follow the OS setting by default. Set <code>data-theme="light"</code> or <code>"dark"</code> on any
               element to force one for that subtree.
             </p>
-            <Code name="Theme attribute example" code={theming} />
+            <Code lang="html" name="Theme attribute example" code={theming} />
           </article>
           <article class="guide">
             <h3 class="guide__title">Tokens</h3>
@@ -365,7 +365,7 @@ const principles = [
               Override any token on <code>:root</code> or a container. Components read colours, radii and fonts only from
               tokens, never from literals.
             </p>
-            <Code name="Token overrides" code={overrides} />
+            <Code lang="css" name="Token overrides" code={overrides} />
           </article>
         </div>
       </section>

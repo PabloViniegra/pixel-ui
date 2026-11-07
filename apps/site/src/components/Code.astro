@@ -1,17 +1,23 @@
 ---
+import { Code as Highlight } from 'astro:components';
+
 interface Props {
   code: string;
+  lang: 'bash' | 'css' | 'html' | 'tsx';
   label?: string;
   name?: string;
 }
 
-const { code, label, name = label ?? 'Code snippet' } = Astro.props;
+const { code, lang, label, name = label ?? 'Code snippet' } = Astro.props;
 ---
 
 <div class="code">
-  {label && <span class="code__label">{label}</span>}
-  <pre tabindex="0" translate="no"><code>{code}</code></pre>
-  <button type="button" class="code__copy" data-copy={code} data-copy-label={name}>
-    Copy<span class="sr-only"> {name}</span>
-  </button>
+  <div class="code__bar">
+    <span class="code__label">{label ?? name}</span>
+    <span class="code__lang" aria-hidden="true">{lang}</span>
+    <button type="button" class="code__copy" data-copy={code} data-copy-label={name}>
+      Copy<span class="sr-only"> {name}</span>
+    </button>
+  </div>
+  <Highlight code={code} lang={lang} theme="css-variables" translate="no" />
 </div>
