@@ -41,16 +41,19 @@
   background: var(--pxl-bg);
 }
 
-.pxl-textarea:focus-visible {
+.pxl-textarea:focus:not(:disabled) {
   --_border: var(--pxl-accent);
   background: var(--pxl-bg);
-  outline: 2px solid var(--pxl-accent);
-  outline-offset: 2px;
+  outline: none;
 }
 
-.pxl-textarea[aria-invalid="true"] {
+.pxl-textarea:focus-visible:not(:disabled) {
+  outline: 1px solid var(--_border);
+  outline-offset: 0;
+}
+
+.pxl-textarea[aria-invalid="true"]:not(:disabled) {
   --_border: var(--pxl-danger);
-  outline-color: var(--pxl-danger);
 }
 
 .pxl-textarea:disabled {
@@ -58,4 +61,11 @@
   background: var(--pxl-bg-subtle);
   color: var(--pxl-fg-muted);
   cursor: not-allowed;
+}
+
+/* iOS Safari zooms into any field under 16px when it gains focus. */
+@media (pointer: coarse) {
+  .pxl-textarea {
+    font-size: 16px;
+  }
 }

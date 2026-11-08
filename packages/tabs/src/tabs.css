@@ -33,7 +33,7 @@
   align-items: center;
   gap: var(--pxl-space-2);
   flex: none;
-  height: 40px;
+  height: var(--pxl-size-md);
   padding: 0 var(--pxl-space-3);
   border: 0;
   background: transparent;
@@ -47,7 +47,7 @@
 
 .pxl-tabs[data-orientation="vertical"] .pxl-tabs__tab {
   justify-content: flex-start;
-  height: 36px;
+  height: var(--pxl-size-md);
 }
 
 /* Hover shows as a soft pill behind the label, inset from the underline. */
@@ -85,7 +85,7 @@
 }
 
 .pxl-tabs__tab:disabled {
-  opacity: 0.5;
+  opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
 }
 

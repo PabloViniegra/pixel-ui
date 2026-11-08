@@ -20,7 +20,7 @@
   position: absolute;
   inset: 0;
   width: 40%;
-  background: linear-gradient(90deg, transparent, var(--pxl-gray-200), transparent);
+  background: linear-gradient(90deg, transparent, var(--pxl-gray-300), transparent);
   animation: pxl-sweep 1600ms var(--pxl-ease-in-out) infinite;
 }
 

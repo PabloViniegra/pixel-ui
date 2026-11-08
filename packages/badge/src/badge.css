@@ -6,8 +6,8 @@
 
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 22px;
+  gap: var(--pxl-space-1);
+  height: var(--pxl-size-xs);
   padding: 0 var(--pxl-space-2);
   border-radius: var(--pxl-radius-full);
   font-family: var(--pxl-font-sans);

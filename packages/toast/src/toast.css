@@ -106,7 +106,7 @@
 }
 
 .pxl-toast__action {
-  height: 28px;
+  height: var(--pxl-size-sm);
   padding: 0 var(--pxl-space-2);
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);
@@ -126,8 +126,8 @@
 .pxl-toast__close {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: var(--pxl-size-sm);
+  height: var(--pxl-size-sm);
   padding: 0;
   border: 0;
   border-radius: var(--pxl-radius-md);

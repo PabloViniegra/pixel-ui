@@ -43,6 +43,12 @@ typography:
     fontWeight: 400
     lineHeight: 1.25
     letterSpacing: 0.01em
+  heading:
+    fontFamily: Geist
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: -0.01em
   body-md:
     fontFamily: Geist
     fontSize: 15px
@@ -84,6 +90,13 @@ spacing:
   space-4: 16px
   space-6: 24px
   space-8: 32px
+sizes:
+  xs: 24px
+  sm: 32px
+  md: 40px
+  lg: 48px
+opacity:
+  disabled: 0.45
 components:
   button-primary:
     backgroundColor: "{colors.fg}"
@@ -118,7 +131,7 @@ components:
   badge:
     typography: "{typography.label-sm}"
     rounded: "{rounded.full}"
-    height: 22px
+    height: 24px
     padding: 8px
   badge-accent-subtle:
     backgroundColor: "{colors.accent-subtle}"
@@ -135,7 +148,8 @@ components:
     rounded: "{rounded.full}"
     size: 16px
   progress-cell:
-    backgroundColor: "{colors.gray-200}"
+    backgroundColor: "{colors.gray-400}"
+    borderColor: "{colors.gray-500}"
     rounded: "{rounded.xs}"
     height: 12px
   progress-cell-lit:
@@ -152,6 +166,8 @@ components:
     rounded: "{rounded.lg}"
     padding: 24px
   card-title:
+    typography: "{typography.heading}"
+  card-title-pixel:
     typography: "{typography.title}"
   card-description:
     typography: "{typography.body-sm}"
@@ -168,9 +184,9 @@ PixelUI is a set of independently versioned React components with a Vercel-like 
 
 The palette is neutral-first. Greys build every surface and border; colour is reserved for meaning.
 
-- **Accent (`accent`, also `primary`):** the only brand colour. Use it for the "on" state of controls, lit progress, focus rings and a single highlighted element per view. Never as a large fill behind text other than `accent-fg`. Accent-coloured text on `accent-subtle` uses `accent-text`, which keeps small labels above 4.5:1.
+- **Accent (`accent`, also `primary`):** the only brand colour. Use it for the "on" state of controls, lit progress, focus rings and a single highlighted element per view. Never as a large fill behind text other than `accent-fg`. Accent-coloured text on `accent-subtle` uses `accent-text`, which keeps small labels above 4.5:1. A control spends the accent once per state: labels next to checked controls, input affixes and field markers stay neutral.
 - **Foreground (`fg`) on Background (`bg`):** the primary button is an inverted ink block rather than an accent block, which keeps the accent free for state.
-- **Greys (`gray-100`–`gray-900`):** `gray-100` for quiet fills (ghost hover, secondary surfaces), `gray-200`/`gray-300` for tracks and resting borders, `gray-900`/`border-strong` only for emphasis borders.
+- **Greys (`gray-100`–`gray-900`):** `gray-100` for quiet fills (ghost hover, table row hover, secondary surfaces), `gray-300` for resting borders and the skeleton sweep, `gray-400` with a 1px `gray-500` edge for unlit progress and slider cells, `gray-900`/`border-strong` only for emphasis borders. Chart ink uses `fg-muted`, never a mid grey.
 - **Status (`success`, `warning`, `danger`):** each pairs with a `-subtle` tint for low-emphasis badges; solid status fills are for small elements only.
 - Every theme scope is overridable through the `--pxl-*` custom properties; components must read colours from tokens, never from literals.
 
@@ -215,13 +231,17 @@ Three families with strict roles:
 
 - **Geist (sans):** all interactive text — button labels, badge text, switch labels — plus body and descriptions. Sentence case; no uppercase transforms on labels.
 - **Geist Mono:** numeric readouts such as progress percentages, always with tabular figures so values do not jitter.
-- **Geist Pixel:** display and title roles only (card titles, hero text, `ScrambleText`). It is never used below the `title` size, where its square glyphs look blurry and crude.
+- **Geist Pixel:** display and title roles only (hero text, `ScrambleText`, a featured card via `CardTitle pixel`). Card and dialog titles default to the sans `heading` role, so a dashboard of cards does not turn the signature into a texture. It is never used below the `title` size, where its square glyphs look blurry and crude.
 
 Pixel type is the loudest signal in the system; one pixel-set element per component is the ceiling.
 
 ## Layout
 
-All spacing snaps to the 4px `unit`; use the `space-*` steps and avoid in-between values. Component internals use `space-2`–`space-3` for gaps and `space-4`–`space-6` for padding. Control heights are 32 / 40 / 48px for small / medium / large so mixed controls align on one baseline.
+All spacing snaps to the 4px `unit`; use the `space-*` steps and avoid in-between values. Component internals use `space-2`–`space-3` for gaps and `space-4`–`space-6` for padding. Every component height comes from the `sizes` scale (`--pxl-size-*`): 24px for inline elements (badges, small chips, calendar weekday row), 32 / 40 / 48px for small / medium / large controls, so mixed controls align on one baseline. Menu and listbox rows use 32px, compact icon buttons (dialog, alert and toast close) 32px, and the command menu search 48px. Kbd is sized to text, not to the control scale. Interactive targets are at least 24px (WCAG 2.5.8); when the drawn shape is smaller (small switch), the hit area is padded invisibly.
+
+On coarse pointers, text fields render at 16px so iOS Safari does not zoom on focus.
+
+Disabled controls use `--pxl-opacity-disabled` (0.45) everywhere.
 
 ## Elevation & Depth
 
@@ -231,7 +251,7 @@ Depth is soft and shallow. Resting surfaces are flat and defined by a 1px `borde
 - **Hover lift:** translate up by 1px (2px on cards) and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur shadows.
 - **Pressed:** remove the lift and scale to `0.98`.
 - **Dark mode:** shadows are removed; hover strengthens the border to `gray-500`.
-- **Floating surfaces:** popovers, menus, toasts, dialogs and the command menu use `shadow-lg`; modal ones sit over the `overlay` veil. Tooltips stay flat with a border.
+- **Floating surfaces:** popovers, menus, toasts, dialogs and the command menu use `shadow-lg`; modal ones sit over the `overlay` veil. Tooltips stay flat and inverted: `gray-900` surface with `bg` text and no border.
 - **`shadow-pixel`:** a hard 4px offset shadow kept for decorative blocks only (illustrations, empty states, marketing). Never on interactive controls.
 
 ## Shapes
@@ -250,22 +270,22 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 
 - **Button:** primary is the inverted ink block; secondary is `bg` with a 1px `border`; ghost has no fill until hover. Hover lifts per Elevation; the shine sweep, if kept, is a single smooth gradient pass, not a stepped one. Loading dots are round and fade smoothly.
 - **Badge:** pill shape, sentence-case sans label. The status dot is round and its pulse is a smooth opacity breathe that runs three times on mount and then holds steady, not a hard blink.
-- **Switch:** pill track (`gray-600` when off, so the control meets 3:1 against the page) with a round white thumb in both themes (`--pxl-thumb`, with its contact shadow `--pxl-shadow-thumb`); the "on" fill crossfades to `accent` and the thumb travels with the spring ease. No stepped wipe.
+- **Switch:** pill track (`gray-600` when off, so the control meets 3:1 against the page) with a round white thumb in both themes (`--pxl-thumb`, with its contact shadow `--pxl-shadow-thumb`); the "on" fill crossfades to `accent` and the thumb travels with the spring ease. Hover shifts the track in both states: off darkens, on mixes 15% `fg` into the fill (darker in light mode, lighter in dark). No stepped wipe.
 - **Progress:** keeps its segmented track as a pixel signature, with `xs`-rounded cells; cells light up with a smooth stagger and the indeterminate comet uses eased opacity, not frames.
 - **Loader:** the 3×3 grid is the one place where stepped timing stays, because the frame-by-frame snake is the component's identity.
-- **Card:** `lg` radius, 1px `border`, flat at rest; interactive cards lift per Elevation and strengthen the border to `gray-500`. The highlight state is a static `accent` border or soft accent glow, not marching pixels; the title glitch is removed.
+- **Card:** `lg` radius, 1px `border`, flat at rest; the title uses the sans `heading` role, with `pixel` as an opt-in for one featured card. A clickable card holds a `CardLink` whose hit area stretches over the whole card (other links and buttons inside stay on top); only then does the card lift per Elevation, strengthen its border to `gray-500` and show the focus ring. A card never shows a pointer cursor without a real link. The highlight state is a static `accent` border, not marching pixels.
 - **ScrambleText:** unchanged; it is a deliberate pixel moment set in Geist Pixel.
 - **Form controls (Input, Textarea, Select, Checkbox, Radio, Slider):** `md` radius, 1px `border`, 32/40/48px heights; `Field` wires label, description and error with `aria-describedby`. The slider track is a row of `xs` cells, the progress signature reused.
-- **Text entry (Input, Textarea, Select):** `bg-subtle` resting surface with a `gray-600` border; hover reveals `bg` and strengthens the border to `gray-800`, while focus uses `accent`. Input affixes sit in `gray-100` compartments; Select gives its pixel chevron a matching compartment without replacing the native picker. Disabled controls return to the quiet `border` token.
-- **Selection (Checkbox, Radio):** 20px controls aligned to the first label line, medium-weight labels, and `accent-text` labels when selected. Checkbox keeps its pixel check; Radio pairs a round frame with an 8px square cell on `accent-subtle`. A brief press compresses the frame, and selection settles with the existing spring.
-- **Field:** a single 4px cell leads the label; neutral at rest, accent while editing, danger on error. Error takes precedence over focus, and disabled fields remain neutral.
-- **Overlays (Dialog, Popover, Tooltip, Menu, Toast):** `lg` radius (tooltip `sm`), `bg` surface with a 1px `border`, floating ones entering with `pxl-float-in` from the side they open on. Dialog sits on the native `<dialog>`; toast shows its timeout as a pixel countdown.
+- **Text entry (Input, Textarea, Select):** `bg-subtle` resting surface with a `gray-600` border; hover reveals `bg` and strengthens the border to `gray-800`. Any focus turns the border `accent`; keyboard focus (`:focus-visible`) adds a 1px outline flush against it, reading as one 2px ring rather than a border plus a separate offset ring. Input affixes sit in neutral `gray-100` compartments that do not change colour on focus; Select gives its pixel chevron a matching compartment without replacing the native picker. Disabled controls return to the quiet `border` token.
+- **Selection (Checkbox, Radio):** 20px controls aligned to the first label line and medium-weight `fg` labels that keep their colour when selected; the control alone carries the accent. Checkbox keeps its pixel check; Radio pairs a round frame with an 8px square cell on `accent-subtle`. A brief press compresses the frame, and selection settles with the existing spring.
+- **Field:** a single 4px cell leads the label; `gray-600` at rest, `fg` while editing, danger on error. Error takes precedence over focus, and disabled fields remain neutral.
+- **Overlays (Dialog, Popover, Tooltip, Menu, Toast):** `lg` radius, `bg` surface with a 1px `border` (the tooltip is the exception: `sm` radius, inverted `gray-900` surface, no border), floating ones entering with `pxl-float-in` from the side they open on. Dialog sits on the native `<dialog>`; toast shows its timeout as a pixel countdown.
 - **Pickers (Autocomplete, MultiSelect, DateField, DatePicker, DateRangePicker):** reuse the Input box and its compartments; suggestion lists and calendar panels are floating overlays (`lg`, `shadow-lg`, `pxl-float-in`) with `gray-100` active rows and an `accent` check. Date segments are spin buttons that tint `accent-subtle` while focused.
 - **Calendar:** a 7×6 grid of `md` day cells; the selected day is solid `accent`, range days `accent-subtle`, and today is marked by a single 4px `accent` cell, its one pixel signature.
-- **Alert, Chip, Link:** Alert is an `lg` block tinted from its tone with a matching icon; Chip is a pill that turns `accent-subtle` when selected and carries a round remove button; Link is `accent-text`, underlines on hover, and marks external targets with a pixel arrow.
+- **Alert, Chip, Link:** Alert is an `lg` block tinted from its tone with a matching icon; Chip is a pill that turns `accent-subtle` when selected and carries a round remove button whose hit area spans the chip height; Link is `accent-text` with a faint underline at rest (40% of its colour, so it never depends on colour alone) that strengthens on hover, and marks external targets with a pixel arrow.
 - **Navigation and structure (Tabs, Breadcrumb, Accordion, Table, Separator, Skeleton, Kbd):** quiet greys; tabs slide a 2px `fg` indicator with the spring ease; skeletons use a slow eased sweep.
-- **Signature components:** PixelAvatar (symmetric identicon from a hash), PixelImage (mosaic that sharpens), PixelTransition (stepped dither dissolve for the View Transitions API), Terminal (level gutter, block cursor), PixelIcons (16×16, `crispEdges`), CommandMenu (results decode with ScrambleText), mini charts (bars and sparklines in cells) and FlipClock (split-flap digits in Geist Pixel). Each is one deliberate pixel moment.
-- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius. Cells and compartments packed edge to edge (calendar days, the date picker trigger) draw the same ring inset by 2px so neighbours do not clip it; date segments signal focus with their `accent-subtle` tint instead.
+- **Signature components:** PixelAvatar (symmetric identicon from a hash), PixelImage (mosaic that sharpens), PixelTransition (stepped dither dissolve for the View Transitions API), Terminal (13px mono, level gutter, block cursor), PixelIcons (16×16, `crispEdges`), CommandMenu (results decode with ScrambleText), mini charts (bars and sparklines in cells) and FlipClock (split-flap digits in Geist Pixel). Each is one deliberate pixel moment.
+- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius. Cells and compartments packed edge to edge (calendar days, the date picker trigger) draw the same ring inset by 2px so neighbours do not clip it; date segments signal focus with their `accent-subtle` tint instead. Text fields are the other exception: their ring sits flush with the accent border (see Text entry).
 
 ## Do's and Don'ts
 

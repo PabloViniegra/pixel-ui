@@ -20,9 +20,11 @@
 
 .pxl-progress__cell {
   border-radius: var(--pxl-radius-xs);
-  background: var(--pxl-gray-200);
+  background: var(--pxl-gray-400);
+  box-shadow: inset 0 0 0 1px var(--pxl-gray-500);
   transition:
     background-color var(--pxl-dur-fast) linear,
+    box-shadow var(--pxl-dur-fast) linear,
     transform var(--pxl-dur-base) var(--pxl-ease-spring);
   /* stagger: each block lights a frame after the previous one */
   transition-delay: calc(var(--_i) * 18ms);
@@ -30,6 +32,7 @@
 
 .pxl-progress__cell[data-lit] {
   background: var(--_tone);
+  box-shadow: none;
   animation: pxl-progress-pop var(--pxl-dur-base) var(--pxl-ease-out) both;
   animation-delay: calc(var(--_i) * 18ms);
 }
@@ -75,11 +78,11 @@
     background: var(--_tone);
   }
   12% {
-    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-200));
+    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-400));
   }
   30%,
   100% {
-    background: var(--pxl-gray-200);
+    background: var(--pxl-gray-400);
   }
 }
 

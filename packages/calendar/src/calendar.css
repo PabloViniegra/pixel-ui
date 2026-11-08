@@ -1,5 +1,5 @@
 .pxl-calendar {
-  --_cell: 36px;
+  --_cell: var(--pxl-size-md);
 
   display: inline-grid;
   gap: var(--pxl-space-2);
@@ -27,8 +27,8 @@
 .pxl-calendar__nav {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: var(--pxl-size-sm);
+  height: var(--pxl-size-sm);
   padding: 0;
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);
@@ -51,7 +51,7 @@
 }
 
 .pxl-calendar__nav:disabled {
-  opacity: 0.4;
+  opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
 }
 
@@ -63,7 +63,7 @@
 
 .pxl-calendar__weekday {
   width: var(--_cell);
-  height: 28px;
+  height: var(--pxl-size-xs);
   padding: 0;
   color: var(--pxl-fg-muted);
   font-size: var(--pxl-text-xs);
@@ -132,7 +132,7 @@
 
 .pxl-calendar__day[aria-disabled="true"] {
   color: var(--pxl-fg-muted);
-  opacity: 0.45;
+  opacity: var(--pxl-opacity-disabled);
   text-decoration: line-through;
   cursor: not-allowed;
 }

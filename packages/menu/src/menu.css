@@ -50,7 +50,7 @@
   align-items: center;
   gap: var(--pxl-space-2);
   width: 100%;
-  min-height: 36px;
+  min-height: var(--pxl-size-sm);
   padding: 0 var(--pxl-space-2);
   border: 0;
   border-radius: var(--pxl-radius-md);
@@ -82,7 +82,7 @@
 
 .pxl-menu__item[aria-disabled="true"] {
   color: var(--pxl-fg-muted);
-  opacity: 0.6;
+  opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
 }
 

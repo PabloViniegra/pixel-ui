@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   gap: var(--pxl-space-2);
-  min-height: 36px;
+  min-height: var(--pxl-size-sm);
   padding: var(--pxl-space-1) var(--pxl-space-2);
   box-sizing: border-box;
   border-radius: var(--pxl-radius-md);
@@ -67,7 +67,7 @@
 
 .pxl-listbox__option[aria-disabled="true"] {
   color: var(--pxl-fg-muted);
-  opacity: 0.6;
+  opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
 }
 

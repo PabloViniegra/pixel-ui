@@ -7,7 +7,7 @@
   background: var(--pxl-bg-subtle);
   color: var(--pxl-fg);
   font-family: var(--pxl-font-mono);
-  font-size: var(--pxl-text-xs);
+  font-size: var(--pxl-text-sm);
   line-height: 1.7;
   overflow: hidden;
 }
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--pxl-space-3);
-  min-height: 40px;
+  min-height: var(--pxl-size-md);
   padding: 0 var(--pxl-space-3) 0 var(--pxl-space-4);
   border-bottom: 1px solid var(--pxl-border);
   background: var(--pxl-bg);
@@ -129,7 +129,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--pxl-space-2);
-  height: 28px;
+  height: var(--pxl-size-sm);
   padding: 0 var(--pxl-space-3);
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-full);

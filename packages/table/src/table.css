@@ -71,7 +71,7 @@
 }
 
 .pxl-table__body .pxl-table__row:hover {
-  background: var(--pxl-bg-subtle);
+  background: var(--pxl-gray-100);
 }
 
 .pxl-table__row[data-selected] {

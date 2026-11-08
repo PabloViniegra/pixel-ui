@@ -1,5 +1,5 @@
 .pxl-input {
-  --_h: 40px;
+  --_h: var(--pxl-size-md);
   --_px: var(--pxl-space-3);
   --_text: var(--pxl-text-sm);
   --_border: var(--pxl-gray-600);
@@ -25,13 +25,13 @@
 }
 
 .pxl-input[data-size="sm"] {
-  --_h: 32px;
+  --_h: var(--pxl-size-sm);
   --_px: var(--pxl-space-2);
   --_text: var(--pxl-text-xs);
 }
 
 .pxl-input[data-size="lg"] {
-  --_h: 48px;
+  --_h: var(--pxl-size-lg);
   --_px: var(--pxl-space-4);
   --_text: var(--pxl-text-md);
 }
@@ -44,16 +44,17 @@
 .pxl-input:focus-within {
   --_border: var(--pxl-accent);
   background: var(--pxl-bg);
-  outline: 2px solid var(--pxl-accent);
-  outline-offset: 2px;
+}
+
+/* Keyboard focus thickens the border into a 2px ring instead of adding a
+   second, offset outline. */
+.pxl-input:has(:focus-visible) {
+  outline: 1px solid var(--_border);
+  outline-offset: 0;
 }
 
 .pxl-input[data-invalid] {
   --_border: var(--pxl-danger);
-}
-
-.pxl-input[data-invalid]:focus-within {
-  outline-color: var(--pxl-danger);
 }
 
 .pxl-input[data-disabled] {
@@ -118,6 +119,9 @@
   border-end-end-radius: calc(var(--pxl-radius-md) - 1px);
 }
 
-.pxl-input:focus-within:not([data-disabled]) .pxl-input__affix {
-  color: var(--pxl-accent-text);
+/* iOS Safari zooms into any field under 16px when it gains focus. */
+@media (pointer: coarse) {
+  .pxl-input {
+    --_text: 16px;
+  }
 }

@@ -140,6 +140,14 @@
   --pxl-space-6: calc(var(--pxl-unit) * 6);
   --pxl-space-8: calc(var(--pxl-unit) * 8);
 
+  /* Control heights. Every component height maps to one of these. */
+  --pxl-size-xs: 24px;
+  --pxl-size-sm: 32px;
+  --pxl-size-md: 40px;
+  --pxl-size-lg: 48px;
+
+  --pxl-opacity-disabled: 0.45;
+
   --pxl-radius-xs: 2px;
   --pxl-radius-sm: 4px;
   --pxl-radius-md: 6px;

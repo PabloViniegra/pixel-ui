@@ -115,17 +115,13 @@
   user-select: none;
 }
 
-.pxl-radio:has(.pxl-radio__input:checked:not(:disabled)) .pxl-radio__label {
-  color: var(--pxl-accent-text);
-}
-
 .pxl-radio__description {
   color: var(--pxl-fg-muted);
   line-height: 1.5;
 }
 
 .pxl-radio[data-disabled] {
-  opacity: 0.45;
+  opacity: var(--pxl-opacity-disabled);
 }
 
 .pxl-radio[data-disabled] :is(.pxl-radio__input, .pxl-radio__label) {

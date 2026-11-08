@@ -103,8 +103,8 @@
   right: var(--pxl-space-4);
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: var(--pxl-size-sm);
+  height: var(--pxl-size-sm);
   padding: 0;
   border: 0;
   border-radius: var(--pxl-radius-md);

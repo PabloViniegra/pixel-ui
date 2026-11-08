@@ -24,9 +24,6 @@
 .pxl-kbd[data-size="sm"],
 .pxl-kbd-group[data-size="sm"] .pxl-kbd {
   --_h: 16px;
-
-  padding: 0 3px;
-  font-size: 10px;
 }
 
 .pxl-kbd-group {

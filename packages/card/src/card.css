@@ -3,6 +3,7 @@
   --_elev: none;
   --_lift: 0px;
 
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--pxl-space-4);
@@ -28,11 +29,39 @@
 
 .pxl-card__title {
   margin: 0;
-  font-family: var(--pxl-font-pixel);
   font-size: var(--pxl-text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.pxl-card__title[data-pixel] {
+  font-family: var(--pxl-font-pixel);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.25;
+}
+
+.pxl-card__link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Stretched link: the whole card is the hit area, while other links and
+   buttons inside stay clickable above it. */
+.pxl-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.pxl-card :where(a, button, input, select, textarea):not(.pxl-card__link) {
+  position: relative;
+  z-index: 1;
 }
 
 .pxl-card__description {
@@ -55,25 +84,25 @@
   border-top: 1px solid var(--pxl-border);
 }
 
-.pxl-card[data-interactive] {
-  cursor: pointer;
-}
-
-.pxl-card[data-interactive]:not([data-highlight]):is(:hover, :focus-within) {
+.pxl-card:is([data-interactive], :has(.pxl-card__link)):not([data-highlight]):is(
+  :hover,
+  :focus-within
+) {
   --_border: var(--pxl-gray-500);
 }
 
-.pxl-card[data-interactive]:is(:hover, :focus-within) {
+.pxl-card:is([data-interactive], :has(.pxl-card__link)):is(:hover, :focus-within) {
   --_elev: var(--pxl-shadow-md);
   --_lift: -2px;
 }
 
-.pxl-card[data-interactive]:focus-visible {
+.pxl-card[data-interactive]:focus-visible,
+.pxl-card:has(.pxl-card__link:focus-visible) {
   outline: 2px solid var(--pxl-accent);
   outline-offset: 2px;
 }
 
-.pxl-card[data-interactive]:active {
+.pxl-card:is([data-interactive], :has(.pxl-card__link)):active {
   --_elev: none;
   --_lift: 0px;
   transition-duration: var(--pxl-dur-instant);

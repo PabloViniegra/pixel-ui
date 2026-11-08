@@ -85,18 +85,13 @@
   user-select: none;
 }
 
-.pxl-checkbox:has(.pxl-checkbox__input:is(:checked, :indeterminate):not(:disabled))
-  .pxl-checkbox__label {
-  color: var(--pxl-accent-text);
-}
-
 .pxl-checkbox__description {
   color: var(--pxl-fg-muted);
   line-height: 1.5;
 }
 
 .pxl-checkbox[data-disabled] {
-  opacity: 0.45;
+  opacity: var(--pxl-opacity-disabled);
 }
 
 .pxl-checkbox[data-disabled] :is(.pxl-checkbox__input, .pxl-checkbox__label) {

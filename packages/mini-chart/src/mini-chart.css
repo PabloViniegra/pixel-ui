@@ -1,7 +1,7 @@
 .pxl-chart {
   --_gap: 2px;
   --_tone: var(--pxl-accent);
-  --_ink: var(--pxl-gray-500);
+  --_ink: var(--pxl-fg-muted);
   --_track: var(--pxl-gray-100);
 
   position: relative;

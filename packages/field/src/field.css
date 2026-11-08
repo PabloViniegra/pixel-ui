@@ -29,7 +29,7 @@
 }
 
 .pxl-field:focus-within:where(:not([data-disabled], [data-invalid])) .pxl-field__label::before {
-  background: var(--pxl-accent);
+  background: var(--pxl-fg);
 }
 
 .pxl-field[data-invalid] .pxl-field__label::before {

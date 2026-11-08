@@ -14,7 +14,6 @@
   border-radius: var(--pxl-radius-full);
   background: var(--pxl-gray-600);
   transition: background-color var(--pxl-dur-fast) linear;
-  overflow: hidden;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -25,13 +24,23 @@
   --_pad: 3px;
 }
 
+/* Pads the hit area to the 24px minimum target (WCAG 2.5.8) without changing the drawn track. */
+.pxl-switch::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, calc((var(--_h) - var(--pxl-size-xs)) / 2)) 0;
+}
+
 /* Track fill: crossfades in when the switch turns on. */
 .pxl-switch__fill {
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: var(--pxl-accent);
   opacity: 0;
-  transition: opacity var(--pxl-dur-base) var(--pxl-ease-out);
+  transition:
+    opacity var(--pxl-dur-base) var(--pxl-ease-out),
+    background-color var(--pxl-dur-fast) linear;
 }
 
 .pxl-switch__thumb {
@@ -60,6 +69,10 @@
   background: var(--pxl-gray-700);
 }
 
+.pxl-switch[data-state="on"]:hover:not(:disabled) .pxl-switch__fill {
+  background: color-mix(in srgb, var(--pxl-accent) 85%, var(--pxl-fg));
+}
+
 /* Squash while pressed: the thumb stretches toward its destination. */
 .pxl-switch:active:not(:disabled) .pxl-switch__thumb {
   transform: scaleX(1.35);
@@ -77,7 +90,7 @@
 
 .pxl-switch:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: var(--pxl-opacity-disabled);
 }
 
 .pxl-switch-field {
@@ -96,5 +109,5 @@
 
 .pxl-switch-field[data-disabled] .pxl-switch-field__label {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: var(--pxl-opacity-disabled);
 }

@@ -13,12 +13,12 @@
   align-items: center;
   gap: var(--_gap);
   min-width: 0;
-  padding-block: calc((var(--_h) - 2px - 24px) / 2);
+  padding-block: calc((var(--_h) - 2px - var(--pxl-size-xs)) / 2);
 }
 
 .pxl-multi-select__control {
   flex: 1 0 64px;
-  height: 24px;
+  height: var(--pxl-size-xs);
 }
 
 .pxl-multi-select__chevron {

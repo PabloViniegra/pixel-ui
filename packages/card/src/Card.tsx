@@ -2,7 +2,11 @@ import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface CardProps extends ComponentPropsWithRef<'div'> {
-  /** Raises the card on hover and focus, for cards that act as links or buttons. */
+  /**
+   * Raises the card on hover and focus.
+   * @deprecated Put a `CardLink` inside instead: it gives the card the same
+   * styles plus a real link and a pointer cursor.
+   */
   interactive?: boolean;
   /** Draws the border in the accent colour. */
   highlight?: boolean;
@@ -24,8 +28,20 @@ export function CardHeader({ className, ...rest }: ComponentPropsWithRef<'div'>)
   return <div className={cx('pxl-card__header', className)} {...rest} />;
 }
 
-export function CardTitle({ className, ...rest }: ComponentPropsWithRef<'h3'>) {
-  return <h3 className={cx('pxl-card__title', className)} {...rest} />;
+export interface CardTitleProps extends ComponentPropsWithRef<'h3'> {
+  /** Sets the title in Geist Pixel. Keep it for a single featured card per view. */
+  pixel?: boolean;
+}
+
+export function CardTitle({ pixel = false, className, ...rest }: CardTitleProps) {
+  return (
+    <h3 className={cx('pxl-card__title', className)} data-pixel={pixel || undefined} {...rest} />
+  );
+}
+
+/** Makes the whole card clickable. For router links, add the `pxl-card__link` class to yours. */
+export function CardLink({ className, ...rest }: ComponentPropsWithRef<'a'>) {
+  return <a className={cx('pxl-card__link', className)} {...rest} />;
 }
 
 export function CardDescription({ className, ...rest }: ComponentPropsWithRef<'p'>) {

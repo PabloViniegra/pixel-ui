@@ -1,5 +1,5 @@
 .pxl-chip {
-  --_h: 28px;
+  --_h: var(--pxl-size-sm);
   --_px: var(--pxl-space-3);
   --_text: var(--pxl-text-sm);
   --_border: var(--pxl-border);
@@ -26,7 +26,7 @@
 }
 
 .pxl-chip[data-size="sm"] {
-  --_h: 22px;
+  --_h: var(--pxl-size-xs);
   --_px: var(--pxl-space-2);
   --_text: var(--pxl-text-xs);
 }
@@ -37,7 +37,7 @@
 }
 
 .pxl-chip[data-removable]:not(:has(.pxl-chip__toggle)) {
-  padding-inline-end: 2px;
+  padding-inline-end: 0;
 }
 
 .pxl-chip:has(.pxl-chip__toggle:hover:not(:disabled)) {
@@ -58,7 +58,7 @@
 
 .pxl-chip[data-disabled] {
   color: var(--pxl-fg-muted);
-  opacity: 0.6;
+  opacity: var(--pxl-opacity-disabled);
 }
 
 .pxl-chip__toggle {
@@ -77,7 +77,7 @@
 }
 
 .pxl-chip[data-removable] .pxl-chip__toggle {
-  padding-inline-end: 2px;
+  padding-inline-end: 0;
 }
 
 .pxl-chip__toggle:active:not(:disabled) {
@@ -104,13 +104,18 @@
   display: grid;
   flex: none;
   place-items: center;
-  width: calc(var(--_h) - 6px);
-  height: calc(var(--_h) - 6px);
-  margin-inline-end: 1px;
-  padding: 0;
+  /* The hit area spans the chip's full height (border included) so it meets
+     the 24px target minimum; the visible circle is the padded content box. */
+  box-sizing: border-box;
+  width: var(--_h);
+  height: var(--_h);
+  margin-block: -1px;
+  margin-inline-end: -1px;
+  padding: 4px;
   border: 0;
   border-radius: var(--pxl-radius-full);
   background: transparent;
+  background-clip: content-box;
   color: var(--pxl-fg-muted);
   cursor: pointer;
   transition:

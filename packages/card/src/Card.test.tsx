@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Card, CardDescription, CardHeader, CardTitle } from './Card.js';
+import { Card, CardDescription, CardHeader, CardLink, CardTitle } from './Card.js';
 
 describe('Card', () => {
   it('renders its parts', () => {
     render(
-      <Card interactive data-testid="card">
+      <Card>
         <CardHeader>
           <CardTitle>Title</CardTitle>
           <CardDescription>Description</CardDescription>
@@ -14,6 +14,16 @@ describe('Card', () => {
     );
     expect(screen.getByRole('heading', { name: 'Title' })).toBeInTheDocument();
     expect(screen.getByText('Description')).toBeInTheDocument();
-    expect(screen.getByTestId('card')).toHaveAttribute('data-interactive', 'true');
+  });
+
+  it('exposes a clickable card as a link named by its title', () => {
+    render(
+      <Card>
+        <CardTitle>
+          <CardLink href="/docs">Docs</CardLink>
+        </CardTitle>
+      </Card>,
+    );
+    expect(screen.getByRole('link', { name: 'Docs' })).toHaveAttribute('href', '/docs');
   });
 });
