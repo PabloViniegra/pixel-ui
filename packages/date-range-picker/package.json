@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/date-range-picker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Start and end date fields with a pop-up range calendar",
   "license": "MIT",
   "repository": {

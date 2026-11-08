@@ -1,1 +1,15 @@
 # @pablo-v/multi-select
+
+## 0.1.0
+
+### Minor Changes
+
+- 2c3df8b: Add Alert, Autocomplete, Calendar, Chip, DateField, DatePicker, DateRangePicker, Link and MultiSelect. Pixel icons gain `CalendarIcon`; Field exposes `useFieldLabelId()` for controls made of several focusable parts.
+
+### Patch Changes
+
+- Updated dependencies [2c3df8b]
+  - @pablo-v/autocomplete@0.1.0
+  - @pablo-v/chip@0.1.0
+  - @pablo-v/pixel-icons@1.1.0
+  - @pablo-v/field@1.1.0
