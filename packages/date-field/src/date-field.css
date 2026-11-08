@@ -17,10 +17,29 @@
   user-select: none;
 }
 
+/* Letter placeholders such as `mm` are wider than the digits they stand for, so
+   the hidden placeholder text sizes the cell and the input fills it. */
+.pxl-date-segments__cell {
+  position: relative;
+  display: inline-block;
+  min-width: calc(var(--_chars) * 1ch);
+  padding: 0 2px;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.pxl-date-segments__cell::before {
+  content: attr(data-placeholder);
+  visibility: hidden;
+  white-space: pre;
+}
+
 .pxl-date-segments__segment {
-  box-sizing: content-box;
-  width: calc(var(--_chars) * 1ch);
-  height: 1.6em;
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0 2px;
   border: 0;

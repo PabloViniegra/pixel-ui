@@ -248,52 +248,57 @@ export function DateSegments({
         const current = parts[type];
         const { min: lo, digits } = LIMITS[type];
         return (
-          <input
+          <span
             key={type}
-            ref={(el) => {
-              inputs.current[type] = el;
-            }}
-            id={type === firstType ? controlId : undefined}
-            className="pxl-date-segments__segment"
-            data-type={type}
-            role="spinbutton"
-            type="text"
-            inputMode="numeric"
-            autoComplete="off"
-            spellCheck={false}
-            enterKeyHint="next"
-            aria-label={labels[type]}
-            aria-valuenow={current ?? undefined}
-            aria-valuemin={lo}
-            aria-valuemax={segmentMax(type)}
-            aria-valuetext={current == null ? 'Empty' : String(current)}
-            aria-describedby={describedBy}
-            aria-invalid={isInvalid || undefined}
-            aria-required={required || undefined}
-            aria-readonly={readOnly || undefined}
-            disabled={disabled}
-            placeholder={holders[type]}
-            value={
-              current == null
-                ? ''
-                : type === 'year'
-                  ? String(current)
-                  : String(current).padStart(digits, '0')
-            }
-            style={{ '--_chars': Math.max(digits, holders[type].length) } as CSSProperties}
-            onFocus={(event) => {
-              typed.current = '';
-              event.currentTarget.select();
-            }}
-            onBlur={() => {
-              typed.current = '';
-              if (type === 'year' && yearPending) update(parts);
-            }}
-            onKeyDown={(event) => onKeyDown(type, event)}
-            onChange={(event) => {
-              if (!readOnly) onInput(type, event.target.value);
-            }}
-          />
+            className="pxl-date-segments__cell"
+            data-placeholder={holders[type]}
+            style={{ '--_chars': digits } as CSSProperties}
+          >
+            <input
+              ref={(el) => {
+                inputs.current[type] = el;
+              }}
+              id={type === firstType ? controlId : undefined}
+              className="pxl-date-segments__segment"
+              data-type={type}
+              role="spinbutton"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              spellCheck={false}
+              enterKeyHint="next"
+              aria-label={labels[type]}
+              aria-valuenow={current ?? undefined}
+              aria-valuemin={lo}
+              aria-valuemax={segmentMax(type)}
+              aria-valuetext={current == null ? 'Empty' : String(current)}
+              aria-describedby={describedBy}
+              aria-invalid={isInvalid || undefined}
+              aria-required={required || undefined}
+              aria-readonly={readOnly || undefined}
+              disabled={disabled}
+              placeholder={holders[type]}
+              value={
+                current == null
+                  ? ''
+                  : type === 'year'
+                    ? String(current)
+                    : String(current).padStart(digits, '0')
+              }
+              onFocus={(event) => {
+                typed.current = '';
+                event.currentTarget.select();
+              }}
+              onBlur={() => {
+                typed.current = '';
+                if (type === 'year' && yearPending) update(parts);
+              }}
+              onKeyDown={(event) => onKeyDown(type, event)}
+              onChange={(event) => {
+                if (!readOnly) onInput(type, event.target.value);
+              }}
+            />
+          </span>
         );
       })}
       {name && <input type="hidden" name={name} value={composed ? toISODate(composed) : ''} />}

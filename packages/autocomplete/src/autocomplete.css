@@ -62,7 +62,6 @@
 }
 
 .pxl-listbox__option[aria-selected="true"] {
-  color: var(--pxl-accent-text);
   font-weight: 500;
 }
 
