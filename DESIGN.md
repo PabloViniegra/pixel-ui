@@ -260,9 +260,12 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 - **Selection (Checkbox, Radio):** 20px controls aligned to the first label line, medium-weight labels, and `accent-text` labels when selected. Checkbox keeps its pixel check; Radio pairs a round frame with an 8px square cell on `accent-subtle`. A brief press compresses the frame, and selection settles with the existing spring.
 - **Field:** a single 4px cell leads the label; neutral at rest, accent while editing, danger on error. Error takes precedence over focus, and disabled fields remain neutral.
 - **Overlays (Dialog, Popover, Tooltip, Menu, Toast):** `lg` radius (tooltip `sm`), `bg` surface with a 1px `border`, floating ones entering with `pxl-float-in` from the side they open on. Dialog sits on the native `<dialog>`; toast shows its timeout as a pixel countdown.
+- **Pickers (Autocomplete, MultiSelect, DateField, DatePicker, DateRangePicker):** reuse the Input box and its compartments; suggestion lists and calendar panels are floating overlays (`lg`, `shadow-lg`, `pxl-float-in`) with `gray-100` active rows and an `accent` check. Date segments are spin buttons that tint `accent-subtle` while focused.
+- **Calendar:** a 7×6 grid of `md` day cells; the selected day is solid `accent`, range days `accent-subtle`, and today is marked by a single 4px `accent` cell, its one pixel signature.
+- **Alert, Chip, Link:** Alert is an `lg` block tinted from its tone with a matching icon; Chip is a pill that turns `accent-subtle` when selected and carries a round remove button; Link is `accent-text`, underlines on hover, and marks external targets with a pixel arrow.
 - **Navigation and structure (Tabs, Breadcrumb, Accordion, Table, Separator, Skeleton, Kbd):** quiet greys; tabs slide a 2px `fg` indicator with the spring ease; skeletons use a slow eased sweep.
 - **Signature components:** PixelAvatar (symmetric identicon from a hash), PixelImage (mosaic that sharpens), PixelTransition (stepped dither dissolve for the View Transitions API), Terminal (level gutter, block cursor), PixelIcons (16×16, `crispEdges`), CommandMenu (results decode with ScrambleText), mini charts (bars and sparklines in cells) and FlipClock (split-flap digits in Geist Pixel). Each is one deliberate pixel moment.
-- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius.
+- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius. Cells and compartments packed edge to edge (calendar days, the date picker trigger) draw the same ring inset by 2px so neighbours do not clip it; date segments signal focus with their `accent-subtle` tint instead.
 
 ## Do's and Don'ts
 

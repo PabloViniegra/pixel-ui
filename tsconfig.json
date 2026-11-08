@@ -110,6 +110,33 @@
       "path": "packages/flip-clock"
     },
     {
+      "path": "packages/alert"
+    },
+    {
+      "path": "packages/link"
+    },
+    {
+      "path": "packages/chip"
+    },
+    {
+      "path": "packages/calendar"
+    },
+    {
+      "path": "packages/date-field"
+    },
+    {
+      "path": "packages/date-picker"
+    },
+    {
+      "path": "packages/date-range-picker"
+    },
+    {
+      "path": "packages/autocomplete"
+    },
+    {
+      "path": "packages/multi-select"
+    },
+    {
       "path": "packages/react"
     }
   ]

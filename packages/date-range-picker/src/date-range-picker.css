@@ -1,0 +1,17 @@
+.pxl-date-range-picker {
+  cursor: default;
+}
+
+.pxl-date-range-picker .pxl-date-segments {
+  flex: none;
+}
+
+.pxl-date-range-picker__dash {
+  flex: none;
+  color: var(--pxl-fg-muted);
+  user-select: none;
+}
+
+.pxl-date-range-picker > .pxl-input__affix {
+  margin-inline-start: auto;
+}

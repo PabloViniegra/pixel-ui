@@ -1,0 +1,56 @@
+.pxl-input__affix:has(> .pxl-date-picker__trigger) {
+  padding: 0;
+}
+
+.pxl-date-picker__trigger {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  aspect-ratio: 1;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-date-picker__trigger:hover:not(:disabled),
+.pxl-date-picker__trigger[aria-expanded="true"] {
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-date-picker__trigger:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: -2px;
+}
+
+.pxl-date-picker__trigger:disabled {
+  cursor: not-allowed;
+}
+
+.pxl-date-picker__popover {
+  --_from-y: -4px;
+
+  position: fixed;
+  inset: auto;
+  max-width: calc(100vw - var(--pxl-space-4));
+  margin: 0;
+  padding: var(--pxl-space-3);
+  overflow: visible;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  box-shadow: var(--pxl-shadow-lg);
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-date-picker__popover[data-side="top"] {
+  --_from-y: 4px;
+}

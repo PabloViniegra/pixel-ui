@@ -1,0 +1,50 @@
+{
+  "name": "@pablo-v/date-range-picker",
+  "version": "0.0.0",
+  "description": "Start and end date fields with a pop-up range calendar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/date-range-picker"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/date-range-picker.css",
+      "default": "./dist/date-range-picker.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pablo-v/calendar": "workspace:^",
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/date-field": "workspace:^",
+    "@pablo-v/date-picker": "workspace:^",
+    "@pablo-v/field": "workspace:^",
+    "@pablo-v/input": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pablo-v/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

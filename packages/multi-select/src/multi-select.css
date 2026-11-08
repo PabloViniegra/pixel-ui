@@ -1,0 +1,47 @@
+.pxl-multi-select {
+  --_gap: var(--pxl-space-1);
+
+  height: auto;
+  min-height: var(--_h);
+  cursor: text;
+}
+
+.pxl-multi-select__values {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--_gap);
+  min-width: 0;
+  padding-block: calc((var(--_h) - 2px - 24px) / 2);
+}
+
+.pxl-multi-select__control {
+  flex: 1 0 64px;
+  height: 24px;
+}
+
+.pxl-multi-select__chevron {
+  cursor: pointer;
+}
+
+.pxl-multi-select__chevron > .pxl-icon > path {
+  transform-box: view-box;
+  transform-origin: center;
+  transition: transform var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-multi-select[data-open] .pxl-multi-select__chevron > .pxl-icon > path {
+  transform: rotate(180deg);
+}
+
+.pxl-multi-select[data-disabled],
+.pxl-multi-select[data-disabled] .pxl-multi-select__chevron {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pxl-multi-select__chevron > .pxl-icon > path {
+    transition: none;
+  }
+}

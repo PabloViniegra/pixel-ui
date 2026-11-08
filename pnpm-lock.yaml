@@ -160,6 +160,46 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/alert:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/button':
+        specifier: workspace:^
+        version: link:../button
+
+  packages/autocomplete:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/badge:
     dependencies:
       '@pablo-v/core':
@@ -200,6 +240,21 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/calendar:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/card:
     dependencies:
       '@pablo-v/core':
@@ -213,6 +268,21 @@ importers:
         version: 19.3.1
 
   packages/checkbox:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/chip:
     dependencies:
       '@pablo-v/core':
         specifier: workspace:^
@@ -254,6 +324,84 @@ importers:
 
   packages/core:
     dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/date-field:
+    dependencies:
+      '@pablo-v/calendar':
+        specifier: workspace:^
+        version: link:../calendar
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/date-picker:
+    dependencies:
+      '@pablo-v/calendar':
+        specifier: workspace:^
+        version: link:../calendar
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/date-field':
+        specifier: workspace:^
+        version: link:../date-field
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/date-range-picker:
+    dependencies:
+      '@pablo-v/calendar':
+        specifier: workspace:^
+        version: link:../calendar
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/date-field':
+        specifier: workspace:^
+        version: link:../date-field
+      '@pablo-v/date-picker':
+        specifier: workspace:^
+        version: link:../date-picker
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.3.1
@@ -339,6 +487,21 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/link:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/loader:
     dependencies:
       '@pablo-v/core':
@@ -375,6 +538,33 @@ importers:
       '@pablo-v/core':
         specifier: workspace:^
         version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/multi-select:
+    dependencies:
+      '@pablo-v/autocomplete':
+        specifier: workspace:^
+        version: link:../autocomplete
+      '@pablo-v/chip':
+        specifier: workspace:^
+        version: link:../chip
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -485,6 +675,12 @@ importers:
       '@pablo-v/accordion':
         specifier: workspace:^
         version: link:../accordion
+      '@pablo-v/alert':
+        specifier: workspace:^
+        version: link:../alert
+      '@pablo-v/autocomplete':
+        specifier: workspace:^
+        version: link:../autocomplete
       '@pablo-v/badge':
         specifier: workspace:^
         version: link:../badge
@@ -494,18 +690,33 @@ importers:
       '@pablo-v/button':
         specifier: workspace:^
         version: link:../button
+      '@pablo-v/calendar':
+        specifier: workspace:^
+        version: link:../calendar
       '@pablo-v/card':
         specifier: workspace:^
         version: link:../card
       '@pablo-v/checkbox':
         specifier: workspace:^
         version: link:../checkbox
+      '@pablo-v/chip':
+        specifier: workspace:^
+        version: link:../chip
       '@pablo-v/command-menu':
         specifier: workspace:^
         version: link:../command-menu
       '@pablo-v/core':
         specifier: workspace:^
         version: link:../core
+      '@pablo-v/date-field':
+        specifier: workspace:^
+        version: link:../date-field
+      '@pablo-v/date-picker':
+        specifier: workspace:^
+        version: link:../date-picker
+      '@pablo-v/date-range-picker':
+        specifier: workspace:^
+        version: link:../date-range-picker
       '@pablo-v/dialog':
         specifier: workspace:^
         version: link:../dialog
@@ -521,6 +732,9 @@ importers:
       '@pablo-v/kbd':
         specifier: workspace:^
         version: link:../kbd
+      '@pablo-v/link':
+        specifier: workspace:^
+        version: link:../link
       '@pablo-v/loader':
         specifier: workspace:^
         version: link:../loader
@@ -530,6 +744,9 @@ importers:
       '@pablo-v/mini-chart':
         specifier: workspace:^
         version: link:../mini-chart
+      '@pablo-v/multi-select':
+        specifier: workspace:^
+        version: link:../multi-select
       '@pablo-v/pixel-avatar':
         specifier: workspace:^
         version: link:../pixel-avatar
@@ -756,7 +973,7 @@ importers:
     devDependencies:
       geist:
         specifier: ^1.5.0
-        version: 1.9.2(next@16.4.5(@babel/core@7.29.13)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
+        version: 1.9.2(next@16.4.5(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
       harfbuzzjs:
         specifier: ^1.6.4
         version: 1.6.4
@@ -6839,9 +7056,9 @@ snapshots:
 
   function-bind@1.1.2: {}
 
-  geist@1.9.2(next@16.4.5(@babel/core@7.29.13)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)):
+  geist@1.9.2(next@16.4.5(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)):
     dependencies:
-      next: 16.4.5(@babel/core@7.29.13)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      next: 16.4.5(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
 
   gensync@1.0.0-beta.2: {}
 
@@ -7182,7 +7399,7 @@ snapshots:
 
   neotraverse@1.0.1: {}
 
-  next@16.4.5(@babel/core@7.29.13)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  next@16.4.5(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       '@next/env': 16.4.5
       '@swc/helpers': 0.5.23
@@ -7191,7 +7408,7 @@ snapshots:
       postcss: 8.5.23
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
-      styled-jsx: 5.1.6(@babel/core@7.29.13)(react@19.3.1)
+      styled-jsx: 5.1.6(react@19.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.4.5
       '@next/swc-darwin-x64': 16.4.5
@@ -7738,12 +7955,10 @@ snapshots:
 
   strip-indent@4.1.1: {}
 
-  styled-jsx@5.1.6(@babel/core@7.29.13)(react@19.3.1):
+  styled-jsx@5.1.6(react@19.3.1):
     dependencies:
       client-only: 0.0.1
       react: 19.3.1
-    optionalDependencies:
-      '@babel/core': 7.29.13
 
   subset-font@2.9.0:
     dependencies:

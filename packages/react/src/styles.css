@@ -34,3 +34,12 @@
 @import "@pablo-v/command-menu/style.css";
 @import "@pablo-v/mini-chart/style.css";
 @import "@pablo-v/flip-clock/style.css";
+@import "@pablo-v/alert/style.css";
+@import "@pablo-v/link/style.css";
+@import "@pablo-v/chip/style.css";
+@import "@pablo-v/calendar/style.css";
+@import "@pablo-v/date-field/style.css";
+@import "@pablo-v/date-picker/style.css";
+@import "@pablo-v/date-range-picker/style.css";
+@import "@pablo-v/autocomplete/style.css";
+@import "@pablo-v/multi-select/style.css";

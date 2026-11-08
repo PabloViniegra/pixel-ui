@@ -67,7 +67,16 @@
     "@pablo-v/terminal": "workspace:^",
     "@pablo-v/command-menu": "workspace:^",
     "@pablo-v/mini-chart": "workspace:^",
-    "@pablo-v/flip-clock": "workspace:^"
+    "@pablo-v/flip-clock": "workspace:^",
+    "@pablo-v/alert": "workspace:^",
+    "@pablo-v/link": "workspace:^",
+    "@pablo-v/chip": "workspace:^",
+    "@pablo-v/calendar": "workspace:^",
+    "@pablo-v/date-field": "workspace:^",
+    "@pablo-v/date-picker": "workspace:^",
+    "@pablo-v/date-range-picker": "workspace:^",
+    "@pablo-v/autocomplete": "workspace:^",
+    "@pablo-v/multi-select": "workspace:^"
   },
   "peerDependencies": {
     "react": "^19.0.0"

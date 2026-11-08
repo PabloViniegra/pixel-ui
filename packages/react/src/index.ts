@@ -2,22 +2,31 @@
 // Each component is still versioned and publishable on its own.
 
 export * from '@pablo-v/accordion';
+export * from '@pablo-v/alert';
+export * from '@pablo-v/autocomplete';
 export * from '@pablo-v/badge';
 export * from '@pablo-v/breadcrumb';
 export * from '@pablo-v/button';
+export * from '@pablo-v/calendar';
 export * from '@pablo-v/card';
 export * from '@pablo-v/checkbox';
+export * from '@pablo-v/chip';
 export * from '@pablo-v/command-menu';
 export type { PixelSize, PixelTone } from '@pablo-v/core';
 export { cx, usePrefersReducedMotion } from '@pablo-v/core';
+export * from '@pablo-v/date-field';
+export * from '@pablo-v/date-picker';
+export * from '@pablo-v/date-range-picker';
 export * from '@pablo-v/dialog';
 export * from '@pablo-v/field';
 export * from '@pablo-v/flip-clock';
 export * from '@pablo-v/input';
 export * from '@pablo-v/kbd';
+export * from '@pablo-v/link';
 export * from '@pablo-v/loader';
 export * from '@pablo-v/menu';
 export * from '@pablo-v/mini-chart';
+export * from '@pablo-v/multi-select';
 export * from '@pablo-v/pixel-avatar';
 export * from '@pablo-v/pixel-icons';
 export * from '@pablo-v/pixel-image';

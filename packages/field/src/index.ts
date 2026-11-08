@@ -1,1 +1,1 @@
-export { Field, type FieldProps, useFieldControl } from './Field.js';
+export { Field, type FieldProps, useFieldControl, useFieldLabelId } from './Field.js';

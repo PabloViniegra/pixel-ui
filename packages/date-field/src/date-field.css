@@ -1,0 +1,59 @@
+.pxl-date-field {
+  cursor: default;
+}
+
+.pxl-date-segments {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.pxl-date-segments__literal {
+  padding-inline: 1px;
+  color: var(--pxl-fg-muted);
+  user-select: none;
+}
+
+.pxl-date-segments__segment {
+  box-sizing: content-box;
+  width: calc(var(--_chars) * 1ch);
+  height: 1.6em;
+  margin: 0;
+  padding: 0 2px;
+  border: 0;
+  border-radius: var(--pxl-radius-sm);
+  outline: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  caret-color: transparent;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-date-segments__segment::placeholder {
+  color: var(--pxl-fg-muted);
+  opacity: 1;
+}
+
+.pxl-date-segments__segment::selection {
+  background: transparent;
+}
+
+.pxl-date-segments__segment:focus {
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-date-segments__segment:focus::placeholder {
+  color: var(--pxl-accent-text);
+}
+
+.pxl-date-segments__segment:disabled {
+  cursor: not-allowed;
+}

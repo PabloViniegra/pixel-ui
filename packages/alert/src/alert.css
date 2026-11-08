@@ -1,0 +1,108 @@
+.pxl-alert {
+  --_tone: var(--pxl-fg-muted);
+  --_tone-subtle: var(--pxl-bg-subtle);
+  --_tone-border: var(--pxl-border);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pxl-space-3);
+  padding: var(--pxl-space-3) var(--pxl-space-4);
+  border: 1px solid var(--_tone-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--_tone-subtle);
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+}
+
+.pxl-alert[data-tone="accent"] {
+  --_tone: var(--pxl-accent-text);
+  --_tone-subtle: var(--pxl-accent-subtle);
+  --_tone-border: color-mix(in srgb, var(--pxl-accent) 35%, var(--pxl-border));
+}
+
+.pxl-alert[data-tone="success"] {
+  --_tone: var(--pxl-success);
+  --_tone-subtle: var(--pxl-success-subtle);
+  --_tone-border: color-mix(in srgb, var(--pxl-success) 35%, var(--pxl-border));
+}
+
+.pxl-alert[data-tone="warning"] {
+  --_tone: var(--pxl-warning);
+  --_tone-subtle: var(--pxl-warning-subtle);
+  --_tone-border: color-mix(in srgb, var(--pxl-warning) 35%, var(--pxl-border));
+}
+
+.pxl-alert[data-tone="danger"] {
+  --_tone: var(--pxl-danger);
+  --_tone-subtle: var(--pxl-danger-subtle);
+  --_tone-border: color-mix(in srgb, var(--pxl-danger) 35%, var(--pxl-border));
+}
+
+.pxl-alert__icon {
+  display: inline-flex;
+  flex: none;
+  margin-top: 2px;
+  color: var(--_tone);
+}
+
+.pxl-alert__content {
+  display: grid;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pxl-alert__title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.pxl-alert__description {
+  color: color-mix(in srgb, var(--pxl-fg) 80%, var(--_tone-subtle));
+  text-wrap: pretty;
+}
+
+.pxl-alert__description > :first-child {
+  margin-top: 0;
+}
+
+.pxl-alert__description > :last-child {
+  margin-bottom: 0;
+}
+
+.pxl-alert__action {
+  display: flex;
+  flex: none;
+  align-self: center;
+  gap: var(--pxl-space-2);
+}
+
+.pxl-alert__close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -2px calc(-1 * var(--pxl-space-2)) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--pxl-radius-md);
+  background: transparent;
+  color: var(--pxl-fg-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-alert__close:hover {
+  background: color-mix(in srgb, var(--pxl-fg) 8%, transparent);
+  color: var(--pxl-fg);
+}
+
+.pxl-alert__close:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}

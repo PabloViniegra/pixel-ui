@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx"],
+  "references": [
+    {
+      "path": "../autocomplete"
+    },
+    {
+      "path": "../chip"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../field"
+    },
+    {
+      "path": "../input"
+    },
+    {
+      "path": "../pixel-icons"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx"],
+  "references": [
+    {
+      "path": "../calendar"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../date-field"
+    },
+    {
+      "path": "../date-picker"
+    },
+    {
+      "path": "../field"
+    },
+    {
+      "path": "../input"
+    },
+    {
+      "path": "../pixel-icons"
+    }
+  ]
+}

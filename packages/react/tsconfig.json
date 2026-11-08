@@ -113,6 +113,33 @@
     },
     {
       "path": "../flip-clock"
+    },
+    {
+      "path": "../alert"
+    },
+    {
+      "path": "../link"
+    },
+    {
+      "path": "../chip"
+    },
+    {
+      "path": "../calendar"
+    },
+    {
+      "path": "../date-field"
+    },
+    {
+      "path": "../date-picker"
+    },
+    {
+      "path": "../date-range-picker"
+    },
+    {
+      "path": "../autocomplete"
+    },
+    {
+      "path": "../multi-select"
     }
   ]
 }

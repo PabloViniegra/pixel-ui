@@ -6,6 +6,7 @@ import { type ComponentPropsWithRef, createContext, type ReactNode, use, useId }
 
 interface FieldContextValue {
   id: string;
+  labelId: string | undefined;
   describedBy: string | undefined;
   invalid: boolean;
   required: boolean;
@@ -43,6 +44,7 @@ export function Field({
   const autoId = useId();
   const id = controlId ?? `${autoId}-control`;
   const messageId = `${autoId}-message`;
+  const labelId = label != null ? `${autoId}-label` : undefined;
   const message = error ?? description;
   const invalid = error != null && error !== false;
 
@@ -54,7 +56,7 @@ export function Field({
       {...rest}
     >
       {label != null && (
-        <label className="pxl-field__label" htmlFor={id}>
+        <label id={labelId} className="pxl-field__label" htmlFor={id}>
           {label}
           {required && (
             <span className="pxl-field__required" aria-hidden="true">
@@ -66,6 +68,7 @@ export function Field({
       <FieldContext
         value={{
           id,
+          labelId,
           describedBy: message != null ? messageId : undefined,
           invalid,
           required,
@@ -108,4 +111,9 @@ export function useFieldControl<P extends ControlProps>(props: P, invalid?: bool
     required: props.required ?? field?.required,
     disabled: props.disabled ?? field?.disabled,
   };
+}
+
+/** Id of the surrounding `Field` label, for controls made of several focusable parts. */
+export function useFieldLabelId(): string | undefined {
+  return use(FieldContext)?.labelId;
 }
