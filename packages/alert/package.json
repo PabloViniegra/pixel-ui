@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/alert",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Inline status message with tone icon, action and dismiss",
   "license": "MIT",
   "repository": {

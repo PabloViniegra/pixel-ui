@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/calendar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Month calendar grid with keyboard navigation and range selection",
   "license": "MIT",
   "repository": {

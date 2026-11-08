@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/date-field",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Segmented date input that follows the locale order",
   "license": "MIT",
   "repository": {
