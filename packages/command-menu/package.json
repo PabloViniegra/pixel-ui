@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/command-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "⌘K command palette whose results decode in with ScrambleText",
   "license": "MIT",
   "repository": {

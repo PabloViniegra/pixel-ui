@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/mini-chart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sparklines and bar charts drawn in pixel cells",
   "license": "MIT",
   "repository": {

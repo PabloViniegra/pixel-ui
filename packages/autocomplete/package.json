@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/autocomplete",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Combobox that filters a list of options as you type",
   "license": "MIT",
   "repository": {

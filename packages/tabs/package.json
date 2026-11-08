@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/tabs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tabs with roving focus and a sliding indicator",
   "license": "MIT",
   "repository": {

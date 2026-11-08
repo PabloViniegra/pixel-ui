@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/textarea",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multi-line text input with auto-resize",
   "license": "MIT",
   "repository": {
