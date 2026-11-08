@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/chip",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pill chip that can be toggled or removed",
   "license": "MIT",
   "repository": {

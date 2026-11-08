@@ -1,5 +1,22 @@
 # @pablo-v/command-menu
 
+## 1.0.1
+
+### Patch Changes
+
+- d0c11f7: Design audit fixes:
+
+  - tokens: add the `--pxl-size-xs/sm/md/lg` control heights (24/32/40/48px) and `--pxl-opacity-disabled`. Components now take their heights and disabled opacity from these tokens.
+  - card: add `CardLink`, a stretched link that makes the whole card clickable, and `CardTitle pixel`. Titles are now sans by default. `interactive` is deprecated.
+  - input, select, textarea: a single focus ring, with the outline only for keyboard focus; affixes, chevrons, field dots and selection labels no longer turn accent; fields use 16px text on coarse pointers so iOS does not zoom.
+  - switch, chip: hit areas of at least 24px, and the switch changes tone on hover when on.
+  - link: the resting underline uses a `currentColor` mix that stays visible in dark mode.
+  - progress, slider: unlit cells are `gray-400` with a thin border; mini-chart ink uses `fg-muted`.
+  - terminal text is 13px; the skeleton sweep and table row hover are more visible in dark mode.
+
+- Updated dependencies [d0c11f7]
+  - @pablo-v/kbd@1.0.1
+
 ## 1.0.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Segmented progress bar with a determinate value or an indeterminate loop",
   "license": "MIT",
   "repository": {

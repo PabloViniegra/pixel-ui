@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/card",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Card container with header, title, description, content and footer slots",
   "license": "MIT",
   "repository": {

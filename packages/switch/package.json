@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/switch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Toggle switch with role=\"switch\", controlled or uncontrolled, and an optional label",
   "license": "MIT",
   "repository": {

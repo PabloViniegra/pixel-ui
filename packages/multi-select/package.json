@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/multi-select",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Combobox that picks several options shown as chips",
   "license": "MIT",
   "repository": {

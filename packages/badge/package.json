@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/badge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Status badge with neutral, accent and status tones and an optional status dot",
   "license": "MIT",
   "repository": {
