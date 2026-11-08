@@ -1,5 +1,11 @@
 # @pablo-v/date-field
 
+## 0.1.1
+
+### Patch Changes
+
+- a6e58b1: Size date segments to their placeholder so letter placeholders such as `mm` are no longer clipped, and keep selected listbox options in the body color with only the check in accent.
+
 ## 0.1.0
 
 ### Minor Changes
