@@ -679,6 +679,204 @@ main > .section {
   }
 }
 
+/* Example app */
+
+.demo {
+  overflow: hidden;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+}
+
+.demo__nav {
+  border-bottom: 1px solid var(--pxl-border);
+}
+
+.demo__brand {
+  font-family: var(--pxl-font-pixel);
+  font-size: var(--pxl-text-lg);
+}
+
+.demo__avatar {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  border-radius: var(--pxl-radius-full);
+  background: none;
+  cursor: pointer;
+}
+
+.demo__body {
+  display: grid;
+  gap: var(--pxl-space-4);
+  padding: var(--pxl-space-6);
+}
+
+.demo__head,
+.demo__actions,
+.demo__danger,
+.demo__activity-head {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pxl-space-3);
+}
+
+.demo__share {
+  display: grid;
+  gap: var(--pxl-space-3);
+  width: min(280px, 80vw);
+}
+
+.demo__panel {
+  display: grid;
+  gap: var(--pxl-space-6);
+  padding-top: var(--pxl-space-6);
+}
+
+.demo__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pxl-space-4);
+}
+
+.demo__split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: var(--pxl-space-4);
+}
+
+.demo__region {
+  display: grid;
+  gap: var(--pxl-space-3);
+}
+
+.demo__region-name,
+.demo__branch {
+  display: flex;
+  align-items: center;
+  gap: var(--pxl-space-2);
+}
+
+.demo__preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-md);
+}
+
+.demo__activity {
+  display: grid;
+  gap: var(--pxl-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo__activity li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--pxl-space-3);
+  min-height: 40px;
+}
+
+.demo__filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 220px) auto;
+  align-items: center;
+  gap: var(--pxl-space-3);
+}
+
+.demo__table {
+  overflow-x: auto;
+}
+
+.demo__author {
+  display: inline-flex;
+  border-radius: var(--pxl-radius-full);
+}
+
+.demo__pagination {
+  justify-self: center;
+}
+
+.demo__form {
+  display: grid;
+  gap: var(--pxl-space-6);
+}
+
+.demo__form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* .pxl-field is a grid with default align-content: a stretched Field without a description
+     spreads the spare height into its label row and drops the control out of line. */
+  align-items: start;
+  gap: var(--pxl-space-4) var(--pxl-space-6);
+}
+
+.demo__span {
+  grid-column: 1 / -1;
+}
+
+.demo__brand-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--pxl-space-6) var(--pxl-space-8);
+}
+
+.demo__group {
+  display: grid;
+  justify-items: start;
+  gap: var(--pxl-space-3);
+}
+
+.demo__label {
+  font-size: var(--pxl-text-sm);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.demo__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: var(--pxl-size-md);
+  gap: var(--pxl-space-2);
+}
+
+.demo__options {
+  display: grid;
+  gap: var(--pxl-space-4);
+  max-width: 420px;
+}
+
+@media (max-width: 900px) {
+  .demo__cards,
+  .demo__split,
+  .demo__form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .demo__filters {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .demo__filters > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .demo__body {
+    padding: var(--pxl-space-4);
+  }
+}
+
 /* Install steps */
 
 .steps {

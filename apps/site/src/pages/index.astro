@@ -5,13 +5,14 @@ import '../styles/site.css';
 import sansFont from '../../../../packages/tokens/fonts/Geist-Variable.latin.woff2?url';
 import pixelFont from '../../../../packages/tokens/fonts/GeistPixel-Square.latin.woff2?url';
 import Code from '../components/Code.astro';
+import { Demo } from '../components/Demo';
 import { HeroScramble } from '../components/HeroScramble';
 import { InstallTabs } from '../components/InstallTabs';
 import LinkButton from '../components/LinkButton.astro';
 import { Showcase } from '../components/Showcase';
 import { catalog, componentCount, repoUrl, storybookDocs, storybookUrl } from '../data/catalog';
 
-const title = 'PixelUI — React components with a pixel signature';
+const title = 'PixelUI: React components with a pixel signature';
 const description = `${componentCount} accessible React components, each published as its own npm package, with design tokens, Geist Pixel type and a Tailwind CSS v4 preset.`;
 
 const imports = `import '@pablo-v/tokens/styles.css';
@@ -131,6 +132,7 @@ const jsonLd = JSON.stringify({
       <div class="container header__inner">
         <a class="brand" href={import.meta.env.BASE_URL} aria-label="PixelUI home">PixelUI</a>
         <nav class="nav" aria-label="Sections">
+          <a href="#demo">Demo</a>
           <a href="#install">Install</a>
           <a href="#usage">Usage</a>
           <a href="#components">Components</a>
@@ -183,6 +185,17 @@ const jsonLd = JSON.stringify({
           </p>
         </div>
         <Showcase client:visible />
+      </section>
+
+      <section class="section container" id="demo" aria-labelledby="demo-title">
+        <div class="section__head">
+          <h2 id="demo-title" class="section__title">Example app</h2>
+          <p class="section__lead">
+            A small hosting console assembled only from PixelUI: navigation, tables, forms, overlays and toasts. Every
+            control works; nothing leaves this page.
+          </p>
+        </div>
+        <Demo client:visible />
       </section>
 
       <section class="section container" id="install" aria-labelledby="install-title">
