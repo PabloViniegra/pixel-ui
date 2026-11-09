@@ -74,9 +74,9 @@
 }
 
 .pxl-pagination__page[aria-current="page"] {
-  border-color: var(--pxl-accent);
-  background: var(--pxl-accent);
-  color: var(--pxl-accent-fg);
+  border-color: var(--pxl-fg);
+  background: var(--pxl-fg);
+  color: var(--pxl-bg);
   cursor: default;
 }
 

@@ -23,21 +23,21 @@
   display: flex;
   flex-direction: inherit;
   align-items: center;
-  gap: 2px;
+  gap: var(--pxl-space-1);
 }
 
 .pxl-toolbar__separator {
   flex: none;
   align-self: stretch;
   width: 1px;
-  margin: var(--pxl-space-1) 2px;
+  margin: var(--pxl-space-1);
   background: var(--pxl-border);
 }
 
 .pxl-toolbar[data-orientation="vertical"] .pxl-toolbar__separator {
   width: auto;
   height: 1px;
-  margin: 2px var(--pxl-space-1);
+  margin: var(--pxl-space-1);
 }
 
 .pxl-toolbar__button {

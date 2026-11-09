@@ -148,7 +148,7 @@ components:
     rounded: "{rounded.full}"
     size: 16px
   progress-cell:
-    backgroundColor: "{colors.gray-400}"
+    backgroundColor: "{colors.gray-300}"
     borderColor: "{colors.gray-500}"
     rounded: "{rounded.xs}"
     height: 12px
@@ -186,7 +186,7 @@ The palette is neutral-first. Greys build every surface and border; colour is re
 
 - **Accent (`accent`, also `primary`):** the only brand colour. Use it for the "on" state of controls, lit progress, focus rings and a single highlighted element per view. Never as a large fill behind text other than `accent-fg`. Accent-coloured text on `accent-subtle` uses `accent-text`, which keeps small labels above 4.5:1. A control spends the accent once per state: labels next to checked controls, input affixes and field markers stay neutral.
 - **Foreground (`fg`) on Background (`bg`):** the primary button is an inverted ink block rather than an accent block, which keeps the accent free for state.
-- **Greys (`gray-100`–`gray-900`):** `gray-100` for quiet fills (ghost hover, table row hover, secondary surfaces), `gray-300` for resting borders and the skeleton sweep, `gray-400` with a 1px `gray-500` edge for unlit progress and slider cells, `gray-900`/`border-strong` only for emphasis borders. Chart ink uses `fg-muted`, never a mid grey.
+- **Greys (`gray-100`–`gray-900`):** `gray-100` for quiet fills (ghost hover, table row hover, secondary surfaces), `gray-300` for resting borders, the skeleton sweep and unlit progress and slider cells (with a 1px `gray-500` edge, which keeps lit and unlit cells above 3:1 in every tone), `gray-900`/`border-strong` only for emphasis borders. Chart ink uses `fg-muted`, never a mid grey.
 - **Status (`success`, `warning`, `danger`):** each pairs with a `-subtle` tint for low-emphasis badges; solid status fills are for small elements only.
 - Every theme scope is overridable through the `--pxl-*` custom properties; components must read colours from tokens, never from literals.
 
@@ -248,7 +248,7 @@ Disabled controls use `--pxl-opacity-disabled` (0.45) everywhere.
 Depth is soft and shallow. Resting surfaces are flat and defined by a 1px `border`; elevation appears only as feedback.
 
 - **Resting:** no shadow; surfaces are defined by a 1px `border`.
-- **Hover lift:** translate up by 1px (2px on cards) and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur shadows.
+- **Hover lift:** translate up by 1px (2px on cards) and add a diffuse, low-opacity shadow (two layers: `0 1px 2px` and `0 4px 12px`, both under 10% black in light mode). Never offset shadows diagonally and never use zero-blur elevation shadows (spread-only rings, like the swatch selection, are outlines, not elevation).
 - **Pressed:** remove the lift and scale to `0.98`.
 - **Dark mode:** shadows are removed; hover strengthens the border to `gray-500`.
 - **Floating surfaces:** popovers, menus, toasts, dialogs and the command menu use `shadow-lg`; modal ones sit over the `overlay` veil. Tooltips stay flat and inverted: `gray-900` surface with `bg` text and no border.
@@ -281,13 +281,13 @@ Nested shapes use a smaller radius than their parent (outer radius minus inner p
 - **Field:** a single 4px cell leads the label; `gray-600` at rest, `fg` while editing, danger on error. Error takes precedence over focus, and disabled fields remain neutral.
 - **Overlays (Dialog, Popover, Tooltip, Menu, Toast):** `lg` radius, `bg` surface with a 1px `border` (the tooltip is the exception: `sm` radius, inverted `gray-900` surface, no border), floating ones entering with `pxl-float-in` from the side they open on. Dialog sits on the native `<dialog>`; toast shows its timeout as a pixel countdown.
 - **Pickers (Autocomplete, MultiSelect, DateField, DatePicker, DateRangePicker):** reuse the Input box and its compartments; suggestion lists and calendar panels are floating overlays (`lg`, `shadow-lg`, `pxl-float-in`) with `gray-100` active rows and an `accent` check. Date segments are spin buttons that tint `accent-subtle` while focused.
-- **Color (ColorArea, ColorSlider, ColorField, ColorSwatch, ColorSwatchPicker, ColorPicker):** the area is a grid of hard-edged colour cells and the thumb snaps to a cell, its one pixel signature; sliders reuse the cell track. Swatches sit on a checkerboard so alpha stays visible, and the selected preset gets a 2px `fg` outline. ColorPicker is an Input-styled trigger opening a Popover panel.
-- **Pagination, Toolbar, Navbar:** Pagination marks the current page with solid `accent` and hides the step labels on narrow screens. Toolbar is a roving-tabindex row of ghost buttons; pressed buttons turn `accent-subtle`. Navbar uses disclosure menus (not `menubar`), marks the current link with a single 4px `accent` cell and collapses behind a toggle under 640px of container width.
+- **Color (ColorArea, ColorSlider, ColorField, ColorSwatch, ColorSwatchPicker, ColorPicker):** the area is a grid of hard-edged colour cells and the thumb snaps to a cell, its one pixel signature; sliders reuse the Slider cell track at the same size (16px thumb, 8px track). Swatches sit on a checkerboard so alpha stays visible, and the selected preset gets a 2px `fg` ring drawn as a shadow, so the focus outline sits outside it instead of replacing it. Hairline edges use `fg` at 16%, never black; the white thumbs are the exception and keep the fixed dark `thumb-ring`, because they sit on the user's colour, not on the themed page. Under forced colours the selection falls back to a `CanvasText` border, so the focus outline still shows. ColorPicker is an Input-styled trigger opening a Popover panel.
+- **Pagination, Toolbar, Navbar:** Pagination marks the current page with the primary button's inverted `fg`/`bg` block and hides the step labels on narrow screens. Toolbar is a roving-tabindex row of ghost buttons; pressed buttons turn `accent-subtle`. Navbar uses disclosure menus (not `menubar`), marks the current link, in the bar and in its menus, with neutral `fg` text and a single 4px `accent` cell and collapses behind a toggle under 640px of container width.
 - **Calendar:** a 7×6 grid of `md` day cells; the selected day is solid `accent`, range days `accent-subtle`, and today is marked by a single 4px `accent` cell, its one pixel signature.
 - **Alert, Chip, Link:** Alert is an `lg` block tinted from its tone with a matching icon; Chip is a pill that turns `accent-subtle` when selected and carries a round remove button whose hit area spans the chip height; Link is `accent-text` with a faint underline at rest (40% of its colour, so it never depends on colour alone) that strengthens on hover, and marks external targets with a pixel arrow.
 - **Navigation and structure (Tabs, Breadcrumb, Accordion, Table, Separator, Skeleton, Kbd):** quiet greys; tabs slide a 2px `fg` indicator with the spring ease; skeletons use a slow eased sweep.
 - **Signature components:** PixelAvatar (symmetric identicon from a hash), PixelImage (mosaic that sharpens), PixelTransition (stepped dither dissolve for the View Transitions API), Terminal (13px mono, level gutter, block cursor), PixelIcons (16×16, `crispEdges`), CommandMenu (results decode with ScrambleText), mini charts (bars and sparklines in cells) and FlipClock (split-flap digits in Geist Pixel). Each is one deliberate pixel moment.
-- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius. Cells and compartments packed edge to edge (calendar days, the date picker trigger) draw the same ring inset by 2px so neighbours do not clip it; date segments signal focus with their `accent-subtle` tint instead. Text fields are the other exception: their ring sits flush with the accent border (see Text entry).
+- **Focus:** every interactive component shows a 2px `accent` ring offset by 2px that follows the element's radius. Cells and compartments packed edge to edge (calendar days, the date picker trigger) draw the same ring inset by 2px so neighbours do not clip it; date segments signal focus with their `accent-subtle` tint instead. Text fields are another exception: their ring sits flush with the accent border (see Text entry). A selected colour swatch pushes its focus ring out to 4px so it wraps the `fg` selection ring instead of covering it.
 
 ## Do's and Don'ts
 

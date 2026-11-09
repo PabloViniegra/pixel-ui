@@ -24,7 +24,7 @@
   inset: 0;
   overflow: hidden;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pxl-fg) 16%, transparent);
 }
 
 /* Hairline gaps between cells make the pixel grid legible. */
@@ -51,7 +51,7 @@
   background: var(--_color);
   box-shadow:
     var(--pxl-shadow-thumb),
-    0 0 0 1px rgb(0 0 0 / 0.2);
+    0 0 0 1px var(--pxl-thumb-ring);
   pointer-events: none;
   translate: -50% -50%;
   transition:
@@ -87,8 +87,8 @@
 }
 
 .pxl-color-slider {
-  --_thumb: 20px;
-  --_h: 12px;
+  --_thumb: 16px;
+  --_h: 8px;
   --_gap: 2px;
 
   display: flex;
@@ -112,7 +112,7 @@
 
 .pxl-color-slider__track {
   position: absolute;
-  inset-inline: calc(var(--_thumb) / 2 - var(--_h) / 2);
+  inset-inline: calc(var(--_thumb) / 2);
   display: grid;
   grid-template-columns: repeat(var(--_segments), 1fr);
   gap: var(--_gap);
@@ -123,7 +123,7 @@
 .pxl-color-slider__cell {
   border-radius: var(--pxl-radius-xs);
   background: linear-gradient(var(--_c), var(--_c)), var(--_checker);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pxl-fg) 16%, transparent);
 }
 
 .pxl-color-slider__control {
@@ -155,7 +155,7 @@
   background: linear-gradient(var(--_thumb-color), var(--_thumb-color)), var(--_checker);
   box-shadow:
     var(--pxl-shadow-thumb),
-    0 0 0 1px rgb(0 0 0 / 0.2);
+    0 0 0 1px var(--pxl-thumb-ring);
   appearance: none;
   transition: transform var(--pxl-dur-base) var(--pxl-ease-spring);
 }
@@ -169,7 +169,7 @@
   background: linear-gradient(var(--_thumb-color), var(--_thumb-color)), var(--_checker);
   box-shadow:
     var(--pxl-shadow-thumb),
-    0 0 0 1px rgb(0 0 0 / 0.2);
+    0 0 0 1px var(--pxl-thumb-ring);
   transition: transform var(--pxl-dur-base) var(--pxl-ease-spring);
 }
 
@@ -284,15 +284,29 @@
   transform: scale(0.94);
 }
 
-/* Selected: a ring in ink with a gap, so it reads on any swatch colour. */
+/* Selected: a ring in ink with a gap, so it reads on any swatch colour. It is a
+   shadow so the focus outline can sit outside it without replacing it. */
 .pxl-color-swatch-picker__item[aria-checked="true"] {
-  outline: 2px solid var(--pxl-fg);
-  outline-offset: 2px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--pxl-fg) 16%, transparent),
+    0 0 0 2px var(--pxl-bg),
+    0 0 0 4px var(--pxl-fg);
 }
 
 .pxl-color-swatch-picker__item:focus-visible {
   outline: 2px solid var(--pxl-accent);
   outline-offset: 2px;
+}
+
+.pxl-color-swatch-picker__item[aria-checked="true"]:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Forced colours drop box-shadow; a border survives and leaves the outline to focus. */
+@media (forced-colors: active) {
+  .pxl-color-swatch-picker__item[aria-checked="true"] {
+    border: 2px solid CanvasText;
+  }
 }
 
 .pxl-color-swatch-picker__item:disabled {

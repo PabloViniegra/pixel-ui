@@ -121,7 +121,8 @@
 
 /* iOS Safari zooms into any field under 16px when it gains focus. */
 @media (pointer: coarse) {
-  .pxl-input {
+  .pxl-input,
+  .pxl-input[data-size] {
     --_text: 16px;
   }
 }

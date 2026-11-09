@@ -181,8 +181,15 @@
   font-weight: 500;
 }
 
-.pxl-navbar__menu-link[aria-current="page"] .pxl-navbar__menu-label {
-  color: var(--pxl-accent-text);
+.pxl-navbar__menu-link[aria-current="page"] .pxl-navbar__menu-label::after {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-inline-start: var(--pxl-space-2);
+  border-radius: var(--pxl-radius-xs);
+  background: var(--pxl-accent);
+  content: "";
+  vertical-align: middle;
 }
 
 .pxl-navbar__menu-description {

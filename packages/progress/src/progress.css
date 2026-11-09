@@ -20,7 +20,7 @@
 
 .pxl-progress__cell {
   border-radius: var(--pxl-radius-xs);
-  background: var(--pxl-gray-400);
+  background: var(--pxl-gray-300);
   box-shadow: inset 0 0 0 1px var(--pxl-gray-500);
   transition:
     background-color var(--pxl-dur-fast) linear,
@@ -78,11 +78,11 @@
     background: var(--_tone);
   }
   12% {
-    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-400));
+    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-300));
   }
   30%,
   100% {
-    background: var(--pxl-gray-400);
+    background: var(--pxl-gray-300);
   }
 }
 
