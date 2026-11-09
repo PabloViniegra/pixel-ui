@@ -1,5 +1,11 @@
 # @pablo-v/pixel-icons
 
+## 1.2.0
+
+### Minor Changes
+
+- 451b428: Add 45 icons and 11 animated icons, plus `createAnimatedPixelIcon` for authoring frame-by-frame icons.
+
 ## 1.1.0
 
 ### Minor Changes
