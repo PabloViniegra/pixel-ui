@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/toolbar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Grouped controls with roving arrow-key focus",
   "license": "MIT",
   "repository": {

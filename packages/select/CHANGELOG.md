@@ -1,5 +1,11 @@
 # @pablo-v/select
 
+## 1.0.2
+
+### Patch Changes
+
+- bd5c3f5: Restyle dropdown lists: Select uses `appearance: base-select` where supported, Listbox highlights the matched text (`highlight` prop, `splitMatch` export) and MultiSelect rows show a checkbox.
+
 ## 1.0.1
 
 ### Patch Changes

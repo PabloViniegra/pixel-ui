@@ -1,5 +1,23 @@
 # @pablo-v/react
 
+## 0.4.0
+
+### Minor Changes
+
+- bd5c3f5: Add ColorArea, ColorSlider, ColorField, ColorSwatch, ColorSwatchPicker and ColorPicker (`@pablo-v/color`), Pagination, Navbar and Toolbar.
+
+### Patch Changes
+
+- Updated dependencies [bd5c3f5]
+- Updated dependencies [bd5c3f5]
+  - @pablo-v/autocomplete@0.2.0
+  - @pablo-v/multi-select@0.1.2
+  - @pablo-v/select@1.0.2
+  - @pablo-v/color@0.1.0
+  - @pablo-v/pagination@0.1.0
+  - @pablo-v/navbar@0.1.0
+  - @pablo-v/toolbar@0.1.0
+
 ## 0.3.0
 
 ### Minor Changes
