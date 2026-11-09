@@ -131,6 +131,12 @@
     appearance: base-select;
   }
 
+  /* base-select lays the button out as a block, pinning the text to the top. */
+  .pxl-select__control {
+    display: flex;
+    align-items: center;
+  }
+
   .pxl-select__control::picker-icon {
     display: none;
   }
