@@ -1,5 +1,13 @@
 # @pablo-v/multi-select
 
+## 0.1.2
+
+### Patch Changes
+
+- bd5c3f5: Restyle dropdown lists: Select uses `appearance: base-select` where supported, Listbox highlights the matched text (`highlight` prop, `splitMatch` export) and MultiSelect rows show a checkbox.
+- Updated dependencies [bd5c3f5]
+  - @pablo-v/autocomplete@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
