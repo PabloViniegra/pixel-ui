@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/toast",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Toast notifications with a pixel countdown",
   "license": "MIT",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/popover",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Non-modal panel anchored to a trigger",
   "license": "MIT",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/tooltip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hover and focus hint anchored to its trigger",
   "license": "MIT",
   "repository": {
