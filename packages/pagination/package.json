@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/pagination",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Page navigation with previous, next and truncated page links",
   "license": "MIT",
   "repository": {
