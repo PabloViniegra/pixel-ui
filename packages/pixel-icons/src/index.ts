@@ -1,4 +1,7 @@
+export * from './animated-icons.js';
 export {
+  type AnimatedPixelIconOptions,
+  createAnimatedPixelIcon,
   createPixelIcon,
   type PixelIcon,
   type PixelIconProps,

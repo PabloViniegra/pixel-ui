@@ -3,3 +3,23 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.pxl-icon--animated {
+  overflow: hidden;
+}
+
+.pxl-icon-frames {
+  animation: pxl-icon-frames var(--pxl-icon-duration) steps(var(--pxl-icon-frames), end) infinite;
+}
+
+@keyframes pxl-icon-frames {
+  to {
+    transform: translateX(calc(var(--pxl-icon-frames) * -16px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pxl-icon-frames {
+    animation: none;
+  }
+}
