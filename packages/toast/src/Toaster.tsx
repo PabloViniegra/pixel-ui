@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from '@pablo-v/core';
+import { cx, useIsomorphicLayoutEffect, usePresence } from '@pablo-v/core';
 import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from '@pablo-v/pixel-icons';
 import {
   type ComponentPropsWithRef,
@@ -20,6 +20,21 @@ const ICONS = {
 };
 
 const CELLS = 12;
+
+interface Shown {
+  toast: ToastData;
+  leaving: boolean;
+}
+
+function reconcile(shown: Shown[], visible: ToastData[]): Shown[] {
+  const next = new Map(visible.map((t) => [t.id, t]));
+  const kept = shown.map(({ toast: t }) => {
+    const current = next.get(t.id);
+    next.delete(t.id);
+    return current ? { toast: current, leaving: false } : { toast: t, leaving: true };
+  });
+  return [...kept, ...[...next.values()].map((t) => ({ toast: t, leaving: false }))];
+}
 
 export interface ToasterProps extends ComponentPropsWithRef<'section'> {
   /** @default 'bottom-right' */
@@ -46,7 +61,14 @@ export function Toaster({
 }: ToasterProps) {
   const all = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [paused, setPaused] = useState(false);
-  const visible = all.slice(-max);
+  const [shown, setShown] = useState<Shown[]>(() => reconcile([], all.slice(-max)));
+  const [synced, setSynced] = useState({ all, max });
+  if (synced.all !== all || synced.max !== max) {
+    setSynced({ all, max });
+    setShown(reconcile(shown, all.slice(-max)));
+  }
+  const remove = (id: string) =>
+    setShown((current) => current.filter((s) => !(s.leaving && s.toast.id === id)));
 
   return (
     <section
@@ -63,36 +85,61 @@ export function Toaster({
       {...rest}
     >
       <ol className="pxl-toaster__list" aria-live="polite" aria-relevant="additions text">
-        {visible.map((t) => (
-          <ToastItem key={t.id} toast={t} paused={paused} />
+        {shown.map(({ toast: t, leaving }) => (
+          <ToastItem key={t.id} toast={t} paused={paused} leaving={leaving} onExited={remove} />
         ))}
       </ol>
     </section>
   );
 }
 
-function ToastItem({ toast: t, paused }: { toast: ToastData; paused: boolean }) {
+function ToastItem({
+  toast: t,
+  paused,
+  leaving,
+  onExited,
+}: {
+  toast: ToastData;
+  paused: boolean;
+  leaving: boolean;
+  onExited: (id: string) => void;
+}) {
+  const ref = useRef<HTMLLIElement>(null);
   const budget = useRef({ version: t.version, left: t.duration });
   const Icon = ICONS[t.tone];
   const timed = Number.isFinite(t.duration);
+
+  // The exit collapses the toast's own height so the rest of the stack slides into place.
+  useIsomorphicLayoutEffect(() => {
+    if (leaving) ref.current?.style.setProperty('--_h', `${ref.current.offsetHeight}px`);
+  }, [leaving]);
+  const mounted = usePresence(!leaving, ref);
+  useEffect(() => {
+    if (!mounted) onExited(t.id);
+  }, [mounted, onExited, t.id]);
 
   useEffect(() => {
     if (budget.current.version !== t.version) {
       budget.current = { version: t.version, left: t.duration };
     }
-    if (!timed || paused) return;
+    if (!timed || paused || leaving) return;
     const started = performance.now();
     const timer = setTimeout(() => toast.dismiss(t.id), budget.current.left);
     return () => {
       clearTimeout(timer);
       budget.current.left -= performance.now() - started;
     };
-  }, [paused, timed, t.id, t.version, t.duration]);
+  }, [paused, leaving, timed, t.id, t.version, t.duration]);
+
+  if (!mounted) return null;
 
   return (
     <li
+      ref={ref}
       className="pxl-toast"
       data-tone={t.tone}
+      data-closing={leaving || undefined}
+      inert={leaving || undefined}
       style={{ '--_duration': `${t.duration}ms`, '--_cells': CELLS } as CSSProperties}
     >
       <Icon className="pxl-toast__icon" />

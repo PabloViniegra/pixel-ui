@@ -48,7 +48,13 @@
   background: var(--pxl-bg);
   color: var(--pxl-fg);
   box-shadow: var(--pxl-shadow-lg);
+  transform-origin: var(--pxl-origin, center);
   animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-date-picker__popover[data-closing] {
+  pointer-events: none;
+  animation: pxl-float-out var(--pxl-dur-fast) var(--pxl-ease-out) forwards;
 }
 
 .pxl-date-picker__popover[data-side="top"] {

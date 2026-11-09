@@ -12,6 +12,12 @@ import {
 } from 'react';
 
 const HOVER_GRACE_MS = 120;
+const WARM_MS = 300;
+
+// Shared across tooltips: once one is showing, scanning to the next skips the delay.
+let openTooltips = 0;
+let lastClosedAt = -Infinity;
+const isWarm = () => openTooltips > 0 || performance.now() - lastClosedAt < WARM_MS;
 
 export interface TooltipProps extends Omit<ComponentPropsWithRef<'div'>, 'content' | 'children'> {
   content: ReactNode;
@@ -39,6 +45,7 @@ export function Tooltip({
   ...rest
 }: TooltipProps) {
   const [open, setOpen] = useState(false);
+  const [instant, setInstant] = useState(false);
   const anchorRef = useRef<HTMLElement>(null);
   const floatingRef = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -47,10 +54,20 @@ export function Tooltip({
   useFloating({ open, anchorRef, floatingRef, side, align, offset: 6 });
   useDismiss(open, () => setOpen(false), [anchorRef, floatingRef]);
   useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => {
+    if (!open) return;
+    openTooltips++;
+    return () => {
+      openTooltips--;
+      lastClosedAt = performance.now();
+    };
+  }, [open]);
 
   const show = (wait: number) => {
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setOpen(true), wait);
+    const warm = isWarm();
+    setInstant(warm);
+    timer.current = setTimeout(() => setOpen(true), warm ? 0 : wait);
   };
   const hide = () => {
     clearTimeout(timer.current);
@@ -82,6 +99,7 @@ export function Tooltip({
           id={id}
           role="tooltip"
           popover="manual"
+          data-instant={instant || undefined}
           className={cx('pxl-tooltip', className)}
           onPointerEnter={() => clearTimeout(timer.current)}
           onPointerLeave={hideSoon}

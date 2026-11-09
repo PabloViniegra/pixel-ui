@@ -11,3 +11,4 @@ export { useFloating } from './use-floating.js';
 export { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect.js';
 export { useModalDialog } from './use-modal-dialog.js';
 export { usePrefersReducedMotion } from './use-prefers-reduced-motion.js';
+export { usePresence } from './use-presence.js';

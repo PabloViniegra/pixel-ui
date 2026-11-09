@@ -42,14 +42,12 @@
   font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-sm);
   cursor: default;
-  transform-origin: top center;
+  transform-origin: var(--pxl-origin, top center);
   animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
 }
 
 .pxl-listbox[data-side="top"] {
   --_from-y: 4px;
-
-  transform-origin: bottom center;
 }
 
 .pxl-listbox > [role="listbox"] {

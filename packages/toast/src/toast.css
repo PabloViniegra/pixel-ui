@@ -62,6 +62,19 @@
   animation: pxl-float-in var(--pxl-dur-base) var(--pxl-ease-out);
 }
 
+.pxl-toast[data-closing] {
+  pointer-events: none;
+  animation: pxl-toast-out var(--pxl-dur-fast) var(--pxl-ease-out) forwards;
+}
+
+@keyframes pxl-toast-out {
+  to {
+    margin-block-end: calc(-1 * (var(--_h, 0px) + var(--pxl-space-2)));
+    opacity: 0;
+    transform: translateY(var(--_from-y)) scale(0.97);
+  }
+}
+
 .pxl-toaster[data-position^="top"] .pxl-toast {
   --_from-y: -8px;
 }

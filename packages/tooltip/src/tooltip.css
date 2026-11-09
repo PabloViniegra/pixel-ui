@@ -12,7 +12,12 @@
   font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-xs);
   line-height: 1.5;
+  transform-origin: var(--pxl-origin, center);
   animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-tooltip[data-instant] {
+  animation: none;
 }
 
 .pxl-tooltip[data-side="top"] {

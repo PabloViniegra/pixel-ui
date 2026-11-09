@@ -1,6 +1,13 @@
 'use client';
 
-import { type Align, cx, useDismiss, useFloating, useIsomorphicLayoutEffect } from '@pablo-v/core';
+import {
+  type Align,
+  cx,
+  useDismiss,
+  useFloating,
+  useIsomorphicLayoutEffect,
+  usePresence,
+} from '@pablo-v/core';
 import { CalendarIcon } from '@pablo-v/pixel-icons';
 import { type ComponentPropsWithRef, type RefObject, useRef } from 'react';
 
@@ -35,12 +42,15 @@ export function DatePickerPopover({
     if (open)
       floatingRef.current?.querySelector<HTMLElement>('[role="grid"] [tabindex="0"]')?.focus();
   }, [open]);
-  if (!open) return null;
+  const mounted = usePresence(open, floatingRef);
+  if (!mounted) return null;
   return (
     <div
       ref={floatingRef}
       role="dialog"
       popover="manual"
+      data-closing={!open || undefined}
+      inert={!open || undefined}
       className={cx('pxl-date-picker__popover', className)}
       {...rest}
     >

@@ -6,6 +6,7 @@ import {
   useControllableState,
   useMergedRefs,
   useModalDialog,
+  usePresence,
 } from '@pablo-v/core';
 import { CloseIcon } from '@pablo-v/pixel-icons';
 import {
@@ -64,6 +65,7 @@ export function Dialog({
   const mergedRef = useMergedRefs(dialogProps.ref, ref);
   const id = useId();
   const close = () => setOpen(false);
+  const mounted = usePresence(open, dialogProps.ref);
 
   return (
     <>
@@ -78,7 +80,7 @@ export function Dialog({
         aria-describedby={description != null ? `${id}-desc` : undefined}
         {...rest}
       >
-        {open && (
+        {mounted && (
           <DialogContext value={close}>
             <div className="pxl-dialog__panel">
               <header className="pxl-dialog__header">

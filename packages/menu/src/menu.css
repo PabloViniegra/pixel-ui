@@ -24,7 +24,13 @@
   margin: 0;
   overflow: auto;
   box-shadow: var(--pxl-shadow-lg);
+  transform-origin: var(--pxl-origin, center);
   animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-menu--floating[data-closing] {
+  pointer-events: none;
+  animation: pxl-float-out var(--pxl-dur-fast) var(--pxl-ease-out) forwards;
 }
 
 .pxl-menu--floating[data-side="top"] {

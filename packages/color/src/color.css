@@ -302,13 +302,6 @@
   outline-offset: 4px;
 }
 
-/* Forced colours drop box-shadow; a border survives and leaves the outline to focus. */
-@media (forced-colors: active) {
-  .pxl-color-swatch-picker__item[aria-checked="true"] {
-    border: 2px solid CanvasText;
-  }
-}
-
 .pxl-color-swatch-picker__item:disabled {
   opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
@@ -410,4 +403,26 @@
   width: 240px;
   min-width: 0;
   padding: var(--pxl-space-3);
+}
+
+/* Forced colours strip background gradients, which are the colour previews
+   themselves, and box-shadows. Previews opt out; the selection becomes a border
+   so the outline stays free for focus, now in a system colour. */
+@media (forced-colors: active) {
+  .pxl-color-area__surface,
+  .pxl-color-slider__cell,
+  .pxl-color-swatch,
+  .pxl-color-swatch-picker__item,
+  .pxl-color-field__swatch > span,
+  .pxl-color-picker__swatch {
+    forced-color-adjust: none;
+  }
+
+  .pxl-color-swatch-picker__item[aria-checked="true"] {
+    border: 2px solid CanvasText;
+  }
+
+  .pxl-color-swatch-picker__item:focus-visible {
+    outline-color: Highlight;
+  }
 }

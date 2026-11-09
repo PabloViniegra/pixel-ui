@@ -65,6 +65,14 @@
   }
 }
 
+/* Exit counterpart: settles back towards the side it came from. */
+@keyframes pxl-float-out {
+  to {
+    opacity: 0;
+    transform: translate(var(--_from-x, 0), var(--_from-y, 4px)) scale(0.97);
+  }
+}
+
 /* Users who ask for less motion get instant state changes. */
 @media (prefers-reduced-motion: reduce) {
   [class*="pxl-"],

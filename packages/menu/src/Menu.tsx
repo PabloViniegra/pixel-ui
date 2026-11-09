@@ -11,6 +11,7 @@ import {
   useFloating,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  usePresence,
 } from '@pablo-v/core';
 import {
   type ComponentPropsWithRef,
@@ -216,6 +217,8 @@ export function Dropdown({
     if (open) focusItem(floatingRef.current, initialFocus.current);
   }, [open]);
 
+  const mounted = usePresence(open, floatingRef);
+
   const openWith = (which: 'first' | 'last') => {
     initialFocus.current = which;
     setOpen(true);
@@ -236,11 +239,13 @@ export function Dropdown({
           }
         },
       })}
-      {open && (
+      {mounted && (
         <Menu
           ref={floatingRef}
           id={id}
           popover="manual"
+          data-closing={!open || undefined}
+          inert={!open || undefined}
           className={cx('pxl-menu--floating', className)}
           onKeyDown={(event) => {
             if (event.key === 'Tab') close(false);

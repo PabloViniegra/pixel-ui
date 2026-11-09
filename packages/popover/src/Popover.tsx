@@ -9,6 +9,7 @@ import {
   useDismiss,
   useFloating,
   useIsomorphicLayoutEffect,
+  usePresence,
 } from '@pablo-v/core';
 import { type ComponentPropsWithRef, type ReactElement, useId, useRef } from 'react';
 
@@ -60,6 +61,8 @@ export function Popover({
     if (open) floatingRef.current?.focus({ preventScroll: true });
   }, [open]);
 
+  const mounted = usePresence(open, floatingRef);
+
   return (
     <>
       {cloneTrigger(trigger, {
@@ -69,7 +72,7 @@ export function Popover({
         'aria-controls': open ? id : undefined,
         'aria-haspopup': 'dialog',
       })}
-      {open && (
+      {mounted && (
         <div
           ref={floatingRef}
           id={id}
@@ -77,6 +80,8 @@ export function Popover({
           aria-label={label}
           tabIndex={-1}
           popover="manual"
+          data-closing={!open || undefined}
+          inert={!open || undefined}
           className={cx('pxl-popover', className)}
           {...rest}
         >

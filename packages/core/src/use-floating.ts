@@ -1,4 +1,5 @@
 import { type RefObject, useCallback } from 'react';
+import { clamp } from './cells.js';
 import { type Align, computePosition, type Side } from './position.js';
 import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect.js';
 
@@ -41,6 +42,16 @@ export function useFloating({
     floating.style.top = `${pos.y}px`;
     floating.style.setProperty('--pxl-anchor-width', `${a.width}px`);
     floating.dataset.side = pos.side;
+    // Scale from the point facing the anchor's centre, not from the panel's own centre.
+    const vertical = pos.side === 'top' || pos.side === 'bottom';
+    const along = vertical
+      ? clamp(a.left + a.width / 2 - pos.x, 0, floating.offsetWidth)
+      : clamp(a.top + a.height / 2 - pos.y, 0, floating.offsetHeight);
+    const edge = { top: '100%', bottom: '0', left: '100%', right: '0' }[pos.side];
+    floating.style.setProperty(
+      '--pxl-origin',
+      vertical ? `${along}px ${edge}` : `${edge} ${along}px`,
+    );
   }, [anchorRef, floatingRef, side, align, offset, padding]);
 
   useIsomorphicLayoutEffect(() => {

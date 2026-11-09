@@ -24,24 +24,46 @@
   --_w: 720px;
 }
 
+/* Transitions rather than keyframes so a quick open-close retargets instead of
+   restarting. `display` and `overlay` keep the closing dialog in the top layer
+   until it has faded. The exit is shorter and travels less than the entry. */
+.pxl-dialog {
+  --_dur: var(--pxl-dur-fast);
+
+  opacity: 0;
+  transform: scale(0.98);
+  transition:
+    opacity var(--_dur) var(--pxl-ease-out),
+    transform var(--_dur) var(--pxl-ease-out),
+    overlay var(--_dur) allow-discrete,
+    display var(--_dur) allow-discrete;
+}
+
 .pxl-dialog[open] {
-  animation: pxl-dialog-in var(--pxl-dur-base) var(--pxl-ease-out);
-}
+  --_dur: var(--pxl-dur-base);
 
-.pxl-dialog::backdrop {
-  background: var(--pxl-overlay);
-  animation: pxl-dialog-fade var(--pxl-dur-base) var(--pxl-ease-out);
-}
+  opacity: 1;
+  transform: none;
 
-@keyframes pxl-dialog-in {
-  from {
+  @starting-style {
     opacity: 0;
     transform: translateY(8px) scale(0.98);
   }
 }
 
-@keyframes pxl-dialog-fade {
-  from {
+.pxl-dialog::backdrop {
+  background: var(--pxl-overlay);
+  opacity: 0;
+  transition:
+    opacity var(--_dur) var(--pxl-ease-out),
+    overlay var(--_dur) allow-discrete,
+    display var(--_dur) allow-discrete;
+}
+
+.pxl-dialog[open]::backdrop {
+  opacity: 1;
+
+  @starting-style {
     opacity: 0;
   }
 }
