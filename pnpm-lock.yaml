@@ -297,6 +297,27 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/color:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/popover':
+        specifier: workspace:^
+        version: link:../popover
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/command-menu:
     dependencies:
       '@pablo-v/core':
@@ -572,6 +593,40 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/navbar:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/button':
+        specifier: workspace:^
+        version: link:../button
+
+  packages/pagination:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/pixel-avatar:
     dependencies:
       '@pablo-v/core':
@@ -702,6 +757,9 @@ importers:
       '@pablo-v/chip':
         specifier: workspace:^
         version: link:../chip
+      '@pablo-v/color':
+        specifier: workspace:^
+        version: link:../color
       '@pablo-v/command-menu':
         specifier: workspace:^
         version: link:../command-menu
@@ -747,6 +805,12 @@ importers:
       '@pablo-v/multi-select':
         specifier: workspace:^
         version: link:../multi-select
+      '@pablo-v/navbar':
+        specifier: workspace:^
+        version: link:../navbar
+      '@pablo-v/pagination':
+        specifier: workspace:^
+        version: link:../pagination
       '@pablo-v/pixel-avatar':
         specifier: workspace:^
         version: link:../pixel-avatar
@@ -804,6 +868,9 @@ importers:
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
+      '@pablo-v/toolbar':
+        specifier: workspace:^
+        version: link:../toolbar
       '@pablo-v/tooltip':
         specifier: workspace:^
         version: link:../tooltip
@@ -980,6 +1047,22 @@ importers:
       subset-font:
         specifier: ^2.9.0
         version: 2.9.0
+
+  packages/toolbar:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
 
   packages/tooltip:
     dependencies:

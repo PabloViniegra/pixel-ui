@@ -17,8 +17,9 @@ export interface SelectProps extends Omit<ComponentPropsWithRef<'select'>, 'size
 }
 
 /**
- * Native `<select>`: the OS picker, typeahead and form behaviour stay intact;
- * only the closed control is styled.
+ * Native `<select>`: typeahead and form behaviour stay intact. Browsers with
+ * customizable select (`appearance: base-select`) also get a styled list;
+ * others keep the OS picker.
  */
 export function Select({
   size = 'md',

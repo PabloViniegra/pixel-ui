@@ -76,7 +76,11 @@
     "@pablo-v/date-picker": "workspace:^",
     "@pablo-v/date-range-picker": "workspace:^",
     "@pablo-v/autocomplete": "workspace:^",
-    "@pablo-v/multi-select": "workspace:^"
+    "@pablo-v/multi-select": "workspace:^",
+    "@pablo-v/color": "workspace:^",
+    "@pablo-v/pagination": "workspace:^",
+    "@pablo-v/navbar": "workspace:^",
+    "@pablo-v/toolbar": "workspace:^"
   },
   "peerDependencies": {
     "react": "^19.0.0"

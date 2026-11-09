@@ -30,6 +30,10 @@
   margin: 0;
   padding: var(--pxl-space-1);
   overflow: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--pxl-space-1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--pxl-gray-500) transparent;
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-lg);
   background: var(--pxl-bg);
@@ -38,14 +42,23 @@
   font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-sm);
   cursor: default;
+  transform-origin: top center;
   animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
 }
 
 .pxl-listbox[data-side="top"] {
   --_from-y: 4px;
+
+  transform-origin: bottom center;
+}
+
+.pxl-listbox > [role="listbox"] {
+  display: grid;
+  gap: 1px;
 }
 
 .pxl-listbox__option {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--pxl-space-2);
@@ -53,20 +66,25 @@
   padding: var(--pxl-space-1) var(--pxl-space-2);
   box-sizing: border-box;
   border-radius: var(--pxl-radius-md);
+  color: var(--pxl-fg-muted);
   cursor: pointer;
   user-select: none;
+  transition:
+    background-color var(--pxl-dur-instant) linear,
+    color var(--pxl-dur-instant) linear;
 }
 
 .pxl-listbox__option[data-active] {
   background: var(--pxl-gray-100);
+  color: var(--pxl-fg);
 }
 
 .pxl-listbox__option[aria-selected="true"] {
+  color: var(--pxl-fg);
   font-weight: 500;
 }
 
 .pxl-listbox__option[aria-disabled="true"] {
-  color: var(--pxl-fg-muted);
   opacity: var(--pxl-opacity-disabled);
   cursor: not-allowed;
 }
@@ -84,6 +102,16 @@
   white-space: nowrap;
 }
 
+.pxl-listbox__match {
+  background: none;
+  color: var(--pxl-fg);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--pxl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
 .pxl-listbox__description {
   overflow: hidden;
   color: var(--pxl-fg-muted);
@@ -96,11 +124,41 @@
 .pxl-listbox__check {
   flex: none;
   color: var(--pxl-accent);
+  animation: pxl-pop-in var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+/* Multiple selection gets a checkbox per row, so "chosen" and "under the
+   pointer" never share the same cue. */
+.pxl-listbox__box {
+  display: grid;
+  flex: none;
+  place-items: center;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--pxl-gray-600);
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-bg);
+  color: var(--pxl-accent-fg);
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    border-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-listbox__box > .pxl-icon {
+  width: 12px;
+  height: 12px;
+  animation: pxl-pop-in var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-listbox__option[aria-selected="true"] .pxl-listbox__box {
+  border-color: var(--pxl-accent);
+  background: var(--pxl-accent);
 }
 
 .pxl-listbox__empty {
   margin: 0;
-  padding: var(--pxl-space-3) var(--pxl-space-2);
+  padding: var(--pxl-space-4) var(--pxl-space-2);
   color: var(--pxl-fg-muted);
   text-align: center;
 }

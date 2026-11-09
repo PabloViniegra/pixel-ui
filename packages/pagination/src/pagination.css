@@ -1,0 +1,131 @@
+.pxl-pagination {
+  --_h: var(--pxl-size-md);
+  --_text: var(--pxl-text-sm);
+
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--_text);
+}
+
+.pxl-pagination[data-size="sm"] {
+  --_h: var(--pxl-size-sm);
+  --_text: var(--pxl-text-xs);
+}
+
+.pxl-pagination[data-size="lg"] {
+  --_h: var(--pxl-size-lg);
+  --_text: var(--pxl-text-md);
+}
+
+.pxl-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pxl-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pxl-pagination__page,
+.pxl-pagination__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pxl-space-1);
+  box-sizing: border-box;
+  min-width: var(--_h);
+  height: var(--_h);
+  padding: 0 var(--pxl-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--pxl-radius-md);
+  background: transparent;
+  color: var(--pxl-fg-muted);
+  font: inherit;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    border-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear,
+    transform var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-pagination__step {
+  padding-inline: var(--pxl-space-2) var(--pxl-space-3);
+  color: var(--pxl-fg);
+}
+
+.pxl-pagination__list > li:last-child .pxl-pagination__step {
+  padding-inline: var(--pxl-space-3) var(--pxl-space-2);
+}
+
+.pxl-pagination__page:hover:not([aria-current]),
+.pxl-pagination__step:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--pxl-gray-100);
+  color: var(--pxl-fg);
+}
+
+.pxl-pagination__page:active:not([aria-current]),
+.pxl-pagination__step:active:not(:disabled, [aria-disabled="true"]) {
+  transform: scale(0.96);
+}
+
+.pxl-pagination__page[aria-current="page"] {
+  border-color: var(--pxl-accent);
+  background: var(--pxl-accent);
+  color: var(--pxl-accent-fg);
+  cursor: default;
+}
+
+.pxl-pagination__page:focus-visible,
+.pxl-pagination__step:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}
+
+.pxl-pagination__step:is(:disabled, [aria-disabled="true"]) {
+  opacity: var(--pxl-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.pxl-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--_h);
+  height: var(--_h);
+  color: var(--pxl-fg-muted);
+  user-select: none;
+}
+
+/* Narrow screens keep the arrows and drop the visible step text; it stays in
+   the accessibility tree. A container query would need size containment, which
+   collapses the nav inside shrink-to-fit parents. */
+@media (max-width: 420px) {
+  .pxl-pagination__page,
+  .pxl-pagination__step,
+  .pxl-pagination__ellipsis {
+    min-width: min(var(--_h), var(--pxl-size-sm));
+  }
+
+  .pxl-pagination__page {
+    padding-inline: var(--pxl-space-1);
+  }
+
+  .pxl-pagination__step,
+  .pxl-pagination__list > li:last-child .pxl-pagination__step {
+    padding-inline: 0;
+  }
+
+  .pxl-pagination__step-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

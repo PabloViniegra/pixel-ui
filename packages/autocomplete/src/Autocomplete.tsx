@@ -236,6 +236,7 @@ export function Autocomplete({
         onSelect={choose}
         onActivate={setActiveIndex}
         emptyMessage={emptyMessage}
+        highlight={query}
         labelledBy={props['aria-labelledby'] ?? labelId}
         label={props['aria-label']}
       />

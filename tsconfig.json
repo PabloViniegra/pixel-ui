@@ -137,6 +137,18 @@
       "path": "packages/multi-select"
     },
     {
+      "path": "packages/color"
+    },
+    {
+      "path": "packages/pagination"
+    },
+    {
+      "path": "packages/navbar"
+    },
+    {
+      "path": "packages/toolbar"
+    },
+    {
       "path": "packages/react"
     }
   ]

@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { Autocomplete } from './Autocomplete.js';
+import { splitMatch } from './Listbox.js';
 
 const options = [
   { value: 'fra1', label: 'Frankfurt' },
@@ -99,5 +100,25 @@ describe('Autocomplete', () => {
     await userEvent.clear(input);
     await userEvent.tab();
     expect(onChange).toHaveBeenLastCalledWith(null, null);
+  });
+
+  it('marks the matched part of each suggestion', async () => {
+    const { input } = setup();
+    await userEvent.type(input, 'sao');
+    const option = screen.getByRole('option', { name: 'São Paulo' });
+    expect(option.querySelector('mark')).toHaveTextContent(/^São$/);
+  });
+});
+
+describe('splitMatch', () => {
+  it('slices the original label around an accent-insensitive match', () => {
+    expect(splitMatch('Café', 'E')).toEqual(['Caf', 'é', '']);
+    expect(splitMatch('Cafe\u0301 bar', 'e')).toEqual(['Caf', 'e\u0301', ' bar']);
+    expect(splitMatch('Ångström', 'angs')).toEqual(['', 'Ångs', 'tröm']);
+  });
+
+  it('returns null for an empty or missing query', () => {
+    expect(splitMatch('Sydney', '  ')).toBeNull();
+    expect(splitMatch('Sydney', 'xyz')).toBeNull();
   });
 });

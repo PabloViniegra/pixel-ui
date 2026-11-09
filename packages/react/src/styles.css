@@ -43,3 +43,7 @@
 @import "@pablo-v/date-range-picker/style.css";
 @import "@pablo-v/autocomplete/style.css";
 @import "@pablo-v/multi-select/style.css";
+@import "@pablo-v/color/style.css";
+@import "@pablo-v/pagination/style.css";
+@import "@pablo-v/navbar/style.css";
+@import "@pablo-v/toolbar/style.css";

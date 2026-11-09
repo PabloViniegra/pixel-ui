@@ -30,6 +30,26 @@ export function matchesQuery(option: ListboxOption, query: string): boolean {
   return q === '' || fold(option.label).includes(q);
 }
 
+/** Splits `label` around the first accent-insensitive match of `query`, or `null` without one. */
+export function splitMatch(label: string, query: string): [string, string, string] | null {
+  const q = fold(query.trim());
+  if (q === '') return null;
+  let folded = '';
+  const starts: number[] = [];
+  let offset = 0;
+  for (const char of label) {
+    for (const _ of fold(char)) starts.push(offset);
+    folded += fold(char);
+    offset += char.length;
+  }
+  starts.push(label.length);
+  const at = folded.indexOf(q);
+  if (at < 0) return null;
+  const from = starts[at] ?? 0;
+  const to = starts[at + q.length] ?? label.length;
+  return [label.slice(0, from), label.slice(from, to), label.slice(to)];
+}
+
 export const optionId = (listId: string, index: number) => `${listId}-option-${index}`;
 
 export interface ListboxProps {
@@ -44,6 +64,8 @@ export interface ListboxProps {
   onActivate: (index: number) => void;
   emptyMessage: ReactNode;
   multiselectable?: boolean;
+  /** Text typed by the user; its first match in each label is emphasised. */
+  highlight?: string;
   /** Id of the visible label, usually the Field label. */
   labelledBy?: string;
   label?: string;
@@ -66,6 +88,7 @@ export function Listbox({
   onActivate,
   emptyMessage,
   multiselectable,
+  highlight = '',
   labelledBy,
   label,
   className,
@@ -86,6 +109,7 @@ export function Listbox({
       ref={mergedRef}
       popover="manual"
       className={cx('pxl-listbox', className)}
+      data-multiple={multiselectable || undefined}
       onPointerDown={(event) => event.preventDefault()}
     >
       {options.length === 0 ? (
@@ -102,6 +126,7 @@ export function Listbox({
         >
           {options.map((option, index) => {
             const selected = isSelected(option.value);
+            const parts = splitMatch(option.label, highlight);
             return (
               <div
                 key={option.value}
@@ -118,13 +143,28 @@ export function Listbox({
                   if (!option.disabled) onSelect(option);
                 }}
               >
+                {multiselectable && (
+                  <span className="pxl-listbox__box" aria-hidden="true">
+                    {selected && <CheckIcon />}
+                  </span>
+                )}
                 <span className="pxl-listbox__text">
-                  <span className="pxl-listbox__label">{option.label}</span>
+                  <span className="pxl-listbox__label">
+                    {parts ? (
+                      <>
+                        {parts[0]}
+                        <mark className="pxl-listbox__match">{parts[1]}</mark>
+                        {parts[2]}
+                      </>
+                    ) : (
+                      option.label
+                    )}
+                  </span>
                   {option.description && (
                     <span className="pxl-listbox__description">{option.description}</span>
                   )}
                 </span>
-                {selected && <CheckIcon className="pxl-listbox__check" />}
+                {selected && !multiselectable && <CheckIcon className="pxl-listbox__check" />}
               </div>
             );
           })}

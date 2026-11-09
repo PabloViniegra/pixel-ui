@@ -85,4 +85,16 @@ describe('MultiSelect', () => {
     await userEvent.keyboard('{Backspace}');
     expect(submitted()).toEqual([]);
   });
+
+  it('shows a checkbox on every row, checked for selected options', async () => {
+    const { input } = setup(['Preview']);
+    await userEvent.click(input);
+    await userEvent.keyboard('{ArrowDown}');
+    const boxes = screen.getAllByRole('option').map((o) => o.querySelector('.pxl-listbox__box'));
+    expect(boxes.every(Boolean)).toBe(true);
+    const checked = screen
+      .getAllByRole('option')
+      .filter((o) => o.querySelector('.pxl-listbox__box svg'));
+    expect(checked.map((o) => o.textContent)).toEqual(['Preview']);
+  });
 });

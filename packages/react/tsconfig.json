@@ -140,6 +140,18 @@
     },
     {
       "path": "../multi-select"
+    },
+    {
+      "path": "../color"
+    },
+    {
+      "path": "../pagination"
+    },
+    {
+      "path": "../navbar"
+    },
+    {
+      "path": "../toolbar"
     }
   ]
 }

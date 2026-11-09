@@ -235,6 +235,7 @@ export function MultiSelect({
         onSelect={toggle}
         onActivate={setActiveIndex}
         emptyMessage={emptyMessage}
+        highlight={query}
         multiselectable
         labelledBy={props['aria-labelledby'] ?? labelId}
         label={props['aria-label']}

@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx"],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../field"
+    },
+    {
+      "path": "../input"
+    },
+    {
+      "path": "../popover"
+    }
+  ]
+}

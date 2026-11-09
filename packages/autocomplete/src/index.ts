@@ -6,5 +6,6 @@ export {
   matchesQuery,
   type OptionInput,
   optionId,
+  splitMatch,
   toOption,
 } from './Listbox.js';
