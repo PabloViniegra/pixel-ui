@@ -1,5 +1,11 @@
 # @pablo-v/select
 
+## 1.0.3
+
+### Patch Changes
+
+- 3c79471: Vertically center the value and placeholder when the browser supports `appearance: base-select`.
+
 ## 1.0.2
 
 ### Patch Changes
