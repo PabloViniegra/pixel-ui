@@ -19,3 +19,6 @@ packages/tokens/fonts/*
 # AI
 .impeccable/
 .image-sources/
+.claude/
+.agents/
+skills-lock.json
