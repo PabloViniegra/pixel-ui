@@ -82,6 +82,28 @@
   font-size: var(--pxl-text-xs);
 }
 
+.pxl-file-upload__error {
+  display: grid;
+  gap: var(--pxl-space-1);
+}
+
+.pxl-file-upload__message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pxl-space-2);
+  margin: 0;
+  color: var(--pxl-danger);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Optically centre the 16px icon on the first 13px/1.5 line, as in Field. */
+.pxl-file-upload__message-icon {
+  flex: none;
+  margin-top: 2px;
+}
+
 .pxl-file-upload__list {
   display: grid;
   gap: var(--pxl-space-1);

@@ -1,13 +1,14 @@
 'use client';
 
 import { cx, useControllableState } from '@pablo-v/core';
-import { CloseIcon, FileIcon, UploadIcon } from '@pablo-v/pixel-icons';
+import { CloseIcon, FileIcon, UploadIcon, UploadingIcon, WarningIcon } from '@pablo-v/pixel-icons';
 import {
   type ChangeEvent,
   type ComponentPropsWithRef,
   type DragEvent,
   type ReactNode,
   useId,
+  useRef,
   useState,
 } from 'react';
 
@@ -36,6 +37,8 @@ export interface FileUploadProps
   label?: ReactNode;
   /** Secondary line under the label, e.g. the accepted types. */
   hint?: ReactNode;
+  /** Message shown under the zone for each refused file; `false` hides it. */
+  rejectionMessage?: false | ((rejection: FileRejection) => ReactNode);
 }
 
 function matches(file: File, accept: string | undefined) {
@@ -63,6 +66,16 @@ export function formatBytes(bytes: number) {
   return `${unit === 0 ? n : n.toFixed(n < 10 ? 1 : 0)} ${units[unit]}`;
 }
 
+function describeRejection(
+  { file, reason }: FileRejection,
+  maxSize: number | undefined,
+  maxFiles: number,
+) {
+  if (reason === 'type') return `${file.name} is not an accepted file type`;
+  if (reason === 'size') return `${file.name} is larger than ${formatBytes(maxSize ?? 0)}`;
+  return `${file.name} was not added: the limit is ${maxFiles} ${maxFiles === 1 ? 'file' : 'files'}`;
+}
+
 const fileKey = (file: File) => `${file.name}-${file.size}-${file.lastModified}`;
 
 /**
@@ -82,6 +95,7 @@ export function FileUpload({
   disabled = false,
   label = 'Drop files here or browse',
   hint,
+  rejectionMessage,
   className,
   ...rest
 }: FileUploadProps) {
@@ -91,12 +105,24 @@ export function FileUpload({
     onChange,
   });
   const [dragging, setDragging] = useState(false);
+  const [rejected, setRejected] = useState<FileRejection[]>([]);
   const id = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const limit = multiple ? (maxFiles ?? Number.POSITIVE_INFINITY) : 1;
+  const errors =
+    rejectionMessage === false
+      ? []
+      : rejected.map((rejection) => ({
+          key: fileKey(rejection.file),
+          message: rejectionMessage
+            ? rejectionMessage(rejection)
+            : describeRejection(rejection, maxSize, limit),
+        }));
 
   const add = (incoming: File[]) => {
     const rejections: FileRejection[] = [];
     const accepted: File[] = [];
-    const limit = multiple ? (maxFiles ?? Number.POSITIVE_INFINITY) : 1;
     const base = multiple ? files : [];
     const keys = new Set(base.map(fileKey));
     for (const file of incoming) {
@@ -108,7 +134,18 @@ export function FileUpload({
       else accepted.push(file);
     }
     if (accepted.length) setFiles([...base, ...accepted]);
+    setRejected(rejections);
     if (rejections.length) onReject?.(rejections);
+  };
+
+  // Focus moves to a neighbouring remove button, or back to the zone, so it is not lost with the row.
+  const remove = (index: number) => {
+    const buttons = listRef.current?.querySelectorAll<HTMLElement>('.pxl-file-upload__remove');
+    const next = buttons?.[index + 1] ?? buttons?.[index - 1];
+    if (next) next.focus();
+    else inputRef.current?.focus();
+    setRejected([]);
+    setFiles(files.filter((_, j) => j !== index));
   };
 
   const handleDrop = (event: DragEvent<HTMLLabelElement>) => {
@@ -141,16 +178,21 @@ export function FileUpload({
         onDrop={handleDrop}
       >
         <input
+          ref={inputRef}
           type="file"
           className="pxl-file-upload__input"
           accept={accept}
           multiple={multiple}
           disabled={disabled}
-          aria-describedby={hint != null ? `${id}-hint` : undefined}
+          aria-describedby={
+            [hint != null && `${id}-hint`, errors.length > 0 && `${id}-error`]
+              .filter(Boolean)
+              .join(' ') || undefined
+          }
           onChange={handleInput}
         />
         <span className="pxl-file-upload__icon" aria-hidden="true">
-          <UploadIcon />
+          {dragging ? <UploadingIcon /> : <UploadIcon />}
         </span>
         <span className="pxl-file-upload__label">{label}</span>
         {hint != null && (
@@ -159,8 +201,18 @@ export function FileUpload({
           </span>
         )}
       </label>
+      {errors.length > 0 && (
+        <div id={`${id}-error`} className="pxl-file-upload__error" role="alert">
+          {errors.map(({ key, message }) => (
+            <p key={key} className="pxl-file-upload__message">
+              <WarningIcon className="pxl-file-upload__message-icon" />
+              {message}
+            </p>
+          ))}
+        </div>
+      )}
       {files.length > 0 && (
-        <ul className="pxl-file-upload__list" aria-label="Selected files">
+        <ul ref={listRef} className="pxl-file-upload__list" aria-label="Selected files">
           {files.map((file, i) => (
             <li key={fileKey(file)} className="pxl-file-upload__file">
               <FileIcon />
@@ -171,7 +223,7 @@ export function FileUpload({
                 className="pxl-file-upload__remove"
                 aria-label={`Remove ${file.name}`}
                 disabled={disabled}
-                onClick={() => setFiles(files.filter((_, j) => j !== i))}
+                onClick={() => remove(i)}
               >
                 <CloseIcon />
               </button>

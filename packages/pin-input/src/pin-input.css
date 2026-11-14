@@ -78,6 +78,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 8px 8px;
+  animation: pxl-pin-mask var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+@keyframes pxl-pin-mask {
+  0% {
+    background-size: 0 0;
+  }
+  60% {
+    background-size: 10px 10px;
+  }
 }
 
 @media (pointer: coarse) {

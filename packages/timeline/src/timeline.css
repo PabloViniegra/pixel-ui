@@ -17,7 +17,7 @@
   display: grid;
   grid-template-columns: var(--_rail) 1fr;
   gap: var(--pxl-space-3);
-  padding-bottom: var(--pxl-space-5);
+  padding-bottom: var(--pxl-space-6);
 }
 
 .pxl-timeline__item:last-child {

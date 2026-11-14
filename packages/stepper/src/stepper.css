@@ -94,6 +94,10 @@ button.pxl-stepper__body:focus-visible {
   color: var(--pxl-bg);
 }
 
+.pxl-stepper__marker > .pxl-icon {
+  animation: pxl-pop-in var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
 .pxl-stepper__step[data-status="error"] .pxl-stepper__marker {
   border-color: var(--pxl-danger);
   background: var(--pxl-danger-subtle);
@@ -137,34 +141,77 @@ button.pxl-stepper__body:hover .pxl-stepper__label {
   white-space: nowrap;
 }
 
-/* The connector is a row of 4px cells; it fills in once the step before it is done. */
+/* The connector is a row of 4px cells; a lit copy wipes over it once the step before it is done. */
 .pxl-stepper__connector {
-  --_cell: var(--pxl-gray-300);
-
+  --_cells: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 6px);
+  position: relative;
   flex: 1;
   min-width: var(--pxl-space-4);
   height: 4px;
   margin-top: calc((var(--_marker) - 4px) / 2);
-  background: repeating-linear-gradient(90deg, var(--_cell) 0 4px, transparent 4px 6px);
+  color: var(--pxl-gray-300);
+  background: var(--_cells);
 }
 
-.pxl-stepper__connector[data-lit] {
-  --_cell: var(--pxl-fg);
+.pxl-stepper__connector::after {
+  position: absolute;
+  inset: 0;
+  color: var(--pxl-fg);
+  background: var(--_cells);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--pxl-dur-slow) var(--pxl-ease-out);
+}
+
+.pxl-stepper__connector[data-lit]::after {
+  transform: none;
 }
 
 .pxl-stepper[data-orientation="vertical"] .pxl-stepper__connector {
+  --_cells: repeating-linear-gradient(180deg, currentColor 0 4px, transparent 4px 6px);
   flex: none;
   width: 4px;
   min-width: 0;
   height: auto;
   min-height: var(--pxl-space-6);
   margin: var(--pxl-space-1) 0 var(--pxl-space-1) calc((var(--_marker) - 4px) / 2);
-  background: repeating-linear-gradient(180deg, var(--_cell) 0 4px, transparent 4px 6px);
+}
+
+.pxl-stepper[data-orientation="vertical"] .pxl-stepper__connector::after {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.pxl-stepper[data-orientation="vertical"] .pxl-stepper__connector[data-lit]::after {
+  transform: none;
+}
+
+/* Narrow rows keep every marker and only the current step's text, which stays readable to screen readers. */
+@media (width < 30rem) {
+  .pxl-stepper:not([data-orientation="vertical"])
+    .pxl-stepper__step:not([data-status="current"])
+    .pxl-stepper__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .pxl-stepper:not([data-orientation="vertical"]) .pxl-stepper__step:not(:last-child) {
+    flex: 1 0 auto;
+  }
 }
 
 @media (forced-colors: active) {
-  .pxl-stepper__connector {
+  .pxl-stepper__connector,
+  .pxl-stepper__connector::after {
     background: none;
+  }
+
+  .pxl-stepper__connector {
     border-top: 2px dotted CanvasText;
   }
 }

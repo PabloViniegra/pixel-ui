@@ -30,7 +30,7 @@
 }
 
 .pxl-number-field__step:active:not(:disabled) {
-  background: var(--pxl-gray-200);
+  background: color-mix(in srgb, var(--pxl-accent-subtle), var(--pxl-accent) 12%);
 }
 
 .pxl-number-field__step:disabled {

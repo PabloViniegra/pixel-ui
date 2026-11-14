@@ -35,13 +35,13 @@
 /* Wider invisible hit area than the 1px line. */
 .pxl-resizable__handle::before {
   position: absolute;
-  inset: 0 -4px;
+  inset: 0 -6px;
   z-index: 1;
   content: "";
 }
 
 .pxl-resizable[data-orientation="vertical"] > .pxl-resizable__handle::before {
-  inset: -4px 0;
+  inset: -6px 0;
 }
 
 /* Grip: three 2px cells stacked across the line. */

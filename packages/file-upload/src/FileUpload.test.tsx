@@ -68,6 +68,34 @@ describe('FileUpload', () => {
       { file: files[2], reason: 'size' },
       { file: files[3], reason: 'count' },
     ]);
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveTextContent('notes.txt is not an accepted file type');
+    expect(alert).toHaveTextContent('huge.pdf is larger than 100 B');
+    expect(alert).toHaveTextContent('extra.jpg was not added: the limit is 1 file');
+    expect(zone.querySelector('input')).toHaveAttribute(
+      'aria-describedby',
+      alert.getAttribute('id'),
+    );
+  });
+
+  it('hides the rejection message when rejectionMessage is false', () => {
+    render(<FileUpload accept="image/*" rejectionMessage={false} />);
+    const zone = screen.getByText('Drop files here or browse').closest('label') as HTMLElement;
+    fireEvent.drop(zone, { dataTransfer: { files: [file('notes.txt', 'text/plain')] } });
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
+
+  it('keeps focus in the component when a file is removed', async () => {
+    const { container } = render(
+      <FileUpload
+        multiple
+        defaultValue={[file('a.png', 'image/png'), file('b.png', 'image/png')]}
+      />,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Remove a.png' }));
+    expect(screen.getByRole('button', { name: 'Remove b.png' })).toHaveFocus();
+    await userEvent.click(screen.getByRole('button', { name: 'Remove b.png' }));
+    expect(container.querySelector('input[type="file"]')).toHaveFocus();
   });
 
   it('replaces the file in single mode', async () => {
