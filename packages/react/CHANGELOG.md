@@ -1,5 +1,20 @@
 # @pablo-v/react
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [805f315]
+- Updated dependencies [805f315]
+  - @pablo-v/stepper@0.2.0
+  - @pablo-v/rating@0.1.1
+  - @pablo-v/pin-input@0.1.1
+  - @pablo-v/number-field@0.1.1
+  - @pablo-v/resizable@0.1.1
+  - @pablo-v/file-upload@0.2.0
+  - @pablo-v/timeline@0.1.1
+  - @pablo-v/toggle@0.1.1
+
 ## 0.5.0
 
 ### Minor Changes

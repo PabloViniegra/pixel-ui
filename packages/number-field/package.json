@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/number-field",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Numeric input with stepper buttons and keyboard increments",
   "license": "MIT",
   "repository": {
