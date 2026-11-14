@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/resizable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Resizable panel groups with draggable handles",
   "license": "MIT",
   "repository": {
