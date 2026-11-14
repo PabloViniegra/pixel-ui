@@ -62,4 +62,14 @@ describe('ResizablePanels', () => {
     expect(screen.getByText('C').style.flex).toBe('20 1 0px');
     expect(screen.getAllByRole('separator')[1]).toHaveAttribute('aria-valuenow', '50');
   });
+
+  it('collapses to the minimum and restores the previous size on double-click', () => {
+    const { handle } = setup();
+    fireEvent.keyDown(handle, { key: 'End' });
+    expect(handle).toHaveAttribute('aria-valuenow', '60');
+    fireEvent.doubleClick(handle);
+    expect(handle).toHaveAttribute('aria-valuenow', '20');
+    fireEvent.doubleClick(handle);
+    expect(handle).toHaveAttribute('aria-valuenow', '60');
+  });
 });

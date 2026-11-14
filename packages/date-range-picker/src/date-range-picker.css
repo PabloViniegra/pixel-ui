@@ -1,9 +1,15 @@
 .pxl-date-range-picker {
+  flex-wrap: wrap;
+  column-gap: var(--pxl-space-2);
+  row-gap: 0;
+  height: auto;
+  min-height: var(--_h);
   cursor: default;
 }
 
 .pxl-date-range-picker .pxl-date-segments {
   flex: none;
+  height: calc(var(--_h) - 2px);
 }
 
 .pxl-date-range-picker__dash {
@@ -14,4 +20,8 @@
 
 .pxl-date-range-picker > .pxl-input__affix {
   margin-inline-start: auto;
+}
+
+.pxl-date-range-picker .pxl-date-picker__trigger {
+  height: calc(var(--_h) - 2px);
 }

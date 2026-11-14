@@ -67,22 +67,31 @@
 
 /* Indeterminate: a pixel comet running along the track. */
 .pxl-progress[data-state="indeterminate"] .pxl-progress__cell {
+  position: relative;
+}
+
+/* Animates the opacity of a tone layer, which composites, instead of repainting the background. */
+.pxl-progress[data-state="indeterminate"] .pxl-progress__cell::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--_tone);
+  opacity: 0;
+  content: "";
   animation: pxl-progress-comet var(--_loop) var(--pxl-ease-out) infinite;
   animation-delay: calc(var(--_i) * var(--_loop) / var(--_segments) - var(--_loop));
 }
 
-/* Fades from the tone back into the resting track colour so idle cells match
-   the determinate bar instead of a tinted ghost track. */
 @keyframes pxl-progress-comet {
   0% {
-    background: var(--_tone);
+    opacity: 1;
   }
   12% {
-    background: color-mix(in srgb, var(--_tone) 40%, var(--pxl-gray-300));
+    opacity: 0.4;
   }
   30%,
   100% {
-    background: var(--pxl-gray-300);
+    opacity: 0;
   }
 }
 

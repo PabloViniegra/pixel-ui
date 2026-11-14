@@ -97,4 +97,19 @@ describe('MultiSelect', () => {
       .filter((o) => o.querySelector('.pxl-listbox__box svg'));
     expect(checked.map((o) => o.textContent)).toEqual(['Preview']);
   });
+
+  it('announces the value Backspace removes', async () => {
+    const { input } = setup(['Production', 'Preview']);
+    await userEvent.click(input);
+    await userEvent.keyboard('{Backspace}');
+    const status = screen.getByText('Preview removed');
+    expect(status).toHaveAttribute('role', 'status');
+
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.click(screen.getByRole('option', { name: 'Preview' }));
+    const before = status.textContent;
+    await userEvent.keyboard('{Backspace}');
+    expect(status.textContent).not.toBe(before);
+    expect(status).toHaveTextContent('Preview removed');
+  });
 });

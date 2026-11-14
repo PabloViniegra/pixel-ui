@@ -1,5 +1,16 @@
 # @pablo-v/date-picker
 
+## 0.1.2
+
+### Patch Changes
+
+- Improve small screens, touch and rendering cost: floating panels stay within the viewport and above the on-screen keyboard, Alert and Stepper adapt to their container width and now fill it, rows wrap instead of overflowing, touch targets grow on coarse pointers, hover effects only apply on devices that hover, safe-area insets are respected, and list rows and animations re-render less.
+- Updated dependencies
+- Updated dependencies
+  - @pablo-v/field@1.1.2
+  - @pablo-v/calendar@0.1.2
+  - @pablo-v/core@0.2.2
+
 ## 0.1.1
 
 ### Patch Changes

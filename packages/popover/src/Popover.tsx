@@ -23,7 +23,7 @@ export interface PopoverProps extends Omit<ComponentPropsWithRef<'div'>, 'title'
   side?: Side;
   /** @default 'center' */
   align?: Align;
-  /** Accessible name of the panel, when it has no visible heading. */
+  /** Accessible name of the panel. Without it, the trigger names the panel. */
   label?: string;
 }
 
@@ -51,6 +51,7 @@ export function Popover({
   const anchorRef = useRef<HTMLElement>(null);
   const floatingRef = useRef<HTMLDivElement>(null);
   const id = useId();
+  const triggerId = (trigger.props as { id?: string }).id ?? `${id}-trigger`;
 
   useFloating({ open, anchorRef, floatingRef, side, align });
   useDismiss(open, () => {
@@ -67,6 +68,7 @@ export function Popover({
     <>
       {cloneTrigger(trigger, {
         ref: anchorRef,
+        id: triggerId,
         onClick: () => setOpen(!open),
         'aria-expanded': open,
         'aria-controls': open ? id : undefined,
@@ -78,6 +80,7 @@ export function Popover({
           id={id}
           role="dialog"
           aria-label={label}
+          aria-labelledby={label ? undefined : triggerId}
           tabIndex={-1}
           popover="manual"
           data-closing={!open || undefined}

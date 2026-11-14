@@ -301,7 +301,11 @@ export function Calendar(props: CalendarProps) {
                   compareDays(day, range.start) >= 0 &&
                   compareDays(day, range.end) <= 0;
                 const selected =
-                  mode === 'single' ? isSameDay(day, selectedDate) : !anchor && inRange;
+                  mode === 'single'
+                    ? isSameDay(day, selectedDate)
+                    : anchor
+                      ? isSameDay(day, anchor)
+                      : inRange;
                 return (
                   <td
                     key={day.getTime()}

@@ -55,4 +55,13 @@ describe('Terminal', () => {
     rerender(<Terminal lines={[]} streaming />);
     expect(screen.queryByText('No output yet')).not.toBeInTheDocument();
   });
+
+  it('renders only the newest lines with maxLines', () => {
+    const lines = Array.from({ length: 5 }, (_, i) => ({ id: i, text: `line ${i}` }));
+    render(<Terminal lines={lines} maxLines={2} />);
+    expect(screen.getAllByRole('listitem').map((li) => li.textContent)).toEqual([
+      'line 3',
+      'line 4',
+    ]);
+  });
 });

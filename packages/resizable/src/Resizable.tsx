@@ -76,6 +76,7 @@ export function ResizablePanels({
   }
   const groupRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ index: number; start: number; sizes: number[] } | null>(null);
+  const expanded = useRef<Record<number, number>>({});
   const id = useId();
   const horizontal = orientation === 'horizontal';
 
@@ -117,6 +118,15 @@ export function ResizablePanels({
     if (!length) return;
     const delta = (((horizontal ? event.clientX : event.clientY) - d.start) / length) * 100;
     resize(d.index, (d.sizes[d.index] ?? 0) + delta, d.sizes);
+  };
+
+  const toggleCollapse = (index: number) => {
+    const { min } = limits(index, sizes);
+    const current = sizes[index] ?? 0;
+    if (current > min) {
+      expanded.current[index] = current;
+      resize(index, min);
+    } else resize(index, expanded.current[index] ?? initialSizes(panels)[index] ?? current);
   };
 
   const handleKeyDown = (index: number) => (event: KeyboardEvent<HTMLDivElement>) => {
@@ -174,6 +184,7 @@ export function ResizablePanels({
                 onLostPointerCapture={() => {
                   drag.current = null;
                 }}
+                onDoubleClick={() => toggleCollapse(index)}
                 onKeyDown={handleKeyDown(index)}
               />
             )}

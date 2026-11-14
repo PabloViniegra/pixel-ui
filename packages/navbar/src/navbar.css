@@ -28,6 +28,7 @@
 .pxl-navbar__list {
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--pxl-space-1);
   min-width: 0;
@@ -140,6 +141,12 @@
     opacity: 0;
     transform: translateY(var(--_from-y)) scale(0.97);
   }
+}
+
+.pxl-navbar__panel[data-align="end"] {
+  right: 0;
+  left: auto;
+  transform-origin: top right;
 }
 
 /* A transition, not keyframes: `hidden` toggles display, which keyframes cannot outlive. */

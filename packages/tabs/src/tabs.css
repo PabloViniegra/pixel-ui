@@ -16,7 +16,8 @@
   overflow-x: auto;
   /* Inset line instead of a border so the scroll box does not clip the indicator. */
   box-shadow: inset 0 -1px var(--pxl-border);
-  scrollbar-width: none;
+  scrollbar-color: var(--pxl-gray-300) transparent;
+  scrollbar-width: thin;
 }
 
 .pxl-tabs[data-orientation="vertical"] .pxl-tabs__list {

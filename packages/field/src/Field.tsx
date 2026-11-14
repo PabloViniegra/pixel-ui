@@ -83,6 +83,11 @@ export function Field({
           {message}
         </p>
       )}
+      {/* Mounted up front so screen readers announce an error as it appears; helper text stays silent.
+          Only plain text is mirrored, so links or buttons in the error never get a hidden focusable copy. */}
+      <span role="status" className="pxl-visually-hidden">
+        {invalid && (typeof error === 'string' || typeof error === 'number') ? error : null}
+      </span>
     </div>
   );
 }

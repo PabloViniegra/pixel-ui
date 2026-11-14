@@ -85,4 +85,10 @@ describe('date helpers', () => {
   it('clamps the day when adding months', () => {
     expect(addMonths(new Date(2026, 0, 31), 1)).toEqual(new Date(2026, 1, 28));
   });
+
+  it('marks the range start as selected while the end is picked', async () => {
+    render(<Calendar mode="range" locale="en-US" defaultMonth={new Date(2026, 2, 1)} />);
+    await userEvent.click(day('Friday, March 20, 2026'));
+    expect(day('Friday, March 20, 2026').closest('td')).toHaveAttribute('aria-selected', 'true');
+  });
 });

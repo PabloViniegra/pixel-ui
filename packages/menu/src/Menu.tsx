@@ -23,6 +23,7 @@ import {
   use,
   useId,
   useRef,
+  useState,
 } from 'react';
 
 const ITEM = '[role="menuitem"]';
@@ -41,10 +42,11 @@ function focusItem(menu: HTMLElement | null, which: 'first' | 'last') {
 export interface MenuProps extends ComponentPropsWithRef<'div'> {}
 
 /** A list of actions with arrow-key navigation and type-to-select. */
-export function Menu({ className, onKeyDown, onFocus, ref, ...rest }: MenuProps) {
+export function Menu({ className, onKeyDown, onFocus, onBlur, ref, ...rest }: MenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const mergedRef = useMergedRefs(menuRef, ref);
   const inDropdown = use(MenuContext) != null;
+  const [focusWithin, setFocusWithin] = useState(false);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
@@ -76,13 +78,19 @@ export function Menu({ className, onKeyDown, onFocus, ref, ...rest }: MenuProps)
       ref={mergedRef}
       role="menu"
       aria-orientation="vertical"
-      tabIndex={inDropdown ? -1 : 0}
+      tabIndex={inDropdown || focusWithin ? -1 : 0}
       className={cx('pxl-menu', className)}
       onKeyDown={handleKeyDown}
       onFocus={(event) => {
         onFocus?.(event);
+        setFocusWithin(true);
         if (event.target === event.currentTarget && !inDropdown)
           focusItem(menuRef.current, 'first');
+      }}
+      onBlur={(event) => {
+        onBlur?.(event);
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null))
+          setFocusWithin(false);
       }}
       {...rest}
     />

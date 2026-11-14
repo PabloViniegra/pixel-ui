@@ -84,6 +84,7 @@
   isolation: isolate;
   display: inline-flex;
   box-sizing: border-box;
+  max-width: 100%;
   height: var(--_h);
   padding: 3px;
   border: 1px solid var(--pxl-border);
@@ -107,7 +108,8 @@
 
 .pxl-segmented__option {
   display: inline-flex;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
+  min-width: 0;
   align-items: center;
   justify-content: center;
   gap: var(--pxl-space-2);
@@ -122,6 +124,11 @@
   white-space: nowrap;
   cursor: pointer;
   transition: color var(--pxl-dur-fast) linear;
+}
+
+.pxl-segmented__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pxl-segmented[data-size="sm"] .pxl-segmented__option {

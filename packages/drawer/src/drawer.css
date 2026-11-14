@@ -50,7 +50,7 @@
   --_from-x: 0;
   --_size: 360px;
 
-  width: 100vw;
+  width: auto;
   height: min(var(--_size), calc(100dvh - var(--pxl-space-8)));
   border: 0;
 }
@@ -146,7 +146,8 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: var(--pxl-space-2);
-  padding: var(--pxl-space-4) var(--pxl-space-6);
+  padding: var(--pxl-space-4) var(--pxl-space-6)
+    max(var(--pxl-space-4), env(safe-area-inset-bottom));
   border-top: 1px solid var(--pxl-border);
   background: var(--pxl-bg-subtle);
 }

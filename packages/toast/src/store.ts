@@ -6,7 +6,7 @@ export interface ToastOptions {
   description?: ReactNode;
   /** @default 'default' */
   tone?: ToastTone;
-  /** Time on screen in ms; `Infinity` keeps it until dismissed. @default 5000 */
+  /** Time on screen in ms; `Infinity` keeps it until dismissed. @default 5000, or `Infinity` with an `action` */
   duration?: number;
   action?: { label: string; onClick: () => void };
   /** Reusing an id replaces that toast instead of stacking a new one. */
@@ -43,12 +43,18 @@ export const getServerSnapshot = () => EMPTY;
 
 function show(
   title: ReactNode,
-  { id, tone = 'default', duration = 5000, ...rest }: ToastOptions = {},
+  {
+    id,
+    tone = 'default',
+    action,
+    duration = action ? Number.POSITIVE_INFINITY : 5000,
+    ...rest
+  }: ToastOptions = {},
 ) {
   const key = id ?? `pxl-toast-${++seq}`;
   toasts = [
     ...toasts.filter((t) => t.id !== key),
-    { id: key, version: ++seq, title, tone, duration, ...rest },
+    { id: key, version: ++seq, title, tone, duration, action, ...rest },
   ];
   emit();
   return key;

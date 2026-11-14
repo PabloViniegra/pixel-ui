@@ -1,5 +1,46 @@
 # @pablo-v/react
 
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @pablo-v/menu@1.0.3
+  - @pablo-v/pin-input@0.1.3
+  - @pablo-v/popover@1.0.2
+  - @pablo-v/tabs@1.0.2
+  - @pablo-v/autocomplete@0.2.2
+  - @pablo-v/command-menu@1.0.2
+  - @pablo-v/field@1.1.2
+  - @pablo-v/calendar@0.1.2
+  - @pablo-v/mini-chart@1.0.2
+  - @pablo-v/context-menu@0.2.0
+  - @pablo-v/resizable@0.2.0
+  - @pablo-v/multi-select@0.2.0
+  - @pablo-v/toast@1.1.0
+  - @pablo-v/terminal@1.1.0
+  - @pablo-v/tokens@0.2.5
+  - @pablo-v/core@0.2.2
+  - @pablo-v/alert@0.1.2
+  - @pablo-v/button@1.0.3
+  - @pablo-v/card@1.1.1
+  - @pablo-v/checkbox@1.0.2
+  - @pablo-v/color@0.1.3
+  - @pablo-v/date-picker@0.1.2
+  - @pablo-v/date-range-picker@0.1.1
+  - @pablo-v/drawer@0.1.1
+  - @pablo-v/flip-clock@1.0.1
+  - @pablo-v/navbar@0.1.3
+  - @pablo-v/pixel-image@1.0.1
+  - @pablo-v/progress@1.0.3
+  - @pablo-v/radio@1.0.2
+  - @pablo-v/slider@1.0.3
+  - @pablo-v/stepper@0.2.1
+  - @pablo-v/toggle@0.1.3
+
 ## 0.5.1
 
 ### Patch Changes

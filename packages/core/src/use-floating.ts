@@ -32,10 +32,15 @@ export function useFloating({
     const floating = floatingRef.current;
     if (!anchor || !floating) return;
     const a = anchor.getBoundingClientRect();
+    // The on-screen keyboard shrinks only the visual viewport, so its bottom edge is the real limit.
+    const vv = window.visualViewport;
     const pos = computePosition(
       a,
       { width: floating.offsetWidth, height: floating.offsetHeight },
-      { width: window.innerWidth, height: window.innerHeight },
+      {
+        width: window.innerWidth,
+        height: vv ? Math.min(window.innerHeight, vv.offsetTop + vv.height) : window.innerHeight,
+      },
       { side, align, offset, padding },
     );
     floating.style.left = `${pos.x}px`;
@@ -71,6 +76,8 @@ export function useFloating({
     };
     window.addEventListener('scroll', schedule, { capture: true, passive: true });
     window.addEventListener('resize', schedule);
+    window.visualViewport?.addEventListener('resize', schedule);
+    window.visualViewport?.addEventListener('scroll', schedule);
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(schedule);
     if (anchorRef.current) observer?.observe(anchorRef.current);
     observer?.observe(floating);
@@ -78,6 +85,8 @@ export function useFloating({
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', schedule, { capture: true });
       window.removeEventListener('resize', schedule);
+      window.visualViewport?.removeEventListener('resize', schedule);
+      window.visualViewport?.removeEventListener('scroll', schedule);
       observer?.disconnect();
     };
   }, [open, update]);

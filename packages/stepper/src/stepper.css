@@ -29,6 +29,12 @@
   flex: 0 0 auto;
 }
 
+.pxl-stepper:not([data-orientation="vertical"]) {
+  /* Size containment drops the intrinsic width, so the stepper fills its container instead of collapsing. */
+  container: pxl-stepper / inline-size;
+  width: 100%;
+}
+
 .pxl-stepper[data-orientation="vertical"] .pxl-stepper__step {
   flex-direction: column;
   gap: 0;
@@ -188,7 +194,7 @@ button.pxl-stepper__body:hover .pxl-stepper__label {
 }
 
 /* Narrow rows keep every marker and only the current step's text, which stays readable to screen readers. */
-@media (width < 30rem) {
+@container pxl-stepper (width < 30rem) {
   .pxl-stepper:not([data-orientation="vertical"])
     .pxl-stepper__step:not([data-status="current"])
     .pxl-stepper__text {
@@ -201,7 +207,7 @@ button.pxl-stepper__body:hover .pxl-stepper__label {
   }
 
   .pxl-stepper:not([data-orientation="vertical"]) .pxl-stepper__step:not(:last-child) {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
   }
 }
 

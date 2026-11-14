@@ -123,3 +123,9 @@
 .pxl-slider[data-disabled] .pxl-slider__control {
   cursor: not-allowed;
 }
+
+@media (pointer: coarse) {
+  .pxl-slider {
+    --_thumb: 24px;
+  }
+}

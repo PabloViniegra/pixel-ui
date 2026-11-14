@@ -159,6 +159,13 @@ export function NavbarMenu({
 
   useDismiss(open, () => close(!!itemRef.current?.contains(document.activeElement)), [itemRef]);
   useIsomorphicLayoutEffect(() => {
+    const panel = panelRef.current;
+    if (!open || !panel) return;
+    delete panel.dataset.align;
+    if (panel.getBoundingClientRect().right > document.documentElement.clientWidth)
+      panel.dataset.align = 'end';
+  }, [open]);
+  useIsomorphicLayoutEffect(() => {
     if (!open || !focusFirst.current) return;
     focusFirst.current = false;
     links()[0]?.focus();

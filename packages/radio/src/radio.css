@@ -67,6 +67,13 @@
     transform var(--pxl-dur-fast) var(--pxl-ease-out);
 }
 
+/* Grows the hit area to 26px without changing the drawn circle. */
+.pxl-radio__input::before {
+  position: absolute;
+  inset: -4px;
+  content: "";
+}
+
 .pxl-radio__input::after {
   content: "";
   width: 8px;

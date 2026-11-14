@@ -97,6 +97,7 @@ function Column({
   return (
     <span
       className="pxl-chart__col"
+      tabIndex={-1}
       data-highlight={highlighted || undefined}
       data-edge={index >= count / 2 ? 'end' : 'start'}
     >

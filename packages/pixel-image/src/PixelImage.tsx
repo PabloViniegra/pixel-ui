@@ -128,7 +128,17 @@ export function PixelImage({
         }}
         {...rest}
       />
-      <canvas ref={canvasRef} className="pxl-image__mosaic" aria-hidden="true" />
+      <canvas
+        ref={canvasRef}
+        className="pxl-image__mosaic"
+        aria-hidden="true"
+        onTransitionEnd={(event) => {
+          // Frees the full-resolution backing store once the mosaic has faded out.
+          if (state !== 'loaded') return;
+          event.currentTarget.width = 0;
+          event.currentTarget.height = 0;
+        }}
+      />
     </span>
   );
 }

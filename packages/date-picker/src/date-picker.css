@@ -39,10 +39,12 @@
 
   position: fixed;
   inset: auto;
+  box-sizing: border-box;
   max-width: calc(100vw - var(--pxl-space-4));
+  max-height: calc(100dvh - var(--pxl-space-4));
   margin: 0;
   padding: var(--pxl-space-3);
-  overflow: visible;
+  overflow: auto;
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-lg);
   background: var(--pxl-bg);

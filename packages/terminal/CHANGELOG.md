@@ -1,5 +1,20 @@
 # @pablo-v/terminal
 
+## 1.1.0
+
+### Minor Changes
+
+- - ContextMenu opens on a touch long press, which iOS needs because it never fires `contextmenu`.
+  - Double-clicking a Resizable handle collapses the panel to its minimum and restores its previous size.
+  - MultiSelect announces the value removed with Backspace; customise it with `removedMessage`.
+  - Toasts with an action no longer dismiss themselves unless a `duration` is given.
+  - Terminal accepts `maxLines` to keep only the latest lines, and skips rendering off-screen lines.
+
+### Patch Changes
+
+- Updated dependencies
+  - @pablo-v/core@0.2.2
+
 ## 1.0.2
 
 ### Patch Changes

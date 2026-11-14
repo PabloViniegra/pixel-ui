@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/core",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Internal utilities shared by PixelUI components",
   "license": "MIT",
   "repository": {

@@ -74,20 +74,26 @@
   height: 1.15em;
 }
 
-.pxl-button:hover:not(:disabled, [data-loading]) {
-  --_lift: -1px;
-  --_elev: var(--pxl-shadow-md);
+@media (hover: hover) {
+  .pxl-button:hover:not(:disabled, [data-loading]) {
+    --_lift: -1px;
+    --_elev: var(--pxl-shadow-md);
+  }
 }
 
-.pxl-button:is([data-variant="primary"], [data-variant="danger"]):hover:not(
-  :disabled,
-  [data-loading]
-) {
-  --_tint: 12%;
+@media (hover: hover) {
+  .pxl-button:is([data-variant="primary"], [data-variant="danger"]):hover:not(
+    :disabled,
+    [data-loading]
+  ) {
+    --_tint: 12%;
+  }
 }
 
-.pxl-button:hover:not(:disabled, [data-loading]) .pxl-button__surface::after {
-  animation: pxl-sweep 640ms var(--pxl-ease-out) 1;
+@media (hover: hover) {
+  .pxl-button:hover:not(:disabled, [data-loading]) .pxl-button__surface::after {
+    animation: pxl-sweep 640ms var(--pxl-ease-out) 1;
+  }
 }
 
 .pxl-button:active:not(:disabled, [data-loading]) {
@@ -121,8 +127,10 @@
   --_ring: inset 0 0 0 1px var(--pxl-border);
 }
 
-.pxl-button[data-variant="secondary"]:hover:not(:disabled, [data-loading]) {
-  --_ring: inset 0 0 0 1px var(--pxl-gray-500);
+@media (hover: hover) {
+  .pxl-button[data-variant="secondary"]:hover:not(:disabled, [data-loading]) {
+    --_ring: inset 0 0 0 1px var(--pxl-gray-500);
+  }
 }
 
 .pxl-button[data-variant="ghost"] {
@@ -130,10 +138,12 @@
   --_fg: var(--pxl-fg);
 }
 
-.pxl-button[data-variant="ghost"]:hover:not(:disabled, [data-loading]) {
-  --_bg: var(--pxl-gray-100);
-  --_lift: 0px;
-  --_elev: 0 0 #0000;
+@media (hover: hover) {
+  .pxl-button[data-variant="ghost"]:hover:not(:disabled, [data-loading]) {
+    --_bg: var(--pxl-gray-100);
+    --_lift: 0px;
+    --_elev: 0 0 #0000;
+  }
 }
 
 .pxl-button[data-variant="danger"] {

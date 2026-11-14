@@ -6,7 +6,7 @@
 
   display: inline-flex;
   font-family: var(--pxl-font-pixel);
-  font-size: var(--_size);
+  font-size: min(var(--_size), 12vw);
   line-height: 1;
   font-variant-numeric: tabular-nums;
   color: var(--_ink);

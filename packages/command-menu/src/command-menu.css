@@ -105,6 +105,7 @@
 
 .pxl-command__item[data-active] {
   background: var(--pxl-gray-100);
+  box-shadow: inset 2px 0 var(--pxl-accent);
 }
 
 .pxl-command__item[aria-disabled="true"] {
@@ -138,6 +139,10 @@
   color: var(--pxl-fg-muted);
   font-size: var(--pxl-text-sm);
   text-align: center;
+}
+
+.pxl-command__empty:empty {
+  padding: 0;
 }
 
 .pxl-command__footer {

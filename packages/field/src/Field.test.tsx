@@ -31,4 +31,36 @@ describe('Field', () => {
     expect(input.getAttribute('aria-describedby')).toMatch(/message extra$/);
     expect(screen.queryByText('Used in the URL.')).not.toBeInTheDocument();
   });
+
+  it('announces errors through a live region but not helper text', () => {
+    const { rerender } = render(
+      <Field label="Name" description="Used in the URL.">
+        <Control />
+      </Field>,
+    );
+    expect(screen.getByRole('status')).toBeEmptyDOMElement();
+    rerender(
+      <Field label="Name" description="Used in the URL." error="Name is taken.">
+        <Control />
+      </Field>,
+    );
+    expect(screen.getByRole('status')).toHaveTextContent('Name is taken.');
+  });
+
+  it('does not mirror rich errors into the live region', () => {
+    render(
+      <Field
+        label="Name"
+        error={
+          <>
+            Taken. <a href="#other">Use another</a>
+          </>
+        }
+      >
+        <Control />
+      </Field>,
+    );
+    expect(screen.getAllByRole('link', { name: 'Use another' })).toHaveLength(1);
+    expect(screen.getByRole('status')).toBeEmptyDOMElement();
+  });
 });

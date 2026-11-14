@@ -42,4 +42,14 @@ describe('Popover', () => {
     await userEvent.click(screen.getByText('outside'));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('is named by its trigger without a label', async () => {
+    render(
+      <Popover trigger={<button type="button">Filters</button>}>
+        <p>Panel</p>
+      </Popover>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Filters' }));
+    expect(screen.getByRole('dialog', { name: 'Filters' })).toBeInTheDocument();
+  });
 });

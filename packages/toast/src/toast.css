@@ -7,19 +7,19 @@
 }
 
 .pxl-toaster[data-position^="top"] {
-  top: var(--pxl-space-4);
+  top: max(var(--pxl-space-4), env(safe-area-inset-top));
 }
 
 .pxl-toaster[data-position^="bottom"] {
-  bottom: var(--pxl-space-4);
+  bottom: max(var(--pxl-space-4), env(safe-area-inset-bottom));
 }
 
 .pxl-toaster[data-position$="left"] {
-  left: var(--pxl-space-4);
+  left: max(var(--pxl-space-4), env(safe-area-inset-left));
 }
 
 .pxl-toaster[data-position$="right"] {
-  right: var(--pxl-space-4);
+  right: max(var(--pxl-space-4), env(safe-area-inset-right));
 }
 
 .pxl-toaster[data-position$="center"] {

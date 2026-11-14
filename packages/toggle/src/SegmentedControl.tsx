@@ -121,7 +121,7 @@ export function SegmentedControl({
           onClick={() => setValue(option.value)}
         >
           {option.icon}
-          {option.label}
+          <span className="pxl-segmented__label">{option.label}</span>
         </button>
       ))}
     </div>

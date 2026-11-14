@@ -3,6 +3,7 @@
   --_text: var(--pxl-text-md);
 
   display: inline-flex;
+  max-width: 100%;
   gap: var(--pxl-space-2);
   font-family: var(--pxl-font-mono);
 }
@@ -21,7 +22,9 @@
   --_border: var(--pxl-gray-600);
 
   box-sizing: border-box;
+  flex: 0 1 auto;
   width: var(--_size);
+  min-width: 0;
   height: calc(var(--_size) * 1.2);
   padding: 0;
   border: 1px solid var(--_border);

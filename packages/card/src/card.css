@@ -78,22 +78,31 @@
 
 .pxl-card__footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--pxl-space-3);
   padding-top: var(--pxl-space-4);
   border-top: 1px solid var(--pxl-border);
 }
 
-.pxl-card:is([data-interactive], :has(.pxl-card__link)):not([data-highlight]):is(
-  :hover,
-  :focus-within
-) {
+.pxl-card:is([data-interactive], :has(.pxl-card__link)):not([data-highlight]):focus-within {
   --_border: var(--pxl-gray-500);
 }
 
-.pxl-card:is([data-interactive], :has(.pxl-card__link)):is(:hover, :focus-within) {
+.pxl-card:is([data-interactive], :has(.pxl-card__link)):focus-within {
   --_elev: var(--pxl-shadow-md);
   --_lift: -2px;
+}
+
+@media (hover: hover) {
+  .pxl-card:is([data-interactive], :has(.pxl-card__link)):not([data-highlight]):hover {
+    --_border: var(--pxl-gray-500);
+  }
+
+  .pxl-card:is([data-interactive], :has(.pxl-card__link)):hover {
+    --_elev: var(--pxl-shadow-md);
+    --_lift: -2px;
+  }
 }
 
 .pxl-card[data-interactive]:focus-visible,

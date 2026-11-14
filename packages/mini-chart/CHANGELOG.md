@@ -1,5 +1,13 @@
 # @pablo-v/mini-chart
 
+## 1.0.2
+
+### Patch Changes
+
+- Fix keyboard and screen reader issues: Shift+Tab leaves a standalone menu, Tab leaves a partly filled PIN, popovers are named by their trigger, `aria-controls` only points at the rendered tab panel, "no results" and field errors are announced through live regions, the range start stays selected while choosing the end, and mini chart columns can be focused to read their value.
+- Updated dependencies
+  - @pablo-v/core@0.2.2
+
 ## 1.0.1
 
 ### Patch Changes

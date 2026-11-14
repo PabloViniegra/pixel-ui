@@ -46,6 +46,8 @@ export interface MultiSelectProps
   emptyMessage?: ReactNode;
   /** Accessible name of each chip's remove button. @default (label) => `Remove ${label}` */
   removeLabel?: (label: string) => string;
+  /** Announced when Backspace removes the last value. @default (label) => `${label} removed` */
+  removedMessage?: (label: string) => string;
   /** @default 'md' */
   size?: PixelSize;
   invalid?: boolean;
@@ -67,6 +69,7 @@ export function MultiSelect({
   filter = matchesQuery,
   emptyMessage = 'No results',
   removeLabel = (label) => `Remove ${label}`,
+  removedMessage = (label) => `${label} removed`,
   size = 'md',
   invalid,
   className,
@@ -91,6 +94,7 @@ export function MultiSelect({
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [announcement, setAnnouncement] = useState('');
   const boxRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -159,7 +163,13 @@ export function MultiSelect({
       }
     } else if (event.key === 'Backspace' && query === '' && value.length > 0 && !inert) {
       event.preventDefault();
+      const last = options.find((o) => o.value === value.at(-1));
       setValue(value.slice(0, -1));
+      if (last) {
+        const message = removedMessage(last.label);
+        // Identical text would not be re-announced, so a repeat gets a trailing no-break space.
+        setAnnouncement((prev) => (prev === message ? `${message}\u00a0` : message));
+      }
     }
   };
 
@@ -223,6 +233,9 @@ export function MultiSelect({
           <ChevronDownIcon />
         </span>
       </div>
+      <span role="status" className="pxl-visually-hidden">
+        {announcement}
+      </span>
       {name && value.map((v) => <input key={v} type="hidden" name={name} value={v} />)}
       <Listbox
         ref={listRef}

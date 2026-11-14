@@ -151,6 +151,7 @@ export function PinInput({
 
   // Fill the first gap before accepting input in later cells.
   const firstEmpty = chars.findIndex((c) => !c);
+  const tabStop = firstEmpty >= 0 ? firstEmpty : length - 1;
 
   return (
     <div
@@ -178,6 +179,7 @@ export function PinInput({
           autoCapitalize="characters"
           spellCheck={false}
           autoFocus={autoFocus && i === 0}
+          tabIndex={i === tabStop ? 0 : -1}
           aria-label={cellLabel(i + 1, length)}
           aria-describedby={control['aria-describedby']}
           aria-invalid={control['aria-invalid']}

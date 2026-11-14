@@ -1,5 +1,11 @@
 # @pablo-v/tokens
 
+## 0.2.5
+
+### Patch Changes
+
+- Control sizes and text sizes are now in `rem`, so they follow the browser font size setting. Pages that shrink the root font size (for example `html { font-size: 62.5% }`) will see smaller controls and text.
+
 ## 0.2.4
 
 ### Patch Changes

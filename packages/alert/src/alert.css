@@ -3,7 +3,12 @@
   --_tone-subtle: var(--pxl-bg-subtle);
   --_tone-border: var(--pxl-border);
 
+  /* Size containment drops the intrinsic width, so the alert fills its container instead of collapsing. */
+  container: pxl-alert / inline-size;
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--pxl-space-3);
   padding: var(--pxl-space-3) var(--pxl-space-4);
@@ -75,8 +80,16 @@
 .pxl-alert__action {
   display: flex;
   flex: none;
+  flex-wrap: wrap;
   align-self: center;
   gap: var(--pxl-space-2);
+}
+
+@container pxl-alert (max-width: 30rem) {
+  .pxl-alert__action {
+    order: 1;
+    flex-basis: 100%;
+  }
 }
 
 .pxl-alert__close {

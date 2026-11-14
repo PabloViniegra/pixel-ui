@@ -58,6 +58,8 @@
 .pxl-terminal__line {
   --_marker: transparent;
 
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1.7em;
   display: flex;
   gap: var(--pxl-space-3);
   min-height: 1.7em;

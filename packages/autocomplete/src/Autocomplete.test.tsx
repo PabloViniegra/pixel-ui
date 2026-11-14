@@ -51,7 +51,7 @@ describe('Autocomplete', () => {
 
     await userEvent.clear(input);
     await userEvent.type(input, 'xyz');
-    expect(screen.getByRole('status')).toHaveTextContent('No results');
+    expect(screen.getByText('No results')).toHaveAttribute('role', 'status');
     expect(input).not.toHaveAttribute('aria-controls');
     await userEvent.tab();
     expect(input).toHaveValue('Frankfurt');

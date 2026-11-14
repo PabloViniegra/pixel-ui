@@ -75,6 +75,7 @@
 .pxl-listbox__option[data-active] {
   background: var(--pxl-gray-100);
   color: var(--pxl-fg);
+  box-shadow: inset 2px 0 var(--pxl-accent);
 }
 
 .pxl-listbox__option[aria-selected="true"] {
@@ -159,6 +160,10 @@
   padding: var(--pxl-space-4) var(--pxl-space-2);
   color: var(--pxl-fg-muted);
   text-align: center;
+}
+
+.pxl-listbox__empty:empty {
+  padding: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

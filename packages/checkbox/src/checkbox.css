@@ -18,6 +18,7 @@
 }
 
 .pxl-checkbox__input {
+  position: relative;
   grid-area: 1 / 1;
   width: 20px;
   height: 20px;
@@ -31,6 +32,13 @@
     background-color var(--pxl-dur-fast) linear,
     border-color var(--pxl-dur-fast) linear,
     transform var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+/* Grows the hit area to 26px without changing the drawn box. */
+.pxl-checkbox__input::before {
+  position: absolute;
+  inset: -4px;
+  content: "";
 }
 
 .pxl-checkbox:has(.pxl-checkbox__label:hover)

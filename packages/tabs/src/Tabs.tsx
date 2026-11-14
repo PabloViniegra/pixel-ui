@@ -144,7 +144,7 @@ export function Tab({ value, icon, className, children, onClick, ...rest }: TabP
       role="tab"
       id={`${ctx.id}-tab-${slug(value)}`}
       aria-selected={selected}
-      aria-controls={`${ctx.id}-panel-${slug(value)}`}
+      aria-controls={selected ? `${ctx.id}-panel-${slug(value)}` : undefined}
       tabIndex={selected ? 0 : -1}
       className={cx('pxl-tabs__tab', className)}
       onClick={(event) => {

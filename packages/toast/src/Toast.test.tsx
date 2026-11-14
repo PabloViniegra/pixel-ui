@@ -72,4 +72,16 @@ describe('Toaster', () => {
     act(() => vi.advanceTimersByTime(200));
     expect(screen.queryByText('Deployed again')).not.toBeInTheDocument();
   });
+
+  it('keeps a toast with an action until it is dismissed', () => {
+    vi.useFakeTimers();
+    render(<Toaster />);
+    act(() => {
+      toast('Archived', { action: { label: 'Undo', onClick: () => {} } });
+    });
+    act(() => {
+      vi.advanceTimersByTime(60_000);
+    });
+    expect(screen.getByRole('button', { name: 'Undo' })).toBeInTheDocument();
+  });
 });

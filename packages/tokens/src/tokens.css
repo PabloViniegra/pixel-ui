@@ -141,11 +141,12 @@
   --pxl-space-6: calc(var(--pxl-unit) * 6);
   --pxl-space-8: calc(var(--pxl-unit) * 8);
 
-  /* Control heights. Every component height maps to one of these. */
-  --pxl-size-xs: 24px;
-  --pxl-size-sm: 32px;
-  --pxl-size-md: 40px;
-  --pxl-size-lg: 48px;
+  /* Control heights. Every component height maps to one of these. In rem so
+     they grow with the reader's default font size, like the type scale. */
+  --pxl-size-xs: 1.5rem;
+  --pxl-size-sm: 2rem;
+  --pxl-size-md: 2.5rem;
+  --pxl-size-lg: 3rem;
 
   --pxl-opacity-disabled: 0.45;
 
@@ -187,12 +188,12 @@
   --pxl-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, monospace;
   --pxl-font-sans: var(--font-geist-sans, "Geist"), "Geist Fallback", system-ui, sans-serif;
 
-  --pxl-text-xs: 11px;
-  --pxl-text-sm: 13px;
-  --pxl-text-md: 15px;
-  --pxl-text-lg: 18px;
-  --pxl-text-xl: 24px;
-  --pxl-text-2xl: 32px;
+  --pxl-text-xs: 0.6875rem;
+  --pxl-text-sm: 0.8125rem;
+  --pxl-text-md: 0.9375rem;
+  --pxl-text-lg: 1.125rem;
+  --pxl-text-xl: 1.5rem;
+  --pxl-text-2xl: 2rem;
 
   --pxl-dur-instant: 80ms;
   --pxl-dur-fast: 140ms;

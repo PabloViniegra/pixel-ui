@@ -1,5 +1,15 @@
 # @pablo-v/pin-input
 
+## 0.1.3
+
+### Patch Changes
+
+- Fix keyboard and screen reader issues: Shift+Tab leaves a standalone menu, Tab leaves a partly filled PIN, popovers are named by their trigger, `aria-controls` only points at the rendered tab panel, "no results" and field errors are announced through live regions, the range start stays selected while choosing the end, and mini chart columns can be focused to read their value.
+- Updated dependencies
+- Updated dependencies
+  - @pablo-v/field@1.1.2
+  - @pablo-v/core@0.2.2
+
 ## 0.1.2
 
 ### Patch Changes

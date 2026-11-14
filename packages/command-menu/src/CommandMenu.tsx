@@ -13,13 +13,19 @@ import { SearchIcon } from '@pablo-v/pixel-icons';
 import { ScrambleText } from '@pablo-v/scramble-text';
 import {
   type ComponentPropsWithRef,
+  memo,
   type ReactElement,
   type ReactNode,
+  type RefObject,
   useEffect,
   useId,
   useMemo,
+  useRef,
   useState,
 } from 'react';
+
+// Only the first screenful decodes in, so long result lists do not run one animation per row.
+const ANIMATED_ROWS = 12;
 
 export interface CommandItem {
   id: string;
@@ -186,6 +192,12 @@ function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProp
     item.onSelect?.();
   };
 
+  const handlers = useRef({ select, activate: setActiveId });
+  useIsomorphicLayoutEffect(() => {
+    handlers.current = { select, activate: setActiveId };
+  });
+  const animated = new Set(flat.slice(0, ANIMATED_ROWS));
+
   return (
     <div className="pxl-command__panel">
       <div className="pxl-command__search">
@@ -217,50 +229,34 @@ function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProp
         />
       </div>
       <div id={`${id}-list`} className="pxl-command__list" role="listbox" aria-label="Commands">
-        {flat.length === 0 ? (
-          <p className="pxl-command__empty" role="status">
-            {emptyMessage}
-          </p>
-        ) : (
-          groups.map((group, groupIndex) => (
-            <div
-              key={group.name ?? ''}
-              className="pxl-command__group"
-              role="group"
-              aria-labelledby={group.name ? `${id}-g${groupIndex}` : undefined}
-            >
-              {group.name && (
-                <div
-                  id={`${id}-g${groupIndex}`}
-                  className="pxl-command__heading"
-                  role="presentation"
-                >
-                  {group.name}
-                </div>
-              )}
-              {group.items.map((item) => (
-                <div
-                  key={item.id}
-                  id={optionId(item)}
-                  className="pxl-command__item"
-                  role="option"
-                  aria-selected={item === active}
-                  aria-disabled={item.disabled || undefined}
-                  data-active={item === active || undefined}
-                  onPointerMove={() => {
-                    if (!item.disabled && item !== active) setActiveId(item.id);
-                  }}
-                  onClick={() => select(item)}
-                >
-                  {item.icon && <span className="pxl-command__icon">{item.icon}</span>}
-                  <ScrambleText className="pxl-command__label" text={item.label} duration={360} />
-                  {item.shortcut && <Kbd size="sm" keys={item.shortcut} aria-hidden="true" />}
-                </div>
-              ))}
-            </div>
-          ))
-        )}
+        {groups.map((group, groupIndex) => (
+          <div
+            key={group.name ?? ''}
+            className="pxl-command__group"
+            role="group"
+            aria-labelledby={group.name ? `${id}-g${groupIndex}` : undefined}
+          >
+            {group.name && (
+              <div id={`${id}-g${groupIndex}`} className="pxl-command__heading" role="presentation">
+                {group.name}
+              </div>
+            )}
+            {group.items.map((item) => (
+              <CommandRow
+                key={item.id}
+                id={optionId(item)}
+                item={item}
+                active={item === active}
+                animate={animated.has(item)}
+                handlers={handlers}
+              />
+            ))}
+          </div>
+        ))}
       </div>
+      <p className="pxl-command__empty" role="status">
+        {flat.length === 0 ? emptyMessage : null}
+      </p>
       <div className="pxl-command__footer" aria-hidden="true">
         <span>
           <Kbd size="sm" keys={['↑', '↓']} /> Navigate
@@ -275,3 +271,45 @@ function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProp
     </div>
   );
 }
+
+interface CommandRowProps {
+  id: string;
+  item: CommandItem;
+  active: boolean;
+  animate: boolean;
+  handlers: RefObject<{
+    select: (item: CommandItem) => void;
+    activate: (id: string) => void;
+  }>;
+}
+
+const CommandRow = memo(function CommandRow({
+  id,
+  item,
+  active,
+  animate,
+  handlers,
+}: CommandRowProps) {
+  return (
+    <div
+      id={id}
+      className="pxl-command__item"
+      role="option"
+      aria-selected={active}
+      aria-disabled={item.disabled || undefined}
+      data-active={active || undefined}
+      onPointerMove={() => {
+        if (!item.disabled && !active) handlers.current.activate(item.id);
+      }}
+      onClick={() => handlers.current.select(item)}
+    >
+      {item.icon && <span className="pxl-command__icon">{item.icon}</span>}
+      {animate ? (
+        <ScrambleText className="pxl-command__label" text={item.label} duration={360} />
+      ) : (
+        <span className="pxl-command__label">{item.label}</span>
+      )}
+      {item.shortcut && <Kbd size="sm" keys={item.shortcut} aria-hidden="true" />}
+    </div>
+  );
+});

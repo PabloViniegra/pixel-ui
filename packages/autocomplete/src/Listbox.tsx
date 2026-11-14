@@ -2,7 +2,7 @@
 
 import { cx, useFloating, useIsomorphicLayoutEffect, useMergedRefs } from '@pablo-v/core';
 import { CheckIcon } from '@pablo-v/pixel-icons';
-import { type ReactNode, type Ref, type RefObject, useRef } from 'react';
+import { memo, type ReactNode, type Ref, type RefObject, useRef } from 'react';
 
 export interface ListboxOption {
   value: string;
@@ -103,6 +103,11 @@ export function Listbox({
       document.getElementById(optionId(id, activeIndex))?.scrollIntoView?.({ block: 'nearest' });
   }, [open, activeIndex, id]);
 
+  const handlers = useRef({ onSelect, onActivate });
+  useIsomorphicLayoutEffect(() => {
+    handlers.current = { onSelect, onActivate };
+  });
+
   if (!open) return null;
   return (
     <div
@@ -112,11 +117,7 @@ export function Listbox({
       data-multiple={multiselectable || undefined}
       onPointerDown={(event) => event.preventDefault()}
     >
-      {options.length === 0 ? (
-        <p className="pxl-listbox__empty" role="status">
-          {emptyMessage}
-        </p>
-      ) : (
+      {options.length > 0 && (
         <div
           id={id}
           role="listbox"
@@ -124,52 +125,90 @@ export function Listbox({
           aria-label={labelledBy ? undefined : label}
           aria-multiselectable={multiselectable || undefined}
         >
-          {options.map((option, index) => {
-            const selected = isSelected(option.value);
-            const parts = splitMatch(option.label, highlight);
-            return (
-              <div
-                key={option.value}
-                id={optionId(id, index)}
-                role="option"
-                aria-selected={selected}
-                aria-disabled={option.disabled || undefined}
-                className="pxl-listbox__option"
-                data-active={index === activeIndex || undefined}
-                onPointerMove={() => {
-                  if (!option.disabled && index !== activeIndex) onActivate(index);
-                }}
-                onClick={() => {
-                  if (!option.disabled) onSelect(option);
-                }}
-              >
-                {multiselectable && (
-                  <span className="pxl-listbox__box" aria-hidden="true">
-                    {selected && <CheckIcon />}
-                  </span>
-                )}
-                <span className="pxl-listbox__text">
-                  <span className="pxl-listbox__label">
-                    {parts ? (
-                      <>
-                        {parts[0]}
-                        <mark className="pxl-listbox__match">{parts[1]}</mark>
-                        {parts[2]}
-                      </>
-                    ) : (
-                      option.label
-                    )}
-                  </span>
-                  {option.description && (
-                    <span className="pxl-listbox__description">{option.description}</span>
-                  )}
-                </span>
-                {selected && !multiselectable && <CheckIcon className="pxl-listbox__check" />}
-              </div>
-            );
-          })}
+          {options.map((option, index) => (
+            <OptionRow
+              key={option.value}
+              id={optionId(id, index)}
+              index={index}
+              option={option}
+              active={index === activeIndex}
+              selected={isSelected(option.value)}
+              multiselectable={!!multiselectable}
+              highlight={highlight}
+              handlers={handlers}
+            />
+          ))}
         </div>
       )}
+      <p className="pxl-listbox__empty" role="status">
+        {options.length === 0 ? emptyMessage : null}
+      </p>
     </div>
   );
 }
+
+interface OptionRowProps {
+  id: string;
+  index: number;
+  option: ListboxOption;
+  active: boolean;
+  selected: boolean;
+  multiselectable: boolean;
+  highlight: string;
+  handlers: RefObject<{
+    onSelect: (option: ListboxOption) => void;
+    onActivate: (index: number) => void;
+  }>;
+}
+
+const OptionRow = memo(function OptionRow({
+  id,
+  index,
+  option,
+  active,
+  selected,
+  multiselectable,
+  highlight,
+  handlers,
+}: OptionRowProps) {
+  const parts = splitMatch(option.label, highlight);
+  return (
+    <div
+      id={id}
+      role="option"
+      aria-selected={selected}
+      aria-disabled={option.disabled || undefined}
+      className="pxl-listbox__option"
+      data-active={active || undefined}
+      onPointerMove={() => {
+        if (!option.disabled && !active) handlers.current.onActivate(index);
+      }}
+      onClick={() => {
+        if (!option.disabled) handlers.current.onSelect(option);
+      }}
+    >
+      {multiselectable && (
+        <span className="pxl-listbox__box" aria-hidden="true">
+          {selected && <CheckIcon />}
+        </span>
+      )}
+      <span className="pxl-listbox__text">
+        <span className="pxl-listbox__label">
+          {parts ? (
+            <>
+              {parts[0]}
+              <mark className="pxl-listbox__match">{parts[1]}</mark>
+              {parts[2]}
+            </>
+          ) : (
+            option.label
+          )}
+        </span>
+        {option.description && (
+          <span className="pxl-listbox__description">{option.description}</span>
+        )}
+      </span>
+      {selected && !multiselectable && <CheckIcon className="pxl-listbox__check" />}
+    </div>
+  );
+});

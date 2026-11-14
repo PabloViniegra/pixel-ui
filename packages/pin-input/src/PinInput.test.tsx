@@ -101,4 +101,17 @@ describe('PinInput', () => {
     await userEvent.keyboard('2');
     expect(onChange).toHaveBeenLastCalledWith('12');
   });
+
+  it('lets Tab leave a partly filled code', async () => {
+    render(
+      <>
+        <PinInput aria-label="Code" length={4} defaultValue="1" />
+        <button type="button">Next</button>
+      </>,
+    );
+    await userEvent.tab();
+    expect(cells()[1]).toHaveFocus();
+    await userEvent.tab();
+    expect(screen.getByRole('button', { name: 'Next' })).toHaveFocus();
+  });
 });

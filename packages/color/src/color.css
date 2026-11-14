@@ -98,6 +98,12 @@
   min-width: 0;
 }
 
+@media (pointer: coarse) {
+  .pxl-color-slider {
+    --_thumb: 24px;
+  }
+}
+
 .pxl-color-slider:not([data-channel="alpha"]) {
   --_checker: linear-gradient(transparent, transparent);
 }
@@ -276,8 +282,10 @@
   transition: transform var(--pxl-dur-fast) var(--pxl-ease-out);
 }
 
-.pxl-color-swatch-picker__item:hover:not(:disabled) {
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .pxl-color-swatch-picker__item:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
 }
 
 .pxl-color-swatch-picker__item:active:not(:disabled) {
@@ -400,7 +408,7 @@
 .pxl-popover.pxl-color-picker__panel {
   display: grid;
   gap: var(--pxl-space-3);
-  width: 240px;
+  width: 266px;
   min-width: 0;
   padding: var(--pxl-space-3);
 }

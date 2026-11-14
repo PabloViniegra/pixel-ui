@@ -44,6 +44,16 @@
   inset: -6px 0;
 }
 
+@media (pointer: coarse) {
+  .pxl-resizable__handle::before {
+    inset: 0 -12px;
+  }
+
+  .pxl-resizable[data-orientation="vertical"] > .pxl-resizable__handle::before {
+    inset: -12px 0;
+  }
+}
+
 /* Grip: three 2px cells stacked across the line. */
 .pxl-resizable__handle::after {
   position: absolute;

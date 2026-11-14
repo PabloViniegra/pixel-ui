@@ -5,6 +5,7 @@ import { ArrowDownIcon } from '@pablo-v/pixel-icons';
 import {
   type ComponentPropsWithRef,
   type CSSProperties,
+  memo,
   type ReactNode,
   useRef,
   useState,
@@ -36,6 +37,8 @@ export interface TerminalProps extends Omit<ComponentPropsWithRef<'div'>, 'title
   maxHeight?: CSSProperties['maxHeight'];
   /** Shown when there are no lines and nothing is streaming. */
   placeholder?: ReactNode;
+  /** Renders only the newest lines, so long streams keep a bounded DOM. */
+  maxLines?: number;
 }
 
 const STICKY_SLACK = 24;
@@ -52,6 +55,7 @@ export function Terminal({
   follow = true,
   maxHeight = 320,
   placeholder = 'No output yet',
+  maxLines,
   className,
   style,
   ...rest
@@ -61,6 +65,7 @@ export function Terminal({
   const seen = useRef(lines.length);
   const [unseen, setUnseen] = useState(0);
   const reduced = usePrefersReducedMotion();
+  const start = maxLines != null ? Math.max(0, lines.length - maxLines) : 0;
 
   useIsomorphicLayoutEffect(() => {
     const el = viewport.current;
@@ -111,15 +116,8 @@ export function Terminal({
           <p className="pxl-terminal__placeholder">{placeholder}</p>
         ) : (
           <ol className="pxl-terminal__lines">
-            {lines.map((line, index) => (
-              <li
-                key={line.id ?? index}
-                className="pxl-terminal__line"
-                data-level={line.level ?? 'info'}
-              >
-                {line.time && <time className="pxl-terminal__time">{line.time}</time>}
-                <span className="pxl-terminal__text">{line.text}</span>
-              </li>
+            {lines.slice(start).map((line, index) => (
+              <TerminalLine key={line.id ?? start + index} line={line} />
             ))}
             {streaming && (
               <li className="pxl-terminal__line" aria-hidden="true">
@@ -138,3 +136,12 @@ export function Terminal({
     </div>
   );
 }
+
+const TerminalLine = memo(function TerminalLine({ line }: { line: LogLine }) {
+  return (
+    <li className="pxl-terminal__line" data-level={line.level ?? 'info'}>
+      {line.time && <time className="pxl-terminal__time">{line.time}</time>}
+      <span className="pxl-terminal__text">{line.text}</span>
+    </li>
+  );
+});

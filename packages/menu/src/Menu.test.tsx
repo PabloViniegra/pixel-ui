@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Dropdown, MenuItem, MenuSeparator } from './Menu.js';
+import { Dropdown, Menu, MenuItem, MenuSeparator } from './Menu.js';
 
 function setup(onSelect = vi.fn()) {
   render(
@@ -52,5 +52,22 @@ describe('Dropdown', () => {
     expect(screen.getByRole('menu')).toBeInTheDocument();
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('lets Shift+Tab leave a standalone menu', async () => {
+    render(
+      <>
+        <button type="button">Before</button>
+        <Menu aria-label="Actions">
+          <MenuItem>Copy</MenuItem>
+          <MenuItem>Paste</MenuItem>
+        </Menu>
+      </>,
+    );
+    await userEvent.tab();
+    await userEvent.tab();
+    expect(screen.getByRole('menuitem', { name: 'Copy' })).toHaveFocus();
+    await userEvent.tab({ shift: true });
+    expect(screen.getByRole('button', { name: 'Before' })).toHaveFocus();
   });
 });

@@ -44,4 +44,11 @@ describe('Tabs', () => {
     await userEvent.keyboard('{ArrowRight}');
     expect(screen.getByRole('tab', { name: 'Overview' })).toHaveFocus();
   });
+
+  it('only points aria-controls at the rendered panel', () => {
+    setup();
+    const panel = screen.getByRole('tabpanel');
+    expect(screen.getByRole('tab', { name: 'Logs' })).toHaveAttribute('aria-controls', panel.id);
+    expect(screen.getByRole('tab', { name: 'Overview' })).not.toHaveAttribute('aria-controls');
+  });
 });
