@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/rating",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Star rating input and read-only display",
   "license": "MIT",
   "repository": {

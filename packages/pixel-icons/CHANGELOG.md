@@ -1,5 +1,11 @@
 # @pablo-v/pixel-icons
 
+## 1.3.0
+
+### Minor Changes
+
+- e753d57: Add 17 monochrome brand icons: Android, Apple, Discord, Docker, Facebook, Figma, Git, GitHub, GitLab, Google, LinkedIn, Microsoft, npm, Slack, Vercel, X and YouTube.
+
 ## 1.2.0
 
 ### Minor Changes

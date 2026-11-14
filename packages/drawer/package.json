@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/drawer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Edge-anchored modal panel on the native dialog element",
   "license": "MIT",
   "repository": {

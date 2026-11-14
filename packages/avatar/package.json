@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/avatar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Photo avatar with initials fallback, presence status and groups",
   "license": "MIT",
   "repository": {
