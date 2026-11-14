@@ -1,12 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
 import * as animated from './animated-icons.js';
+import * as brands from './brand-icons.js';
 import * as all from './icons.js';
 import { CheckIcon, type PixelIcon } from './index.js';
 import './pixel-icons.css';
 
 const icons = Object.entries(all as Record<string, PixelIcon>);
 const animatedIcons = Object.entries(animated as Record<string, PixelIcon>);
+const brandIcons = Object.entries(brands as Record<string, PixelIcon>);
 
 const meta = {
   title: 'Signature/PixelIcons',
@@ -59,4 +61,8 @@ export const Gallery: Story = {
 
 export const Animated: Story = {
   render: ({ size }) => grid(animatedIcons, size),
+};
+
+export const Brands: Story = {
+  render: ({ size }) => grid(brandIcons, size),
 };

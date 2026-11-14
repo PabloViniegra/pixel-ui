@@ -1,4 +1,5 @@
 export * from './animated-icons.js';
+export * from './brand-icons.js';
 export {
   type AnimatedPixelIconOptions,
   createAnimatedPixelIcon,
