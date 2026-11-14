@@ -30,7 +30,8 @@ jobs:
       - run: pnpm build-site
 
   changeset:
-    if: github.event_name == 'pull_request'
+    # The version PR consumes the changesets, so the check would always fail there.
+    if: github.event_name == 'pull_request' && github.head_ref != 'changeset-release/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
