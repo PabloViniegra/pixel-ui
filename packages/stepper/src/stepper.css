@@ -1,0 +1,170 @@
+.pxl-stepper {
+  --_marker: var(--pxl-size-xs);
+
+  display: flex;
+  gap: var(--pxl-space-2);
+  margin: 0;
+  padding: 0;
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+  list-style: none;
+}
+
+.pxl-stepper[data-orientation="vertical"] {
+  flex-direction: column;
+  gap: 0;
+}
+
+.pxl-stepper__step {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: var(--pxl-space-2);
+  min-width: 0;
+}
+
+.pxl-stepper__step:last-child {
+  flex: 0 0 auto;
+}
+
+.pxl-stepper[data-orientation="vertical"] .pxl-stepper__step {
+  flex-direction: column;
+  gap: 0;
+}
+
+.pxl-stepper__body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pxl-space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--pxl-radius-md);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.pxl-stepper__body {
+  cursor: pointer;
+}
+
+button.pxl-stepper__body:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}
+
+.pxl-stepper__body[data-disabled] {
+  opacity: var(--pxl-opacity-disabled);
+}
+
+.pxl-stepper__marker {
+  display: grid;
+  flex: none;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--_marker);
+  height: var(--_marker);
+  border: 1px solid var(--pxl-gray-600);
+  border-radius: var(--pxl-radius-sm);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg-muted);
+  font-family: var(--pxl-font-mono);
+  font-size: var(--pxl-text-xs);
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    border-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-stepper__step[data-status="current"] .pxl-stepper__marker {
+  border-color: var(--pxl-accent);
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-stepper__step[data-status="complete"] .pxl-stepper__marker {
+  border-color: var(--pxl-fg);
+  background: var(--pxl-fg);
+  color: var(--pxl-bg);
+}
+
+.pxl-stepper__step[data-status="error"] .pxl-stepper__marker {
+  border-color: var(--pxl-danger);
+  background: var(--pxl-danger-subtle);
+  color: var(--pxl-danger);
+}
+
+.pxl-stepper__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-top: calc((var(--_marker) - 1.4em) / 2);
+  line-height: 1.4;
+}
+
+.pxl-stepper__label {
+  font-weight: 500;
+}
+
+.pxl-stepper__step[data-status="upcoming"] .pxl-stepper__label {
+  color: var(--pxl-fg-muted);
+  font-weight: 400;
+}
+
+button.pxl-stepper__body:hover .pxl-stepper__label {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pxl-stepper__description {
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+}
+
+.pxl-stepper__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The connector is a row of 4px cells; it fills in once the step before it is done. */
+.pxl-stepper__connector {
+  --_cell: var(--pxl-gray-300);
+
+  flex: 1;
+  min-width: var(--pxl-space-4);
+  height: 4px;
+  margin-top: calc((var(--_marker) - 4px) / 2);
+  background: repeating-linear-gradient(90deg, var(--_cell) 0 4px, transparent 4px 6px);
+}
+
+.pxl-stepper__connector[data-lit] {
+  --_cell: var(--pxl-fg);
+}
+
+.pxl-stepper[data-orientation="vertical"] .pxl-stepper__connector {
+  flex: none;
+  width: 4px;
+  min-width: 0;
+  height: auto;
+  min-height: var(--pxl-space-6);
+  margin: var(--pxl-space-1) 0 var(--pxl-space-1) calc((var(--_marker) - 4px) / 2);
+  background: repeating-linear-gradient(180deg, var(--_cell) 0 4px, transparent 4px 6px);
+}
+
+@media (forced-colors: active) {
+  .pxl-stepper__connector {
+    background: none;
+    border-top: 2px dotted CanvasText;
+  }
+}

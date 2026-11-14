@@ -1,0 +1,45 @@
+{
+  "name": "@pablo-v/file-upload",
+  "version": "0.0.0",
+  "description": "Drag-and-drop file picker with a file list",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/file-upload"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/file-upload.css",
+      "default": "./dist/file-upload.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pablo-v/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

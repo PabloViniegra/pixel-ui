@@ -1,0 +1,133 @@
+.pxl-avatar {
+  --_size: var(--pxl-size-md);
+  --_text: var(--pxl-text-sm);
+  --_radius: var(--pxl-radius-full);
+
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--_size);
+  height: var(--_size);
+  border-radius: var(--_radius);
+  background: var(--pxl-gray-200);
+  color: var(--pxl-fg-muted);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--_text);
+  font-weight: 500;
+  line-height: 1;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.pxl-avatar[data-size="xs"] {
+  --_size: var(--pxl-size-xs);
+  --_text: 10px;
+}
+
+.pxl-avatar[data-size="sm"] {
+  --_size: var(--pxl-size-sm);
+  --_text: var(--pxl-text-xs);
+}
+
+.pxl-avatar[data-size="lg"] {
+  --_size: var(--pxl-size-lg);
+  --_text: var(--pxl-text-md);
+}
+
+.pxl-avatar[data-shape="square"] {
+  --_radius: var(--pxl-radius-md);
+}
+
+.pxl-avatar__fallback,
+.pxl-avatar__image {
+  grid-area: 1 / 1;
+}
+
+.pxl-avatar__fallback {
+  display: inline-flex;
+  letter-spacing: 0.02em;
+}
+
+.pxl-avatar__fallback > svg {
+  width: 60%;
+  height: 60%;
+}
+
+.pxl-avatar__image {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-avatar__image[data-loaded] {
+  opacity: 1;
+}
+
+/* Hairline inside the edge so photos with a white or black rim keep their shape. */
+.pxl-avatar::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pxl-fg) 10%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+/* The presence marker is a single pixel cell, ringed by the page colour. */
+.pxl-avatar__status {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  z-index: 1;
+  width: max(6px, calc(var(--_size) / 5));
+  height: max(6px, calc(var(--_size) / 5));
+  border-radius: var(--pxl-radius-xs);
+  background: var(--pxl-gray-500);
+  box-shadow: 0 0 0 2px var(--pxl-bg);
+  animation: pxl-pop-in var(--pxl-dur-base) var(--pxl-ease-out);
+}
+
+.pxl-avatar[data-shape="square"] .pxl-avatar__status {
+  right: -2px;
+  bottom: -2px;
+}
+
+.pxl-avatar__status[data-status="online"] {
+  background: var(--pxl-success);
+}
+
+.pxl-avatar__status[data-status="away"] {
+  background: var(--pxl-warning);
+}
+
+.pxl-avatar__status[data-status="busy"] {
+  background: var(--pxl-danger);
+}
+
+.pxl-avatar-group {
+  display: inline-flex;
+}
+
+.pxl-avatar-group > .pxl-avatar {
+  box-shadow: 0 0 0 2px var(--pxl-bg);
+}
+
+.pxl-avatar-group > .pxl-avatar + .pxl-avatar {
+  margin-inline-start: calc(var(--_size) / -4);
+}
+
+.pxl-avatar__more {
+  background: var(--pxl-gray-100);
+  font-family: var(--pxl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (forced-colors: active) {
+  .pxl-avatar__status {
+    background: CanvasText;
+  }
+}

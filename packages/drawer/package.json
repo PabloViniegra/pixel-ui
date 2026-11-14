@@ -1,0 +1,48 @@
+{
+  "name": "@pablo-v/drawer",
+  "version": "0.0.0",
+  "description": "Edge-anchored modal panel on the native dialog element",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/drawer"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/drawer.css",
+      "default": "./dist/drawer.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pablo-v/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@pablo-v/button": "workspace:^"
+  }
+}

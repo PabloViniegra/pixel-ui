@@ -1,0 +1,45 @@
+{
+  "name": "@pablo-v/rating",
+  "version": "0.0.0",
+  "description": "Star rating input and read-only display",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/rating"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/rating.css",
+      "default": "./dist/rating.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pablo-v/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

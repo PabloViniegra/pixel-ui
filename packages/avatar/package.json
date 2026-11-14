@@ -1,0 +1,44 @@
+{
+  "name": "@pablo-v/avatar",
+  "version": "0.0.0",
+  "description": "Photo avatar with initials fallback, presence status and groups",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/avatar"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": {
+      "source": "./src/avatar.css",
+      "default": "./dist/avatar.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../scripts/copy-assets.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pablo-v/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@pablo-v/tokens": "workspace:^",
+    "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

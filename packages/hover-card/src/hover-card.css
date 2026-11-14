@@ -1,0 +1,43 @@
+.pxl-hover-card {
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  width: 300px;
+  max-width: calc(100vw - var(--pxl-space-4));
+  margin: 0;
+  padding: var(--pxl-space-4);
+  overflow: visible;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  box-shadow: var(--pxl-shadow-lg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+  line-height: 1.5;
+  transform-origin: var(--pxl-origin, center);
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-hover-card[data-closing] {
+  pointer-events: none;
+  animation: pxl-float-out var(--pxl-dur-fast) var(--pxl-ease-out) forwards;
+}
+
+.pxl-hover-card[data-side="top"] {
+  --_from-y: 4px;
+}
+
+.pxl-hover-card[data-side="bottom"] {
+  --_from-y: -4px;
+}
+
+.pxl-hover-card[data-side="left"] {
+  --_from-x: 4px;
+  --_from-y: 0;
+}
+
+.pxl-hover-card[data-side="right"] {
+  --_from-x: -4px;
+  --_from-y: 0;
+}

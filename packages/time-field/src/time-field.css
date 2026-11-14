@@ -1,0 +1,189 @@
+.pxl-time-field__segments {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.pxl-time-field__part {
+  display: inline-flex;
+  align-items: center;
+}
+
+.pxl-time-field__literal {
+  padding-inline: 1px;
+  color: var(--pxl-fg-muted);
+  white-space: pre;
+  user-select: none;
+}
+
+/* The hidden placeholder text sizes the cell and the input fills it, as in DateField. */
+.pxl-time-field__cell {
+  position: relative;
+  display: inline-block;
+  min-width: calc(var(--_chars) * 1ch);
+  padding: 0 2px;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.pxl-time-field__cell::before {
+  content: attr(data-placeholder);
+  visibility: hidden;
+  white-space: pre;
+}
+
+.pxl-time-field__segment {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 2px;
+  border: 0;
+  border-radius: var(--pxl-radius-sm);
+  outline: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  caret-color: transparent;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-time-field__segment::placeholder {
+  color: var(--pxl-fg-muted);
+  opacity: 1;
+}
+
+.pxl-time-field__segment::selection {
+  background: transparent;
+}
+
+.pxl-time-field__segment:focus {
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-time-field__segment:disabled {
+  cursor: not-allowed;
+}
+
+.pxl-input__affix:has(> .pxl-time-picker__trigger) {
+  padding: 0;
+}
+
+.pxl-time-picker__trigger {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  aspect-ratio: 1;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-time-picker__trigger:hover:not(:disabled),
+.pxl-time-picker__trigger[aria-expanded="true"] {
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-time-picker__trigger:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: -2px;
+}
+
+.pxl-time-picker__trigger:disabled {
+  cursor: not-allowed;
+}
+
+.pxl-time-picker__popover {
+  --_from-y: -4px;
+
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  width: 160px;
+  max-height: 240px;
+  margin: 0;
+  padding: var(--pxl-space-1);
+  overflow: hidden auto;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  box-shadow: var(--pxl-shadow-lg);
+  font-family: var(--pxl-font-sans);
+  font-size: var(--pxl-text-sm);
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  transform-origin: var(--pxl-origin, center);
+  animation: pxl-float-in var(--pxl-dur-fast) var(--pxl-ease-out);
+}
+
+.pxl-time-picker__popover[data-closing] {
+  pointer-events: none;
+  animation: pxl-float-out var(--pxl-dur-fast) var(--pxl-ease-out) forwards;
+}
+
+.pxl-time-picker__popover[data-side="top"] {
+  --_from-y: 4px;
+}
+
+.pxl-time-picker__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--pxl-size-sm);
+  padding: 0 var(--pxl-space-3) 0 var(--pxl-space-6);
+  border-radius: var(--pxl-radius-md);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.pxl-time-picker__option:hover,
+.pxl-time-picker__option:focus {
+  outline: 0;
+  background: var(--pxl-gray-100);
+}
+
+.pxl-time-picker__option:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: -2px;
+}
+
+.pxl-time-picker__option[aria-selected="true"] {
+  font-weight: 500;
+}
+
+/* The selected time is marked by the 4px accent cell, as in Navbar and Calendar. */
+.pxl-time-picker__option[aria-selected="true"]::before {
+  position: absolute;
+  top: 50%;
+  left: var(--pxl-space-3);
+  width: 4px;
+  height: 4px;
+  border-radius: var(--pxl-radius-xs);
+  background: var(--pxl-accent);
+  content: "";
+  translate: 0 -50%;
+}
+
+@media (forced-colors: active) {
+  .pxl-time-picker__option[aria-selected="true"]::before {
+    background: CanvasText;
+  }
+}

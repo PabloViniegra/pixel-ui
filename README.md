@@ -57,26 +57,41 @@ pnpm add @pablo-v/react
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/date-picker"><code>@pablo-v/date-picker</code></a></td><td>Date field with a pop-up calendar</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/date-range-picker"><code>@pablo-v/date-range-picker</code></a></td><td>Start and end date fields with a pop-up range calendar</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/field"><code>@pablo-v/field</code></a></td><td>Form field wrapper with label, description and error</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/file-upload"><code>@pablo-v/file-upload</code></a></td><td>Drag-and-drop file picker with type, size and count checks</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/input"><code>@pablo-v/input</code></a></td><td>Text input with prefix and suffix slots</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/multi-select"><code>@pablo-v/multi-select</code></a></td><td>Combobox that picks several options shown as chips</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/number-field"><code>@pablo-v/number-field</code></a></td><td>Numeric input with stepper buttons and keyboard increments</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/pin-input"><code>@pablo-v/pin-input</code></a></td><td>Segmented OTP and PIN input with paste and masking</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/radio"><code>@pablo-v/radio</code></a></td><td>Radio group with a pixel dot indicator</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/rating"><code>@pablo-v/rating</code></a></td><td>Star rating on native radios, or a read-only score with fractions</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/select"><code>@pablo-v/select</code></a></td><td>Styled native select</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/slider"><code>@pablo-v/slider</code></a></td><td>Range slider drawn as a track of pixel cells</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/switch"><code>@pablo-v/switch</code></a></td><td><code>role="switch"</code> toggle with fading track and spring thumb</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/textarea"><code>@pablo-v/textarea</code></a></td><td>Multi-line text input with auto-resize</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/time-field"><code>@pablo-v/time-field</code></a></td><td>Segmented time input and a time picker with suggested times</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/toggle"><code>@pablo-v/toggle</code></a></td><td>Toggle button, toggle group and segmented control</td></tr>
 
 <tr><th align="left">Navigation &amp; layout</th><th></th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/accordion"><code>@pablo-v/accordion</code></a></td><td>Accordion on native details elements</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/breadcrumb"><code>@pablo-v/breadcrumb</code></a></td><td>Breadcrumb trail for nested pages</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/card"><code>@pablo-v/card</code></a></td><td>Rounded card with soft lift and accent highlight border</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/collapsible"><code>@pablo-v/collapsible</code></a></td><td>Single show/hide section on a native details element</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/command-menu"><code>@pablo-v/command-menu</code></a></td><td>⌘K command palette whose results decode in with ScrambleText</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/link"><code>@pablo-v/link</code></a></td><td>Text link with external-link handling</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/menu"><code>@pablo-v/menu</code></a></td><td>Menu and dropdown with keyboard navigation</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/resizable"><code>@pablo-v/resizable</code></a></td><td>Resizable panels with keyboard and pointer handles</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/scroll-area"><code>@pablo-v/scroll-area</code></a></td><td>Focusable scroll container with thin square-thumbed scrollbars</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/separator"><code>@pablo-v/separator</code></a></td><td>Horizontal and vertical separators</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/sidebar"><code>@pablo-v/sidebar</code></a></td><td>Collapsible app sidebar with groups, badges and a current-page cell</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/stepper"><code>@pablo-v/stepper</code></a></td><td>Step progress with pixel-cell connectors</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tabs"><code>@pablo-v/tabs</code></a></td><td>Tabs with roving focus and a sliding indicator</td></tr>
 
 <tr><th align="left">Overlays</th><th></th></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/alert-dialog"><code>@pablo-v/alert-dialog</code></a></td><td>Confirmation dialog that waits for async confirms</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/context-menu"><code>@pablo-v/context-menu</code></a></td><td>Right-click and Shift+F10 menu built on the menu primitives</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/dialog"><code>@pablo-v/dialog</code></a></td><td>Modal dialog on the native dialog element</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/drawer"><code>@pablo-v/drawer</code></a></td><td>Edge panel on the native dialog element</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/hover-card"><code>@pablo-v/hover-card</code></a></td><td>Rich link preview on hover or keyboard focus</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/popover"><code>@pablo-v/popover</code></a></td><td>Non-modal panel anchored to a trigger</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tooltip"><code>@pablo-v/tooltip</code></a></td><td>Hover and focus hint anchored to its trigger</td></tr>
 
@@ -89,11 +104,13 @@ pnpm add @pablo-v/react
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/toast"><code>@pablo-v/toast</code></a></td><td>Toast notifications with a pixel countdown</td></tr>
 
 <tr><th align="left">Data display</th><th></th></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/avatar"><code>@pablo-v/avatar</code></a></td><td>Photo avatar with initials fallback, presence status and groups</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/flip-clock"><code>@pablo-v/flip-clock</code></a></td><td>Flip-clock counter and clock with split-flap digits in the pixel font</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/kbd"><code>@pablo-v/kbd</code></a></td><td>Keyboard key and shortcut display</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/mini-chart"><code>@pablo-v/mini-chart</code></a></td><td>Sparklines and bar charts drawn in pixel cells</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/table"><code>@pablo-v/table</code></a></td><td>Data table primitives</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/terminal"><code>@pablo-v/terminal</code></a></td><td>Streaming log viewer with autoscroll, level colours and a block cursor</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/timeline"><code>@pablo-v/timeline</code></a></td><td>Chronological events joined by a rail of pixel cells</td></tr>
 
 <tr><th align="left">Pixel effects</th><th></th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pixel-avatar"><code>@pablo-v/pixel-avatar</code></a></td><td>Symmetric pixel identicon generated from a name or email</td></tr>

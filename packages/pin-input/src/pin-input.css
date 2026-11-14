@@ -1,0 +1,87 @@
+.pxl-pin-input {
+  --_size: var(--pxl-size-md);
+  --_text: var(--pxl-text-md);
+
+  display: inline-flex;
+  gap: var(--pxl-space-2);
+  font-family: var(--pxl-font-mono);
+}
+
+.pxl-pin-input[data-size="sm"] {
+  --_size: var(--pxl-size-sm);
+  --_text: var(--pxl-text-sm);
+}
+
+.pxl-pin-input[data-size="lg"] {
+  --_size: var(--pxl-size-lg);
+  --_text: var(--pxl-text-lg);
+}
+
+.pxl-pin-input__cell {
+  --_border: var(--pxl-gray-600);
+
+  box-sizing: border-box;
+  width: var(--_size);
+  height: calc(var(--_size) * 1.2);
+  padding: 0;
+  border: 1px solid var(--_border);
+  border-radius: var(--pxl-radius-md);
+  outline: 0;
+  background: var(--pxl-bg-subtle);
+  color: var(--pxl-fg);
+  font: inherit;
+  font-size: var(--_text);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  caret-color: var(--pxl-accent);
+  transition:
+    border-color var(--pxl-dur-fast) linear,
+    background-color var(--pxl-dur-fast) linear;
+}
+
+.pxl-pin-input__cell:hover:not(:disabled, :focus) {
+  --_border: var(--pxl-gray-800);
+
+  background: var(--pxl-bg);
+}
+
+.pxl-pin-input__cell:focus {
+  --_border: var(--pxl-accent);
+
+  background: var(--pxl-bg);
+}
+
+.pxl-pin-input__cell:focus-visible {
+  outline: 1px solid var(--_border);
+  outline-offset: 0;
+}
+
+.pxl-pin-input__cell::selection {
+  background: transparent;
+}
+
+.pxl-pin-input[data-invalid] .pxl-pin-input__cell {
+  --_border: var(--pxl-danger);
+}
+
+.pxl-pin-input__cell:disabled {
+  --_border: var(--pxl-border);
+
+  color: var(--pxl-fg-muted);
+  cursor: not-allowed;
+}
+
+/* A masked character becomes one solid pixel cell instead of a bullet. */
+.pxl-pin-input[data-mask] .pxl-pin-input__cell[data-filled] {
+  color: transparent;
+  background-image: linear-gradient(var(--pxl-fg), var(--pxl-fg));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
+}
+
+@media (pointer: coarse) {
+  .pxl-pin-input__cell {
+    font-size: max(16px, var(--_text));
+  }
+}

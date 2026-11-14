@@ -80,7 +80,24 @@
     "@pablo-v/color": "workspace:^",
     "@pablo-v/pagination": "workspace:^",
     "@pablo-v/navbar": "workspace:^",
-    "@pablo-v/toolbar": "workspace:^"
+    "@pablo-v/toolbar": "workspace:^",
+    "@pablo-v/drawer": "workspace:^",
+    "@pablo-v/alert-dialog": "workspace:^",
+    "@pablo-v/toggle": "workspace:^",
+    "@pablo-v/number-field": "workspace:^",
+    "@pablo-v/avatar": "workspace:^",
+    "@pablo-v/sidebar": "workspace:^",
+    "@pablo-v/file-upload": "workspace:^",
+    "@pablo-v/pin-input": "workspace:^",
+    "@pablo-v/time-field": "workspace:^",
+    "@pablo-v/stepper": "workspace:^",
+    "@pablo-v/context-menu": "workspace:^",
+    "@pablo-v/hover-card": "workspace:^",
+    "@pablo-v/scroll-area": "workspace:^",
+    "@pablo-v/collapsible": "workspace:^",
+    "@pablo-v/timeline": "workspace:^",
+    "@pablo-v/rating": "workspace:^",
+    "@pablo-v/resizable": "workspace:^"
   },
   "peerDependencies": {
     "react": "^19.0.0"

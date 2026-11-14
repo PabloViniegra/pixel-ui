@@ -1,0 +1,39 @@
+.pxl-number-field .pxl-input__affix:has(> .pxl-number-field__step) {
+  padding: 0;
+}
+
+.pxl-number-field .pxl-input__control {
+  text-align: center;
+  font-family: var(--pxl-font-mono);
+}
+
+.pxl-number-field__step {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  aspect-ratio: 1;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--pxl-dur-fast) linear,
+    color var(--pxl-dur-fast) linear;
+}
+
+.pxl-number-field__step:hover:not(:disabled) {
+  background: var(--pxl-accent-subtle);
+  color: var(--pxl-accent-text);
+}
+
+.pxl-number-field__step:active:not(:disabled) {
+  background: var(--pxl-gray-200);
+}
+
+.pxl-number-field__step:disabled {
+  opacity: var(--pxl-opacity-disabled);
+  cursor: not-allowed;
+}

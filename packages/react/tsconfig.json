@@ -152,6 +152,57 @@
     },
     {
       "path": "../toolbar"
+    },
+    {
+      "path": "../drawer"
+    },
+    {
+      "path": "../alert-dialog"
+    },
+    {
+      "path": "../toggle"
+    },
+    {
+      "path": "../number-field"
+    },
+    {
+      "path": "../avatar"
+    },
+    {
+      "path": "../sidebar"
+    },
+    {
+      "path": "../file-upload"
+    },
+    {
+      "path": "../pin-input"
+    },
+    {
+      "path": "../time-field"
+    },
+    {
+      "path": "../stepper"
+    },
+    {
+      "path": "../context-menu"
+    },
+    {
+      "path": "../hover-card"
+    },
+    {
+      "path": "../scroll-area"
+    },
+    {
+      "path": "../collapsible"
+    },
+    {
+      "path": "../timeline"
+    },
+    {
+      "path": "../rating"
+    },
+    {
+      "path": "../resizable"
     }
   ]
 }

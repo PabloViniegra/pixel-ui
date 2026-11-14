@@ -1,0 +1,59 @@
+.pxl-scroll-area {
+  --_thumb: var(--pxl-gray-400);
+
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  border-radius: inherit;
+}
+
+.pxl-scroll-area[data-orientation="horizontal"] {
+  overflow: auto hidden;
+}
+
+.pxl-scroll-area[data-orientation="both"] {
+  overflow: auto;
+}
+
+.pxl-scroll-area:hover {
+  --_thumb: var(--pxl-gray-500);
+}
+
+.pxl-scroll-area:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: 2px;
+}
+
+/* Firefox only: Chromium ignores the ::-webkit-scrollbar rules below once scrollbar-color is set. */
+@supports not selector(::-webkit-scrollbar) {
+  .pxl-scroll-area {
+    scrollbar-color: var(--_thumb) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+.pxl-scroll-area::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.pxl-scroll-area::-webkit-scrollbar-track,
+.pxl-scroll-area::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Square thumb inset by a transparent border, so it reads as a 6px pixel bar. */
+.pxl-scroll-area::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: var(--pxl-radius-xs);
+  background: var(--_thumb) padding-box;
+}
+
+.pxl-scroll-area::-webkit-scrollbar-thumb:active {
+  background-color: var(--pxl-fg-muted);
+}
+
+@media (forced-colors: active) {
+  .pxl-scroll-area {
+    scrollbar-color: auto;
+  }
+}

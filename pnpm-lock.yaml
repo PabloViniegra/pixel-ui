@@ -179,6 +179,21 @@ importers:
         specifier: workspace:^
         version: link:../button
 
+  packages/alert-dialog:
+    dependencies:
+      '@pablo-v/button':
+        specifier: workspace:^
+        version: link:../button
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/autocomplete:
     dependencies:
       '@pablo-v/core':
@@ -193,6 +208,18 @@ importers:
       '@pablo-v/pixel-icons':
         specifier: workspace:^
         version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/avatar:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -297,6 +324,21 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/collapsible:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/color:
     dependencies:
       '@pablo-v/core':
@@ -342,6 +384,25 @@ importers:
       '@pablo-v/button':
         specifier: workspace:^
         version: link:../button
+
+  packages/context-menu:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/menu':
+        specifier: workspace:^
+        version: link:../menu
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
 
   packages/core:
     dependencies:
@@ -446,6 +507,25 @@ importers:
         specifier: workspace:^
         version: link:../button
 
+  packages/drawer:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/button':
+        specifier: workspace:^
+        version: link:../button
+
   packages/field:
     dependencies:
       '@pablo-v/core':
@@ -460,6 +540,25 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.3.1
+
+  packages/file-upload:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/button':
+        specifier: workspace:^
+        version: link:../button
 
   packages/flip-clock:
     dependencies:
@@ -476,6 +575,22 @@ importers:
       '@pablo-v/button':
         specifier: workspace:^
         version: link:../button
+
+  packages/hover-card:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/avatar':
+        specifier: workspace:^
+        version: link:../avatar
 
   packages/input:
     dependencies:
@@ -612,6 +727,27 @@ importers:
         specifier: workspace:^
         version: link:../button
 
+  packages/number-field:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/pagination:
     dependencies:
       '@pablo-v/core':
@@ -620,6 +756,21 @@ importers:
       '@pablo-v/pixel-icons':
         specifier: workspace:^
         version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/pin-input:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -725,6 +876,21 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/rating:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/react:
     dependencies:
       '@pablo-v/accordion':
@@ -733,9 +899,15 @@ importers:
       '@pablo-v/alert':
         specifier: workspace:^
         version: link:../alert
+      '@pablo-v/alert-dialog':
+        specifier: workspace:^
+        version: link:../alert-dialog
       '@pablo-v/autocomplete':
         specifier: workspace:^
         version: link:../autocomplete
+      '@pablo-v/avatar':
+        specifier: workspace:^
+        version: link:../avatar
       '@pablo-v/badge':
         specifier: workspace:^
         version: link:../badge
@@ -757,12 +929,18 @@ importers:
       '@pablo-v/chip':
         specifier: workspace:^
         version: link:../chip
+      '@pablo-v/collapsible':
+        specifier: workspace:^
+        version: link:../collapsible
       '@pablo-v/color':
         specifier: workspace:^
         version: link:../color
       '@pablo-v/command-menu':
         specifier: workspace:^
         version: link:../command-menu
+      '@pablo-v/context-menu':
+        specifier: workspace:^
+        version: link:../context-menu
       '@pablo-v/core':
         specifier: workspace:^
         version: link:../core
@@ -778,12 +956,21 @@ importers:
       '@pablo-v/dialog':
         specifier: workspace:^
         version: link:../dialog
+      '@pablo-v/drawer':
+        specifier: workspace:^
+        version: link:../drawer
       '@pablo-v/field':
         specifier: workspace:^
         version: link:../field
+      '@pablo-v/file-upload':
+        specifier: workspace:^
+        version: link:../file-upload
       '@pablo-v/flip-clock':
         specifier: workspace:^
         version: link:../flip-clock
+      '@pablo-v/hover-card':
+        specifier: workspace:^
+        version: link:../hover-card
       '@pablo-v/input':
         specifier: workspace:^
         version: link:../input
@@ -808,9 +995,15 @@ importers:
       '@pablo-v/navbar':
         specifier: workspace:^
         version: link:../navbar
+      '@pablo-v/number-field':
+        specifier: workspace:^
+        version: link:../number-field
       '@pablo-v/pagination':
         specifier: workspace:^
         version: link:../pagination
+      '@pablo-v/pin-input':
+        specifier: workspace:^
+        version: link:../pin-input
       '@pablo-v/pixel-avatar':
         specifier: workspace:^
         version: link:../pixel-avatar
@@ -832,21 +1025,36 @@ importers:
       '@pablo-v/radio':
         specifier: workspace:^
         version: link:../radio
+      '@pablo-v/rating':
+        specifier: workspace:^
+        version: link:../rating
+      '@pablo-v/resizable':
+        specifier: workspace:^
+        version: link:../resizable
       '@pablo-v/scramble-text':
         specifier: workspace:^
         version: link:../scramble-text
+      '@pablo-v/scroll-area':
+        specifier: workspace:^
+        version: link:../scroll-area
       '@pablo-v/select':
         specifier: workspace:^
         version: link:../select
       '@pablo-v/separator':
         specifier: workspace:^
         version: link:../separator
+      '@pablo-v/sidebar':
+        specifier: workspace:^
+        version: link:../sidebar
       '@pablo-v/skeleton':
         specifier: workspace:^
         version: link:../skeleton
       '@pablo-v/slider':
         specifier: workspace:^
         version: link:../slider
+      '@pablo-v/stepper':
+        specifier: workspace:^
+        version: link:../stepper
       '@pablo-v/switch':
         specifier: workspace:^
         version: link:../switch
@@ -862,9 +1070,18 @@ importers:
       '@pablo-v/textarea':
         specifier: workspace:^
         version: link:../textarea
+      '@pablo-v/time-field':
+        specifier: workspace:^
+        version: link:../time-field
+      '@pablo-v/timeline':
+        specifier: workspace:^
+        version: link:../timeline
       '@pablo-v/toast':
         specifier: workspace:^
         version: link:../toast
+      '@pablo-v/toggle':
+        specifier: workspace:^
+        version: link:../toggle
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -878,7 +1095,31 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/resizable:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/scramble-text:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/scroll-area:
     dependencies:
       '@pablo-v/core':
         specifier: workspace:^
@@ -920,6 +1161,21 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/sidebar:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
   packages/skeleton:
     dependencies:
       '@pablo-v/core':
@@ -940,6 +1196,21 @@ importers:
       '@pablo-v/field':
         specifier: workspace:^
         version: link:../field
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/stepper:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
       '@pablo-v/tokens':
         specifier: workspace:^
         version: link:../tokens
@@ -1017,6 +1288,43 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1
 
+  packages/time-field:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/field':
+        specifier: workspace:^
+        version: link:../field
+      '@pablo-v/input':
+        specifier: workspace:^
+        version: link:../input
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+
+  packages/timeline:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
+
   packages/toast:
     dependencies:
       '@pablo-v/core':
@@ -1035,6 +1343,22 @@ importers:
       '@pablo-v/button':
         specifier: workspace:^
         version: link:../button
+
+  packages/toggle:
+    dependencies:
+      '@pablo-v/core':
+        specifier: workspace:^
+        version: link:../core
+      '@pablo-v/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@pablo-v/pixel-icons':
+        specifier: workspace:^
+        version: link:../pixel-icons
 
   packages/tokens:
     devDependencies:

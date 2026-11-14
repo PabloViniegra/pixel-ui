@@ -149,6 +149,57 @@
       "path": "packages/toolbar"
     },
     {
+      "path": "packages/drawer"
+    },
+    {
+      "path": "packages/alert-dialog"
+    },
+    {
+      "path": "packages/toggle"
+    },
+    {
+      "path": "packages/number-field"
+    },
+    {
+      "path": "packages/avatar"
+    },
+    {
+      "path": "packages/sidebar"
+    },
+    {
+      "path": "packages/file-upload"
+    },
+    {
+      "path": "packages/pin-input"
+    },
+    {
+      "path": "packages/time-field"
+    },
+    {
+      "path": "packages/stepper"
+    },
+    {
+      "path": "packages/context-menu"
+    },
+    {
+      "path": "packages/hover-card"
+    },
+    {
+      "path": "packages/scroll-area"
+    },
+    {
+      "path": "packages/collapsible"
+    },
+    {
+      "path": "packages/timeline"
+    },
+    {
+      "path": "packages/rating"
+    },
+    {
+      "path": "packages/resizable"
+    },
+    {
       "path": "packages/react"
     }
   ]
