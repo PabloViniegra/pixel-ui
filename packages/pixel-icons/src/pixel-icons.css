@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.pxl-icon-frames {
+.pxl-icon--animated:hover .pxl-icon-frames {
   animation: pxl-icon-frames var(--pxl-icon-duration) steps(var(--pxl-icon-frames), end) infinite;
 }
 
@@ -19,7 +19,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pxl-icon-frames {
+  .pxl-icon--animated:hover .pxl-icon-frames {
     animation: none;
   }
 }

@@ -26,7 +26,7 @@ All brand names and logos are trademarks of their respective owners. These pixel
 
 ## Animated icons
 
-`SpinnerIcon`, `HourglassIcon`, `TypingIcon` and the other animated icons loop frame by frame. Set `--pxl-icon-duration` to change the speed; under `prefers-reduced-motion` they rest on their first frame.
+`SpinnerIcon`, `HourglassIcon`, `TypingIcon` and the other animated icons loop frame by frame only while hovered. They return to their first frame when the pointer leaves. Set `--pxl-icon-duration` to change the speed; under `prefers-reduced-motion` they rest on their first frame.
 
 ```tsx
 <SpinnerIcon label="Loading" style={{ '--pxl-icon-duration': '1200ms' } as React.CSSProperties} />;

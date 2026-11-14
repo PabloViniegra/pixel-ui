@@ -1,5 +1,11 @@
 # @pablo-v/pixel-icons
 
+## 1.3.2
+
+### Patch Changes
+
+- Animate icons only while hovered and return to the first frame when the pointer leaves. Preserve reduced-motion behavior.
+
 ## 1.3.1
 
 ### Patch Changes
