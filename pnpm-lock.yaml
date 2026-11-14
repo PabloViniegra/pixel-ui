@@ -555,10 +555,6 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.3.1
-    devDependencies:
-      '@pablo-v/button':
-        specifier: workspace:^
-        version: link:../button
 
   packages/flip-clock:
     dependencies:
