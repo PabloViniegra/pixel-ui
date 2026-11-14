@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/alert-dialog",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Modal confirmation that requires an explicit choice",
   "license": "MIT",
   "repository": {

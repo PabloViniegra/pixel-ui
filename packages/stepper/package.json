@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/stepper",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Multi-step progress indicator",
   "license": "MIT",
   "repository": {

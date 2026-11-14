@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/context-menu",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Right-click menu built on the menu primitives",
   "license": "MIT",
   "repository": {

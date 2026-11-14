@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/time-field",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Segmented time input and time picker",
   "license": "MIT",
   "repository": {
