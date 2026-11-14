@@ -1,5 +1,11 @@
 # @pablo-v/pixel-icons
 
+## 1.3.1
+
+### Patch Changes
+
+- Balance directional arrows, center camera and microphone details, and clarify file and database silhouettes. Refine the Storybook icon galleries with responsive columns and consistent preview spacing.
+
 ## 1.3.0
 
 ### Minor Changes

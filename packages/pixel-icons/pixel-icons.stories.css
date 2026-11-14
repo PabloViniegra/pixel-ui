@@ -1,0 +1,41 @@
+.pxl-icon-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 96px), 1fr));
+  gap: var(--pxl-space-2);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 832px;
+  margin: var(--pxl-space-8) auto 0;
+  padding: var(--pxl-space-4);
+  list-style: none;
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-lg);
+  background: var(--pxl-bg);
+  color: var(--pxl-fg);
+  font-family: var(--pxl-font-sans);
+}
+
+.pxl-icon-gallery__item {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: var(--pxl-space-2);
+  min-width: 0;
+  padding: var(--pxl-space-3) var(--pxl-space-1);
+}
+
+.pxl-icon-gallery__preview {
+  display: grid;
+  place-items: center;
+  width: var(--pxl-size-lg);
+  height: var(--pxl-size-lg);
+}
+
+.pxl-icon-gallery__name {
+  max-width: 100%;
+  color: var(--pxl-fg-muted);
+  font-size: var(--pxl-text-xs);
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
