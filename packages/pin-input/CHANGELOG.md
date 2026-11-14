@@ -1,5 +1,11 @@
 # @pablo-v/pin-input
 
+## 0.1.2
+
+### Patch Changes
+
+- Respect fractional number bounds after rounding, preserve PIN cell positions during deletion, and keep segmented controls keyboard accessible when the selected option is disabled.
+
 ## 0.1.1
 
 ### Patch Changes

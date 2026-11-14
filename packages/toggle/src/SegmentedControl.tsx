@@ -58,7 +58,10 @@ export function SegmentedControl({
   const listRef = useRef<HTMLDivElement>(null);
   const [indicator, setIndicator] = useState<CSSProperties>();
   const selected = options.findIndex((o) => o.value === value);
-  const tabStop = selected >= 0 ? selected : options.findIndex((o) => !o.disabled);
+  const tabStop =
+    selected >= 0 && !options[selected]?.disabled
+      ? selected
+      : options.findIndex((o) => !o.disabled);
 
   useIsomorphicLayoutEffect(() => {
     const list = listRef.current;

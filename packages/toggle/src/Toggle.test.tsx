@@ -59,6 +59,26 @@ describe('ToggleGroup', () => {
 });
 
 describe('SegmentedControl', () => {
+  it('keeps a keyboard entry point when the selected option becomes disabled', async () => {
+    const options = [
+      { value: 'a', label: 'A', disabled: false },
+      { value: 'b', label: 'B' },
+      { value: 'c', label: 'C' },
+    ];
+    const { rerender } = render(<SegmentedControl options={options} defaultValue="a" />);
+    rerender(
+      <SegmentedControl
+        options={options.map((o) => (o.value === 'a' ? { ...o, disabled: true } : o))}
+        defaultValue="a"
+      />,
+    );
+    await userEvent.tab();
+    expect(screen.getByRole('radio', { name: 'B' })).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(screen.getByRole('radio', { name: 'C' })).toHaveFocus();
+    expect(screen.getByRole('radio', { name: 'C' })).toHaveAttribute('aria-checked', 'true');
+  });
+
   const options = [
     { value: 'day', label: 'Day' },
     { value: 'week', label: 'Week' },

@@ -4,6 +4,20 @@ import { describe, expect, it, vi } from 'vitest';
 import { NumberField } from './NumberField.js';
 
 describe('NumberField', () => {
+  it.each([
+    { min: 0, max: 0.5, text: '1', expected: '0.5' },
+    { min: 0.5, max: 2, text: '0', expected: '0.5' },
+  ])(
+    'preserves fractional bounds after rounding: $min to $max',
+    async ({ min, max, text, expected }) => {
+      const onChange = vi.fn();
+      render(<NumberField min={min} max={max} onChange={onChange} />);
+      await userEvent.type(screen.getByRole('spinbutton'), `${text}{Enter}`);
+      expect(screen.getByRole('spinbutton')).toHaveValue(expected);
+      expect(onChange).toHaveBeenLastCalledWith(Number(expected));
+    },
+  );
+
   it('steps with the buttons and clamps to the bounds', async () => {
     const onChange = vi.fn();
     render(<NumberField aria-label="Replicas" defaultValue={9} max={10} onChange={onChange} />);

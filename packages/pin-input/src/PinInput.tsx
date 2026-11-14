@@ -2,7 +2,13 @@
 
 import { cx, type PixelSize, useControllableState, useIsomorphicLayoutEffect } from '@pablo-v/core';
 import { useFieldControl, useFieldLabelId } from '@pablo-v/field';
-import { type ClipboardEvent, type ComponentPropsWithRef, type KeyboardEvent, useRef } from 'react';
+import {
+  type ClipboardEvent,
+  type ComponentPropsWithRef,
+  type KeyboardEvent,
+  useRef,
+  useState,
+} from 'react';
 
 export interface PinInputProps
   extends Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'defaultValue'> {
@@ -75,7 +81,9 @@ export function PinInput({
   );
   const fieldLabelId = useFieldLabelId();
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
-  const chars = Array.from({ length }, (_, i) => value[i] ?? '');
+  const [draftCells, setDraftCells] = useState<string[] | null>(null);
+  const cells = draftCells?.join('') === value ? draftCells : null;
+  const chars = Array.from({ length }, (_, i) => cells?.[i] ?? value[i] ?? '');
   const pattern = PATTERN[type];
   const pendingFocus = useRef<number | null>(null);
 
@@ -94,6 +102,7 @@ export function PinInput({
 
   const commit = (next: string[]) => {
     const joined = next.join('').slice(0, length);
+    setDraftCells(next);
     setValue(joined);
     if (joined.length === length && next.every(Boolean)) onComplete?.(joined);
   };
@@ -140,7 +149,7 @@ export function PinInput({
     fill(index, event.clipboardData.getData('text'));
   };
 
-  // A gap would split the value, so later cells only accept input once the earlier ones are filled.
+  // Fill the first gap before accepting input in later cells.
   const firstEmpty = chars.findIndex((c) => !c);
 
   return (

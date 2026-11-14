@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/toggle",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pressable toggle button, toggle group and segmented control",
   "license": "MIT",
   "repository": {

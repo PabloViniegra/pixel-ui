@@ -68,7 +68,7 @@ export function NumberField({
 
   const commit = (next: number | null) => {
     setDraft(null);
-    const normalized = next == null ? null : Number(clamp(next, min, max).toFixed(precision));
+    const normalized = next == null ? null : clamp(Number(next.toFixed(precision)), min, max);
     if (normalized !== value) setValue(normalized);
   };
 
