@@ -225,7 +225,13 @@ a.pxl-button {
   }
 }
 
-/* No room for every section link on small phones; MCP is the least essential. */
+/* No room for every section link on small screens; the agent sections are the least essential. */
+@media (max-width: 540px) {
+  .nav a[href="#skill"] {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .nav a[href="#mcp"] {
     display: none;

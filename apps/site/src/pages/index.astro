@@ -84,6 +84,8 @@ const mcpConfig = `{
   }
 }`;
 
+const skillAdd = 'npx skills add PabloViniegra/pixel-ui';
+
 const pageUrl = new URL(import.meta.env.BASE_URL, Astro.site).href;
 const ogImage = new URL('og.png', pageUrl).href;
 const ogImageAlt =
@@ -147,6 +149,7 @@ const jsonLd = JSON.stringify({
           <a href="#install">Install</a>
           <a href="#usage">Usage</a>
           <a href="#mcp">MCP</a>
+          <a href="#skill">Skill</a>
           <a href="#components">Components</a>
         </nav>
         <div class="header__actions">
@@ -326,6 +329,54 @@ const jsonLd = JSON.stringify({
               The server answers from data built at release time: the packages' type declarations, their Storybook
               stories and a hand-written usage guide per component. Nothing is fetched at runtime and nothing leaves your
               machine.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="skill" aria-labelledby="skill-title">
+        <div class="section__head">
+          <h2 id="skill-title" class="section__title">A skill for building screens</h2>
+          <p class="section__lead">
+            The MCP server answers questions; the <code>pixel-ui</code> skill tells your agent when to ask them. Agents
+            pick it up automatically when the task is UI in a project that uses PixelUI.
+          </p>
+        </div>
+        <div class="guides">
+          <article class="guide">
+            <h3 class="guide__title">Install</h3>
+            <p class="muted">
+              Run this in your project. The <code>skills</code> CLI installs the skill into the folder your agent reads:
+              Claude Code, Cursor, Codex and others.
+            </p>
+            <Code lang="bash" label="Terminal" name="Skill install command" code={skillAdd} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">What it teaches</h3>
+            <dl class="tools">
+              <div><dt>Workflow</dt><dd>Check the setup, map the screen to components, read their docs, then write.</dd></div>
+              <div>
+                <dt>Choosing</dt>
+                <dd>Which of two similar components fits: Dialog or Drawer, Select or Autocomplete, toast or Alert.</dd>
+              </div>
+              <div><dt>Composition</dt><dd>Patterns for forms, data views, app shells and overlays.</dd></div>
+              <div><dt>Design checks</dt><dd>The rules generated code breaks most often, reviewed before finishing.</dd></div>
+            </dl>
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Better with the MCP server</h3>
+            <p class="muted">
+              The skill does not copy component APIs, so it does not go stale: it sends the agent
+              to <a href="#mcp">the MCP server</a> for the facts of the version you installed, and falls back to the
+              packages' type declarations when the server is not connected.
+            </p>
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">One Markdown file</h3>
+            <p class="muted">
+              Skills run with your agent's permissions, so read it first: it is a
+              single <a href={`${repoUrl}/blob/main/skills/pixel-ui/SKILL.md`}><code>SKILL.md</code></a> with
+              instructions and no scripts.
             </p>
           </article>
         </div>
