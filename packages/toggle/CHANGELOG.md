@@ -1,5 +1,11 @@
 # @pablo-v/toggle
 
+## 0.1.4
+
+### Patch Changes
+
+- Refine component surfaces, spacing, typography and interaction feedback while preserving existing APIs and theme tokens.
+
 ## 0.1.3
 
 ### Patch Changes

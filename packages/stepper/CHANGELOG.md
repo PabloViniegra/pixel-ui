@@ -1,5 +1,11 @@
 # @pablo-v/stepper
 
+## 0.2.2
+
+### Patch Changes
+
+- Refine component surfaces, spacing, typography and interaction feedback while preserving existing APIs and theme tokens.
+
 ## 0.2.1
 
 ### Patch Changes

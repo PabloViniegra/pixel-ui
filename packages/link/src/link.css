@@ -9,7 +9,8 @@
   /* Faint at rest so links never rely on colour alone (WCAG 1.4.1). */
   text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: auto;
   cursor: pointer;
   transition:
     color var(--pxl-dur-fast) linear,
@@ -36,6 +37,8 @@
 
 .pxl-link__icon {
   vertical-align: -0.125em;
+  margin-inline-start: 0.125em;
+  transition: transform var(--pxl-dur-fast) var(--pxl-ease-out);
 }
 
 .pxl-link__sr {
@@ -45,4 +48,10 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pxl-link:hover .pxl-link__icon {
+    transform: translate(1px, -1px);
+  }
 }

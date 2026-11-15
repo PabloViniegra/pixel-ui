@@ -25,7 +25,7 @@ const meta = {
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
   argTypes: { density: { control: 'inline-radio', options: ['default', 'compact'] } },
   render: (args) => (
-    <Table {...args} style={{ maxWidth: 720 }}>
+    <Table {...args} style={{ width: 'min(720px, calc(100vw - 32px))' }}>
       <TableCaption>Deployments of acme-web in the last 24 hours.</TableCaption>
       <TableHead>
         <TableRow>

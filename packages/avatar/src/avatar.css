@@ -10,11 +10,11 @@
   width: var(--_size);
   height: var(--_size);
   border-radius: var(--_radius);
-  background: var(--pxl-gray-200);
-  color: var(--pxl-fg);
+  background: var(--pxl-gray-100);
+  color: var(--pxl-fg-muted);
   font-family: var(--pxl-font-sans);
   font-size: var(--_text);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   user-select: none;
   vertical-align: middle;

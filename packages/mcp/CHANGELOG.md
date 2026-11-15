@@ -1,5 +1,11 @@
 # @pablo-v/mcp
 
+## 0.1.1
+
+### Patch Changes
+
+- Refine component surfaces, spacing, typography and interaction feedback while preserving existing APIs and theme tokens.
+
 ## 0.1.0
 
 ### Minor Changes

@@ -13,7 +13,7 @@ const meta = {
     variant: { control: 'inline-radio', options: ['solid', 'pixel'] },
   },
   render: (args) => (
-    <div style={{ width: 360 }}>
+    <div style={{ width: 'min(360px, calc(100vw - 32px))' }}>
       <Separator {...args} />
     </div>
   ),

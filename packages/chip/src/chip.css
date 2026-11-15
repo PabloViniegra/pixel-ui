@@ -11,7 +11,7 @@
   max-width: 100%;
   border: 1px solid var(--_border);
   border-radius: var(--pxl-radius-full);
-  background: var(--pxl-bg);
+  background: var(--pxl-bg-subtle);
   color: var(--pxl-fg);
   font-family: var(--pxl-font-sans);
   font-size: var(--_text);
@@ -64,7 +64,7 @@
 .pxl-chip__toggle {
   display: inline-flex;
   align-items: center;
-  gap: var(--pxl-space-1);
+  gap: var(--pxl-space-2);
   height: 100%;
   min-width: 0;
   padding: 0 var(--_px);
@@ -92,6 +92,8 @@
 .pxl-chip__icon {
   display: inline-flex;
   flex: none;
+  align-items: center;
+  color: inherit;
 }
 
 .pxl-chip__label {

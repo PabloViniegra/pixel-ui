@@ -9,7 +9,7 @@
   position: relative;
   display: grid;
   justify-items: center;
-  gap: var(--pxl-space-1);
+  gap: var(--pxl-space-2);
   padding: var(--pxl-space-8) var(--pxl-space-6);
   border: 1px dashed var(--pxl-gray-600);
   border-radius: var(--pxl-radius-lg);
@@ -22,7 +22,7 @@
     border-color var(--pxl-dur-fast) linear;
 }
 
-.pxl-file-upload__zone:hover {
+.pxl-file-upload:not([data-disabled]) .pxl-file-upload__zone:not([data-dragging]):hover {
   border-color: var(--pxl-gray-800);
   background: var(--pxl-bg);
 }
@@ -56,8 +56,8 @@
 .pxl-file-upload__icon {
   display: grid;
   place-items: center;
-  width: var(--pxl-size-md);
-  height: var(--pxl-size-md);
+  width: var(--pxl-size-lg);
+  height: var(--pxl-size-lg);
   margin-bottom: var(--pxl-space-2);
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);
@@ -74,7 +74,7 @@
 }
 
 .pxl-file-upload__label {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .pxl-file-upload__hint {
@@ -116,7 +116,8 @@
   display: flex;
   align-items: center;
   gap: var(--pxl-space-2);
-  height: var(--pxl-size-md);
+  min-width: 0;
+  min-height: var(--pxl-size-lg);
   padding: 0 var(--pxl-space-1) 0 var(--pxl-space-3);
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);

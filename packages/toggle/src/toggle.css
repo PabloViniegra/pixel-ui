@@ -13,7 +13,7 @@
   border: 1px solid var(--pxl-border);
   border-radius: var(--pxl-radius-md);
   background: var(--pxl-bg);
-  color: var(--pxl-fg-muted);
+  color: var(--pxl-fg);
   font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-sm);
   font-weight: 500;
@@ -39,6 +39,7 @@
 }
 
 .pxl-toggle:hover:not(:disabled) {
+  border-color: var(--pxl-gray-600);
   background: var(--pxl-gray-100);
   color: var(--pxl-fg);
 }
@@ -48,7 +49,7 @@
 }
 
 .pxl-toggle[aria-pressed="true"] {
-  border-color: transparent;
+  border-color: var(--pxl-accent);
   background: var(--pxl-accent-subtle);
   color: var(--pxl-accent-text);
 }

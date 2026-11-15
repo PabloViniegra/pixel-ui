@@ -1,5 +1,5 @@
 .pxl-stepper {
-  --_marker: var(--pxl-size-xs);
+  --_marker: var(--pxl-size-sm);
 
   display: flex;
   gap: var(--pxl-space-2);
@@ -88,8 +88,8 @@ button.pxl-stepper__body:focus-visible {
 
 .pxl-stepper__step[data-status="current"] .pxl-stepper__marker {
   border-color: var(--pxl-accent);
-  background: var(--pxl-accent-subtle);
-  color: var(--pxl-accent-text);
+  background: var(--pxl-accent);
+  color: var(--pxl-accent-fg);
 }
 
 .pxl-stepper__step[data-status="complete"] .pxl-stepper__marker {
@@ -111,14 +111,14 @@ button.pxl-stepper__body:focus-visible {
 .pxl-stepper__text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--pxl-space-1);
   min-width: 0;
   padding-top: calc((var(--_marker) - 1.4em) / 2);
   line-height: 1.4;
 }
 
 .pxl-stepper__label {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .pxl-stepper__step[data-status="upcoming"] .pxl-stepper__label {

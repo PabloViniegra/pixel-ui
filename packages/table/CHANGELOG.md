@@ -1,5 +1,11 @@
 # @pablo-v/table
 
+## 1.0.2
+
+### Patch Changes
+
+- Refine component surfaces, spacing, typography and interaction feedback while preserving existing APIs and theme tokens.
+
 ## 1.0.1
 
 ### Patch Changes

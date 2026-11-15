@@ -13,3 +13,30 @@
     user-select: none;
   }
 }
+
+.pxl-context-menu {
+  min-width: min(224px, calc(100vw - var(--pxl-space-4)));
+  gap: 2px;
+}
+
+.pxl-context-menu .pxl-menu__item {
+  padding-inline: var(--pxl-space-3);
+}
+
+.pxl-context-menu .pxl-menu__item:focus .pxl-menu__icon {
+  color: inherit;
+}
+
+.pxl-context-menu .pxl-menu__separator {
+  margin: var(--pxl-space-1) var(--pxl-space-2);
+}
+
+.pxl-context-menu .pxl-menu__shortcut {
+  margin-inline-start: var(--pxl-space-6);
+  padding-inline: var(--pxl-space-1);
+  border: 1px solid var(--pxl-border);
+  border-radius: var(--pxl-radius-xs);
+  background: var(--pxl-bg-subtle);
+  line-height: 1.5;
+  letter-spacing: normal;
+}

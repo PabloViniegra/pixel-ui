@@ -2,6 +2,8 @@
   --_line: var(--pxl-border);
   --_size: 1px;
 
+  min-width: 0;
+
   flex: none;
   background: var(--_line);
 }
@@ -58,5 +60,9 @@
   color: var(--pxl-fg-muted);
   font-family: var(--pxl-font-sans);
   font-size: var(--pxl-text-xs);
-  white-space: nowrap;
+  min-width: 0;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: center;
+  overflow-wrap: anywhere;
 }

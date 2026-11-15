@@ -32,8 +32,9 @@ const meta = {
         tabIndex={0}
         style={{
           display: 'grid',
+          boxSizing: 'border-box',
           placeItems: 'center',
-          width: 360,
+          width: 'min(360px, calc(100vw - 32px))',
           height: 200,
           border: '1px dashed var(--pxl-gray-600)',
           borderRadius: 'var(--pxl-radius-lg)',
