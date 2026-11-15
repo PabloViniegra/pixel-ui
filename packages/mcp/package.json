@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server that teaches coding agents the PixelUI component catalogue: APIs, usage examples and design rules",
   "license": "MIT",
   "repository": {

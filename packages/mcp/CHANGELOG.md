@@ -1,5 +1,11 @@
 # @pablo-v/mcp
 
+## 0.1.2
+
+### Patch Changes
+
+- 3d237b4: Show the check mark and indeterminate dash again: the positioned input was painting over them.
+
 ## 0.1.1
 
 ### Patch Changes

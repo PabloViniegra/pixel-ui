@@ -1,5 +1,11 @@
 # @pablo-v/checkbox
 
+## 1.0.3
+
+### Patch Changes
+
+- 3d237b4: Show the check mark and indeterminate dash again: the positioned input was painting over them.
+
 ## 1.0.2
 
 ### Patch Changes
