@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionItem,
   Alert,
+  AlertDialog,
   Autocomplete,
   Badge,
   BarChart,
@@ -23,28 +24,28 @@ import {
   CommandMenu,
   CopyIcon,
   DateRangePicker,
-  Dialog,
-  DialogClose,
   DownloadIcon,
+  Drawer,
+  DrawerClose,
   Dropdown,
+  EyeIcon,
   Field,
   FolderIcon,
   GlobeIcon,
   GridIcon,
+  HelpIcon,
   HomeIcon,
   Input,
   Link,
   ListIcon,
+  type LogLine,
   LogoutIcon,
   MenuGroup,
   MenuItem,
   MenuSeparator,
   MoreIcon,
   MultiSelect,
-  Navbar,
-  NavbarLink,
-  NavbarMenu,
-  NavbarMenuLink,
+  NumberField,
   Pagination,
   PixelAvatar,
   PixelImage,
@@ -56,14 +57,22 @@ import {
   RefreshIcon,
   ScrambleText,
   SearchIcon,
+  SegmentedControl,
   Select,
   Separator,
   SettingsIcon,
   ShareIcon,
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarItem,
+  SidebarToggle,
   Skeleton,
-  Slider,
   Sparkline,
-  Switch,
+  Stepper,
+  type StepperStep,
   startPixelTransition,
   Tab,
   TabList,
@@ -76,13 +85,14 @@ import {
   TableRow,
   TabPanel,
   Tabs,
+  Terminal,
   TerminalIcon,
   Textarea,
+  Timeline,
+  TimelineItem,
   Toaster,
   Toolbar,
   ToolbarButton,
-  ToolbarGroup,
-  ToolbarSeparator,
   Tooltip,
   TrashIcon,
   toast,
@@ -93,6 +103,7 @@ import { type MouseEvent, useEffect, useRef, useState } from 'react';
 type View = 'overview' | 'deployments' | 'settings';
 type Env = 'production' | 'preview';
 type State = 'ready' | 'building' | 'error';
+type Layout = 'list' | 'grid';
 
 interface Deployment {
   commit: string;
@@ -151,6 +162,13 @@ const regions = [
   { code: 'iad1', name: 'Washington', load: 64 },
   { code: 'hnd1', name: 'Tokyo', load: 52 },
 ];
+const activity = [
+  { who: 'ada', what: 'promoted a1f9c2e to production', time: '2m ago', tone: 'success' },
+  { who: 'grace', what: 'opened feat/billing', time: '18m ago', tone: 'default' },
+  { who: 'alan', what: 'rotated the API token', time: '1h ago', tone: 'default' },
+  { who: 'katherine', what: 'added the domain docs.acme.dev', time: '3h ago', tone: 'default' },
+  { who: 'grace', what: 'rolled back e6c90b1', time: '5h ago', tone: 'warning' },
+] as const;
 const frameworks = [
   { value: 'next', label: 'Next.js', description: 'React framework with the App Router' },
   { value: 'astro', label: 'Astro', description: 'Content-first, islands architecture' },
@@ -164,15 +182,71 @@ const titles: Record<View, string> = {
   deployments: 'Deployments',
   settings: 'Settings',
 };
+const layouts = [
+  { value: 'list', label: 'List', icon: <ListIcon /> },
+  { value: 'grid', label: 'Grid', icon: <GridIcon /> },
+];
+
+const phases = ['Clone', 'Install', 'Build', 'Deploy'];
+
+function buildSteps(state: State): { steps: StepperStep[]; current: number } {
+  return {
+    steps: phases.map((label, i) =>
+      state === 'error' && i === 2 ? { label, status: 'error' } : { label },
+    ),
+    current: state === 'ready' ? phases.length : 2,
+  };
+}
+
+function buildLog(row: Deployment): LogLine[] {
+  const lines: LogLine[] = [
+    { id: 'clone', time: '12:04:00', text: `Cloning acme-web@${row.branch} (${row.commit})` },
+    { id: 'install', time: '12:04:03', text: 'Installing dependencies' },
+    { id: 'compile', time: '12:04:11', text: 'Compiling 36 packages' },
+  ];
+  if (row.state === 'ready') {
+    lines.push(
+      { id: 'fonts', time: '12:04:19', level: 'warn', text: 'Using cached fonts' },
+      {
+        id: 'done',
+        time: '12:04:24',
+        level: 'success',
+        text: `Deployed to ${row.commit}.acme.dev`,
+      },
+    );
+  }
+  if (row.state === 'error') {
+    lines.push(
+      {
+        id: 'type',
+        time: '12:04:15',
+        level: 'error',
+        text: 'Type error in src/components/Navbar.tsx',
+      },
+      { id: 'fail', time: '12:04:16', level: 'error', text: 'Build failed' },
+    );
+  }
+  return lines;
+}
+
+const outcome = {
+  ready: { title: 'Deployment ready', tone: 'success' },
+  building: { title: 'Building', tone: 'accent' },
+  error: { title: 'Build failed', tone: 'danger' },
+} as const;
 
 export function Demo() {
   const [view, setView] = useState<View>('overview');
+  const [collapsed, setCollapsed] = useState(false);
   const [rows, setRows] = useState(seed);
   const [query, setQuery] = useState('');
   const [env, setEnv] = useState<'all' | Env>('all');
+  const [layout, setLayout] = useState<Layout>('list');
   const [page, setPage] = useState(1);
   const [pendingDelete, setPendingDelete] = useState<Deployment | null>(null);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const [detail, setDetail] = useState<Deployment | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [usageAlert, setUsageAlert] = useState(true);
   const [loading, setLoading] = useState(false);
   const [region, setRegion] = useState(0);
@@ -181,6 +255,9 @@ export function Demo() {
   const searchInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => () => window.clearTimeout(loadTimer.current), []);
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 760px)').matches) setCollapsed(true);
+  }, []);
 
   const filtered = rows.filter(
     (row) =>
@@ -206,6 +283,11 @@ export function Demo() {
     toast.success('Redeploy queued', {
       description: row ? `${row.commit} on ${row.branch}` : 'Latest commit on main',
     });
+
+  const openDetails = (row: Deployment) => {
+    setDetail(row);
+    setDetailOpen(true);
+  };
 
   const confirmDelete = () => {
     if (!pendingDelete) return;
@@ -258,18 +340,119 @@ export function Demo() {
   ];
 
   const currentRegion = regions[region] ?? regions[0];
+  const otherProject = () => toast('Only acme-web exists in this demo');
+
+  const actionsMenu = (row: Deployment) => (
+    <Dropdown
+      align="end"
+      aria-label={`Actions for ${row.commit}`}
+      trigger={
+        <Button variant="ghost" size="sm" aria-label={`Actions for ${row.commit}`}>
+          <MoreIcon />
+        </Button>
+      }
+    >
+      <MenuItem icon={<EyeIcon />} onSelect={() => openDetails(row)}>
+        View details
+      </MenuItem>
+      <MenuItem icon={<RefreshIcon />} onSelect={() => redeploy(row)}>
+        Redeploy
+      </MenuItem>
+      <MenuItem
+        icon={<CopyIcon />}
+        onSelect={() => toast.success('URL copied', { description: `${row.commit}.acme.dev` })}
+      >
+        Copy URL
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem
+        icon={<TrashIcon />}
+        tone="danger"
+        onSelect={() => {
+          setPendingDelete(row);
+          setDeleteOpen(true);
+        }}
+      >
+        Delete
+      </MenuItem>
+    </Dropdown>
+  );
+
+  const statusBadge = (row: Deployment) => (
+    <Badge tone={stateBadge[row.state].tone} dot={row.state === 'building' ? 'pulse' : true}>
+      {stateBadge[row.state].label}
+    </Badge>
+  );
+
+  const detailSteps = detail ? buildSteps(detail.state) : null;
 
   return (
     <div className="demo">
-      <Navbar
-        className="demo__nav"
-        brand={
+      <Sidebar className="demo__sidebar" collapsed={collapsed} onCollapsedChange={setCollapsed}>
+        <SidebarHeader>
           <span className="demo__brand">
             <ScrambleText text="acme" trigger="hover" />
           </span>
-        }
-        actions={
-          <>
+          <SidebarToggle />
+        </SidebarHeader>
+        <SidebarContent aria-label="Project">
+          <SidebarGroup>
+            <SidebarItem
+              icon={<HomeIcon />}
+              current={view === 'overview'}
+              onClick={navigate('overview')}
+            >
+              Overview
+            </SidebarItem>
+            <SidebarItem
+              icon={<TerminalIcon />}
+              current={view === 'deployments'}
+              badge={String(rows.length)}
+              onClick={navigate('deployments')}
+            >
+              Deployments
+            </SidebarItem>
+            <SidebarItem
+              icon={<SettingsIcon />}
+              current={view === 'settings'}
+              onClick={navigate('settings')}
+            >
+              Settings
+            </SidebarItem>
+          </SidebarGroup>
+          <SidebarGroup label="Projects">
+            <SidebarItem icon={<FolderIcon />} onClick={navigate('overview')}>
+              acme-web
+            </SidebarItem>
+            <SidebarItem icon={<CodeIcon />} onClick={otherProject}>
+              acme-api
+            </SidebarItem>
+            <SidebarItem icon={<GlobeIcon />} onClick={otherProject}>
+              acme-edge
+            </SidebarItem>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarGroup className="demo__sidebar-footer">
+            <SidebarItem href={`${import.meta.env.BASE_URL}storybook/`} icon={<HelpIcon />}>
+              Docs
+            </SidebarItem>
+          </SidebarGroup>
+        </SidebarFooter>
+      </Sidebar>
+
+      <div className="demo__main">
+        <div className="demo__top">
+          <Breadcrumb>
+            <BreadcrumbItem href="#demo" icon={<HomeIcon />} onClick={navigate('overview')}>
+              acme
+            </BreadcrumbItem>
+            <BreadcrumbItem href="#demo" onClick={navigate('overview')}>
+              acme-web
+            </BreadcrumbItem>
+            <BreadcrumbItem current>{titles[view]}</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="demo__top-actions">
             <CommandMenu
               commands={commands}
               hotkey={false}
@@ -281,6 +464,30 @@ export function Demo() {
                 </Button>
               }
             />
+            <Popover
+              label="Share project"
+              align="end"
+              trigger={
+                <Button variant="ghost" size="sm" aria-label="Share project">
+                  <ShareIcon />
+                </Button>
+              }
+            >
+              <div className="demo__share">
+                <Field label="Preview URL">
+                  <Input readOnly value="https://acme-web.pixel.dev" />
+                </Field>
+                <Button
+                  size="sm"
+                  iconStart={<CopyIcon />}
+                  onClick={() =>
+                    toast.success('Link copied', { description: 'acme-web.pixel.dev' })
+                  }
+                >
+                  Copy link
+                </Button>
+              </div>
+            </Popover>
             <Tooltip content="No new notifications">
               <Button variant="ghost" size="sm" aria-label="Notifications">
                 <BellIcon />
@@ -310,373 +517,319 @@ export function Demo() {
                 Sign out
               </MenuItem>
             </Dropdown>
-          </>
-        }
-      >
-        <NavbarLink href="#demo" current={view === 'overview'} onClick={navigate('overview')}>
-          Overview
-        </NavbarLink>
-        <NavbarLink href="#demo" current={view === 'deployments'} onClick={navigate('deployments')}>
-          Deployments
-        </NavbarLink>
-        <NavbarMenu label="Projects">
-          <NavbarMenuLink href="#demo" icon={<FolderIcon />} description="Marketing site" current>
-            acme-web
-          </NavbarMenuLink>
-          <NavbarMenuLink href="#demo" icon={<CodeIcon />} description="Public REST API">
-            acme-api
-          </NavbarMenuLink>
-          <NavbarMenuLink href="#demo" icon={<GlobeIcon />} description="Edge redirects">
-            acme-edge
-          </NavbarMenuLink>
-        </NavbarMenu>
-      </Navbar>
-
-      <div className="demo__body">
-        <div className="demo__head">
-          <Breadcrumb>
-            <BreadcrumbItem href="#demo" icon={<HomeIcon />} onClick={navigate('overview')}>
-              acme
-            </BreadcrumbItem>
-            <BreadcrumbItem href="#demo" onClick={navigate('overview')}>
-              acme-web
-            </BreadcrumbItem>
-            <BreadcrumbItem current>{titles[view]}</BreadcrumbItem>
-          </Breadcrumb>
-          <Popover
-            label="Share project"
-            align="end"
-            trigger={
-              <Button variant="secondary" size="sm" iconStart={<ShareIcon />}>
-                Share
-              </Button>
-            }
-          >
-            <div className="demo__share">
-              <Field label="Preview URL">
-                <Input readOnly value="https://acme-web.pixel.dev" />
-              </Field>
-              <Button
-                size="sm"
-                iconStart={<CopyIcon />}
-                onClick={() => toast.success('Link copied', { description: 'acme-web.pixel.dev' })}
-              >
-                Copy link
-              </Button>
-            </div>
-          </Popover>
+          </div>
         </div>
 
-        <Tabs value={view} defaultValue="overview" onValueChange={(next) => setView(next as View)}>
-          <TabList label="Project sections">
-            <Tab value="overview" icon={<HomeIcon />}>
-              Overview
-            </Tab>
-            <Tab value="deployments" icon={<TerminalIcon />}>
-              Deployments
-            </Tab>
-            <Tab value="settings" icon={<SettingsIcon />}>
-              Settings
-            </Tab>
-          </TabList>
+        <section className="demo__panel" aria-labelledby="demo-view-title">
+          <h3 id="demo-view-title" className="demo__title">
+            {titles[view]}
+          </h3>
 
-          <TabPanel value="overview" className="demo__panel">
-            {usageAlert && (
-              <Alert
-                tone="warning"
-                title="Bandwidth at 82% of your plan"
-                action={
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => toast('The demo has no plans page')}
-                  >
-                    View plans
-                  </Button>
-                }
-                onDismiss={() => setUsageAlert(false)}
-              >
-                Usage resets in 9 days. Upgrade to avoid throttled previews.
-              </Alert>
-            )}
-            <div className="demo__cards">
-              <Card>
-                <CardHeader>
-                  <CardTitle pixel>48.2k</CardTitle>
-                  <CardDescription>Requests in the last 12 hours</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Sparkline
-                    label="Requests per hour"
-                    data={requests}
-                    rows={10}
-                    cellSize={8}
-                    area
-                  />
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Latency by region</CardTitle>
-                  <CardDescription>p75 of 52 ms across five regions</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <BarChart
-                    label="Latency by region in milliseconds"
-                    data={latency}
-                    highlight="max"
-                    rows={8}
-                    cellSize={10}
-                  />
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Region status</CardTitle>
-                  <CardDescription>Edge capacity right now</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <PixelTransition className="demo__region">
-                    <div className="demo__region-name">
-                      <Badge tone="success" dot>
-                        {currentRegion?.code}
-                      </Badge>
-                      <span>{currentRegion?.name}</span>
-                    </div>
-                    <Progress
-                      value={currentRegion?.load ?? 0}
-                      label={`${currentRegion?.name} load`}
-                      showValue
+          {view === 'overview' && (
+            <>
+              {usageAlert && (
+                <Alert
+                  tone="warning"
+                  title="Bandwidth at 82% of your plan"
+                  action={
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => toast('The demo has no plans page')}
+                    >
+                      View plans
+                    </Button>
+                  }
+                  onDismiss={() => setUsageAlert(false)}
+                >
+                  Usage resets in 9 days. Upgrade to avoid throttled previews.
+                </Alert>
+              )}
+              <div className="demo__cards">
+                <Card>
+                  <CardHeader>
+                    <CardTitle pixel>48.2k</CardTitle>
+                    <CardDescription>Requests in the last 12 hours</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Sparkline
+                      label="Requests per hour"
+                      data={requests}
+                      rows={10}
+                      cellSize={8}
+                      area
                     />
-                  </PixelTransition>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() =>
-                      startPixelTransition(() => setRegion((i) => (i + 1) % regions.length), {
-                        scope: 'elements',
-                      })
-                    }
-                  >
-                    Next region
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-            <div className="demo__split">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Latest preview</CardTitle>
-                  <CardDescription>a1f9c2e · main</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <PixelImage
-                    className="demo__preview"
-                    src={`${import.meta.env.BASE_URL}og.png`}
-                    alt="Screenshot of the latest acme-web production deployment"
-                    width={1200}
-                    height={630}
-                  />
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader className="demo__activity-head">
-                  <div>
-                    <CardTitle>Activity</CardTitle>
-                    <CardDescription>Team events today</CardDescription>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    iconStart={<RefreshIcon />}
-                    loading={loading}
-                    onClick={refresh}
-                  >
-                    Refresh
-                  </Button>
-                </CardHeader>
-                <CardContent>
-                  <ul className="demo__activity" role="list" aria-busy={loading}>
-                    {[
-                      ['ada@lovelace.dev', 'promoted a1f9c2e to production'],
-                      ['grace@hopper.dev', 'opened feat/billing'],
-                      ['alan@turing.dev', 'rotated the API token'],
-                      ['katherine@johnson.dev', 'added the domain docs.acme.dev'],
-                      ['grace@hopper.dev', 'rolled back e6c90b1'],
-                    ].map(([who, what]) => (
-                      <li key={what}>
-                        {loading ? (
-                          <>
-                            <Skeleton width={28} height={28} radius="full" />
-                            <Skeleton lines={2} />
-                          </>
-                        ) : (
-                          <>
-                            <PixelAvatar name={who ?? ''} label="" size={28} />
-                            <span>
-                              <strong>{who?.split('@')[0]}</strong> {what}
-                            </span>
-                          </>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </TabPanel>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Latency by region</CardTitle>
+                    <CardDescription>p75 of 52 ms across five regions</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <BarChart
+                      label="Latency by region in milliseconds"
+                      data={latency}
+                      highlight="max"
+                      rows={8}
+                      cellSize={10}
+                    />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Region status</CardTitle>
+                    <CardDescription>Edge capacity right now</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <PixelTransition className="demo__region">
+                      <div className="demo__region-name">
+                        <Badge tone="success" dot>
+                          {currentRegion?.code}
+                        </Badge>
+                        <span>{currentRegion?.name}</span>
+                      </div>
+                      <Progress
+                        value={currentRegion?.load ?? 0}
+                        label={`${currentRegion?.name} load`}
+                        showValue
+                      />
+                    </PixelTransition>
+                  </CardContent>
+                  <CardFooter>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() =>
+                        startPixelTransition(() => setRegion((i) => (i + 1) % regions.length), {
+                          scope: 'elements',
+                        })
+                      }
+                    >
+                      Next region
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </div>
+              <div className="demo__split">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Latest preview</CardTitle>
+                    <CardDescription>a1f9c2e · main</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <PixelImage
+                      className="demo__preview"
+                      src={`${import.meta.env.BASE_URL}og.png`}
+                      alt="Screenshot of the latest acme-web production deployment"
+                      width={1200}
+                      height={630}
+                    />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="demo__activity-head">
+                    <div>
+                      <CardTitle>Activity</CardTitle>
+                      <CardDescription>Team events today</CardDescription>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      iconStart={<RefreshIcon />}
+                      loading={loading}
+                      onClick={refresh}
+                    >
+                      Refresh
+                    </Button>
+                  </CardHeader>
+                  <CardContent aria-busy={loading}>
+                    {loading ? (
+                      <div className="demo__activity-loading">
+                        {activity.map((event) => (
+                          <Skeleton key={event.what} lines={2} />
+                        ))}
+                      </div>
+                    ) : (
+                      <Timeline aria-label="Team activity">
+                        {activity.map((event) => (
+                          <TimelineItem
+                            key={event.what}
+                            title={
+                              <>
+                                <strong>{event.who}</strong> {event.what}
+                              </>
+                            }
+                            time={event.time}
+                            tone={event.tone}
+                          />
+                        ))}
+                      </Timeline>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
+            </>
+          )}
 
-          <TabPanel value="deployments" className="demo__panel">
-            <div className="demo__filters">
-              <Input
-                ref={searchInput}
-                aria-label="Search deployments"
-                placeholder="Search commit or branch"
-                prefix={<SearchIcon />}
-                value={query}
-                onChange={(event) => {
-                  setQuery(event.target.value);
-                  setPage(1);
-                }}
-              />
-              <Select
-                aria-label="Environment"
-                value={env}
-                onChange={(event) => {
-                  setEnv(event.target.value as 'all' | Env);
-                  setPage(1);
-                }}
-              >
-                <option value="all">All environments</option>
-                <option value="production">Production</option>
-                <option value="preview">Preview</option>
-              </Select>
-              <Toolbar aria-label="Deployment actions">
-                <ToolbarGroup aria-label="Layout">
-                  <ToolbarButton pressed aria-label="List view">
-                    <ListIcon />
+          {view === 'deployments' && (
+            <>
+              <div className="demo__filters">
+                <Input
+                  ref={searchInput}
+                  aria-label="Search deployments"
+                  placeholder="Search commit or branch"
+                  prefix={<SearchIcon />}
+                  value={query}
+                  onChange={(event) => {
+                    setQuery(event.target.value);
+                    setPage(1);
+                  }}
+                />
+                <Select
+                  aria-label="Environment"
+                  value={env}
+                  onChange={(event) => {
+                    setEnv(event.target.value as 'all' | Env);
+                    setPage(1);
+                  }}
+                >
+                  <option value="all">All environments</option>
+                  <option value="production">Production</option>
+                  <option value="preview">Preview</option>
+                </Select>
+                <SegmentedControl
+                  aria-label="Layout"
+                  size="sm"
+                  options={layouts}
+                  value={layout}
+                  onValueChange={(next) => setLayout(next as Layout)}
+                />
+                <Toolbar aria-label="Deployment actions">
+                  <ToolbarButton
+                    aria-label="Refresh deployments"
+                    onClick={refresh}
+                    disabled={loading}
+                  >
+                    <RefreshIcon />
                   </ToolbarButton>
-                  <ToolbarButton pressed={false} aria-label="Grid view" disabled>
-                    <GridIcon />
-                  </ToolbarButton>
-                </ToolbarGroup>
-                <ToolbarSeparator />
-                <ToolbarGroup aria-label="Data">
                   <ToolbarButton aria-label="Export CSV" onClick={() => toast('Export started')}>
                     <DownloadIcon />
                   </ToolbarButton>
-                </ToolbarGroup>
-              </Toolbar>
-            </div>
-            <div className="demo__table">
-              <Table density="compact">
-                <TableCaption className="sr-only">Deployments for acme-web</TableCaption>
-                <TableHead>
-                  <TableRow>
-                    <TableHeader>Commit</TableHeader>
-                    <TableHeader>Branch</TableHeader>
-                    <TableHeader>Status</TableHeader>
-                    <TableHeader align="end">Duration</TableHeader>
-                    <TableHeader>Author</TableHeader>
-                    <TableHeader align="end">
-                      <span className="sr-only">Actions</span>
-                    </TableHeader>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {visible.length === 0 && (
-                    <TableRow>
-                      <TableCell colSpan={6}>No deployments match these filters.</TableCell>
-                    </TableRow>
-                  )}
-                  {visible.map((row) => (
-                    <TableRow key={row.commit}>
-                      <TableCell mono>{row.commit}</TableCell>
-                      <TableCell>
-                        <span className="demo__branch">
-                          {row.branch}
-                          {row.env === 'production' && (
-                            <Badge tone="accent" appearance="subtle" animateIn={false}>
-                              prod
-                            </Badge>
-                          )}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        <Badge
-                          tone={stateBadge[row.state].tone}
-                          dot={row.state === 'building' ? 'pulse' : true}
-                        >
-                          {stateBadge[row.state].label}
-                        </Badge>
-                      </TableCell>
-                      <TableCell align="end" mono>
-                        {row.duration}
-                      </TableCell>
-                      <TableCell>
-                        <Tooltip content={row.author}>
-                          <span className="demo__author" tabIndex={0}>
-                            <PixelAvatar name={row.author} size={24} />
-                          </span>
-                        </Tooltip>
-                      </TableCell>
-                      <TableCell align="end">
-                        <Dropdown
-                          align="end"
-                          aria-label={`Actions for ${row.commit}`}
-                          trigger={
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              aria-label={`Actions for ${row.commit}`}
-                            >
-                              <MoreIcon />
-                            </Button>
-                          }
-                        >
-                          <MenuItem icon={<RefreshIcon />} onSelect={() => redeploy(row)}>
-                            Redeploy
-                          </MenuItem>
-                          <MenuItem
-                            icon={<CopyIcon />}
-                            onSelect={() =>
-                              toast.success('URL copied', { description: `${row.commit}.acme.dev` })
-                            }
-                          >
-                            Copy URL
-                          </MenuItem>
-                          <MenuSeparator />
-                          <MenuItem
-                            icon={<TrashIcon />}
-                            tone="danger"
-                            onSelect={() => {
-                              setPendingDelete(row);
-                              setDeleteOpen(true);
-                            }}
-                          >
-                            Delete
-                          </MenuItem>
-                        </Dropdown>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-            {totalPages > 1 && (
-              <Pagination
-                className="demo__pagination"
-                total={totalPages}
-                page={currentPage}
-                onPageChange={setPage}
-                size="sm"
-              />
-            )}
-          </TabPanel>
+                </Toolbar>
+              </div>
 
-          <TabPanel value="settings" className="demo__panel">
+              {layout === 'list' ? (
+                <div className="demo__table">
+                  <Table density="compact" aria-busy={loading}>
+                    <TableCaption className="sr-only">Deployments for acme-web</TableCaption>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeader>Commit</TableHeader>
+                        <TableHeader>Branch</TableHeader>
+                        <TableHeader>Status</TableHeader>
+                        <TableHeader align="end">Duration</TableHeader>
+                        <TableHeader>Author</TableHeader>
+                        <TableHeader align="end">
+                          <span className="sr-only">Actions</span>
+                        </TableHeader>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {loading &&
+                        Array.from({ length: PAGE_SIZE }, (_, i) => (
+                          // biome-ignore lint/suspicious/noArrayIndexKey: static placeholder rows
+                          <TableRow key={i}>
+                            <TableCell colSpan={6}>
+                              <Skeleton height={24} />
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      {!loading && visible.length === 0 && (
+                        <TableRow>
+                          <TableCell colSpan={6}>No deployments match these filters.</TableCell>
+                        </TableRow>
+                      )}
+                      {!loading &&
+                        visible.map((row) => (
+                          <TableRow key={row.commit}>
+                            <TableCell mono>{row.commit}</TableCell>
+                            <TableCell>
+                              <span className="demo__branch">
+                                {row.branch}
+                                {row.env === 'production' && (
+                                  <Badge tone="accent" appearance="subtle" animateIn={false}>
+                                    prod
+                                  </Badge>
+                                )}
+                              </span>
+                            </TableCell>
+                            <TableCell>{statusBadge(row)}</TableCell>
+                            <TableCell align="end" mono>
+                              {row.duration}
+                            </TableCell>
+                            <TableCell>
+                              <Tooltip content={row.author}>
+                                <span className="demo__author" tabIndex={0}>
+                                  <PixelAvatar name={row.author} size={24} />
+                                </span>
+                              </Tooltip>
+                            </TableCell>
+                            <TableCell align="end">{actionsMenu(row)}</TableCell>
+                          </TableRow>
+                        ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              ) : (
+                <ul className="demo__grid" role="list" aria-busy={loading}>
+                  {loading &&
+                    Array.from({ length: PAGE_SIZE }, (_, i) => (
+                      // biome-ignore lint/suspicious/noArrayIndexKey: static placeholder cards
+                      <li key={i}>
+                        <Skeleton height={168} />
+                      </li>
+                    ))}
+                  {!loading && visible.length === 0 && <li>No deployments match these filters.</li>}
+                  {!loading &&
+                    visible.map((row) => (
+                      <li key={row.commit}>
+                        <Card className="demo__deploy">
+                          <CardHeader>
+                            <CardTitle>{row.branch}</CardTitle>
+                            <CardDescription>
+                              {row.commit} · {row.env} · {row.duration}
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="demo__deploy-meta">
+                            {statusBadge(row)}
+                            <PixelAvatar name={row.author} size={24} />
+                          </CardContent>
+                          <CardFooter className="demo__deploy-footer">
+                            <Button variant="secondary" size="sm" onClick={() => openDetails(row)}>
+                              View details
+                            </Button>
+                            {actionsMenu(row)}
+                          </CardFooter>
+                        </Card>
+                      </li>
+                    ))}
+                </ul>
+              )}
+
+              {totalPages > 1 && (
+                <Pagination
+                  className="demo__pagination"
+                  total={totalPages}
+                  page={currentPage}
+                  onPageChange={setPage}
+                  size="sm"
+                />
+              )}
+            </>
+          )}
+
+          {view === 'settings' && (
             <form
               className="demo__form"
               onSubmit={(event) => {
@@ -762,10 +915,10 @@ export function Demo() {
               <Accordion>
                 <AccordionItem title="Build" meta="3 options">
                   <div className="demo__options">
-                    <Switch label="Preview deployments" defaultChecked />
+                    <Checkbox label="Create preview deployments" defaultChecked />
                     <Checkbox label="Fail the build on lint warnings" />
-                    <Field label="Build concurrency">
-                      <Slider defaultValue={4} min={1} max={8} showValue />
+                    <Field label="Build concurrency" description="Parallel jobs, from 1 to 8.">
+                      <NumberField name="concurrency" defaultValue={4} min={1} max={8} />
                     </Field>
                   </div>
                 </AccordionItem>
@@ -789,56 +942,108 @@ export function Demo() {
                 <p className="muted">
                   Deleting removes every deployment and domain. There is no undo.
                 </p>
-                <Dialog
+                <AlertDialog
+                  tone="danger"
                   title="Delete acme-web?"
                   description="Every deployment, domain and environment variable will be removed."
-                  size="sm"
+                  confirmLabel="Delete project"
                   trigger={
                     <Button variant="danger" iconStart={<TrashIcon />}>
                       Delete project
                     </Button>
                   }
-                  footer={
-                    <>
-                      <DialogClose>
-                        <Button variant="secondary">Cancel</Button>
-                      </DialogClose>
-                      <DialogClose>
-                        <Button
-                          variant="danger"
-                          onClick={() => toast.error('This is a demo: nothing was deleted')}
-                        >
-                          Delete
-                        </Button>
-                      </DialogClose>
-                    </>
+                  onConfirm={() =>
+                    new Promise((resolve) => window.setTimeout(resolve, 900)).then(() =>
+                      toast.error('This is a demo: nothing was deleted'),
+                    )
                   }
                 />
               </div>
             </form>
-          </TabPanel>
-        </Tabs>
+          )}
+        </section>
       </div>
 
-      <Dialog
+      <AlertDialog
         open={deleteOpen}
         onOpenChange={setDeleteOpen}
+        tone="danger"
         title={`Delete deployment ${pendingDelete?.commit ?? ''}?`}
         description="Its preview URL stops working immediately."
-        size="sm"
+        confirmLabel="Delete deployment"
+        onConfirm={confirmDelete}
+      />
+
+      <Drawer
+        open={detailOpen}
+        onOpenChange={setDetailOpen}
+        size="lg"
+        title={detail ? `Deployment ${detail.commit}` : 'Deployment'}
+        description={detail ? `${detail.branch} · ${detail.env} · by ${detail.author}` : undefined}
         footer={
           <>
-            <DialogClose>
-              <Button variant="secondary">Cancel</Button>
-            </DialogClose>
-            <DialogClose>
-              <Button variant="danger" onClick={confirmDelete}>
-                Delete
+            <DrawerClose>
+              <Button variant="secondary">Close</Button>
+            </DrawerClose>
+            <DrawerClose>
+              <Button iconStart={<RefreshIcon />} onClick={() => detail && redeploy(detail)}>
+                Redeploy
               </Button>
-            </DialogClose>
+            </DrawerClose>
           </>
         }
-      />
+      >
+        {detail && detailSteps && (
+          <div className="demo__detail" key={detail.commit}>
+            <div className="demo__detail-status">
+              {statusBadge(detail)}
+              <span className="muted">Duration {detail.duration}</span>
+            </div>
+            <Stepper
+              aria-label="Build phases"
+              steps={detailSteps.steps}
+              current={detailSteps.current}
+            />
+            <Tabs defaultValue="logs">
+              <TabList label="Deployment details">
+                <Tab value="logs" icon={<TerminalIcon />}>
+                  Logs
+                </Tab>
+                <Tab value="events" icon={<ListIcon />}>
+                  Events
+                </Tab>
+              </TabList>
+              <TabPanel value="logs" className="demo__detail-panel">
+                <Terminal
+                  title="Build logs"
+                  lines={buildLog(detail)}
+                  streaming={detail.state === 'building'}
+                  maxHeight={240}
+                />
+              </TabPanel>
+              <TabPanel value="events" className="demo__detail-panel">
+                <Timeline aria-label="Deployment events">
+                  <TimelineItem
+                    title={outcome[detail.state].title}
+                    time="12:04"
+                    dateTime="2026-11-15T12:04"
+                    tone={outcome[detail.state].tone}
+                  />
+                  <TimelineItem title="Build started" time="12:04" dateTime="2026-11-15T12:04" />
+                  <TimelineItem
+                    title={`Pushed to ${detail.branch}`}
+                    time="12:03"
+                    dateTime="2026-11-15T12:03"
+                  >
+                    {detail.commit} by {detail.author.split('@')[0]}
+                  </TimelineItem>
+                </Timeline>
+              </TabPanel>
+            </Tabs>
+          </div>
+        )}
+      </Drawer>
+
       <Toaster position="bottom-right" />
     </div>
   );

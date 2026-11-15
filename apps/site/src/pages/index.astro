@@ -1,5 +1,5 @@
 ---
-import { Badge, MoonIcon, SunIcon } from '@pablo-v/react';
+import { Badge } from '@pablo-v/react';
 import '@pablo-v/react/styles.css';
 import '../styles/site.css';
 import sansFont from '../../../../packages/tokens/fonts/Geist-Variable.latin.woff2?url';
@@ -10,6 +10,7 @@ import { HeroScramble } from '../components/HeroScramble';
 import { InstallTabs } from '../components/InstallTabs';
 import LinkButton from '../components/LinkButton.astro';
 import { Showcase } from '../components/Showcase';
+import { SiteNav } from '../components/SiteNav';
 import { catalog, componentCount, repoUrl, storybookDocs, storybookUrl } from '../data/catalog';
 
 const title = 'PixelUI: React components with a pixel signature';
@@ -142,24 +143,8 @@ const jsonLd = JSON.stringify({
     <a class="skip" href="#main">Skip to content</a>
 
     <header class="header">
-      <div class="container header__inner">
-        <a class="brand" href={import.meta.env.BASE_URL} aria-label="PixelUI home">PixelUI</a>
-        <nav class="nav" aria-label="Sections">
-          <a href="#demo">Demo</a>
-          <a href="#install">Install</a>
-          <a href="#usage">Usage</a>
-          <a href="#mcp">MCP</a>
-          <a href="#skill">Skill</a>
-          <a href="#components">Components</a>
-        </nav>
-        <div class="header__actions">
-          <a class="header__link" href={storybookUrl}>Storybook</a>
-          <a class="header__link" href={repoUrl}>GitHub</a>
-          <button type="button" class="icon-link" id="theme-toggle" aria-label="Toggle dark theme" aria-pressed="false">
-            <span class="theme-icon theme-icon--sun"><SunIcon size={16} /></span>
-            <span class="theme-icon theme-icon--moon"><MoonIcon size={16} /></span>
-          </button>
-        </div>
+      <div class="container">
+        <SiteNav client:load home={import.meta.env.BASE_URL} storybookUrl={storybookUrl} repoUrl={repoUrl} />
       </div>
     </header>
 
@@ -443,47 +428,6 @@ const jsonLd = JSON.stringify({
     <div class="sr-only" role="status" aria-live="polite" id="copy-status"></div>
 
     <script>
-      const root = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-      const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : prefersDark.matches);
-      const sync = () => toggle?.setAttribute('aria-pressed', String(isDark()));
-      sync();
-      prefersDark.addEventListener('change', sync);
-      toggle?.addEventListener('click', () => {
-        const next = isDark() ? 'light' : 'dark';
-        root.dataset.theme = next;
-        for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
-          meta.setAttribute('content', next === 'dark' ? '#000000' : '#ffffff');
-        }
-        try {
-          localStorage.setItem('pxl-theme', next);
-        } catch {}
-        sync();
-      });
-
-      const navLinks = new Map(
-        [...document.querySelectorAll<HTMLAnchorElement>('.nav a[href^="#"]')].map((link) => [link.hash.slice(1), link]),
-      );
-      const spy = new IntersectionObserver(
-        (records) => {
-          for (const record of records) {
-            const link = navLinks.get(record.target.id);
-            if (record.isIntersecting) {
-              for (const other of navLinks.values()) other.removeAttribute('aria-current');
-              link?.setAttribute('aria-current', 'true');
-            } else {
-              link?.removeAttribute('aria-current');
-            }
-          }
-        },
-        { rootMargin: '-40% 0px -55% 0px' },
-      );
-      for (const id of navLinks.keys()) {
-        const section = document.getElementById(id);
-        if (section) spy.observe(section);
-      }
-
       const status = document.getElementById('copy-status');
       const timers = new WeakMap<HTMLButtonElement, number>();
       document.addEventListener('click', async (event) => {
