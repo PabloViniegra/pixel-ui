@@ -69,7 +69,9 @@ export function Avatar({
           onError={() => setFailed(src)}
         />
       )}
-      {status && <span className="pxl-avatar__status" data-status={status} aria-hidden="true" />}
+      {status && (
+        <span key={status} className="pxl-avatar__status" data-status={status} aria-hidden="true" />
+      )}
     </span>
   );
 }
