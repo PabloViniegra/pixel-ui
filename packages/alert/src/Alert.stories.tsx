@@ -10,7 +10,15 @@ const meta = {
   title: 'Feedback/Alert',
   component: Alert,
   tags: ['autodocs'],
-  parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  parameters: {
+    pixelui: { name: pkg.name, version: pkg.version },
+    docs: {
+      description: {
+        component:
+          'Use Alert for a message within the page, such as a deployment status or validation warning. It does not open a modal, move focus or block the page. Warning and danger tones use role="alert"; other tones use role="status". Use AlertDialog to request confirmation, or Dialog for general modal content.',
+      },
+    },
+  },
   args: {
     title: 'Build cache cleared',
     children: 'The next deployment will rebuild every dependency from scratch.',

@@ -10,20 +10,31 @@ const meta = {
   title: 'Overlays/Dialog',
   component: Dialog,
   tags: ['autodocs'],
-  parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  parameters: {
+    pixelui: { name: pkg.name, version: pkg.version },
+    docs: {
+      description: {
+        component:
+          'Use Dialog for general modal content: details, forms or settings. It accepts any body and footer. By default, Escape, a backdrop click and the close button dismiss it. Use AlertDialog for an important confirmation with built-in Cancel/Confirm actions; use Alert for an inline message.',
+      },
+    },
+  },
   args: {
-    title: 'Delete project',
-    description: 'acme-web and its 214 deployments will be removed. This cannot be undone.',
-    trigger: <Button variant="danger">Delete project</Button>,
+    title: 'Deployment details',
+    description: 'Review the latest deployment without leaving the project.',
+    trigger: <Button variant="secondary">View deployment</Button>,
+    children: (
+      <dl style={{ margin: 0, display: 'grid', gap: 8 }}>
+        <dt>Project</dt>
+        <dd style={{ margin: 0 }}>acme-web</dd>
+        <dt>Environment</dt>
+        <dd style={{ margin: 0 }}>Production</dd>
+      </dl>
+    ),
     footer: (
-      <>
-        <DialogClose>
-          <Button variant="secondary">Cancel</Button>
-        </DialogClose>
-        <DialogClose>
-          <Button variant="danger">Delete</Button>
-        </DialogClose>
-      </>
+      <DialogClose>
+        <Button variant="secondary">Done</Button>
+      </DialogClose>
     ),
   },
   argTypes: { size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] } },
@@ -32,7 +43,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Open the details, then try Escape, clicking outside the panel, the close button or Done. Dialog provides the modal container; its body and actions are supplied by the caller.',
+      },
+    },
+  },
+};
 
 export const WithBody: Story = {
   args: {
