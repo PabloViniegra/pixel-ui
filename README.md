@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://pabloviniegra.github.io/pixel-ui/">
-  <img src="https://www.gitskins.com/api/section/wordmark?username=PabloViniegra&amp;label=PIXEL" alt="PIXEL drawn as a rotating 3D ASCII wordmark in a terminal window" width="100%" />
+  <img src="apps/site/public/og.png" alt="PixelUI wordmark with the tagline React components with a pixel signature" width="100%" />
 </a>
 
 ### React components with a pixel signature
