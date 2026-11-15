@@ -73,6 +73,17 @@ const overrides = `:root {
   --pxl-font-pixel: var(--pxl-font-pixel-grid);
 }`;
 
+const mcpClaude = 'claude mcp add pixel-ui -- npx -y @pablo-v/mcp';
+
+const mcpConfig = `{
+  "mcpServers": {
+    "pixel-ui": {
+      "command": "npx",
+      "args": ["-y", "@pablo-v/mcp"]
+    }
+  }
+}`;
+
 const pageUrl = new URL(import.meta.env.BASE_URL, Astro.site).href;
 const ogImage = new URL('og.png', pageUrl).href;
 const ogImageAlt =
@@ -135,6 +146,7 @@ const jsonLd = JSON.stringify({
           <a href="#demo">Demo</a>
           <a href="#install">Install</a>
           <a href="#usage">Usage</a>
+          <a href="#mcp">MCP</a>
           <a href="#components">Components</a>
         </nav>
         <div class="header__actions">
@@ -269,6 +281,52 @@ const jsonLd = JSON.stringify({
               tokens, never from literals. <a href={storybookDocs('foundations-tokens')}>All tokens in Storybook</a>.
             </p>
             <Code lang="css" name="Token overrides" code={overrides} />
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="mcp" aria-labelledby="mcp-title">
+        <div class="section__head">
+          <h2 id="mcp-title" class="section__title">Teach your agent PixelUI</h2>
+          <p class="section__lead">
+            <code>@pablo-v/mcp</code> is a Model Context Protocol server. Connect it to your coding agent and it can look up
+            which component fits, its typed props, real examples and the design rules before writing any UI.
+          </p>
+        </div>
+        <div class="guides">
+          <article class="guide">
+            <h3 class="guide__title">Claude Code</h3>
+            <p class="muted">
+              Run this once in your project. It needs Node.js; <code>npx</code> fetches the server on first use.
+            </p>
+            <Code lang="bash" label="Terminal" name="Claude Code MCP command" code={mcpClaude} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">What your agent gets</h3>
+            <dl class="tools">
+              <div><dt><code>list_components</code></dt><dd>The catalogue by category, to choose components.</dd></div>
+              <div>
+                <dt><code>get_component</code></dt>
+                <dd>When to use it and what to use instead, install command, imports, typed API and examples.</dd>
+              </div>
+              <div><dt><code>get_guide</code></dt><dd>Setup, the design rules and every <code>--pxl-*</code> token.</dd></div>
+            </dl>
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Cursor, Claude Desktop and other clients</h3>
+            <p class="muted">
+              Add the server to the client's MCP configuration, for example <code>.cursor/mcp.json</code>. It runs over
+              stdio, so it works with any client that can start a local command.
+            </p>
+            <Code lang="json" label="mcp.json" name="MCP client configuration" code={mcpConfig} />
+          </article>
+          <article class="guide">
+            <h3 class="guide__title">Matches the version you install</h3>
+            <p class="muted">
+              The server answers from data built at release time: the packages' type declarations, their Storybook
+              stories and a hand-written usage guide per component. Nothing is fetched at runtime and nothing leaves your
+              machine.
+            </p>
           </article>
         </div>
       </section>

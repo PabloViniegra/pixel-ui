@@ -225,6 +225,13 @@ a.pxl-button {
   }
 }
 
+/* No room for every section link on small phones; MCP is the least essential. */
+@media (max-width: 480px) {
+  .nav a[href="#mcp"] {
+    display: none;
+  }
+}
+
 @media (max-width: 400px) {
   .header__inner {
     gap: var(--pxl-space-2);
@@ -943,6 +950,20 @@ main > .section {
 
 .guide .code + .code {
   margin-top: 0;
+}
+
+.tools {
+  display: grid;
+  gap: var(--pxl-space-3);
+}
+
+.tools dt {
+  font-size: var(--pxl-text-sm);
+  font-weight: 600;
+}
+
+.tools dd {
+  color: var(--pxl-fg-muted);
 }
 
 @media (max-width: 760px) {
