@@ -1,0 +1,40 @@
+{
+  "name": "@pablo-v/mcp",
+  "version": "0.0.0",
+  "description": "MCP server that teaches coding agents the PixelUI component catalogue: APIs, usage examples and design rules",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloViniegra/pixel-ui.git",
+    "directory": "packages/mcp"
+  },
+  "type": "module",
+  "bin": {
+    "pixel-ui-mcp": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node scripts/build-catalog.mjs",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@pablo-v/react": "workspace:^"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "react",
+    "pixel",
+    "ui",
+    "pixel-ui"
+  ]
+}

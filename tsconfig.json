@@ -201,6 +201,9 @@
     },
     {
       "path": "packages/react"
+    },
+    {
+      "path": "packages/mcp"
     }
   ]
 }

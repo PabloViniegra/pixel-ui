@@ -46,6 +46,7 @@ pnpm add @pablo-v/react
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tokens"><code>@pablo-v/tokens</code></a></td><td>CSS variables, fonts, keyframes, utilities and a Tailwind CSS v4 preset</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/core"><code>@pablo-v/core</code></a></td><td>Shared hooks and helpers (<code>cx</code>, <code>useControllableState</code>, positioning, roving focus)</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/react"><code>@pablo-v/react</code></a></td><td>Umbrella package re-exporting everything</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/mcp"><code>@pablo-v/mcp</code></a></td><td>MCP server that gives coding agents the catalogue, typed APIs, examples and design rules</td></tr>
 
 <tr><th align="left">Actions &amp; inputs</th><th></th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/autocomplete"><code>@pablo-v/autocomplete</code></a></td><td>Combobox that filters a list of options as you type</td></tr>
