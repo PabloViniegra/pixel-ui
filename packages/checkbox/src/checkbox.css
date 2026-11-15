@@ -67,6 +67,8 @@
 
 .pxl-checkbox__mark,
 .pxl-checkbox__dash {
+  /* The input is positioned for its hit area, so an unpositioned mark would paint under it. */
+  position: relative;
   grid-area: 1 / 1;
   color: var(--pxl-accent-fg);
   pointer-events: none;

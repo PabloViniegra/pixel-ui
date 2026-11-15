@@ -872,10 +872,23 @@ main > .section {
   gap: var(--pxl-space-2);
 }
 
-.demo__options {
+.demo__options,
+.demo__checks {
   display: grid;
-  gap: var(--pxl-space-4);
-  max-width: 420px;
+  gap: var(--pxl-space-3);
+}
+
+/* The trigger's focus ring sits 4px outside it and would cover the first control. */
+.demo__options {
+  padding-top: var(--pxl-space-2);
+}
+
+.demo__options--split {
+  gap: var(--pxl-space-6);
+}
+
+.demo__concurrency {
+  max-width: 200px;
 }
 
 @media (max-width: 900px) {

@@ -914,10 +914,16 @@ export function Demo() {
 
               <Accordion>
                 <AccordionItem title="Build" meta="3 options">
-                  <div className="demo__options">
-                    <Checkbox label="Create preview deployments" defaultChecked />
-                    <Checkbox label="Fail the build on lint warnings" />
-                    <Field label="Build concurrency" description="Parallel jobs, from 1 to 8.">
+                  <div className="demo__options demo__options--split">
+                    <div className="demo__checks">
+                      <Checkbox label="Create preview deployments" defaultChecked />
+                      <Checkbox label="Fail the build on lint warnings" />
+                    </div>
+                    <Field
+                      label="Build concurrency"
+                      description="Parallel jobs, from 1 to 8."
+                      className="demo__concurrency"
+                    >
                       <NumberField name="concurrency" defaultValue={4} min={1} max={8} />
                     </Field>
                   </div>
