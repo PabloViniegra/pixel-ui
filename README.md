@@ -109,7 +109,7 @@ The component catalogue is grouped below. The site and Storybook derive their en
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/terminal"><code>@pablo-v/terminal</code></a></td><td>Streaming log viewer with autoscroll, level colours and a block cursor</td></tr>
 </table>
 
-## Install and use
+## Using it
 
 The repository requires **Node.js 22.23.4 or later** and **pnpm 10.28.0**. To use PixelUI in an app, install the umbrella package:
 
@@ -124,7 +124,11 @@ import '@pablo-v/react/styles.css';
 import { Button } from '@pablo-v/react';
 
 export function DeployButton({ isDeploying }: { isDeploying: boolean }) {
-  return <Button variant="primary" loading={isDeploying}>Deploy</Button>;
+  return (
+    <Button variant="primary" loading={isDeploying}>
+      Deploy
+    </Button>
+  );
 }
 ```
 
@@ -188,17 +192,17 @@ pnpm storybook       # Storybook at http://localhost:6006
 pnpm site            # Astro site at http://localhost:4321/pixel-ui/
 ```
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm build` | Build all packages and copy their assets |
-| `pnpm typecheck` | Type-check package, app, story, and test sources |
-| `pnpm test` | Run the Vitest suite |
-| `pnpm lint` | Check the repository with Biome |
-| `pnpm build-storybook` | Build the Storybook catalogue |
-| `pnpm build-site` | Build the Astro site |
-| `pnpm --filter @pablo-v/site check` | Check Astro components and pages |
-| `pnpm new:component` | Scaffold a component package |
-| `pnpm changeset` | Record package version bumps for a release |
+| Command                             | Purpose                                          |
+| ----------------------------------- | ------------------------------------------------ |
+| `pnpm build`                        | Build all packages and copy their assets         |
+| `pnpm typecheck`                    | Type-check package, app, story, and test sources |
+| `pnpm test`                         | Run the Vitest suite                             |
+| `pnpm lint`                         | Check the repository with Biome                  |
+| `pnpm build-storybook`              | Build the Storybook catalogue                    |
+| `pnpm build-site`                   | Build the Astro site                             |
+| `pnpm --filter @pablo-v/site check` | Check Astro components and pages                 |
+| `pnpm new:component`                | Scaffold a component package                     |
+| `pnpm changeset`                    | Record package version bumps for a release       |
 
 ## Repository layout
 
