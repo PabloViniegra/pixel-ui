@@ -1,5 +1,19 @@
 # @pablo-v/color
 
+## 0.2.0
+
+### Minor Changes
+
+- 878f832: Add props to translate built-in accessible names: `closeLabel` on `Dialog` and `Drawer`, `incrementLabel` and `decrementLabel` on `NumberField`, `dismissLabel` on `Toaster`, `searchLabel` and `listLabel` on `CommandMenu`, `listLabel` and `removeLabel` (a function of the file name) on `FileUpload`, and `saturationLabel`, `brightnessLabel`, `hueLabel`, `alphaLabel`, `hexLabel` and `presetsLabel` on `ColorPicker`. Error toasts now announce their text with `role="alert"`, so screen readers read them immediately.
+
+### Patch Changes
+
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+  - @pablo-v/field@1.1.3
+  - @pablo-v/popover@1.0.3
+  - @pablo-v/input@1.0.3
+
 ## 0.1.3
 
 ### Patch Changes

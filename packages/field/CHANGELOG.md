@@ -1,5 +1,11 @@
 # @pablo-v/field
 
+## 1.1.3
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+
 ## 1.1.2
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/slider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Range slider drawn as a track of pixel cells",
   "license": "MIT",
   "repository": {

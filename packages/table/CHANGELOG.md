@@ -1,5 +1,15 @@
 # @pablo-v/table
 
+## 1.1.0
+
+### Minor Changes
+
+- 878f832: Add sortable table headers (`sort` and `onSort` on `TableHeader`, with `aria-sort`) and two new components: `SearchInput`, a search field with a clear button, and `PasswordInput`, a password field with a show/hide toggle.
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+
 ## 1.0.2
 
 ### Patch Changes

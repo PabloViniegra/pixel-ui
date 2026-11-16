@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/file-upload",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Drag-and-drop file picker with a file list",
   "license": "MIT",
   "repository": {

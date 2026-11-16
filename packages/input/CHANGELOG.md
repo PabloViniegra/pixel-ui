@@ -1,5 +1,13 @@
 # @pablo-v/input
 
+## 1.0.3
+
+### Patch Changes
+
+- 878f832: Move the square affix button style into `@pablo-v/input` (`.pxl-input__affix-button`) so `DatePicker`, `SearchInput` and `PasswordInput` share one definition. `DatePicker` keeps its `pxl-date-picker__trigger` class for overrides.
+- Updated dependencies [878f832]
+  - @pablo-v/field@1.1.3
+
 ## 1.0.2
 
 ### Patch Changes

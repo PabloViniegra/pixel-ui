@@ -1,5 +1,17 @@
 # @pablo-v/multi-select
 
+## 0.2.1
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+  - @pablo-v/autocomplete@0.2.3
+  - @pablo-v/chip@0.1.3
+  - @pablo-v/field@1.1.3
+  - @pablo-v/input@1.0.3
+
 ## 0.2.0
 
 ### Minor Changes

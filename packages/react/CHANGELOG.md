@@ -1,5 +1,67 @@
 # @pablo-v/react
 
+## 0.6.0
+
+### Minor Changes
+
+- 878f832: Add sortable table headers (`sort` and `onSort` on `TableHeader`, with `aria-sort`) and two new components: `SearchInput`, a search field with a clear button, and `PasswordInput`, a password field with a show/hide toggle.
+
+### Patch Changes
+
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+- Updated dependencies [878f832]
+  - @pablo-v/dialog@1.1.0
+  - @pablo-v/drawer@0.2.0
+  - @pablo-v/number-field@0.2.0
+  - @pablo-v/toast@1.2.0
+  - @pablo-v/command-menu@1.1.0
+  - @pablo-v/file-upload@0.3.0
+  - @pablo-v/color@0.2.0
+  - @pablo-v/accordion@1.0.2
+  - @pablo-v/alert@0.1.3
+  - @pablo-v/alert-dialog@0.1.1
+  - @pablo-v/autocomplete@0.2.3
+  - @pablo-v/avatar@0.1.3
+  - @pablo-v/breadcrumb@1.0.1
+  - @pablo-v/calendar@0.1.3
+  - @pablo-v/chip@0.1.3
+  - @pablo-v/collapsible@0.1.1
+  - @pablo-v/context-menu@0.2.2
+  - @pablo-v/date-field@0.1.2
+  - @pablo-v/date-picker@0.1.3
+  - @pablo-v/date-range-picker@0.1.2
+  - @pablo-v/field@1.1.3
+  - @pablo-v/flip-clock@1.0.2
+  - @pablo-v/hover-card@0.1.1
+  - @pablo-v/menu@1.0.4
+  - @pablo-v/multi-select@0.2.1
+  - @pablo-v/navbar@0.1.4
+  - @pablo-v/pagination@0.1.2
+  - @pablo-v/pin-input@0.1.4
+  - @pablo-v/pixel-image@1.0.2
+  - @pablo-v/popover@1.0.3
+  - @pablo-v/radio@1.0.3
+  - @pablo-v/rating@0.1.2
+  - @pablo-v/sidebar@0.1.1
+  - @pablo-v/skeleton@1.0.2
+  - @pablo-v/slider@1.0.4
+  - @pablo-v/stepper@0.2.3
+  - @pablo-v/switch@1.0.2
+  - @pablo-v/table@1.1.0
+  - @pablo-v/tabs@1.0.3
+  - @pablo-v/terminal@1.1.1
+  - @pablo-v/time-field@0.1.1
+  - @pablo-v/timeline@0.1.2
+  - @pablo-v/toggle@0.1.5
+  - @pablo-v/tooltip@1.0.2
+  - @pablo-v/button@1.0.4
+  - @pablo-v/input@1.0.3
+  - @pablo-v/search-input@0.1.0
+  - @pablo-v/password-input@0.1.0
+
 ## 0.5.2
 
 ### Patch Changes

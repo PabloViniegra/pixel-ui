@@ -1,5 +1,11 @@
 # @pablo-v/timeline
 
+## 0.1.2
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+
 ## 0.1.1
 
 ### Patch Changes
