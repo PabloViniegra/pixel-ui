@@ -10,6 +10,10 @@ const meta = {
   component: Slider,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    format: { control: false },
+    onValueChange: { control: false },
+  },
   args: { defaultValue: 60, showValue: true, segments: 20 },
   render: (args) => (
     <div style={{ width: 320 }}>
@@ -29,4 +33,8 @@ export const Formatted: Story = {
   args: { defaultValue: 512, min: 128, max: 3008, step: 64, format: (v: number) => `${v} MB` },
 };
 
-export const Disabled: Story = { args: { disabled: true } };
+export const Disabled: Story = {
+  args: { disabled: true },
+  // WCAG 1.4.3 exempts inactive components from contrast, but axe cannot tell this one is disabled.
+  parameters: { a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } } },
+};

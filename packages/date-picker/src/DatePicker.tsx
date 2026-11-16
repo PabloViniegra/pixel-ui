@@ -8,11 +8,15 @@ import { type KeyboardEvent, useId, useRef } from 'react';
 import { DatePickerPopover, DatePickerTrigger } from './DatePickerPopover.js';
 
 export interface DatePickerProps extends Omit<DateFieldProps, 'suffix'> {
+  /** Calendar open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial calendar state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the calendar opens or closes. */
   onOpenChange?: (open: boolean) => void;
   /** Marks extra days as unavailable in the calendar, e.g. weekends. */
   isDateDisabled?: (date: Date) => boolean;
+  /** Extra props for the pop-up `Calendar`, such as `isDateDisabled`. */
   calendarProps?: Omit<CalendarSingleProps, 'mode' | 'value' | 'onChange'>;
   /** Accessible name of the calendar button and panel. @default 'Choose date' */
   pickerLabel?: string;

@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 export interface PixelImageProps extends Omit<ComponentPropsWithRef<'img'>, 'src' | 'alt'> {
+  /** Image URL, shown as a coarse mosaic until it loads. */
   src: string;
   /** Required: describe the image, or pass `""` if it is decorative. */
   alt: string;

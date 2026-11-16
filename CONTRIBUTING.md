@@ -3,7 +3,7 @@
 ## Adding a component
 
 ```bash
-pnpm new:component tooltip --description "Pixel tooltip with stepped reveal"
+pnpm new:component tooltip --category Overlays --description "Pixel tooltip with stepped reveal"
 pnpm install
 ```
 
@@ -18,7 +18,7 @@ Then add a changeset (`minor`) so its first release is `0.1.0`.
 - [ ] Class names are `pxl-<component>` / `pxl-<component>__<part>` (BEM-ish).
 - [ ] Only `--pxl-*` tokens in CSS; component-private variables are prefixed `--_`.
 - [ ] Rounded corners via `--pxl-radius-*`; elevation via `--pxl-shadow-sm|md`, only as hover/float feedback.
-- [ ] Movement uses `--pxl-ease-spring` or `--pxl-ease-out`; `steps()` is reserved for the loader and text scramble.
+- [ ] Movement uses `--pxl-ease-spring` or `--pxl-ease-out`; `steps()` is reserved for frame-by-frame identity motion: the loader, ScrambleText, the terminal cursor, the PixelTransition dissolve and animated PixelIcons.
 - [ ] Works with `prefers-reduced-motion` (handled globally by `@pablo-v/tokens/motion.css`;
   JS animations use `usePrefersReducedMotion`).
 - [ ] Correct role, accessible name and keyboard support; no a11y violations in Storybook.

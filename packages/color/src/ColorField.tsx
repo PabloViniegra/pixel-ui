@@ -14,6 +14,7 @@ export interface ColorFieldProps
     > {
   /** @default 'md' */
   size?: PixelSize;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
   /** Applied to the outer box; `className` goes there too. */
   style?: CSSProperties;

@@ -25,7 +25,9 @@ export interface BreadcrumbItemProps extends Omit<ComponentPropsWithRef<'li'>, '
   href?: string;
   /** Marks the last crumb as the current page. */
   current?: boolean;
+  /** Node shown before the label. */
   icon?: ReactNode;
+  /** Label of the crumb. */
   children: ReactNode;
 }
 

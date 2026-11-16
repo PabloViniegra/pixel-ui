@@ -11,6 +11,9 @@ const meta = {
   component: FlipCounter,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+  },
   args: { value: 128, minDigits: 4 },
 } satisfies Meta<typeof FlipCounter>;
 

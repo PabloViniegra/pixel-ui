@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Scaffolds a new, independently versioned PixelUI component package.
 //
-//   pnpm new:component tooltip
-//   pnpm new:component date-picker --description "Pixel calendar date picker"
+//   pnpm new:component tooltip --category Overlays
+//   pnpm new:component date-picker --category Forms --description "Pixel calendar date picker"
 //
 // Creates packages/<name> (package.json, tsconfig, src/, story, test, README,
 // CHANGELOG), registers it in the root tsconfig and in the @pablo-v/react
@@ -13,12 +13,31 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
-const name = args.find((a) => !a.startsWith('--'));
-const descIdx = args.indexOf('--description');
-const description = descIdx >= 0 ? args[descIdx + 1] : undefined;
+const flag = (key) => {
+  const i = args.indexOf(key);
+  return i >= 0 ? args[i + 1] : undefined;
+};
+const name = args.find((a, i) => !a.startsWith('--') && !args[i - 1]?.startsWith('--'));
+const description = flag('--description');
+const category = flag('--category');
 
-if (!name || !/^[a-z][a-z0-9-]*$/.test(name)) {
-  console.error('Usage: pnpm new:component <kebab-case-name> [--description "..."]');
+// Same groups as the Storybook sidebar (storySort in apps/docs/.storybook/preview.tsx).
+const categories = [
+  'Actions',
+  'Forms',
+  'Feedback',
+  'Data display',
+  'Layout',
+  'Navigation',
+  'Overlays',
+  'Signature',
+];
+
+if (!name || !/^[a-z][a-z0-9-]*$/.test(name) || !categories.includes(category)) {
+  console.error(
+    'Usage: pnpm new:component <kebab-case-name> --category <category> [--description "..."]',
+  );
+  console.error(`Categories: ${categories.map((c) => JSON.stringify(c)).join(', ')}`);
   process.exit(1);
 }
 
@@ -155,7 +174,7 @@ import { ${pascal} } from './${pascal}.js';
 import './${name}.css';
 
 const meta = {
-  title: 'Components/${pascal}',
+  title: '${category}/${pascal}',
   component: ${pascal},
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

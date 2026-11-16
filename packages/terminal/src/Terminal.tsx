@@ -24,6 +24,7 @@ export interface LogLine {
 }
 
 export interface TerminalProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
+  /** Log lines in order; append to stream new output. */
   lines: readonly LogLine[];
   /** Header label; also names the log region for assistive tech. */
   title?: string;

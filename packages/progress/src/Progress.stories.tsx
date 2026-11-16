@@ -5,7 +5,7 @@ import { Progress } from './Progress.js';
 import './progress.css';
 
 const meta = {
-  title: 'Components/Progress',
+  title: 'Feedback/Progress',
   component: Progress,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

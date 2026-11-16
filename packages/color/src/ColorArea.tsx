@@ -20,6 +20,7 @@ export interface ColorAreaProps
   xLabel?: string;
   /** @default 'Brightness' */
   yLabel?: string;
+  /** Blocks pointer and keyboard changes. */
   disabled?: boolean;
 }
 

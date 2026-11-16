@@ -7,8 +7,11 @@ import { DateSegments, type DateSegmentsProps } from './DateSegments.js';
 
 export interface DateFieldProps
   extends Omit<DateSegmentsProps, 'value' | 'onChange' | 'controlId' | 'style' | 'ref' | 'prefix'> {
+  /** Selected date, or `null` for none. Controlled when given. */
   value?: Date | null;
+  /** Initial date when uncontrolled. */
   defaultValue?: Date | null;
+  /** Called with a complete date, or `null` once it is cleared. */
   onChange?: (date: Date | null) => void;
   /** @default 'md' */
   size?: PixelSize;
@@ -20,6 +23,7 @@ export interface DateFieldProps
   suffix?: ReactNode;
   /** Applied to the outer box; `className` goes there too. */
   style?: CSSProperties;
+  /** Ref to the outer box. */
   ref?: Ref<HTMLSpanElement>;
 }
 

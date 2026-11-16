@@ -22,11 +22,15 @@ export interface RadioGroupProps
   description?: ReactNode;
   /** Error message; marks every radio as invalid. */
   error?: ReactNode;
+  /** Selected value. Controlled when given. */
   value?: string;
+  /** Initial value when uncontrolled. */
   defaultValue?: string;
+  /** Called with the newly selected value. */
   onValueChange?: (value: string) => void;
   /** Shared `name`; generated when omitted. */
   name?: string;
+  /** Requires a choice before the form submits. */
   required?: boolean;
   /** @default 'vertical' */
   orientation?: Orientation;
@@ -97,8 +101,11 @@ export function RadioGroup({
 
 export interface RadioProps
   extends Omit<ComponentPropsWithRef<'input'>, 'type' | 'value' | 'size'> {
+  /** Value submitted and reported when this option is chosen. */
   value: string;
+  /** Visible label, clickable. */
   label?: ReactNode;
+  /** Secondary line under the label. */
   description?: ReactNode;
 }
 

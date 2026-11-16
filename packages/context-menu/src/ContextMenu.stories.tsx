@@ -1,4 +1,4 @@
-import { MenuItem, MenuSeparator } from '@pablo-v/menu';
+import { MenuGroup, MenuItem, MenuSeparator } from '@pablo-v/menu';
 import { CopyIcon, DownloadIcon, ShareIcon, TrashIcon } from '@pablo-v/pixel-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import pkg from '../package.json' with { type: 'json' };
@@ -12,6 +12,11 @@ const meta = {
   component: ContextMenu,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    content: { control: false },
+    children: { control: false },
+    onOpenChange: { control: false },
+  },
   args: {
     'aria-label': 'File actions',
     content: (
@@ -53,3 +58,31 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+/** Group related items under a label and disable the ones that do not apply. */
+export const Grouped: Story = {
+  args: {
+    content: (
+      <>
+        <MenuGroup label="Edit">
+          <MenuItem icon={<CopyIcon />} shortcut="⌘C">
+            Copy
+          </MenuItem>
+          <MenuItem disabled>Paste</MenuItem>
+        </MenuGroup>
+        <MenuSeparator />
+        <MenuGroup label="File">
+          <MenuItem icon={<DownloadIcon />}>Download</MenuItem>
+          <MenuItem icon={<TrashIcon />} tone="danger">
+            Delete
+          </MenuItem>
+        </MenuGroup>
+      </>
+    ),
+  },
+};
+
+/** With `disabled`, the browser's native context menu opens instead. */
+export const Disabled: Story = {
+  args: { disabled: true },
+};

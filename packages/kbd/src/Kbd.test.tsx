@@ -13,4 +13,12 @@ describe('Kbd', () => {
       'P',
     ]);
   });
+
+  it('renders a single key cap from children', () => {
+    const { container } = render(<Kbd size="sm">Esc</Kbd>);
+    const key = container.firstElementChild;
+    expect(key).toHaveTextContent('Esc');
+    expect(key).toHaveAttribute('data-size', 'sm');
+    expect(key?.querySelector('kbd')).toBeNull();
+  });
 });

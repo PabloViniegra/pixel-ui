@@ -12,6 +12,7 @@ export interface SwitchProps
   checked?: boolean;
   /** Initial state when uncontrolled. @default false */
   defaultChecked?: boolean;
+  /** Called with the new state when toggled. */
   onCheckedChange?: (checked: boolean) => void;
   /** Visible label rendered next to the switch. */
   label?: ReactNode;

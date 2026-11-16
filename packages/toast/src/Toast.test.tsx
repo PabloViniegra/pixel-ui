@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { toast } from './store.js';
 import { Toaster } from './Toaster.js';
@@ -83,5 +83,17 @@ describe('Toaster', () => {
       vi.advanceTimersByTime(60_000);
     });
     expect(screen.getByRole('button', { name: 'Undo' })).toBeInTheDocument();
+  });
+
+  it('announces error toasts as alerts and names the close button with dismissLabel', () => {
+    render(<Toaster dismissLabel="Descartar" />);
+    act(() => {
+      toast('Guardado');
+      toast.error('Fallo al desplegar');
+    });
+    expect(screen.getByRole('alert')).toHaveTextContent('Fallo al desplegar');
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    expect(within(screen.getByRole('alert')).queryByRole('button')).toBeNull();
+    expect(screen.getAllByRole('button', { name: 'Descartar' })).toHaveLength(2);
   });
 });

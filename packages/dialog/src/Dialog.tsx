@@ -22,12 +22,17 @@ const DialogContext = createContext<(() => void) | null>(null);
 
 export interface DialogProps
   extends Omit<ComponentPropsWithRef<'dialog'>, 'open' | 'title' | 'onClose' | 'onCancel'> {
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** Element that opens the dialog on click. Optional when `open` is controlled. */
   trigger?: ReactElement;
+  /** Heading and accessible name of the dialog. */
   title: ReactNode;
+  /** Supporting text under the title, linked with `aria-describedby`. */
   description?: ReactNode;
   /** Actions row, right-aligned. Wrap a button in `DialogClose` to close on click. */
   footer?: ReactNode;
@@ -35,6 +40,8 @@ export interface DialogProps
   size?: 'sm' | 'md' | 'lg';
   /** Escape, the backdrop and the close button dismiss it. @default true */
   dismissible?: boolean;
+  /** Accessible name of the close button. @default 'Close' */
+  closeLabel?: string;
 }
 
 /**
@@ -51,6 +58,7 @@ export function Dialog({
   footer,
   size = 'md',
   dismissible = true,
+  closeLabel = 'Close',
   className,
   children,
   ref,
@@ -99,7 +107,7 @@ export function Dialog({
                 <button
                   type="button"
                   className="pxl-dialog__close"
-                  aria-label="Close"
+                  aria-label={closeLabel}
                   onClick={close}
                 >
                   <CloseIcon />

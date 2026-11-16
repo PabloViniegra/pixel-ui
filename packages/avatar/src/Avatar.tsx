@@ -9,6 +9,7 @@ export type AvatarStatus = 'online' | 'away' | 'busy' | 'offline';
 export interface AvatarProps extends Omit<ComponentPropsWithRef<'span'>, 'children'> {
   /** Person or entity shown; names the avatar and feeds the initials fallback. */
   name: string;
+  /** Image URL. Falls back to the initials while loading or on error. */
   src?: string;
   /** Replaces the initials when there is no image or it fails to load. */
   fallback?: ReactNode;

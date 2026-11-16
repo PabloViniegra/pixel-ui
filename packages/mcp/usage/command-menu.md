@@ -4,3 +4,4 @@ Use as the global ⌘K palette of an application: navigation targets and command
 - A menu of actions for one element: use `Dropdown`. Picking a form value: use `Autocomplete`.
 - Give each command a `group`, and `keywords` for synonyms; show its real shortcut in `shortcut`.
 - Every command must also be reachable through the regular UI.
+- In non-English UIs, set `placeholder`, `emptyMessage`, `label`, `searchLabel` and `listLabel`.

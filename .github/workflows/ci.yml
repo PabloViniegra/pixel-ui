@@ -25,6 +25,8 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm --filter @pablo-v/site check
       - run: pnpm test
+      - run: pnpm --filter @pablo-v/docs exec playwright install --with-deps chromium-headless-shell
+      - run: pnpm test:stories
       - run: pnpm build
       - run: pnpm build-storybook
       - run: pnpm build-site

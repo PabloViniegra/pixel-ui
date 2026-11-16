@@ -32,6 +32,9 @@ const meta = {
   component: Field,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    children: { control: false },
+  },
   args: {
     label: 'Project name',
     description: 'Lowercase letters, numbers and dashes.',

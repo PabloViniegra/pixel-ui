@@ -4,4 +4,5 @@ Use for brief feedback about something that just happened and needs no decision:
 - Information that must stay visible or belongs to a part of the page: `Alert`. A required decision: `AlertDialog`. Field validation errors: `Field error`.
 - Keep titles to a few words. Use `action` for undo or retry; a toast with an action stays until dismissed.
 - Reuse an `id` to update a toast in place (loading, then success) instead of stacking new ones.
+- `toast.error()` is announced immediately; the other tones wait for the screen reader to finish. In non-English UIs, set `label` and `dismissLabel` on `Toaster`.
 - Never put the only copy of important information in a toast.

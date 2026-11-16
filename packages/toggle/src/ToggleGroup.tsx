@@ -37,7 +37,9 @@ export interface ToggleGroupProps
   type?: 'single' | 'multiple';
   /** Pressed item values. */
   value?: string[];
+  /** Initially pressed values when uncontrolled. */
   defaultValue?: string[];
+  /** Called with every pressed value after each change. */
   onValueChange?: (value: string[]) => void;
   /** @default 'horizontal' */
   orientation?: Orientation;
@@ -121,7 +123,9 @@ export function ToggleGroup({
 }
 
 export interface ToggleGroupItemProps extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
+  /** Reported in the group's value while pressed. */
   value: string;
+  /** Node shown before the label, or alone with an `aria-label`. */
   icon?: ReactNode;
 }
 

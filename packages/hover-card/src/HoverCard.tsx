@@ -24,8 +24,11 @@ export interface HoverCardProps extends Omit<ComponentPropsWithRef<'div'>, 'cont
   content: ReactNode;
   /** Usually a link. Must accept a ref and focus/pointer handlers. */
   children: ReactElement;
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** @default 'bottom' */
   side?: Side;

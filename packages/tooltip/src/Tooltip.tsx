@@ -20,6 +20,7 @@ let lastClosedAt = -Infinity;
 const isWarm = () => openTooltips > 0 || performance.now() - lastClosedAt < WARM_MS;
 
 export interface TooltipProps extends Omit<ComponentPropsWithRef<'div'>, 'content' | 'children'> {
+  /** Short hint text. Not for interactive content; use `Popover` instead. */
   content: ReactNode;
   /** The element the tooltip describes. Must accept a ref and focus/pointer handlers. */
   children: ReactElement;

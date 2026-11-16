@@ -130,6 +130,7 @@ export interface NavbarMenuProps extends Omit<ComponentPropsWithRef<'li'>, 'chil
   label: ReactNode;
   /** Highlights the button when one of its links is the current page. */
   current?: boolean;
+  /** `NavbarMenuLink` items shown in the disclosure panel. */
   children: ReactNode;
 }
 
@@ -235,7 +236,9 @@ export function NavbarMenu({
 export interface NavbarMenuLinkProps extends ComponentPropsWithRef<'a'> {
   /** Secondary line under the label. */
   description?: ReactNode;
+  /** Node shown before the label. */
   icon?: ReactNode;
+  /** Marks the link as the current page (`aria-current="page"`). */
   current?: boolean;
 }
 

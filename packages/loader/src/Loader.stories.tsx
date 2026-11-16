@@ -4,7 +4,7 @@ import { Loader } from './Loader.js';
 import './loader.css';
 
 const meta = {
-  title: 'Components/Loader',
+  title: 'Feedback/Loader',
   component: Loader,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

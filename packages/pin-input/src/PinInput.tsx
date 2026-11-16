@@ -14,8 +14,11 @@ export interface PinInputProps
   extends Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'defaultValue'> {
   /** Number of characters. @default 6 */
   length?: number;
+  /** Entered characters. Controlled when given. */
   value?: string;
+  /** Initial characters when uncontrolled. */
   defaultValue?: string;
+  /** Called with all entered characters after each change. */
   onChange?: (value: string) => void;
   /** Fires once every cell is filled. */
   onComplete?: (value: string) => void;
@@ -25,13 +28,17 @@ export interface PinInputProps
   mask?: boolean;
   /** @default 'md' */
   size?: PixelSize;
+  /** Blocks editing. */
   disabled?: boolean;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
+  /** Marks the input as required for forms and assistive technology. */
   required?: boolean;
   /** Id of the first cell. Inside a `Field` this is automatic. */
   id?: string;
   /** Name of a hidden input that submits the joined value. */
   name?: string;
+  /** Focuses the first empty cell on mount. */
   autoFocus?: boolean;
   /** Accessible name of each cell. @default (i, n) => `Character ${i} of ${n}` */
   cellLabel?: (index: number, length: number) => string;

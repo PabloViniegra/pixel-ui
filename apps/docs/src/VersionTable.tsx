@@ -58,6 +58,7 @@ export function VersionTable() {
             <td>
               <Badge tone={pkg.version.startsWith('0.') ? 'warning' : 'success'} animateIn={false}>
                 v{pkg.version}
+                {pkg.version.startsWith('0.') && ' beta'}
               </Badge>
             </td>
             <td>

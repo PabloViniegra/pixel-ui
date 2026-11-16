@@ -6,10 +6,11 @@ import '@pablo-v/pixel-icons/style.css';
 import './timeline.css';
 
 const meta = {
-  title: 'Components/Timeline',
+  title: 'Data display/Timeline',
   component: Timeline,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  subcomponents: { TimelineItem },
   args: { 'aria-label': 'Deployment history', style: { maxWidth: 420 } },
 } satisfies Meta<typeof Timeline>;
 

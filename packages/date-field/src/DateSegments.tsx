@@ -67,24 +67,33 @@ function compose({ day, month, year }: Parts): Date | null {
 
 export interface DateSegmentsProps
   extends Omit<ComponentPropsWithRef<'span'>, 'onChange' | 'defaultValue'> {
+  /** Date shown in the segments, or `null` for empty. */
   value: Date | null;
   /** Called with a complete date, or `null` once the date is cleared or no longer valid. */
   onChange: (date: Date | null) => void;
   /** BCP 47 locale that decides the segment order and separators. */
   locale?: string;
+  /** Earliest valid date; earlier values show the error style. */
   min?: Date;
+  /** Latest valid date; later values show the error style. */
   max?: Date;
+  /** Blocks editing and dims the segments. */
   disabled?: boolean;
+  /** Keeps the value focusable but not editable. */
   readOnly?: boolean;
+  /** Marks the segments as required for assistive technology. */
   required?: boolean;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
   /** Id of the first segment, so a `<label htmlFor>` can point at it. */
   controlId?: string;
+  /** Id of the description or error text. */
   'aria-describedby'?: string;
   /** Name of a hidden input that submits the value as `YYYY-MM-DD`. */
   name?: string;
   /** Accessible names of the segments. */
   segmentLabels?: Partial<Record<DateSegmentType, string>>;
+  /** Text shown in empty segments. @default { day: 'dd', month: 'mm', year: 'yyyy' } */
   placeholders?: Partial<Record<DateSegmentType, string>>;
 }
 

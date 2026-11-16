@@ -19,4 +19,19 @@ describe('Breadcrumb', () => {
     expect(screen.getByRole('link', { name: 'web' })).toHaveAttribute('href', '/acme/web');
     expect(screen.getByText('Deployments')).toHaveAttribute('aria-current', 'page');
   });
+
+  it('keeps icons out of link names and uses a custom landmark label', () => {
+    render(
+      <Breadcrumb label="Ruta">
+        <BreadcrumbItem href="/" icon={<svg data-testid="home" />}>
+          Inicio
+        </BreadcrumbItem>
+        <BreadcrumbItem>Proyectos</BreadcrumbItem>
+      </Breadcrumb>,
+    );
+    expect(screen.getByRole('navigation', { name: 'Ruta' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Inicio' })).toBeInTheDocument();
+    expect(screen.getByTestId('home').parentElement).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByText('Proyectos').closest('a')).toBeNull();
+  });
 });

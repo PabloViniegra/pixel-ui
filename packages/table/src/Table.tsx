@@ -1,4 +1,5 @@
 import { cx } from '@pablo-v/core';
+import { ArrowDownIcon, ArrowUpIcon } from '@pablo-v/pixel-icons';
 import type { ComponentPropsWithRef } from 'react';
 
 export interface TableProps extends ComponentPropsWithRef<'table'> {
@@ -61,17 +62,55 @@ export function TableRow({ selected, className, ...rest }: TableRowProps) {
 
 type Align = 'start' | 'center' | 'end';
 
+export type TableSortDirection = 'ascending' | 'descending' | 'none';
+
 export interface TableHeaderProps extends Omit<ComponentPropsWithRef<'th'>, 'align'> {
+  /** Text alignment of the column. Use `end` for numbers. */
   align?: Align;
+  /** Current sort of this column. Only one column should be `ascending` or `descending`. */
+  sort?: TableSortDirection;
+  /** Makes the header a button. Sort the rows yourself and update `sort`. */
+  onSort?: () => void;
 }
 
-export function TableHeader({ align, scope = 'col', className, ...rest }: TableHeaderProps) {
+export function TableHeader({
+  align,
+  scope = 'col',
+  sort,
+  onSort,
+  className,
+  children,
+  ...rest
+}: TableHeaderProps) {
+  const sorted = sort === 'ascending' || sort === 'descending';
+  const SortIcon = sort === 'ascending' ? ArrowUpIcon : ArrowDownIcon;
   return (
-    <th scope={scope} className={cx('pxl-table__th', className)} data-align={align} {...rest} />
+    <th
+      scope={scope}
+      aria-sort={sorted ? sort : undefined}
+      className={cx('pxl-table__th', className)}
+      data-align={align}
+      {...rest}
+    >
+      {onSort ? (
+        <button
+          type="button"
+          className="pxl-table__sort"
+          data-sorted={sorted || undefined}
+          onClick={onSort}
+        >
+          {children}
+          <SortIcon className="pxl-table__sort-icon" />
+        </button>
+      ) : (
+        children
+      )}
+    </th>
   );
 }
 
 export interface TableCellProps extends Omit<ComponentPropsWithRef<'td'>, 'align'> {
+  /** Text alignment of the cell. Use `end` for numbers. */
   align?: Align;
   /** Monospace with tabular figures, for ids, hashes and numbers. */
   mono?: boolean;

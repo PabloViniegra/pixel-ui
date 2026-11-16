@@ -46,6 +46,60 @@
   white-space: nowrap;
 }
 
+.pxl-table__th:has(> .pxl-table__sort) {
+  padding: 0;
+}
+
+.pxl-table__sort {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--pxl-space-1);
+  width: 100%;
+  padding: var(--pxl-space-2) var(--_cell-x);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  transition: color var(--pxl-dur-fast) linear;
+}
+
+.pxl-table__th[data-align="end"] .pxl-table__sort {
+  flex-direction: row-reverse;
+}
+
+.pxl-table__th[data-align="center"] .pxl-table__sort {
+  justify-content: center;
+}
+
+.pxl-table__sort:hover,
+.pxl-table__sort[data-sorted] {
+  color: var(--pxl-fg);
+}
+
+.pxl-table__sort:focus-visible {
+  outline: 2px solid var(--pxl-accent);
+  outline-offset: -2px;
+}
+
+.pxl-table__sort-icon {
+  flex: none;
+  opacity: 0;
+  transition: opacity var(--pxl-dur-fast) linear;
+}
+
+/* Unsorted columns show the arrow only on hover or focus, so the active sort stands out. */
+.pxl-table__sort:hover .pxl-table__sort-icon,
+.pxl-table__sort:focus-visible .pxl-table__sort-icon {
+  opacity: 0.5;
+}
+
+.pxl-table__sort[data-sorted] .pxl-table__sort-icon {
+  opacity: 1;
+}
+
 .pxl-table[data-sticky] .pxl-table__head .pxl-table__th {
   position: sticky;
   top: 0;

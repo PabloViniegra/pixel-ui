@@ -51,4 +51,9 @@ describe('Dialog', () => {
     expect(dialog).toHaveAttribute('open');
     expect(onOpenChange).not.toHaveBeenCalled();
   });
+
+  it('names the close button with closeLabel', () => {
+    render(<Dialog title="Borrar" defaultOpen closeLabel="Cerrar" />);
+    expect(screen.getByRole('button', { name: 'Cerrar' })).toBeInTheDocument();
+  });
 });

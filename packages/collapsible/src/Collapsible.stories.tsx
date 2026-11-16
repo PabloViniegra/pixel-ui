@@ -5,10 +5,14 @@ import '@pablo-v/pixel-icons/style.css';
 import './collapsible.css';
 
 const meta = {
-  title: 'Components/Collapsible',
+  title: 'Layout/Collapsible',
   component: Collapsible,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    children: { control: false },
+    onOpenChange: { control: false },
+  },
   args: {
     title: 'Advanced settings',
     children: (

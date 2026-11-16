@@ -49,6 +49,8 @@ export interface ToasterProps extends ComponentPropsWithRef<'section'> {
   max?: number;
   /** @default 'Notifications' */
   label?: string;
+  /** Accessible name of each toast's close button. @default 'Dismiss notification' */
+  dismissLabel?: string;
 }
 
 /** Mount once near the root. Renders toasts sent with `toast()`. */
@@ -56,6 +58,7 @@ export function Toaster({
   position = 'bottom-right',
   max = 3,
   label = 'Notifications',
+  dismissLabel = 'Dismiss notification',
   className,
   ...rest
 }: ToasterProps) {
@@ -86,7 +89,14 @@ export function Toaster({
     >
       <ol className="pxl-toaster__list" aria-live="polite" aria-relevant="additions text">
         {shown.map(({ toast: t, leaving }) => (
-          <ToastItem key={t.id} toast={t} paused={paused} leaving={leaving} onExited={remove} />
+          <ToastItem
+            key={t.id}
+            toast={t}
+            paused={paused}
+            leaving={leaving}
+            dismissLabel={dismissLabel}
+            onExited={remove}
+          />
         ))}
       </ol>
     </section>
@@ -97,11 +107,13 @@ function ToastItem({
   toast: t,
   paused,
   leaving,
+  dismissLabel,
   onExited,
 }: {
   toast: ToastData;
   paused: boolean;
   leaving: boolean;
+  dismissLabel: string;
   onExited: (id: string) => void;
 }) {
   const ref = useRef<HTMLLIElement>(null);
@@ -143,7 +155,12 @@ function ToastItem({
       style={{ '--_duration': `${t.duration}ms`, '--_cells': CELLS } as CSSProperties}
     >
       <Icon className="pxl-toast__icon" />
-      <div className="pxl-toast__content">
+      <div
+        className="pxl-toast__content"
+        // Inside the polite list, errors still interrupt so they are not queued behind other speech.
+        // On this wrapper, not the <li>, so the item keeps its listitem role and the buttons stay out.
+        role={t.tone === 'danger' ? 'alert' : undefined}
+      >
         <p className="pxl-toast__title">{t.title}</p>
         {t.description != null && <p className="pxl-toast__description">{t.description}</p>}
       </div>
@@ -162,7 +179,7 @@ function ToastItem({
       <button
         type="button"
         className="pxl-toast__close"
-        aria-label="Dismiss notification"
+        aria-label={dismissLabel}
         onClick={() => toast.dismiss(t.id)}
       >
         <CloseIcon />

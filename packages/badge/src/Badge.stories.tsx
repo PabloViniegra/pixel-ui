@@ -6,7 +6,7 @@ import './badge.css';
 const tones = ['neutral', 'accent', 'success', 'warning', 'danger'] as const;
 
 const meta = {
-  title: 'Components/Badge',
+  title: 'Data display/Badge',
   component: Badge,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

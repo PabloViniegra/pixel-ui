@@ -5,7 +5,7 @@ import { ScrambleText } from './ScrambleText.js';
 import './scramble-text.css';
 
 const meta = {
-  title: 'Components/ScrambleText',
+  title: 'Signature/ScrambleText',
   component: ScrambleText,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

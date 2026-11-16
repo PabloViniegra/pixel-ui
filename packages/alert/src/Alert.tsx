@@ -20,6 +20,7 @@ const ICONS: Record<PixelTone, PixelIcon> = {
 export interface AlertProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
   /** Colour intent. @default 'neutral' */
   tone?: PixelTone;
+  /** Bold first line. Omit for a single-line message. */
   title?: ReactNode;
   /** Replaces the tone icon; `false` hides it. */
   icon?: ReactNode | false;

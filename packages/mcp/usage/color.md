@@ -4,3 +4,4 @@ Use for choosing a colour. All values are hex strings (`#rrggbb`, or `#rrggbbaa`
 - A fixed brand palette only: `ColorSwatchPicker`. A typed hex value only: `ColorField`. Displaying a colour: `ColorSwatch`.
 - For a custom panel, pass `ColorArea`, `ColorSlider`, `ColorField` and `ColorSwatchPicker` as `ColorPicker` children; they share the picker colour without wiring `value` on each.
 - Give `ColorPicker` a meaningful `label` and wrap `ColorField` in `Field`.
+- In non-English UIs, set `label`, `saturationLabel`, `brightnessLabel`, `hueLabel`, `alphaLabel`, `hexLabel` and `presetsLabel`.

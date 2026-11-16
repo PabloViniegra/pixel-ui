@@ -97,7 +97,9 @@
     "@pablo-v/collapsible": "workspace:^",
     "@pablo-v/timeline": "workspace:^",
     "@pablo-v/rating": "workspace:^",
-    "@pablo-v/resizable": "workspace:^"
+    "@pablo-v/resizable": "workspace:^",
+    "@pablo-v/search-input": "workspace:^",
+    "@pablo-v/password-input": "workspace:^"
   },
   "peerDependencies": {
     "react": "^19.0.0"

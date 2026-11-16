@@ -4,7 +4,7 @@ import { Skeleton } from './Skeleton.js';
 import './skeleton.css';
 
 const meta = {
-  title: 'Components/Skeleton',
+  title: 'Feedback/Skeleton',
   component: Skeleton,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
@@ -20,6 +20,7 @@ export const Default: Story = {};
 export const CardPlaceholder: Story = {
   render: () => (
     <div
+      role="group"
       aria-busy="true"
       aria-label="Loading project"
       style={{

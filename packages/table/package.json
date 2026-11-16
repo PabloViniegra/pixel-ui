@@ -32,7 +32,8 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pablo-v/core": "workspace:^"
+    "@pablo-v/core": "workspace:^",
+    "@pablo-v/pixel-icons": "workspace:^"
   },
   "peerDependencies": {
     "@pablo-v/tokens": "workspace:^",
@@ -40,5 +41,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@pablo-v/checkbox": "workspace:^"
   }
 }

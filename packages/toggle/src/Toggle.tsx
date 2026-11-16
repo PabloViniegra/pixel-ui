@@ -4,11 +4,15 @@ import { cx, type PixelSize, useControllableState } from '@pablo-v/core';
 import type { ComponentPropsWithRef, MouseEvent, ReactNode } from 'react';
 
 export interface ToggleProps extends ComponentPropsWithRef<'button'> {
+  /** Pressed state. Controlled when given. */
   pressed?: boolean;
+  /** Initial state when uncontrolled. @default false */
   defaultPressed?: boolean;
+  /** Called with the new state when pressed. */
   onPressedChange?: (pressed: boolean) => void;
   /** @default 'md' */
   size?: PixelSize;
+  /** Node shown before the label, or alone with an `aria-label`. */
   icon?: ReactNode;
 }
 

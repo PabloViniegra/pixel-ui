@@ -10,6 +10,9 @@ const meta = {
   component: PixelImage,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    steps: { control: false },
+  },
   args: {
     src: deskSketches,
     alt: 'Pixel icon sketches of a folder and a magnifying glass on graph paper, next to a pencil and a keyboard',

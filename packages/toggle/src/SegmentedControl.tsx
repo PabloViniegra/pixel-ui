@@ -25,9 +25,13 @@ export interface SegmentedControlOption {
 
 export interface SegmentedControlProps
   extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onChange'> {
+  /** Segments in order, each with a value, label and optional icon. */
   options: SegmentedControlOption[];
+  /** Selected value. Controlled when given. */
   value?: string;
+  /** Initial value when uncontrolled. Defaults to the first enabled option. */
   defaultValue?: string;
+  /** Called with the newly selected value. */
   onValueChange?: (value: string) => void;
   /** @default 'md' */
   size?: PixelSize;

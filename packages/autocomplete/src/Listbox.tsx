@@ -53,23 +53,35 @@ export function splitMatch(label: string, query: string): [string, string, strin
 export const optionId = (listId: string, index: number) => `${listId}-option-${index}`;
 
 export interface ListboxProps {
+  /** Id of the listbox, referenced by the input's `aria-controls`. */
   id: string;
+  /** Renders the list only while true. */
   open: boolean;
   /** Box the list is anchored to and sized from. */
   anchorRef: RefObject<HTMLElement | null>;
+  /** Options to render, already filtered. */
   options: readonly ListboxOption[];
+  /** Index of the highlighted option, or -1 for none. */
   activeIndex: number;
+  /** Whether an option value is currently selected. */
   isSelected: (value: string) => boolean;
+  /** Called when an option is clicked. */
   onSelect: (option: ListboxOption) => void;
+  /** Called with the index of the option under the pointer. */
   onActivate: (index: number) => void;
+  /** Shown when `options` is empty. */
   emptyMessage: ReactNode;
+  /** Sets `aria-multiselectable` for multi-value pickers. */
   multiselectable?: boolean;
   /** Text typed by the user; its first match in each label is emphasised. */
   highlight?: string;
   /** Id of the visible label, usually the Field label. */
   labelledBy?: string;
+  /** Accessible name of the list. */
   label?: string;
+  /** Extra class on the list element. */
   className?: string;
+  /** Ref to the list element, for positioning. */
   ref?: Ref<HTMLDivElement>;
 }
 

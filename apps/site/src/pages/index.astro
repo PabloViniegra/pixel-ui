@@ -377,9 +377,9 @@ const jsonLd = JSON.stringify({
         </div>
         {
           catalog.map((group) => (
-            <section class="group" aria-labelledby={`cat-${group.category.toLowerCase()}-title`}>
+            <section class="group" aria-labelledby={`cat-${group.category.toLowerCase().replace(/\s+/g, '-')}-title`}>
               <div class="group__head">
-                <h3 class="group__title" id={`cat-${group.category.toLowerCase()}-title`}>{group.label}</h3>
+                <h3 class="group__title" id={`cat-${group.category.toLowerCase().replace(/\s+/g, '-')}-title`}>{group.label}</h3>
                 <p class="muted">{group.blurb}</p>
               </div>
               <ul class="entries" role="list">

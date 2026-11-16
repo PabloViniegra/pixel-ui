@@ -20,7 +20,7 @@ Accessible React 19 components, each published as an independent npm package. Pi
 
 ## What’s included
 
-- **64 catalogued components** for forms, navigation, overlays, feedback, data display, and pixel effects. Browse live examples and APIs in [Storybook](https://pabloviniegra.github.io/pixel-ui/storybook/).
+- **66 catalogued components** for forms, navigation, overlays, feedback, data display, and pixel effects. Browse live examples and APIs in [Storybook](https://pabloviniegra.github.io/pixel-ui/storybook/).
 - **Use only what you need:** install individual `@pablo-v/*` packages or use the `@pablo-v/react` umbrella package.
 - **Themeable foundations:** CSS tokens, Geist / Geist Mono / Geist Pixel fonts, motion, and a Tailwind CSS v4 preset.
 - **Accessible interactions:** keyboard navigation, focus handling, and native HTML elements where they fit.
@@ -28,7 +28,7 @@ Accessible React 19 components, each published as an independent npm package. Pi
 
 ## Packages
 
-The component catalogue is grouped below. The site and Storybook derive their entries from package manifests and stories.
+The component catalogue is grouped below. The groups match the Storybook sidebar and the site, which derive their entries from package manifests and story titles.
 
 <table>
 <tr><th align="left">Foundations</th><th align="left">Purpose</th></tr>
@@ -36,23 +36,8 @@ The component catalogue is grouped below. The site and Storybook derive their en
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/core"><code>@pablo-v/core</code></a></td><td>Internal shared hooks and helpers used by PixelUI packages</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/react"><code>@pablo-v/react</code></a></td><td>Umbrella package re-exporting the component catalogue</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/mcp"><code>@pablo-v/mcp</code></a></td><td>MCP server with component APIs, examples, and design guidance for coding agents</td></tr>
-<tr><th align="left" colspan="2">Components</th></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/avatar"><code>@pablo-v/avatar</code></a></td><td>Photo avatar with initials fallback, presence status and groups</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/badge"><code>@pablo-v/badge</code></a></td><td>Status badge with neutral, accent and status tones and an optional status dot</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/button"><code>@pablo-v/button</code></a></td><td>Button with primary, secondary, ghost and danger variants, three sizes and a loading state</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/card"><code>@pablo-v/card</code></a></td><td>Card container with header, title, description, content and footer slots</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/collapsible"><code>@pablo-v/collapsible</code></a></td><td>Single show/hide disclosure section</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/kbd"><code>@pablo-v/kbd</code></a></td><td>Keyboard key and shortcut display</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/loader"><code>@pablo-v/loader</code></a></td><td>3x3 pixel grid loader with snake, pulse and scan patterns</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/progress"><code>@pablo-v/progress</code></a></td><td>Segmented progress bar with a determinate value or an indeterminate loop</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/resizable"><code>@pablo-v/resizable</code></a></td><td>Resizable panel groups with draggable handles</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/scramble-text"><code>@pablo-v/scramble-text</code></a></td><td>Text that decodes itself from random pixel glyphs</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/scroll-area"><code>@pablo-v/scroll-area</code></a></td><td>Scroll container with thin, themed scrollbars</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/separator"><code>@pablo-v/separator</code></a></td><td>Horizontal and vertical separators</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/skeleton"><code>@pablo-v/skeleton</code></a></td><td>Loading placeholders</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/switch"><code>@pablo-v/switch</code></a></td><td>Toggle switch with role="switch", controlled or uncontrolled, and an optional label</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/timeline"><code>@pablo-v/timeline</code></a></td><td>Vertical list of dated events</td></tr>
 <tr><th align="left" colspan="2">Actions</th></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/button"><code>@pablo-v/button</code></a></td><td>Button with primary, secondary, ghost and danger variants, three sizes and a loading state</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/chip"><code>@pablo-v/chip</code></a></td><td>Pill chip that can be toggled or removed</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/toggle"><code>@pablo-v/toggle</code></a></td><td>Pressable toggle button, toggle group and segmented control</td></tr>
 <tr><th align="left" colspan="2">Forms</th></tr>
@@ -68,22 +53,42 @@ The component catalogue is grouped below. The site and Storybook derive their en
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/input"><code>@pablo-v/input</code></a></td><td>Text input with prefix and suffix slots</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/multi-select"><code>@pablo-v/multi-select</code></a></td><td>Combobox that picks several options shown as chips</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/number-field"><code>@pablo-v/number-field</code></a></td><td>Numeric input with stepper buttons and keyboard increments</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/password-input"><code>@pablo-v/password-input</code></a></td><td>Password field with a show/hide toggle</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pin-input"><code>@pablo-v/pin-input</code></a></td><td>Segmented OTP and PIN code input</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/radio"><code>@pablo-v/radio</code></a></td><td>Radio group with a pixel dot indicator</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/rating"><code>@pablo-v/rating</code></a></td><td>Star rating input and read-only display</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/search-input"><code>@pablo-v/search-input</code></a></td><td>Search field with a clear button</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/select"><code>@pablo-v/select</code></a></td><td>Styled native select</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/slider"><code>@pablo-v/slider</code></a></td><td>Range slider drawn as a track of pixel cells</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/switch"><code>@pablo-v/switch</code></a></td><td>Toggle switch with role="switch", controlled or uncontrolled, and an optional label</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/textarea"><code>@pablo-v/textarea</code></a></td><td>Multi-line text input with auto-resize</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/time-field"><code>@pablo-v/time-field</code></a></td><td>Segmented time input and time picker</td></tr>
-<tr><th align="left" colspan="2">Navigation</th></tr>
+<tr><th align="left" colspan="2">Feedback</th></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/alert"><code>@pablo-v/alert</code></a></td><td>Inline status message with tone icon, action and dismiss</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/loader"><code>@pablo-v/loader</code></a></td><td>3x3 pixel grid loader with snake, pulse and scan patterns</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/progress"><code>@pablo-v/progress</code></a></td><td>Segmented progress bar with a determinate value or an indeterminate loop</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/skeleton"><code>@pablo-v/skeleton</code></a></td><td>Loading placeholders</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/toast"><code>@pablo-v/toast</code></a></td><td>Toast notifications with a pixel countdown</td></tr>
+<tr><th align="left" colspan="2">Data display</th></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/avatar"><code>@pablo-v/avatar</code></a></td><td>Photo avatar with initials fallback, presence status and groups</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/badge"><code>@pablo-v/badge</code></a></td><td>Status badge with neutral, accent and status tones and an optional status dot</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/card"><code>@pablo-v/card</code></a></td><td>Card container with header, title, description, content and footer slots</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/kbd"><code>@pablo-v/kbd</code></a></td><td>Keyboard key and shortcut display</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/table"><code>@pablo-v/table</code></a></td><td>Data table primitives</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/timeline"><code>@pablo-v/timeline</code></a></td><td>Vertical list of dated events</td></tr>
+<tr><th align="left" colspan="2">Layout</th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/accordion"><code>@pablo-v/accordion</code></a></td><td>Accordion on native details elements</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/collapsible"><code>@pablo-v/collapsible</code></a></td><td>Single show/hide disclosure section</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/resizable"><code>@pablo-v/resizable</code></a></td><td>Resizable panel groups with draggable handles</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/scroll-area"><code>@pablo-v/scroll-area</code></a></td><td>Scroll container with thin, themed scrollbars</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/separator"><code>@pablo-v/separator</code></a></td><td>Horizontal and vertical separators</td></tr>
+<tr><th align="left" colspan="2">Navigation</th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/breadcrumb"><code>@pablo-v/breadcrumb</code></a></td><td>Breadcrumb trail for nested pages</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/link"><code>@pablo-v/link</code></a></td><td>Text link with external-link handling</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/navbar"><code>@pablo-v/navbar</code></a></td><td>Site navigation bar with links and disclosure menus</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pagination"><code>@pablo-v/pagination</code></a></td><td>Page navigation with previous, next and truncated page links</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/sidebar"><code>@pablo-v/sidebar</code></a></td><td>Collapsible application sidebar navigation</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/stepper"><code>@pablo-v/stepper</code></a></td><td>Multi-step progress indicator</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/table"><code>@pablo-v/table</code></a></td><td>Data table primitives</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tabs"><code>@pablo-v/tabs</code></a></td><td>Tabs with roving focus and a sliding indicator</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/toolbar"><code>@pablo-v/toolbar</code></a></td><td>Grouped controls with roving arrow-key focus</td></tr>
 <tr><th align="left" colspan="2">Overlays</th></tr>
@@ -91,13 +96,10 @@ The component catalogue is grouped below. The site and Storybook derive their en
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/context-menu"><code>@pablo-v/context-menu</code></a></td><td>Right-click menu built on the menu primitives</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/dialog"><code>@pablo-v/dialog</code></a></td><td>Modal dialog on the native dialog element</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/drawer"><code>@pablo-v/drawer</code></a></td><td>Edge-anchored modal panel on the native dialog element</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/menu"><code>@pablo-v/menu</code></a></td><td>Menu and dropdown with keyboard navigation</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/hover-card"><code>@pablo-v/hover-card</code></a></td><td>Rich preview card shown on hover or focus</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/menu"><code>@pablo-v/menu</code></a></td><td>Menu and dropdown with keyboard navigation</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/popover"><code>@pablo-v/popover</code></a></td><td>Non-modal panel anchored to a trigger</td></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/toast"><code>@pablo-v/toast</code></a></td><td>Toast notifications with a pixel countdown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tooltip"><code>@pablo-v/tooltip</code></a></td><td>Hover and focus hint anchored to its trigger</td></tr>
-<tr><th align="left" colspan="2">Feedback</th></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/alert"><code>@pablo-v/alert</code></a></td><td>Inline status message with tone icon, action and dismiss</td></tr>
 <tr><th align="left" colspan="2">Signature</th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/command-menu"><code>@pablo-v/command-menu</code></a></td><td>⌘K command palette whose results decode in with ScrambleText</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/flip-clock"><code>@pablo-v/flip-clock</code></a></td><td>Flip-clock counter and clock with split-flap digits in the pixel font</td></tr>
@@ -106,6 +108,7 @@ The component catalogue is grouped below. The site and Storybook derive their en
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pixel-icons"><code>@pablo-v/pixel-icons</code></a></td><td>16x16 pixel SVG icon set with crisp edges</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pixel-image"><code>@pablo-v/pixel-image</code></a></td><td>Image that loads as a coarse pixel mosaic and sharpens to full resolution</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pixel-transition"><code>@pablo-v/pixel-transition</code></a></td><td>Pixel-grid dissolve for the View Transitions API</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/scramble-text"><code>@pablo-v/scramble-text</code></a></td><td>Text that decodes itself from random pixel glyphs</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/terminal"><code>@pablo-v/terminal</code></a></td><td>Streaming log viewer with autoscroll, level colours and a block cursor</td></tr>
 </table>
 
@@ -197,6 +200,7 @@ pnpm site            # Astro site at http://localhost:4321/pixel-ui/
 | `pnpm build`                        | Build all packages and copy their assets         |
 | `pnpm typecheck`                    | Type-check package, app, story, and test sources |
 | `pnpm test`                         | Run the Vitest suite                             |
+| `pnpm test:stories`                 | Render every story in Chromium with axe checks   |
 | `pnpm lint`                         | Check the repository with Biome                  |
 | `pnpm build-storybook`              | Build the Storybook catalogue                    |
 | `pnpm build-site`                   | Build the Astro site                             |

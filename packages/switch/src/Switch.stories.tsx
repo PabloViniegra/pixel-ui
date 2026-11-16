@@ -6,7 +6,7 @@ import { Switch } from './Switch.js';
 import './switch.css';
 
 const meta = {
-  title: 'Components/Switch',
+  title: 'Forms/Switch',
   component: Switch,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

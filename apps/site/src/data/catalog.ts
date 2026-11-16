@@ -41,8 +41,11 @@ const toStoryId = (title: string) =>
 export const storybookDocs = (id: string) => `${storybookUrl}?path=/docs/${id}--docs`;
 
 const blurbs: Record<string, string> = {
-  Components: 'Everyday building blocks: actions, status and feedback.',
+  Actions: 'Buttons, chips and toggles that trigger or switch something.',
   Forms: 'Text entry and selection controls, wired for labels and errors.',
+  Feedback: 'Status messages, notifications and loading states.',
+  'Data display': 'Read-only content: tables, timelines, badges and cards.',
+  Layout: 'Containers that group, divide, collapse and scroll content.',
   Navigation: 'Structure and wayfinding for dense product screens.',
   Overlays: 'Floating and modal surfaces with focus management.',
   Signature: 'The deliberate pixel moments that make PixelUI recognisable.',
@@ -79,8 +82,7 @@ export const componentCount = entries.length;
 export const catalog: CatalogGroup[] = [...new Set([...order, ...entries.map((e) => e.category)])]
   .map((category) => ({
     category,
-    // "Components" would repeat the section heading; Storybook keeps its own title.
-    label: category === 'Components' ? 'Essentials' : category,
+    label: category,
     blurb: blurbs[category] ?? '',
     entries: entries
       .filter((item) => item.category === category)

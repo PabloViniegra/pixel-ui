@@ -43,6 +43,7 @@ function FlipChar({ char }: { char: string }) {
 }
 
 export interface FlipCounterProps extends Omit<ComponentPropsWithRef<'span'>, 'children'> {
+  /** Number or text to show; each changed character flips. */
   value: number | string;
   /** Pads numbers with leading zeros to this many digits. */
   minDigits?: number;

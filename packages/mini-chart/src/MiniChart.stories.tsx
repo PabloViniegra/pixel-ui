@@ -18,6 +18,14 @@ const meta = {
   component: Sparkline,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    tone: {
+      control: 'inline-radio',
+      options: ['neutral', 'accent', 'success', 'warning', 'danger'],
+    },
+    data: { control: false },
+    format: { control: false },
+  },
   args: { label: 'Requests per hour', data: hourly },
 } satisfies Meta<typeof Sparkline>;
 

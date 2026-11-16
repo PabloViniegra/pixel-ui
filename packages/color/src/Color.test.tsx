@@ -161,4 +161,29 @@ describe('ColorPicker', () => {
     expect(screen.getByRole('textbox', { name: 'Hex' })).toHaveValue('#0000ff');
     expect(trigger).toHaveAccessibleName('Brand #0000ff');
   });
+
+  it('names the default panel controls with hexLabel and presetsLabel', async () => {
+    render(
+      <ColorPicker swatches={['#0000ff']} hexLabel="Hexadecimal" presetsLabel="Predefinidos" />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+    expect(screen.getByRole('textbox', { name: 'Hexadecimal' })).toBeInTheDocument();
+    expect(screen.getByRole('radiogroup', { name: 'Predefinidos' })).toBeInTheDocument();
+  });
+
+  it('names the default area and sliders with their label props', async () => {
+    render(
+      <ColorPicker
+        alpha
+        saturationLabel="Saturación"
+        brightnessLabel="Brillo"
+        hueLabel="Tono"
+        alphaLabel="Opacidad"
+      />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+    for (const name of ['Saturación', 'Brillo', 'Tono', 'Opacidad']) {
+      expect(screen.getByRole('slider', { name })).toBeInTheDocument();
+    }
+  });
 });

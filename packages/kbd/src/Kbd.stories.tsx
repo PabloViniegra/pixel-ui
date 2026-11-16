@@ -4,7 +4,7 @@ import { Kbd } from './Kbd.js';
 import './kbd.css';
 
 const meta = {
-  title: 'Components/Kbd',
+  title: 'Data display/Kbd',
   component: Kbd,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

@@ -19,4 +19,14 @@ describe('Timeline', () => {
     expect(screen.getByText('11:58')).toHaveAttribute('datetime', '2026-11-14T11:58');
     expect(items[1]?.querySelector('time')).toBeNull();
   });
+
+  it('hides a custom marker icon from assistive tech', () => {
+    render(
+      <Timeline aria-label="History">
+        <TimelineItem title="Deployed" icon={<svg data-testid="rocket" />} />
+      </Timeline>,
+    );
+    expect(screen.getByRole('listitem')).toHaveAttribute('data-icon', 'true');
+    expect(screen.getByTestId('rocket').parentElement).toHaveAttribute('aria-hidden', 'true');
+  });
 });

@@ -4,7 +4,7 @@ import { Separator } from './Separator.js';
 import './separator.css';
 
 const meta = {
-  title: 'Components/Separator',
+  title: 'Layout/Separator',
   component: Separator,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

@@ -19,12 +19,17 @@ import {
 
 export interface AlertDialogProps
   extends Omit<ComponentPropsWithRef<'dialog'>, 'open' | 'title' | 'onClose' | 'onCancel'> {
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** Element that opens the dialog on click. Optional when `open` is controlled. */
   trigger?: ReactElement;
+  /** The question being asked, e.g. "Delete project?". */
   title: ReactNode;
+  /** Consequences of the action. Required so the choice is informed. */
   description: ReactNode;
   /** @default 'Cancel' */
   cancelLabel?: ReactNode;
@@ -32,6 +37,7 @@ export interface AlertDialogProps
   confirmLabel?: ReactNode;
   /** Runs on confirm. A returned promise keeps the dialog open, with a loading button, until it settles; a rejection keeps it open. */
   onConfirm?: () => unknown;
+  /** Called when the dialog is dismissed with the cancel button or Escape. */
   onCancel?: () => void;
   /** `danger` styles the confirm button as destructive. @default 'default' */
   tone?: 'default' | 'danger';

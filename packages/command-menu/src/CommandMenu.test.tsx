@@ -48,4 +48,17 @@ describe('CommandMenu', () => {
     expect(onSelect).toHaveBeenCalledOnce();
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
+
+  it('names the search input and the list with searchLabel and listLabel', () => {
+    render(
+      <CommandMenu
+        commands={commands()}
+        defaultOpen
+        searchLabel="Buscar comandos"
+        listLabel="Comandos"
+      />,
+    );
+    expect(screen.getByRole('combobox', { name: 'Buscar comandos' })).toBeInTheDocument();
+    expect(screen.getByRole('listbox', { name: 'Comandos' })).toBeInTheDocument();
+  });
 });

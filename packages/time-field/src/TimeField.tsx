@@ -82,6 +82,7 @@ export interface TimeFieldProps
   extends Omit<ComponentPropsWithRef<'span'>, 'onChange' | 'defaultValue' | 'prefix' | 'children'> {
   /** 24-hour `HH:mm`, or `HH:mm:ss` with `granularity="second"`. */
   value?: string | null;
+  /** Initial time when uncontrolled. */
   defaultValue?: string | null;
   /** Called with a complete time, or `null` once it is cleared. */
   onChange?: (value: string | null) => void;
@@ -93,18 +94,25 @@ export interface TimeFieldProps
   locale?: string;
   /** Earliest valid time; later values show the error style. */
   min?: string;
+  /** Latest valid time; later values show the error style. */
   max?: string;
   /** @default 'md' */
   size?: PixelSize;
+  /** Blocks editing and dims the segments. */
   disabled?: boolean;
+  /** Keeps the value focusable but not editable. */
   readOnly?: boolean;
+  /** Marks the segments as required for assistive technology. */
   required?: boolean;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
   /** Id of the first segment. Inside a `Field` this is automatic. */
   id?: string;
   /** Name of a hidden input that submits the value. */
   name?: string;
+  /** Node shown before the segments. */
   prefix?: ReactNode;
+  /** Node shown after the segments. */
   suffix?: ReactNode;
   /** Accessible names of the segments. */
   segmentLabels?: Partial<Record<Segment, string>>;

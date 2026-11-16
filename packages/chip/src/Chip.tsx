@@ -7,17 +7,20 @@ import type { ComponentPropsWithRef, ReactNode } from 'react';
 export interface ChipProps extends Omit<ComponentPropsWithRef<'span'>, 'onClick'> {
   /** @default 'md' */
   size?: Exclude<PixelSize, 'lg'>;
+  /** Node shown before the label. */
   icon?: ReactNode;
   /**
    * Makes the chip a toggle button (`aria-pressed`). Leave undefined for a
    * static chip.
    */
   selected?: boolean;
+  /** Called with the new state when a toggle chip is pressed. */
   onSelectedChange?: (selected: boolean) => void;
   /** Shows a remove button that calls it. Backspace and Delete on the chip call it too. */
   onRemove?: () => void;
   /** Accessible name of the remove button. @default 'Remove' + the chip text */
   removeLabel?: string;
+  /** Blocks toggling and removing. */
   disabled?: boolean;
 }
 

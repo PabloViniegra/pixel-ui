@@ -52,3 +52,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+/** Starts open, to inspect the card without hovering. */
+export const Open: Story = {
+  args: { defaultOpen: true },
+};
+
+/** Shorter delays for dense lists where users scan many triggers. */
+export const FastDelays: Story = {
+  args: { openDelay: 150, closeDelay: 100, side: 'top' },
+};

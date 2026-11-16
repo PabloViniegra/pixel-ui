@@ -17,16 +17,31 @@ export interface ColorPickerProps extends ColorValueProps {
   alpha?: boolean;
   /** Preset colours under the default panel. */
   swatches?: readonly ColorSwatchOption[];
+  /** Accessible name of the area's horizontal axis in the default panel. @default 'Saturation' */
+  saturationLabel?: string;
+  /** Accessible name of the area's vertical axis in the default panel. @default 'Brightness' */
+  brightnessLabel?: string;
+  /** Accessible name of the hue slider in the default panel. @default 'Hue' */
+  hueLabel?: string;
+  /** Accessible name of the alpha slider in the default panel. @default 'Alpha' */
+  alphaLabel?: string;
+  /** Accessible name of the hex field in the default panel. @default 'Hex' */
+  hexLabel?: string;
+  /** Accessible name of the preset swatches in the default panel. @default 'Presets' */
+  presetsLabel?: string;
   /** Replaces the default panel. Colour controls inside share the picker's colour. */
   children?: ReactNode;
   /** @default 'md' */
   size?: PixelSize;
+  /** Disables the trigger. */
   disabled?: boolean;
   /** @default 'bottom' */
   side?: Side;
   /** @default 'start' */
   align?: Align;
+  /** Extra class on the trigger. */
   className?: string;
+  /** Inline style on the trigger. */
   style?: CSSProperties;
 }
 
@@ -41,6 +56,12 @@ export function ColorPicker({
   label = 'Color',
   alpha = false,
   swatches,
+  saturationLabel = 'Saturation',
+  brightnessLabel = 'Brightness',
+  hueLabel = 'Hue',
+  alphaLabel = 'Alpha',
+  hexLabel = 'Hex',
+  presetsLabel = 'Presets',
   children,
   size = 'md',
   disabled,
@@ -78,12 +99,12 @@ export function ColorPicker({
       >
         {children ?? (
           <>
-            <ColorArea />
-            <ColorSlider channel="hue" />
-            {alpha && <ColorSlider channel="alpha" />}
-            <ColorField size="sm" aria-label="Hex" />
+            <ColorArea xLabel={saturationLabel} yLabel={brightnessLabel} />
+            <ColorSlider channel="hue" aria-label={hueLabel} />
+            {alpha && <ColorSlider channel="alpha" aria-label={alphaLabel} />}
+            <ColorField size="sm" aria-label={hexLabel} />
             {swatches && swatches.length > 0 && (
-              <ColorSwatchPicker colors={swatches} size="sm" aria-label="Presets" />
+              <ColorSwatchPicker colors={swatches} size="sm" aria-label={presetsLabel} />
             )}
           </>
         )}

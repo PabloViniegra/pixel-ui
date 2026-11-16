@@ -21,22 +21,32 @@ export interface FileRejection {
 
 export interface FileUploadProps
   extends Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'defaultValue'> {
+  /** Selected files. Controlled when given. */
   value?: File[];
+  /** Initial files when uncontrolled. */
   defaultValue?: File[];
+  /** Called with the full list after files are added or removed. */
   onChange?: (files: File[]) => void;
   /** Files refused by `accept`, `maxSize` or `maxFiles`. */
   onReject?: (rejections: FileRejection[]) => void;
   /** Same syntax as the input attribute: `image/*,.pdf`. */
   accept?: string;
+  /** Accepts more than one file. @default false */
   multiple?: boolean;
   /** Largest accepted file, in bytes. */
   maxSize?: number;
+  /** Most files kept; extra ones are rejected. */
   maxFiles?: number;
+  /** Blocks picking, dropping and removing. @default false */
   disabled?: boolean;
   /** @default 'Drop files here or browse' */
   label?: ReactNode;
   /** Secondary line under the label, e.g. the accepted types. */
   hint?: ReactNode;
+  /** Accessible name of the file list. @default 'Selected files' */
+  listLabel?: string;
+  /** Accessible name of each remove button, from the file name. @default (name) => `Remove ${name}` */
+  removeLabel?: (fileName: string) => string;
   /** Message shown under the zone for each refused file; `false` hides it. */
   rejectionMessage?: false | ((rejection: FileRejection) => ReactNode);
 }
@@ -95,6 +105,8 @@ export function FileUpload({
   disabled = false,
   label = 'Drop files here or browse',
   hint,
+  listLabel = 'Selected files',
+  removeLabel = (name) => `Remove ${name}`,
   rejectionMessage,
   className,
   ...rest
@@ -212,7 +224,7 @@ export function FileUpload({
         </div>
       )}
       {files.length > 0 && (
-        <ul ref={listRef} className="pxl-file-upload__list" aria-label="Selected files">
+        <ul ref={listRef} className="pxl-file-upload__list" aria-label={listLabel}>
           {files.map((file, i) => (
             <li key={fileKey(file)} className="pxl-file-upload__file">
               <FileIcon />
@@ -221,7 +233,7 @@ export function FileUpload({
               <button
                 type="button"
                 className="pxl-file-upload__remove"
-                aria-label={`Remove ${file.name}`}
+                aria-label={removeLabel(file.name)}
                 disabled={disabled}
                 onClick={() => remove(i)}
               >

@@ -100,6 +100,7 @@ export function Menu({ className, onKeyDown, onFocus, onBlur, ref, ...rest }: Me
 export interface MenuItemProps extends Omit<ComponentPropsWithRef<'button'>, 'onSelect'> {
   /** Runs on click or Enter. Call `event.preventDefault()` to keep a dropdown open. */
   onSelect?: (event: MouseEvent<HTMLButtonElement>) => void;
+  /** Node shown before the label. */
   icon?: ReactNode;
   /** Keyboard hint shown at the end, e.g. `⌘D`. */
   shortcut?: ReactNode;
@@ -157,6 +158,7 @@ export function MenuItem({
 }
 
 export interface MenuGroupProps extends ComponentPropsWithRef<'div'> {
+  /** Heading of the group and its accessible name. */
   label: ReactNode;
 }
 
@@ -179,9 +181,13 @@ export function MenuSeparator({ className, ...rest }: ComponentPropsWithRef<'div
 export interface DropdownProps extends Omit<MenuProps, 'children'> {
   /** Button that opens the menu. ArrowDown / ArrowUp open it on the first / last item. */
   trigger: ReactElement;
+  /** Menu items, groups and separators. */
   children: ReactNode;
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** @default 'bottom' */
   side?: Side;

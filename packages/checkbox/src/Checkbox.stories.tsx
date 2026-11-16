@@ -9,6 +9,10 @@ const meta = {
   component: Checkbox,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    description: { control: 'text' },
+    label: { control: 'text' },
+  },
   args: { label: 'Enable preview deployments' },
 } satisfies Meta<typeof Checkbox>;
 

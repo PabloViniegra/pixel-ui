@@ -11,9 +11,11 @@ export type ColorSwatchOption = string | { value: string; label: string };
 export interface ColorSwatchPickerProps
   extends ColorValueProps,
     Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'defaultValue'> {
+  /** Swatches to choose from, as hex strings or `{ value, label }`. */
   colors: readonly ColorSwatchOption[];
   /** @default 'md' */
   size?: ColorSwatchSize;
+  /** Blocks selection. */
   disabled?: boolean;
 }
 

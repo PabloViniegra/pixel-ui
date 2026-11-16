@@ -35,10 +35,13 @@ export interface MultiSelectProps
     ComponentPropsWithRef<'input'>,
     'size' | 'prefix' | 'value' | 'defaultValue' | 'onChange'
   > {
+  /** Choices. Strings are shorthand for `{ value, label }` with the same text. */
   options: readonly OptionInput[];
   /** Selected values, in selection order. */
   value?: readonly string[];
+  /** Initial selected values when uncontrolled. */
   defaultValue?: readonly string[];
+  /** Called with every selected value and option after each change. */
   onChange?: (value: string[], options: ListboxOption[]) => void;
   /** Replaces the default case- and accent-insensitive "contains" match. */
   filter?: (option: ListboxOption, query: string) => boolean;
@@ -50,6 +53,7 @@ export interface MultiSelectProps
   removedMessage?: (label: string) => string;
   /** @default 'md' */
   size?: PixelSize;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
   /** Applied to the outer box; `className` goes there too. */
   style?: CSSProperties;

@@ -37,8 +37,11 @@ function useTabs(component: string) {
 const slug = (value: string) => value.replace(/[^\w-]/g, '_');
 
 export interface TabsProps extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onChange'> {
+  /** Selected tab. Controlled when given. */
   value?: string;
+  /** Tab selected on first render. */
   defaultValue: string;
+  /** Called with the value of the newly selected tab. */
   onValueChange?: (value: string) => void;
   /** @default 'horizontal' */
   orientation?: Orientation;
@@ -131,7 +134,9 @@ export function TabList({ label, className, children, onKeyDown, ...rest }: TabL
 }
 
 export interface TabProps extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
+  /** Matches the `value` of its `TabPanel`. */
   value: string;
+  /** Node shown before the label. */
   icon?: ReactNode;
 }
 
@@ -164,6 +169,7 @@ export function Tab({ value, icon, className, children, onClick, ...rest }: TabP
 }
 
 export interface TabPanelProps extends ComponentPropsWithRef<'div'> {
+  /** Matches the `value` of its `Tab`. */
   value: string;
 }
 

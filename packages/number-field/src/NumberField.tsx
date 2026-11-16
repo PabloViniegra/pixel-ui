@@ -15,11 +15,15 @@ export interface NumberFieldProps
     ComponentPropsWithRef<'input'>,
     'size' | 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step' | 'type'
   > {
+  /** Current number, or `null` when empty. Controlled when given. */
   value?: number | null;
+  /** Initial number when uncontrolled. */
   defaultValue?: number | null;
   /** Fires when a typed value is committed (blur or Enter) and on every step. */
   onChange?: (value: number | null) => void;
+  /** Lowest value; typed and stepped values clamp to it. */
   min?: number;
+  /** Highest value; typed and stepped values clamp to it. */
   max?: number;
   /** @default 1 */
   step?: number;
@@ -27,6 +31,10 @@ export interface NumberFieldProps
   size?: PixelSize;
   /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
+  /** Accessible name of the plus button. @default 'Increase' */
+  incrementLabel?: string;
+  /** Accessible name of the minus button. @default 'Decrease' */
+  decrementLabel?: string;
   /** Applied to the outer box; `className` goes there too. */
   style?: CSSProperties;
 }
@@ -49,6 +57,8 @@ export function NumberField({
   step = 1,
   size = 'md',
   invalid,
+  incrementLabel = 'Increase',
+  decrementLabel = 'Decrease',
   className,
   style,
   onBlur,
@@ -113,7 +123,7 @@ export function NumberField({
           type="button"
           tabIndex={-1}
           className="pxl-number-field__step"
-          aria-label="Decrease"
+          aria-label={decrementLabel}
           disabled={locked || (value != null && value <= min)}
           onClick={() => stepBy(-1)}
         >
@@ -144,7 +154,7 @@ export function NumberField({
           type="button"
           tabIndex={-1}
           className="pxl-number-field__step"
-          aria-label="Increase"
+          aria-label={incrementLabel}
           disabled={locked || (value != null && value >= max)}
           onClick={() => stepBy(1)}
         >

@@ -29,10 +29,14 @@ const frame = {
 } as const;
 
 const meta = {
-  title: 'Components/ResizablePanels',
+  title: 'Layout/ResizablePanels',
   component: ResizablePanels,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
+    onLayout: { control: false },
+  },
 } satisfies Meta<typeof ResizablePanels>;
 
 export default meta;

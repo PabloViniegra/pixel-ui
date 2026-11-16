@@ -45,4 +45,8 @@ export const Wrapping: Story = {
   args: { defaultValue: ['production', 'preview', 'development', 'staging', 'qa'] },
 };
 
-export const Disabled: Story = { args: { disabled: true, defaultValue: ['production'] } };
+export const Disabled: Story = {
+  args: { disabled: true, defaultValue: ['production'] },
+  // WCAG 1.4.3 exempts inactive components from contrast, but axe cannot tell this one is disabled.
+  parameters: { a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } } },
+};

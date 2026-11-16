@@ -18,12 +18,17 @@ export interface DateRangePickerProps
     DateSegmentsProps,
     'value' | 'onChange' | 'controlId' | 'name' | 'style' | 'ref' | 'defaultValue'
   > {
+  /** Selected range, or `null` for none. Controlled when given. */
   value?: DateRange | null;
+  /** Initial range when uncontrolled. */
   defaultValue?: DateRange | null;
   /** Called with a complete, ordered range, or `null` once it is cleared or invalid. */
   onChange?: (range: DateRange | null) => void;
+  /** Calendar open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial calendar state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the calendar opens or closes. */
   onOpenChange?: (open: boolean) => void;
   /** @default 'md' */
   size?: PixelSize;
@@ -31,6 +36,7 @@ export interface DateRangePickerProps
   id?: string;
   /** Names of hidden inputs that submit the ends as `YYYY-MM-DD`. */
   startName?: string;
+  /** Name of the hidden input that submits the end date as `YYYY-MM-DD`. */
   endName?: string;
   /** @default 'Start date' */
   startLabel?: string;
@@ -38,11 +44,13 @@ export interface DateRangePickerProps
   endLabel?: string;
   /** Marks extra days as unavailable in the calendar. */
   isDateDisabled?: (date: Date) => boolean;
+  /** Extra props for the pop-up range `Calendar`, such as `isDateDisabled`. */
   calendarProps?: Omit<CalendarRangeProps, 'mode' | 'value' | 'onChange'>;
   /** Accessible name of the calendar button and panel. @default 'Choose dates' */
   pickerLabel?: string;
   /** @default 'end' */
   align?: Align;
+  /** Applied to the outer box. */
   style?: CSSProperties;
 }
 

@@ -53,14 +53,20 @@ interface CalendarBaseProps
 export interface CalendarSingleProps extends CalendarBaseProps {
   /** @default 'single' */
   mode?: 'single';
+  /** Selected day, or `null` for none. Controlled when given. */
   value?: Date | null;
+  /** Initial selected day when uncontrolled. */
   defaultValue?: Date | null;
+  /** Called with the picked day. */
   onChange?: (date: Date) => void;
 }
 
 export interface CalendarRangeProps extends CalendarBaseProps {
+  /** Picks a start and an end day instead of a single one. */
   mode: 'range';
+  /** Selected range, or `null` for none. Controlled when given. */
   value?: DateRange | null;
+  /** Initial range when uncontrolled. */
   defaultValue?: DateRange | null;
   /** Called once both ends are picked; `start` is never after `end`. */
   onChange?: (range: DateRange) => void;

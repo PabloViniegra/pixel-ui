@@ -37,6 +37,11 @@ const meta = {
   component: Terminal,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    lines: { control: false },
+    status: { control: false },
+    placeholder: { control: false },
+  },
   args: { lines: allLines, title: 'Build logs' },
 } satisfies Meta<typeof Terminal>;
 

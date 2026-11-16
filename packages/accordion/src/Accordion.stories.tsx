@@ -5,7 +5,7 @@ import '@pablo-v/pixel-icons/style.css';
 import './accordion.css';
 
 const meta = {
-  title: 'Navigation/Accordion',
+  title: 'Layout/Accordion',
   component: Accordion,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

@@ -25,9 +25,11 @@ export function Accordion({ type = 'multiple', className, ...rest }: AccordionPr
 }
 
 export interface AccordionItemProps extends Omit<ComponentPropsWithRef<'details'>, 'title'> {
+  /** Summary text, always visible; clicking it toggles the panel. */
   title: ReactNode;
   /** Extra text on the right of the header, e.g. a count or status. */
   meta?: ReactNode;
+  /** Starts expanded. @default false */
   defaultOpen?: boolean;
 }
 

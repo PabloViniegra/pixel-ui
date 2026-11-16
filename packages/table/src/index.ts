@@ -11,4 +11,5 @@ export {
   type TableProps,
   TableRow,
   type TableRowProps,
+  type TableSortDirection,
 } from './Table.js';

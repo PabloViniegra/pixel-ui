@@ -13,6 +13,7 @@ export interface StepperStep {
 }
 
 export interface StepperProps extends Omit<ComponentPropsWithRef<'ol'>, 'onChange'> {
+  /** Steps in order, each with a label and optional description. */
   steps: StepperStep[];
   /** Index of the active step. Steps before it are complete. */
   current: number;

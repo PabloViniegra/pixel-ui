@@ -29,9 +29,13 @@ export interface ContextMenuProps extends Omit<MenuProps, 'children' | 'content'
   children: ReactElement;
   /** `MenuItem`, `MenuGroup` and `MenuSeparator` elements. */
   content: ReactNode;
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
+  /** Lets the browser's native context menu open instead. */
   disabled?: boolean;
 }
 

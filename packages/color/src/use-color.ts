@@ -15,6 +15,7 @@ const BLACK: Hsva = { h: 0, s: 0, v: 0, a: 1 };
 export interface ColorValueProps {
   /** Hex colour (`#rrggbb` or `#rrggbbaa`). */
   value?: string;
+  /** Initial colour as hex when uncontrolled. */
   defaultValue?: string;
   /** Receives lowercase hex; `#rrggbbaa` only when the alpha is below 1. */
   onChange?: (value: string) => void;

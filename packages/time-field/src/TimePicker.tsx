@@ -15,8 +15,11 @@ import { type KeyboardEvent, useId, useMemo, useRef } from 'react';
 import { TimeField, type TimeFieldProps, timeToSeconds, uses12Hours } from './TimeField.js';
 
 export interface TimePickerProps extends TimeFieldProps {
+  /** Panel open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial panel state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the panel opens or closes. */
   onOpenChange?: (open: boolean) => void;
   /** Minutes between the suggested times in the list. @default 30 */
   interval?: number;

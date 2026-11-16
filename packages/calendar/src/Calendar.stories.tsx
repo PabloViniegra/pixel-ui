@@ -18,6 +18,18 @@ const meta = {
   component: Calendar,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    mode: { control: 'inline-radio', options: ['single', 'range'] },
+    value: { control: false },
+    defaultValue: { control: false },
+    month: { control: false },
+    defaultMonth: { control: false },
+    min: { control: false },
+    max: { control: false },
+    isDateDisabled: { control: false },
+    onChange: { control: false },
+    onMonthChange: { control: false },
+  },
 } satisfies Meta<typeof Calendar>;
 
 export default meta;

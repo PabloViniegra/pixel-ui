@@ -8,7 +8,7 @@ const PHOTO = `data:image/svg+xml,${encodeURIComponent(
 )}`;
 
 const meta = {
-  title: 'Components/Avatar',
+  title: 'Data display/Avatar',
   component: Avatar,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

@@ -38,4 +38,9 @@ describe('Drawer', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Close' }));
     expect(screen.getByRole('dialog', { hidden: true })).not.toHaveAttribute('open');
   });
+
+  it('names the close button with closeLabel', () => {
+    render(<Drawer title="Ajustes" defaultOpen closeLabel="Cerrar" />);
+    expect(screen.getByRole('button', { name: 'Cerrar' })).toBeInTheDocument();
+  });
 });

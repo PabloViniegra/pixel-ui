@@ -1,0 +1,4 @@
+.pxl-search-input .pxl-input__control::-webkit-search-cancel-button,
+.pxl-search-input .pxl-input__control::-webkit-search-decoration {
+  appearance: none;
+}

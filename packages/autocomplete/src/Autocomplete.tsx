@@ -35,12 +35,17 @@ export interface AutocompleteProps
     ComponentPropsWithRef<'input'>,
     'size' | 'prefix' | 'value' | 'defaultValue' | 'onChange'
   > {
+  /** Suggestions. Strings are shorthand for `{ value, label }` with the same text. */
   options: readonly OptionInput[];
+  /** Selected option value, or `null` for none. Controlled when given. */
   value?: string | null;
+  /** Initial selected value when uncontrolled. */
   defaultValue?: string | null;
+  /** Called when an option is picked or the selection is cleared. */
   onChange?: (value: string | null, option: ListboxOption | null) => void;
   /** Text in the input. Controlled when given. */
   inputValue?: string;
+  /** Called on every keystroke with the text in the input. */
   onInputChange?: (text: string) => void;
   /** Replaces the default case- and accent-insensitive "contains" match. */
   filter?: (option: ListboxOption, query: string) => boolean;
@@ -48,7 +53,9 @@ export interface AutocompleteProps
   emptyMessage?: ReactNode;
   /** @default 'md' */
   size?: PixelSize;
+  /** Shows the error style. Inside a `Field` with `error` this is automatic. */
   invalid?: boolean;
+  /** Node shown before the text, e.g. a search icon. */
   prefix?: ReactNode;
   /** Applied to the outer box; `className` goes there too. */
   style?: CSSProperties;

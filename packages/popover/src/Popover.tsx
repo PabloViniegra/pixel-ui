@@ -16,8 +16,11 @@ import { type ComponentPropsWithRef, type ReactElement, useId, useRef } from 're
 export interface PopoverProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
   /** Element that toggles the popover on click. */
   trigger: ReactElement;
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** @default 'bottom' */
   side?: Side;

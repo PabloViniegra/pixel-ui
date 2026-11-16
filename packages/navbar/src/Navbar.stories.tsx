@@ -12,6 +12,10 @@ const meta = {
   component: Navbar,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version }, layout: 'fullscreen' },
+  argTypes: {
+    brand: { control: false },
+    actions: { control: false },
+  },
   args: {
     brand: <strong>Acme</strong>,
     actions: (

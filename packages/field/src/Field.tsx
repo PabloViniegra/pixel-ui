@@ -22,10 +22,13 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
   description?: ReactNode;
   /** Error message. Marks the control as invalid. */
   error?: ReactNode;
+  /** Shows an asterisk and marks the control as required. @default false */
   required?: boolean;
+  /** Disables the control inside and dims the label. @default false */
   disabled?: boolean;
   /** Id given to the control. Generated when omitted. */
   controlId?: string;
+  /** A single form control; it receives the id, description and error wiring. */
   children: ReactNode;
 }
 

@@ -60,6 +60,12 @@ const meta = {
   component: CommandMenu,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    commands: { control: false },
+    trigger: { control: false },
+    emptyMessage: { control: false },
+    onOpenChange: { control: false },
+  },
   args: { commands },
 } satisfies Meta<typeof CommandMenu>;
 

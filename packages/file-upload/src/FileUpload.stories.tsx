@@ -9,6 +9,15 @@ const meta = {
   component: FileUpload,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    value: { control: false },
+    defaultValue: { control: false },
+    onChange: { control: false },
+    onReject: { control: false },
+    rejectionMessage: { control: false },
+    label: { control: 'text' },
+    hint: { control: 'text' },
+  },
   args: {
     multiple: true,
     accept: 'image/*,.pdf',

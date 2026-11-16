@@ -1,3 +1,5 @@
+'use client';
+
 import { cx, type PixelSize } from '@pablo-v/core';
 import type { ComponentPropsWithRef, MouseEvent, ReactNode } from 'react';
 

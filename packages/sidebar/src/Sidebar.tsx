@@ -21,7 +21,9 @@ function useSidebar(part: string) {
 export interface SidebarProps extends ComponentPropsWithRef<'aside'> {
   /** Shrinks to an icon rail; labels stay available to assistive tech. */
   collapsed?: boolean;
+  /** Starts collapsed to icons when uncontrolled. @default false */
   defaultCollapsed?: boolean;
+  /** Called when the user collapses or expands it. */
   onCollapsedChange?: (collapsed: boolean) => void;
 }
 
@@ -67,6 +69,7 @@ export function SidebarFooter({ className, ...rest }: ComponentPropsWithRef<'div
 }
 
 export interface SidebarGroupProps extends ComponentPropsWithRef<'div'> {
+  /** Heading above the group, hidden while collapsed. */
   label?: ReactNode;
 }
 

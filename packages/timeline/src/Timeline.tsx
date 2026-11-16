@@ -9,6 +9,7 @@ export function Timeline({ className, ...rest }: TimelineProps) {
 }
 
 export interface TimelineItemProps extends Omit<ComponentPropsWithRef<'li'>, 'title'> {
+  /** What happened, shown in bold. */
   title: ReactNode;
   /** Displayed timestamp, e.g. `2h ago`. */
   time?: ReactNode;

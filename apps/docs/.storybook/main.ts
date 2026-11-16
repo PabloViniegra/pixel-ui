@@ -3,7 +3,7 @@ import { defaultClientConditions } from 'vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../../../packages/*/src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-vitest'],
   staticDirs: ['../public'],
   framework: { name: '@storybook/react-vite', options: {} },
   typescript: {

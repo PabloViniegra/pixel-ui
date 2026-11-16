@@ -8,8 +8,11 @@ export interface CollapsibleProps
   extends Omit<ComponentPropsWithRef<'details'>, 'title' | 'open' | 'onToggle'> {
   /** Content of the always-visible trigger row. */
   title: ReactNode;
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
 }
 

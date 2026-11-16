@@ -12,10 +12,11 @@ import {
 import './card.css';
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Data display/Card',
   component: Card,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  subcomponents: { CardHeader, CardTitle, CardDescription, CardContent, CardFooter },
   render: (args) => (
     <Card {...args} style={{ width: 340 }}>
       <CardHeader>

@@ -2,7 +2,9 @@ import { cx } from '@pablo-v/core';
 import type { ComponentPropsWithRef, CSSProperties } from 'react';
 
 export interface SkeletonProps extends ComponentPropsWithRef<'span'> {
+  /** Any CSS width. Defaults to the full width. */
   width?: CSSProperties['width'];
+  /** Any CSS height. Ignored with `lines`, where each line is `0.75em`. @default 1em */
   height?: CSSProperties['height'];
   /** @default 'md' */
   radius?: 'sm' | 'md' | 'full';

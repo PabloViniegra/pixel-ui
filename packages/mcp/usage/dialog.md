@@ -5,3 +5,4 @@ Use for a short, focused task that must be finished or dismissed before returnin
 - Put actions in `footer`, primary last, and wrap the cancel button in `DialogClose`.
 - `title` is required. Set `dismissible={false}` only when closing would lose work.
 - Content mounts only while open, so state inside resets on each open. Do not open a dialog from a dialog.
+- In non-English UIs, translate the close button with `closeLabel`.

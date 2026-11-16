@@ -21,4 +21,27 @@ describe('Select', () => {
     expect(select).toHaveValue('iad1');
     expect(onChange).toHaveBeenCalledOnce();
   });
+
+  it('starts on defaultValue instead of the placeholder', () => {
+    render(
+      <Select aria-label="Region" placeholder="Choose a region" defaultValue="fra1">
+        <option value="fra1">Frankfurt</option>
+      </Select>,
+    );
+    expect(screen.getByRole('combobox', { name: 'Region' })).toHaveValue('fra1');
+  });
+
+  it('is disabled and flagged invalid by its Field', () => {
+    render(
+      <Field label="Region" error="Pick a region" disabled>
+        <Select>
+          <option value="fra1">Frankfurt</option>
+        </Select>
+      </Field>,
+    );
+    const select = screen.getByRole('combobox', { name: 'Region' });
+    expect(select).toBeDisabled();
+    expect(select).toBeInvalid();
+    expect(select).toHaveAccessibleDescription('Pick a region');
+  });
 });

@@ -203,6 +203,12 @@
     },
     {
       "path": "../resizable"
+    },
+    {
+      "path": "../search-input"
+    },
+    {
+      "path": "../password-input"
     }
   ]
 }

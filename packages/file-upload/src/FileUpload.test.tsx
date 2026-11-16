@@ -112,4 +112,14 @@ describe('FileUpload', () => {
     expect(formatBytes(1536)).toBe('1.5 KB');
     expect(formatBytes(2_400_000)).toBe('2.3 MB');
   });
+
+  it('names the list and remove buttons with listLabel and removeLabel', async () => {
+    const { container } = render(
+      <FileUpload listLabel="Archivos seleccionados" removeLabel={(name) => `Quitar ${name}`} />,
+    );
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    await userEvent.upload(input, file('a.png', 'image/png'));
+    expect(screen.getByRole('list', { name: 'Archivos seleccionados' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Quitar a.png' })).toBeInTheDocument();
+  });
 });

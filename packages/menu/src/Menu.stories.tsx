@@ -36,7 +36,7 @@ const items = (
 );
 
 const meta = {
-  title: 'Overlays/Dropdown',
+  title: 'Overlays/Menu',
   component: Dropdown,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

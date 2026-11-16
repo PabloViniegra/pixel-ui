@@ -8,12 +8,15 @@ export interface RatingProps
   extends Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'defaultValue'> {
   /** 0 means no rating. Fractions are shown only when `readOnly`. */
   value?: number;
+  /** Initial rating when uncontrolled. @default 0 */
   defaultValue?: number;
+  /** Called with the new rating, or 0 when reset. */
   onChange?: (value: number) => void;
   /** @default 5 */
   max?: number;
   /** Shows the value as an image instead of an input. */
   readOnly?: boolean;
+  /** Blocks changes. */
   disabled?: boolean;
   /** Picking the current value again resets it to 0. @default true */
   clearable?: boolean;

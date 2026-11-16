@@ -43,9 +43,13 @@ export interface CommandItem {
 
 export interface CommandMenuProps
   extends Omit<ComponentPropsWithRef<'dialog'>, 'open' | 'onSelect' | 'onClose' | 'onCancel'> {
+  /** Every command, filtered by the search text and grouped by `group`. */
   commands: readonly CommandItem[];
+  /** Open state. Controlled when given; pair it with `onOpenChange`. */
   open?: boolean;
+  /** Initial open state when uncontrolled. @default false */
   defaultOpen?: boolean;
+  /** Called when the user opens or closes it. */
   onOpenChange?: (open: boolean) => void;
   /** Element that opens the menu on click. */
   trigger?: ReactElement;
@@ -57,6 +61,10 @@ export interface CommandMenuProps
   emptyMessage?: ReactNode;
   /** Accessible name of the dialog. @default 'Command menu' */
   label?: string;
+  /** Accessible name of the search input. @default 'Search commands' */
+  searchLabel?: string;
+  /** Accessible name of the results list. @default 'Commands' */
+  listLabel?: string;
 }
 
 function rank(item: CommandItem, query: string): number {
@@ -104,6 +112,8 @@ export function CommandMenu({
   placeholder = 'Type a command or search…',
   emptyMessage = 'No results',
   label = 'Command menu',
+  searchLabel = 'Search commands',
+  listLabel = 'Commands',
   className,
   ref,
   ...rest
@@ -148,6 +158,8 @@ export function CommandMenu({
             commands={commands}
             placeholder={placeholder}
             emptyMessage={emptyMessage}
+            searchLabel={searchLabel}
+            listLabel={listLabel}
             onDone={() => setOpen(false)}
           />
         )}
@@ -160,10 +172,19 @@ interface PanelProps {
   commands: readonly CommandItem[];
   placeholder: string;
   emptyMessage: ReactNode;
+  searchLabel: string;
+  listLabel: string;
   onDone: () => void;
 }
 
-function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProps) {
+function CommandPanel({
+  commands,
+  placeholder,
+  emptyMessage,
+  searchLabel,
+  listLabel,
+  onDone,
+}: PanelProps) {
   const id = useId();
   const [query, setQuery] = useState('');
   const groups = useMemo(() => filter(commands, query), [commands, query]);
@@ -209,7 +230,7 @@ function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProp
           aria-controls={`${id}-list`}
           aria-autocomplete="list"
           aria-activedescendant={activeOptionId}
-          aria-label="Search commands"
+          aria-label={searchLabel}
           placeholder={placeholder}
           value={query}
           autoComplete="off"
@@ -228,7 +249,7 @@ function CommandPanel({ commands, placeholder, emptyMessage, onDone }: PanelProp
           }}
         />
       </div>
-      <div id={`${id}-list`} className="pxl-command__list" role="listbox" aria-label="Commands">
+      <div id={`${id}-list`} className="pxl-command__list" role="listbox" aria-label={listLabel}>
         {groups.map((group, groupIndex) => (
           <div
             key={group.name ?? ''}

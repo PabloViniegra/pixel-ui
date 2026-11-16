@@ -14,10 +14,13 @@ const box = {
 } as const;
 
 const meta = {
-  title: 'Components/ScrollArea',
+  title: 'Layout/ScrollArea',
   component: ScrollArea,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },
+  argTypes: {
+    orientation: { control: 'inline-radio', options: ['vertical', 'horizontal', 'both'] },
+  },
   args: { 'aria-label': 'Releases' },
 } satisfies Meta<typeof ScrollArea>;
 

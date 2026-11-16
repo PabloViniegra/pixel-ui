@@ -9,8 +9,11 @@ export interface SliderProps
     ComponentPropsWithRef<'input'>,
     'type' | 'value' | 'defaultValue' | 'min' | 'max' | 'step' | 'size'
   > {
+  /** Current value. Controlled when given. */
   value?: number;
+  /** Initial value when uncontrolled. */
   defaultValue?: number;
+  /** Called on every change while dragging or using the keyboard. */
   onValueChange?: (value: number) => void;
   /** @default 0 */
   min?: number;

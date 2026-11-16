@@ -66,4 +66,12 @@ describe('NumberField', () => {
     await userEvent.tab();
     expect(onChange).toHaveBeenLastCalledWith(null);
   });
+
+  it('names the stepper buttons with incrementLabel and decrementLabel', () => {
+    render(
+      <NumberField aria-label="Réplicas" incrementLabel="Aumentar" decrementLabel="Reducir" />,
+    );
+    expect(screen.getByRole('button', { name: 'Aumentar' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Reducir' })).toBeInTheDocument();
+  });
 });

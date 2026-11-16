@@ -25,6 +25,9 @@ const meta = {
   component: Sidebar,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version }, layout: 'fullscreen' },
+  argTypes: {
+    onCollapsedChange: { control: false },
+  },
   decorators: [(Story) => <div style={{ height: 520, display: 'flex' }}>{Story()}</div>],
 } satisfies Meta<typeof Sidebar>;
 

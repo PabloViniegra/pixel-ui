@@ -200,6 +200,12 @@
       "path": "packages/resizable"
     },
     {
+      "path": "packages/search-input"
+    },
+    {
+      "path": "packages/password-input"
+    },
+    {
       "path": "packages/react"
     },
     {

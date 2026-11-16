@@ -12,6 +12,7 @@ import { CalendarIcon } from '@pablo-v/pixel-icons';
 import { type ComponentPropsWithRef, type RefObject, useRef } from 'react';
 
 export interface DatePickerPopoverProps extends ComponentPropsWithRef<'div'> {
+  /** Shows the panel. */
   open: boolean;
   /** Called on Escape or a press outside; `returnFocus` tells whether focus was inside. */
   onClose: (returnFocus: boolean) => void;
@@ -60,6 +61,7 @@ export function DatePickerPopover({
 }
 
 export interface DatePickerTriggerProps extends ComponentPropsWithRef<'button'> {
+  /** Reflects the panel state in `aria-expanded`. */
   open: boolean;
   /** Id of the open panel. */
   controls: string;
@@ -69,7 +71,7 @@ export function DatePickerTrigger({ open, controls, className, ...rest }: DatePi
   return (
     <button
       type="button"
-      className={cx('pxl-date-picker__trigger', className)}
+      className={cx('pxl-input__affix-button pxl-date-picker__trigger', className)}
       aria-haspopup="dialog"
       aria-expanded={open}
       aria-controls={open ? controls : undefined}
