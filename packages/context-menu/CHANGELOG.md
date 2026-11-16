@@ -1,5 +1,13 @@
 # @pablo-v/context-menu
 
+## 0.2.2
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+- Updated dependencies [878f832]
+  - @pablo-v/menu@1.0.4
+
 ## 0.2.1
 
 ### Patch Changes

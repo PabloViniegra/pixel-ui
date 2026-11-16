@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/input",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Text input with prefix and suffix slots",
   "license": "MIT",
   "repository": {

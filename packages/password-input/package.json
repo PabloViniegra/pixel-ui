@@ -1,6 +1,6 @@
 {
   "name": "@pablo-v/password-input",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Password field with a show/hide toggle",
   "license": "MIT",
   "repository": {

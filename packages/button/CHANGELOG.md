@@ -1,5 +1,11 @@
 # @pablo-v/button
 
+## 1.0.4
+
+### Patch Changes
+
+- 878f832: Mark `Button` as a client component so `<Button loading>` works inside React Server Components, and regroup the catalogue into Actions, Forms, Feedback, Data display, Layout, Navigation, Overlays and Signature.
+
 ## 1.0.3
 
 ### Patch Changes

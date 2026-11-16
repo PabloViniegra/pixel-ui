@@ -1,5 +1,11 @@
 # @pablo-v/breadcrumb
 
+## 1.0.1
+
+### Patch Changes
+
+- 878f832: Document every component prop with JSDoc so editor hovers, the Storybook controls table and the MCP API reference describe them.
+
 ## 1.0.0
 
 ### Minor Changes
