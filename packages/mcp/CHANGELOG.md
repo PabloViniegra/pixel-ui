@@ -1,5 +1,11 @@
 # @pablo-v/mcp
 
+## 0.2.1
+
+### Patch Changes
+
+- 5c4ac19: List CommandMenu under Overlays instead of Signature.
+
 ## 0.2.0
 
 ### Minor Changes
