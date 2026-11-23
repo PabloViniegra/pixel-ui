@@ -12,7 +12,6 @@ export interface CatalogEntry {
 
 export interface CatalogGroup {
   category: string;
-  label: string;
   blurb: string;
   entries: CatalogEntry[];
 }
@@ -82,7 +81,6 @@ export const componentCount = entries.length;
 export const catalog: CatalogGroup[] = [...new Set([...order, ...entries.map((e) => e.category)])]
   .map((category) => ({
     category,
-    label: category,
     blurb: blurbs[category] ?? '',
     entries: entries
       .filter((item) => item.category === category)

@@ -56,7 +56,7 @@ const commands: CommandItem[] = [
 ];
 
 const meta = {
-  title: 'Signature/CommandMenu',
+  title: 'Overlays/CommandMenu',
   component: CommandMenu,
   tags: ['autodocs'],
   parameters: { pixelui: { name: pkg.name, version: pkg.version } },

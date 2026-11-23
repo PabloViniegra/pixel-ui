@@ -207,25 +207,37 @@ const jsonLd = JSON.stringify({
         </div>
         <ol class="steps">
           <li class="step">
-            <h3 class="step__title">Add the packages</h3>
-            <p class="muted">
-              <code>@pablo-v/tokens</code> is the shared peer: CSS variables, Geist fonts and keyframes.
-            </p>
-            <InstallTabs client:visible />
+            <div class="step__text">
+              <h3 class="step__title">Add the packages</h3>
+              <p class="muted">
+                <code>@pablo-v/tokens</code> is the shared peer: CSS variables, Geist fonts and keyframes.
+              </p>
+            </div>
+            <div>
+              <InstallTabs client:visible />
+            </div>
           </li>
           <li class="step">
-            <h3 class="step__title">Import the styles</h3>
-            <p class="muted">
-              Load the tokens once at the root of your app, then each component's stylesheet. A CSS-aware
-              bundler (Vite, Next.js, Astro…) is required.
-            </p>
-            <Code lang="tsx" label="Single components" code={imports} />
-            <Code lang="tsx" label="Umbrella package" code={umbrella} />
+            <div class="step__text">
+              <h3 class="step__title">Import the styles</h3>
+              <p class="muted">
+                Load the tokens once at the root of your app, then each component's stylesheet. A CSS-aware
+                bundler (Vite, Next.js, Astro…) is required.
+              </p>
+            </div>
+            <div>
+              <Code lang="tsx" label="Single components" code={imports} />
+              <Code lang="tsx" label="Umbrella package" code={umbrella} />
+            </div>
           </li>
           <li class="step">
-            <h3 class="step__title">Use the components</h3>
-            <p class="muted">Every component ships its types; interactive ones are marked <code>"use client"</code>.</p>
-            <Code lang="tsx" label="Deploy.tsx" code={usage} />
+            <div class="step__text">
+              <h3 class="step__title">Use the components</h3>
+              <p class="muted">Every component ships its types; interactive ones are marked <code>"use client"</code>.</p>
+            </div>
+            <div>
+              <Code lang="tsx" label="Deploy.tsx" code={usage} />
+            </div>
           </li>
         </ol>
       </section>
@@ -376,10 +388,12 @@ const jsonLd = JSON.stringify({
           </p>
         </div>
         {
-          catalog.map((group) => (
-            <section class="group" aria-labelledby={`cat-${group.category.toLowerCase().replace(/\s+/g, '-')}-title`}>
+          catalog.map((group) => {
+            const headingId = `cat-${group.category.toLowerCase().replace(/\s+/g, '-')}-title`;
+            return (
+            <section class="group" aria-labelledby={headingId}>
               <div class="group__head">
-                <h3 class="group__title" id={`cat-${group.category.toLowerCase().replace(/\s+/g, '-')}-title`}>{group.label}</h3>
+                <h3 class="group__title" id={headingId}>{group.category}</h3>
                 <p class="muted">{group.blurb}</p>
               </div>
               <ul class="entries" role="list">
@@ -391,7 +405,8 @@ const jsonLd = JSON.stringify({
                 ))}
               </ul>
             </section>
-          ))
+            );
+          })
         }
       </section>
 

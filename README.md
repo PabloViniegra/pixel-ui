@@ -93,6 +93,7 @@ The component catalogue is grouped below. The groups match the Storybook sidebar
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/toolbar"><code>@pablo-v/toolbar</code></a></td><td>Grouped controls with roving arrow-key focus</td></tr>
 <tr><th align="left" colspan="2">Overlays</th></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/alert-dialog"><code>@pablo-v/alert-dialog</code></a></td><td>Modal confirmation that requires an explicit choice</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@pablo-v/command-menu"><code>@pablo-v/command-menu</code></a></td><td>⌘K command palette whose results decode in with ScrambleText</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/context-menu"><code>@pablo-v/context-menu</code></a></td><td>Right-click menu built on the menu primitives</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/dialog"><code>@pablo-v/dialog</code></a></td><td>Modal dialog on the native dialog element</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/drawer"><code>@pablo-v/drawer</code></a></td><td>Edge-anchored modal panel on the native dialog element</td></tr>
@@ -101,7 +102,6 @@ The component catalogue is grouped below. The groups match the Storybook sidebar
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/popover"><code>@pablo-v/popover</code></a></td><td>Non-modal panel anchored to a trigger</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/tooltip"><code>@pablo-v/tooltip</code></a></td><td>Hover and focus hint anchored to its trigger</td></tr>
 <tr><th align="left" colspan="2">Signature</th></tr>
-<tr><td><a href="https://www.npmjs.com/package/@pablo-v/command-menu"><code>@pablo-v/command-menu</code></a></td><td>⌘K command palette whose results decode in with ScrambleText</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/flip-clock"><code>@pablo-v/flip-clock</code></a></td><td>Flip-clock counter and clock with split-flap digits in the pixel font</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/mini-chart"><code>@pablo-v/mini-chart</code></a></td><td>Sparklines and bar charts drawn in pixel cells</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/@pablo-v/pixel-avatar"><code>@pablo-v/pixel-avatar</code></a></td><td>Symmetric pixel identicon generated from a name or email</td></tr>
